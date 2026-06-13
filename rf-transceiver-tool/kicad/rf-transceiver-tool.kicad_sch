@@ -1,0 +1,388 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid e4a0b1c2-3d5e-4f6a-8b7c-9d0e1f2a3b4c)
+
+  (paper "A4")
+
+  (title_block
+    (title "RF Transceiver Tool - Sub-GHz + 2.4GHz Multi-Protocol Research Device")
+    (date "2026-06-13")
+    (rev "1.0")
+    (company "Hacker Devices - Open Hardware for Security Research")
+    (comment 1 "STM32F401CCU6 + CC1101 + nRF24L01+")
+    (comment 2 "BOM target: ~$28")
+  )
+
+  (lib_symbols
+
+    ;; STM32F401CCU6 - UFQFPN-48
+    (symbol "MCU_ST_STM32F4:STM32F401CCU6" (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at 0 0 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32F401CCU6" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32f401cc.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "STM32F401CCU6_0_1"
+        (rectangle (start -17.78 25.4) (end 17.78 -25.4) (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "STM32F401CCU6_1_1"
+        (pin power_in line (at -2.54 27.94 270) (length 2.54) (name "VBAT" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 15.24 0) (length 2.54) (name "PC13" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 12.7 0) (length 2.54) (name "PC14" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 10.16 0) (length 2.54) (name "PC15" (effects (font (size 1.0 1.0)))) (number "4" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -20.32 7.62 0) (length 2.54) (name "PH0/OSC_IN" (effects (font (size 1.0 1.0)))) (number "5" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -20.32 5.08 0) (length 2.54) (name "PH1/OSC_OUT" (effects (font (size 1.0 1.0)))) (number "6" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -20.32 2.54 0) (length 2.54) (name "NRST" (effects (font (size 1.0 1.0)))) (number "7" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 -27.94 90) (length 2.54) (name "VSSA" (effects (font (size 1.0 1.0)))) (number "8" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 2.54 27.94 270) (length 2.54) (name "VDDA" (effects (font (size 1.0 1.0)))) (number "9" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -2.54 0) (length 2.54) (name "PA0" (effects (font (size 1.0 1.0)))) (number "10" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -5.08 0) (length 2.54) (name "PA1" (effects (font (size 1.0 1.0)))) (number "11" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -7.62 0) (length 2.54) (name "PA2" (effects (font (size 1.0 1.0)))) (number "12" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -10.16 0) (length 2.54) (name "PA3" (effects (font (size 1.0 1.0)))) (number "13" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -12.7 0) (length 2.54) (name "PA4/SPI1_NSS" (effects (font (size 1.0 1.0)))) (number "14" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -15.24 0) (length 2.54) (name "PA5/SPI1_SCK" (effects (font (size 1.0 1.0)))) (number "15" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -17.78 0) (length 2.54) (name "PA6/SPI1_MISO" (effects (font (size 1.0 1.0)))) (number "16" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -20.32 -20.32 0) (length 2.54) (name "PA7/SPI1_MOSI" (effects (font (size 1.0 1.0)))) (number "17" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 15.24 180) (length 2.54) (name "PB0" (effects (font (size 1.0 1.0)))) (number "18" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 12.7 180) (length 2.54) (name "PB1" (effects (font (size 1.0 1.0)))) (number "19" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 10.16 180) (length 2.54) (name "PB2" (effects (font (size 1.0 1.0)))) (number "20" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 7.62 180) (length 2.54) (name "PB10" (effects (font (size 1.0 1.0)))) (number "21" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at -5.08 -27.94 90) (length 2.54) (name "VSS" (effects (font (size 1.0 1.0)))) (number "23" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 5.08 27.94 270) (length 2.54) (name "VDD" (effects (font (size 1.0 1.0)))) (number "24" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -2.54 180) (length 2.54) (name "PB12/SPI2_NSS" (effects (font (size 1.0 1.0)))) (number "25" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -5.08 180) (length 2.54) (name "PB13/SPI2_SCK" (effects (font (size 1.0 1.0)))) (number "26" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -7.62 180) (length 2.54) (name "PB14/SPI2_MISO" (effects (font (size 1.0 1.0)))) (number "27" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -10.16 180) (length 2.54) (name "PB15/SPI2_MOSI" (effects (font (size 1.0 1.0)))) (number "28" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -12.7 180) (length 2.54) (name "PA8" (effects (font (size 1.0 1.0)))) (number "29" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -15.24 180) (length 2.54) (name "PA9" (effects (font (size 1.0 1.0)))) (number "30" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -17.78 180) (length 2.54) (name "PA10" (effects (font (size 1.0 1.0)))) (number "31" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -20.32 180) (length 2.54) (name "PA11/USB_DM" (effects (font (size 1.0 1.0)))) (number "32" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -22.86 180) (length 2.54) (name "PA12/USB_DP" (effects (font (size 1.0 1.0)))) (number "33" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 5.08 -27.94 90) (length 2.54) (name "PA13/SWDIO" (effects (font (size 1.0 1.0)))) (number "34" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 7.62 27.94 270) (length 2.54) (name "VDD" (effects (font (size 1.0 1.0)))) (number "35" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 7.62 -27.94 90) (length 2.54) (name "PA14/SWCLK" (effects (font (size 1.0 1.0)))) (number "36" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 2.54 180) (length 2.54) (name "PA15" (effects (font (size 1.0 1.0)))) (number "37" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 5.08 180) (length 2.54) (name "PB3" (effects (font (size 1.0 1.0)))) (number "38" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 -25.4 180) (length 2.54) (name "PB4" (effects (font (size 1.0 1.0)))) (number "39" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 20.32 180) (length 2.54) (name "PB6/I2C1_SCL" (effects (font (size 1.0 1.0)))) (number "41" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 20.32 22.86 180) (length 2.54) (name "PB7/I2C1_SDA" (effects (font (size 1.0 1.0)))) (number "42" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -2.54 -27.94 90) (length 2.54) (name "BOOT0" (effects (font (size 1.0 1.0)))) (number "43" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 10.16 27.94 270) (length 2.54) (name "VDD" (effects (font (size 1.0 1.0)))) (number "47" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at -7.62 -27.94 90) (length 2.54) (name "VSS" (effects (font (size 1.0 1.0)))) (number "48" (effects (font (size 1.0 1.0)))))
+      )
+    )
+
+    ;; CC1101 - Sub-GHz Transceiver
+    (symbol "RF_TI:CC1101RGT" (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at 0 12.7 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "CC1101" (at 0 -12.7 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/cc1101.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "CC1101RGT_0_1"
+        (rectangle (start -10.16 11.43) (end 10.16 -11.43) (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "CC1101RGT_1_1"
+        (pin input line (at -12.7 8.89 0) (length 2.54) (name "SCLK" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+        (pin output line (at -12.7 6.35 0) (length 2.54) (name "SO/GDO1" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 -1.27 180) (length 2.54) (name "GDO2" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 1.27 180) (length 2.54) (name "GDO0" (effects (font (size 1.0 1.0)))) (number "4" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 3.81 0) (length 2.54) (name "CSn" (effects (font (size 1.0 1.0)))) (number "6" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 -13.97 90) (length 2.54) (name "GND" (effects (font (size 1.0 1.0)))) (number "7" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 -3.81 0) (length 2.54) (name "XOSC_Q1" (effects (font (size 1.0 1.0)))) (number "8" (effects (font (size 1.0 1.0)))))
+        (pin output line (at -12.7 -6.35 0) (length 2.54) (name "XOSC_Q2" (effects (font (size 1.0 1.0)))) (number "9" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 2.54 13.97 270) (length 2.54) (name "AVDD" (effects (font (size 1.0 1.0)))) (number "10" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 6.35 180) (length 2.54) (name "RF_P" (effects (font (size 1.0 1.0)))) (number "11" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 5.08 13.97 270) (length 2.54) (name "DVDD" (effects (font (size 1.0 1.0)))) (number "12" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 1.27 0) (length 2.54) (name "SI" (effects (font (size 1.0 1.0)))) (number "14" (effects (font (size 1.0 1.0)))))
+        (pin passive line (at -12.7 -10.16 0) (length 2.54) (name "DCOUPL" (effects (font (size 1.0 1.0)))) (number "16" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 13.97 270) (length 2.54) (name "AVDD" (effects (font (size 1.0 1.0)))) (number "17" (effects (font (size 1.0 1.0)))))
+        (pin passive line (at 12.7 -6.35 180) (length 2.54) (name "R_BIAS" (effects (font (size 1.0 1.0)))) (number "18" (effects (font (size 1.0 1.0)))))
+        (pin input line (at 12.7 -8.89 180) (length 2.54) (name "RESETn" (effects (font (size 1.0 1.0)))) (number "20" (effects (font (size 1.0 1.0)))))
+      )
+    )
+
+    ;; nRF24L01+ - 2.4 GHz Transceiver
+    (symbol "RF_Nordic:nRF24L01P" (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at 0 11.43 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "nRF24L01+" (at 0 -11.43 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF24L01P" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "nRF24L01P_0_1"
+        (rectangle (start -10.16 10.16) (end 10.16 -10.16) (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "nRF24L01P_1_1"
+        (pin input line (at -12.7 7.62 0) (length 2.54) (name "CE" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 5.08 0) (length 2.54) (name "CSN" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 2.54 0) (length 2.54) (name "SCK" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+        (pin input line (at -12.7 0 0) (length 2.54) (name "MOSI" (effects (font (size 1.0 1.0)))) (number "4" (effects (font (size 1.0 1.0)))))
+        (pin output line (at -12.7 -2.54 0) (length 2.54) (name "MISO" (effects (font (size 1.0 1.0)))) (number "5" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 7.62 180) (length 2.54) (name "IRQ" (effects (font (size 1.0 1.0)))) (number "6" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 2.54 12.7 270) (length 2.54) (name "VDD" (effects (font (size 1.0 1.0)))) (number "7" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 -12.7 90) (length 2.54) (name "GND" (effects (font (size 1.0 1.0)))) (number "8" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 -2.54 180) (length 2.54) (name "ANT1" (effects (font (size 1.0 1.0)))) (number "15" (effects (font (size 1.0 1.0)))))
+        (pin output line (at 12.7 -5.08 180) (length 2.54) (name "ANT2" (effects (font (size 1.0 1.0)))) (number "16" (effects (font (size 1.0 1.0)))))
+      )
+    )
+
+    ;; AMS1117-3.3 - LDO
+    (symbol "Regulator_Linear:AMS1117-3.3" (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "AMS1117-3.3" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "AMS1117-3.3_0_1"
+        (rectangle (start -5.08 2.54) (end 5.08 -2.54) (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "AMS1117-3.3_1_1"
+        (pin power_in line (at -7.62 0 0) (length 2.54) (name "VI" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 -5.08 90) (length 2.54) (name "GND" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+        (pin power_out line (at 7.62 0 180) (length 2.54) (name "VO" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+      )
+    )
+
+    ;; USBLC6-2SC6 - USB ESD protection
+    (symbol "Power_Protection:USBLC6-2SC6" (in_bom yes) (on_board yes)
+      (property "Reference" "U6" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "USBLC6-2SC6" (at 0 -5.08 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "USBLC6-2SC6_0_1"
+        (rectangle (start -7.62 3.81) (end 7.62 -3.81) (stroke (width 0.254) (type default)) (fill (type background)))
+      )
+      (symbol "USBLC6-2SC6_1_1"
+        (pin bidirectional line (at -10.16 2.54 0) (length 2.54) (name "I/O1" (effects (font (size 1.0 1.0)))) (number "1" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 -6.35 90) (length 2.54) (name "GND" (effects (font (size 1.0 1.0)))) (number "2" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at -10.16 -2.54 0) (length 2.54) (name "I/O2" (effects (font (size 1.0 1.0)))) (number "3" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 10.16 -2.54 180) (length 2.54) (name "I/O2" (effects (font (size 1.0 1.0)))) (number "4" (effects (font (size 1.0 1.0)))))
+        (pin power_in line (at 0 6.35 270) (length 2.54) (name "VBUS" (effects (font (size 1.0 1.0)))) (number "5" (effects (font (size 1.0 1.0)))))
+        (pin bidirectional line (at 10.16 2.54 180) (length 2.54) (name "I/O1" (effects (font (size 1.0 1.0)))) (number "6" (effects (font (size 1.0 1.0)))))
+      )
+    )
+  )
+
+  ;; ========== POWER SECTION ==========
+  (junction (at 25.4 25.4) (diameter 1.0) (color 0 0 0 0))
+  (junction (at 25.4 33.02) (diameter 1.0) (color 0 0 0 0))
+
+  ;; USB-C Connector J1
+  (symbol (lib_id "Connector:USB_C_Plug") (at 12.7 38.1 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 12.7 30.48 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "USB-C_2.0" (at 12.7 33.02 0) (effects (font (size 1.27 1.27))))
+    (pin "1" (uuid 11111111-1111-1111-1111-111111111101))
+    (pin "2" (uuid 11111111-1111-1111-1111-111111111102))
+  )
+
+  ;; AMS1117-3.3 Voltage Regulator U4
+  (symbol (lib_id "Regulator_Linear:AMS1117-3.3") (at 45.72 25.4 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 45.72 20.32 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AMS1117-3.3" (at 45.72 22.86 0) (effects (font (size 1.27 1.27))))
+    (pin "1" (uuid 22222222-2222-2222-2222-222222222201))
+    (pin "2" (uuid 22222222-2222-2222-2222-222222222202))
+    (pin "3" (uuid 22222222-2222-2222-2222-222222222203))
+  )
+
+  ;; Power flags
+  (power_flag (at 25.4 25.4) (type VBATT) (uuid 33333333-3333-3333-3333-333333333301))
+  (power_flag (at 25.4 33.02) (type 3V3) (uuid 33333333-3333-3333-3333-333333333302))
+  (power_flag (at 25.4 45.72) (type GND) (uuid 33333333-3333-3333-3333-333333333303))
+
+  ;; USB ESD Protection U6
+  (symbol (lib_id "Power_Protection:USBLC6-2SC6") (at 76.2 38.1 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6" (at 76.2 30.48 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "USBLC6-2SC6" (at 76.2 33.02 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ========== MCU SECTION ==========
+  (symbol (lib_id "MCU_ST_STM32F4:STM32F401CCU6") (at 139.7 76.2 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 139.7 50.8 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "STM32F401CCU6" (at 139.7 53.34 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 139.7 76.2 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ========== SUB-GHz RF SECTION ==========
+  (symbol (lib_id "RF_TI:CC1101RGT") (at 236.22 60.96 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 236.22 48.26 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "CC1101" (at 236.22 50.8 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 236.22 60.96 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; 26 MHz Crystal for CC1101
+  (symbol (lib_id "Device:Crystal") (at 213.36 73.66 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y2" (at 213.36 68.58 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "26.000MHz" (at 213.36 71.12 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_SMD_HC49-SD_HandSoldering" (at 213.36 73.66 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; CC1101 RF matching network
+  (symbol (lib_id "Device:L") (at 259.08 53.34 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1" (at 259.08 50.8 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "8.2nH" (at 259.08 48.26 0) (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol (lib_id "Device:L") (at 266.7 60.96 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L2" (at 266.7 58.42 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "5.6nH" (at 266.7 63.5 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; SMA connector J2 (Sub-GHz)
+  (symbol (lib_id "Connector_Coaxial:SMAConnector") (at 279.4 53.34 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J2" (at 279.4 48.26 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SMA_Edge_Sub-GHz" (at 279.4 50.8 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ========== 2.4 GHz RF SECTION ==========
+  (symbol (lib_id "RF_Nordic:nRF24L01P") (at 236.22 119.38 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 236.22 107.95 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "nRF24L01+" (at 236.22 110.49 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm" (at 236.22 119.38 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; nRF24L01+ ANT matching
+  (symbol (lib_id "Device:L") (at 259.08 116.84 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L3" (at 259.08 114.3 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "2.7nH" (at 259.08 111.76 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; SMA connector J3 (2.4 GHz)
+  (symbol (lib_id "Connector_Coaxial:SMAConnector") (at 279.4 116.84 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J3" (at 279.4 111.76 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SMA_Edge_2.4GHz" (at 279.4 114.3 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ========== DISPLAY SECTION ==========
+  (symbol (lib_id "Display_OLED:SSD1306") (at 139.7 129.54 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5" (at 139.7 121.92 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SSD1306_128x64" (at 139.7 124.46 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; ========== CRYSTAL SECTION ==========
+  (symbol (lib_id "Device:Crystal") (at 116.84 96.52 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1" (at 116.84 91.44 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "8.000MHz" (at 116.84 93.98 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_SMD_HC49-SD_HandSoldering" (at 116.84 96.52 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ========== PASSIVE COMPONENTS ==========
+  ;; Decoupling capacitors
+  (symbol (lib_id "Device:C") (at 25.4 30.48 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C13" (at 26.67 30.48 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "47µF" (at 26.67 33.02 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_1206_3216Metric" (at 25.4 30.48 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:C") (at 55.88 30.48 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C15" (at 57.15 30.48 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "10µF" (at 57.15 33.02 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 55.88 30.48 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:C") (at 55.88 22.86 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C14" (at 57.15 22.86 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "1µF" (at 57.15 25.4 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 55.88 22.86 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; LED status indicators
+  (symbol (lib_id "Device:LED") (at 96.52 104.14 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 96.52 99.06 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "LED_Green" (at 96.52 101.6 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 96.52 104.14 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:LED") (at 96.52 119.38 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D2" (at 96.52 114.3 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "LED_Blue" (at 96.52 116.84 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 96.52 119.38 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; Resistors for LEDs and pull-ups
+  (symbol (lib_id "Device:R") (at 88.9 104.14 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R6" (at 88.9 99.06 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "330Ω" (at 88.9 101.6 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 88.9 104.14 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  (symbol (lib_id "Device:R") (at 88.9 119.38 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R7" (at 88.9 114.3 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "330Ω" (at 88.9 116.84 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 88.9 119.38 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; Buttons
+  (symbol (lib_id "Switch:SW_Push") (at 96.52 60.96 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SW1" (at 96.52 55.88 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BTN_Mode" (at 96.52 58.42 0) (effects (font (size 1.27 1.27))))
+  )
+
+  (symbol (lib_id "Switch:SW_Push") (at 96.52 73.66 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "SW2" (at 96.52 68.58 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "BTN_Action" (at 96.52 71.12 0) (effects (font (size 1.27 1.27))))
+  )
+
+  ;; CC1101 bias resistor
+  (symbol (lib_id "Device:R") (at 248.92 73.66 90) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R10" (at 248.92 73.66 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "56kΩ" (at 248.92 76.2 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 248.92 73.66 0) (effects (font (size 1.27 1.27)) hide))
+  )
+
+  ;; ========== NET LABELS ==========
+  (label "VBATT" (at 20.32 25.4 0) (fields_autoplaced))
+  (label "3V3" (at 53.34 25.4 0) (fields_autoplaced))
+  (label "GND" (at 20.32 45.72 0) (fields_autoplaced))
+  (label "USB_DM" (at 86.36 35.56 0) (fields_autoplaced))
+  (label "USB_DP" (at 86.36 40.64 0) (fields_autoplaced))
+  (label "SPI1_SCK" (at 160.02 60.96 0) (fields_autoplaced))
+  (label "SPI1_MISO" (at 160.02 58.42 0) (fields_autoplaced))
+  (label "SPI1_MOSI" (at 160.02 55.88 0) (fields_autoplaced))
+  (label "CC1101_CSN" (at 160.02 63.5 0) (fields_autoplaced))
+  (label "CC1101_GDO0" (at 160.02 66.04 0) (fields_autoplaced))
+  (label "CC1101_GDO2" (at 160.02 68.58 0) (fields_autoplaced))
+  (label "CC1101_RESETn" (at 160.02 71.12 0) (fields_autoplaced))
+  (label "SPI2_SCK" (at 160.02 78.74 0) (fields_autoplaced))
+  (label "SPI2_MISO" (at 160.02 81.28 0) (fields_autoplaced))
+  (label "SPI2_MOSI" (at 160.02 83.82 0) (fields_autoplaced))
+  (label "NRF24_CSN" (at 160.02 76.2 0) (fields_autoplaced))
+  (label "NRF24_CE" (at 160.02 73.66 0) (fields_autoplaced))
+  (label "NRF24_IRQ" (at 160.02 86.36 0) (fields_autoplaced))
+  (label "I2C1_SCL" (at 160.02 96.52 0) (fields_autoplaced))
+  (label "I2C1_SDA" (at 160.02 99.06 0) (fields_autoplaced))
+  (label "LED1" (at 160.02 91.44 0) (fields_autoplaced))
+  (label "LED2" (at 160.02 93.98 0) (fields_autoplaced))
+  (label "BTN1" (at 160.02 53.34 0) (fields_autoplaced))
+  (label "BTN2" (at 160.02 50.8 0) (fields_autoplaced))
+  (label "CC1101_RF" (at 254 53.34 0) (fields_autoplaced))
+  (label "NRF24_ANT" (at 254 116.84 0) (fields_autoplaced))
+
+  ;; ========== POWER FLAGS ==========
+  (symbol (lib_id "power:VBATT") (at 25.4 25.4 0) (unit 1) (in_bom no) (on_board no))
+  (symbol (lib_id "power:+3V3") (at 25.4 33.02 0) (unit 1) (in_bom no) (on_board no))
+  (symbol (lib_id "power:GND") (at 25.4 45.72 0) (unit 1) (in_bom no) (on_board no))
+
+  ;; ========== TEXT ANNOTATIONS ==========
+  (text "RF Transceiver Tool — Sub-GHz + 2.4 GHz\nPower Section: USB-C 5V → AMS1117-3.3 → 3V3 rail\nMCU: STM32F401CCU6 (Cortex-M4 @ 84 MHz)\nSub-GHz: CC1101 @ 868 MHz (SPI1)\n2.4 GHz: nRF24L01+ (SPI2)\nDisplay: SSD1306 OLED 128x64 (I2C1)"
+    (at 25.4 152.4 0)
+    (effects (font (size 2.54 2.54)) (justify left))
+  )
+)

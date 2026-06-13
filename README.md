@@ -28,8 +28,8 @@ Every device follows a rigorous 4-phase process:
 
 | # | Device | Status | Description |
 |---|---|---|---|
-| 1 | [`wifi-pentest-dongle/`](wifi-pentest-dongle/) | 🔄 In Progress | 802.11ax monitor/inject, deauth, PMKID capture |
-| 2 | *rf-transceiver-tool* | ⏳ Queued | Sub-GHz + 2.4GHz multi-protocol (CC1101 + nRF24) |
+| 1 | [`wifi-pentest-dongle/`](wifi-pentest-dongle/) | ✅ Complete | 802.11ax monitor/inject, deauth, PMKID capture |
+| 2 | [`rf-transceiver-tool/`](rf-transceiver-tool/) | ✅ Complete | Sub-GHz + 2.4GHz multi-protocol (CC1101 + nRF24) |
 | 3 | *badusb-injector* | ⏳ Queued | HID emulation payload injector, multi-profile |
 | 4 | *nfc-rfid-cloner* | ⏳ Queued | 13.56MHz + 125kHz, Mifare/EM4100 |
 | 5 | *network-tap-mitm* | ⏳ Queued | 2× GbE transparent bridge, packet capture |

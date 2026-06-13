@@ -1,0 +1,20 @@
+{
+  "general": {
+    "project_name": "rf-transceiver-tool",
+    "board": "rf-transceiver-tool",
+    "sheets": 1,
+    "date": "2026-06-13"
+  },
+  "meta": {
+    "filename": "rf-transceiver-tool.kicad_pro",
+    "version": 1
+  },
+  "pcbnew": {
+    "last_page_layout": ""
+  },
+  "schematic": {
+    "legacy_lib_dir": ""
+  },
+  "sheets": [],
+  "text_variables": {}
+}
