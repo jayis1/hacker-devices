@@ -1,0 +1,729 @@
+(kicad_sch
+  (version 20240101)
+  (generator "kicad")
+  
+  (uuid e8a7c3d1-4f5b-2a9e-8d1c-3b5a7f9e2c4d)
+  
+  (paper "A3")
+  
+  (title_block
+    (title "Substation - Sub-GHz IoT Gateway Implant")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+  )
+  
+  (lib_symbols
+    ; CC1352P SoC
+    (symbol "CC1352P1F3RGZ"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U1"
+        (at 0 25 0)
+        (effects (font (size 1 1))))
+      (property "Value" "CC1352P1F3RGZ"
+        (at 0 -25 0)
+        (effects (font (size 1 1))))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP4x4mm"
+        (at 0 0 0)
+        (effects (font (size 1 1)) hide))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/cc1352p.pdf"
+        (at 0 0 0)
+        (effects (font (size 1 1)) hide))
+      (symbol "CC1352P1F3RGZ_0_1"
+        (rectangle (start -12 24) (end 12 -24) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "CC1352P1F3RGZ_1_1"
+        (pin bidirectional line (at -15 22 0) (length 3) (name "DIO_0/SDRAM_DQ0" (effects (font (size 1 1)))) (number "1"))
+        (pin bidirectional line (at -15 20 0) (length 3) (name "DIO_1/SDRAM_DQ1" (effects (font (size 1 1)))) (number "2"))
+        (pin bidirectional line (at -15 18 0) (length 3) (name "DIO_2/SDRAM_DQ2" (effects (font (size 1 1)))) (number "3"))
+        (pin bidirectional line (at -15 16 0) (length 3) (name "DIO_3/SDRAM_DQ3" (effects (font (size 1 1)))) (number "4"))
+        (pin bidirectional line (at -15 14 0) (length 3) (name "DIO_4/SDRAM_DQ4" (effects (font (size 1 1)))) (number "5"))
+        (pin bidirectional line (at -15 12 0) (length 3) (name "DIO_5/SDRAM_DQ5" (effects (font (size 1 1)))) (number "6"))
+        (pin bidirectional line (at -15 10 0) (length 3) (name "DIO_6/SDRAM_DQ6" (effects (font (size 1 1)))) (number "7"))
+        (pin bidirectional line (at -15 8 0) (length 3) (name "DIO_7/SDRAM_DQ7" (effects (font (size 1 1)))) (number "8"))
+        (pin output line (at -15 6 0) (length 3) (name "DIO_8/FLASH_CLK" (effects (font (size 1 1)))) (number "9"))
+        (pin output line (at -15 4 0) (length 3) (name "DIO_9/FLASH_MOSI" (effects (font (size 1 1)))) (number "10"))
+        (pin input line (at -15 2 0) (length 3) (name "DIO_10/FLASH_MISO" (effects (font (size 1 1)))) (number "11"))
+        (pin output line (at -15 0 0) (length 3) (name "DIO_11/FLASH_CS" (effects (font (size 1 1)))) (number "12"))
+        (pin output line (at -15 -2 0) (length 3) (name "DIO_12/SD_CS" (effects (font (size 1 1)))) (number "13"))
+        (pin output line (at -15 -4 0) (length 3) (name "DIO_13/SD_CLK" (effects (font (size 1 1)))) (number "14"))
+        (pin output line (at -15 -6 0) (length 3) (name "DIO_14/SD_MOSI" (effects (font (size 1 1)))) (number "15"))
+        (pin input line (at -15 -8 0) (length 3) (name "DIO_15/SD_MISO" (effects (font (size 1 1)))) (number "16"))
+        (pin output line (at -15 -10 0) (length 3) (name "DIO_16/WS2812B" (effects (font (size 1 1)))) (number "17"))
+        (pin input line (at -15 -12 0) (length 3) (name "DIO_17/BTN_MODE" (effects (font (size 1 1)))) (number "18"))
+        (pin input line (at -15 -14 0) (length 3) (name "DIO_18/BTN_ACTION" (effects (font (size 1 1)))) (number "19"))
+        (pin bidirectional line (at -15 -16 0) (length 3) (name "DIO_19/I2C_SDA" (effects (font (size 1 1)))) (number "20"))
+        (pin output line (at -15 -18 0) (length 3) (name "DIO_20/I2C_SCL" (effects (font (size 1 1)))) (number "21"))
+        (pin output line (at -15 -20 0) (length 3) (name "DIO_21/SDRAM_CLK" (effects (font (size 1 1)))) (number "22"))
+        (pin output line (at -15 -22 0) (length 3) (name "DIO_22/SDRAM_CS" (effects (font (size 1 1)))) (number "23"))
+        (pin bidirectional line (at 15 22 180) (length 3) (name "DIO_23/SDRAM_DQS" (effects (font (size 1 1)))) (number "24"))
+        (pin output line (at 15 20 180) (length 3) (name "DIO_24/UART0_TX" (effects (font (size 1 1)))) (number "25"))
+        (pin input line (at 15 18 180) (length 3) (name "DIO_25/UART0_RX" (effects (font (size 1 1)))) (number "26"))
+        (pin output line (at 15 16 180) (length 3) (name "DIO_26/UART1_TX" (effects (font (size 1 1)))) (number "27"))
+        (pin input line (at 15 14 180) (length 3) (name "DIO_27/UART1_RX" (effects (font (size 1 1)))) (number "28"))
+        (pin bidirectional line (at 15 12 180) (length 3) (name "DIO_28/USB_DP" (effects (font (size 1 1)))) (number "29"))
+        (pin bidirectional line (at 15 10 180) (length 3) (name "DIO_29/USB_DM" (effects (font (size 1 1)))) (number "30"))
+        (pin bidirectional line (at 15 8 180) (length 3) (name "DIO_30/SDRAM_DQ8" (effects (font (size 1 1)))) (number "31"))
+        (pin bidirectional line (at 15 6 180) (length 3) (name "DIO_31/SDRAM_DQ9" (effects (font (size 1 1)))) (number "32"))
+        (pin power_out line (at 15 4 180) (length 3) (name "VDDR" (effects (font (size 1 1)))) (number "33"))
+        (pin passive line (at 15 2 180) (length 3) (name "DCPL" (effects (font (size 1 1)))) (number "34"))
+        (pin bidirectional line (at 15 0 180) (length 3) (name "SUB1" (effects (font (size 1 1)))) (number "35"))
+        (pin bidirectional line (at 15 -2 180) (length 3) (name "PA1" (effects (font (size 1 1)))) (number "36"))
+        (pin bidirectional line (at 15 -4 180) (length 3) (name "RF2" (effects (font (size 1 1)))) (number "37"))
+        (pin power_in line (at 15 -6 180) (length 3) (name "VDDS" (effects (font (size 1 1)))) (number "38"))
+        (pin power_in line (at 15 -8 180) (length 3) (name "VDDS2" (effects (font (size 1 1)))) (number "39"))
+        (pin power_in line (at 15 -10 180) (length 3) (name "VDD" (effects (font (size 1 1)))) (number "40"))
+        (pin power_in line (at 15 -12 180) (length 3) (name "VSS" (effects (font (size 1 1)))) (number "41"))
+        (pin power_in line (at 15 -14 180) (length 3) (name "VSS" (effects (font (size 1 1)))) (number "42"))
+        (pin input line (at 15 -16 180) (length 3) (name "RESET" (effects (font (size 1 1)))) (number "43"))
+        (pin input line (at 15 -18 180) (length 3) (name "TCK" (effects (font (size 1 1)))) (number "44"))
+        (pin bidirectional line (at 15 -20 180) (length 3) (name "TMS" (effects (font (size 1 1)))) (number "45"))
+        (pin input line (at 15 -22 180) (length 3) (name "TDI" (effects (font (size 1 1)))) (number "46"))
+        (pin output line (at 15 -24 180) (length 3) (name "TDO" (effects (font (size 1 1)))) (number "47"))
+        (pin power_in line (at 0 -27 90) (length 3) (name "GND_PAD" (effects (font (size 1 1)))) (number "49"))
+      )
+    )
+    
+    ; IS66WVS256 SDRAM
+    (symbol "IS66WVS256ALL"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U2"
+        (at 0 10 0)
+        (effects (font (size 1 1))))
+      (property "Value" "IS66WVS256ALL-104BLI"
+        (at 0 -10 0)
+        (effects (font (size 1 1))))
+      (property "Footprint" "Package_BGA:BGA-24_4x6_3.0x4.5mm"
+        (at 0 0 0)
+        (effects (font (size 1 1)) hide))
+      (symbol "IS66WVS256ALL_0_1"
+        (rectangle (start -8 9) (end 8 -9) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "IS66WVS256ALL_1_1"
+        (pin input line (at -11 7 0) (length 3) (name "CLK" (effects (font (size 1 1)))) (number "1"))
+        (pin input line (at -11 5 0) (length 3) (name "CS#" (effects (font (size 1 1)))) (number "2"))
+        (pin bidirectional line (at -11 3 0) (length 3) (name "DQ0" (effects (font (size 1 1)))) (number "3"))
+        (pin bidirectional line (at -11 1 0) (length 3) (name "DQ1" (effects (font (size 1 1)))) (number "4"))
+        (pin bidirectional line (at -11 -1 0) (length 3) (name "DQ2" (effects (font (size 1 1)))) (number "5"))
+        (pin bidirectional line (at -11 -3 0) (length 3) (name "DQ3" (effects (font (size 1 1)))) (number "6"))
+        (pin bidirectional line (at -11 -5 0) (length 3) (name "DQ4" (effects (font (size 1 1)))) (number "7"))
+        (pin bidirectional line (at -11 -7 0) (length 3) (name "DQ5" (effects (font (size 1 1)))) (number "8"))
+        (pin bidirectional line (at 11 7 180) (length 3) (name "DQ6" (effects (font (size 1 1)))) (number "9"))
+        (pin bidirectional line (at 11 5 180) (length 3) (name "DQ7" (effects (font (size 1 1)))) (number "10"))
+        (pin bidirectional line (at 11 3 180) (length 3) (name "DQS" (effects (font (size 1 1)))) (number "11"))
+        (pin power_in line (at 11 1 180) (length 3) (name "VDD" (effects (font (size 1 1)))) (number "12"))
+        (pin power_in line (at 11 -1 180) (length 3) (name "VSS" (effects (font (size 1 1)))) (number "13"))
+        (pin input line (at 11 -3 180) (length 3) (name "RESET#" (effects (font (size 1 1)))) (number "14"))
+        (pin no_connect line (at 11 -5 180) (length 3) (name "NC" (effects (font (size 1 1)))) (number "15"))
+        (pin no_connect line (at 11 -7 180) (length 3) (name "NC" (effects (font (size 1 1)))) (number "16"))
+      )
+    )
+    
+    ; MX25LW1636 SPI Flash
+    (symbol "MX25LW1636AMI"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U4"
+        (at 0 8 0)
+        (effects (font (size 1 1))))
+      (property "Value" "MX25LW1636AMI"
+        (at 0 -8 0)
+        (effects (font (size 1 1))))
+      (property "Footprint" "Package_SON:WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4.3mm"
+        (at 0 0 0)
+        (effects (font (size 1 1)) hide))
+      (symbol "MX25LW1636AMI_0_1"
+        (rectangle (start -5 7) (end 5 -7) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "MX25LW1636AMI_1_1"
+        (pin input line (at -8 5 0) (length 3) (name "CS#" (effects (font (size 1 1)))) (number "1"))
+        (pin output line (at -8 3 0) (length 3) (name "SO/IO1" (effects (font (size 1 1)))) (number "2"))
+        (pin input line (at -8 1 0) (length 3) (name "WP#/IO2" (effects (font (size 1 1)))) (number "3"))
+        (pin power_in line (at -8 -1 0) (length 3) (name "VSS" (effects (font (size 1 1)))) (number "4"))
+        (pin bidirectional line (at 8 5 180) (length 3) (name "SI/IO0" (effects (font (size 1 1)))) (number "5"))
+        (pin input line (at 8 3 180) (length 3) (name "SCK" (effects (font (size 1 1)))) (number "6"))
+        (pin input line (at 8 1 180) (length 3) (name "HOLD#/IO3" (effects (font (size 1 1)))) (number "7"))
+        (pin power_in line (at 8 -1 180) (length 3) (name "VDD" (effects (font (size 1 1)))) (number "8"))
+      )
+    )
+    
+    ; ATECC608A Crypto
+    (symbol "ATECC608A-MAHDA-S"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U5"
+        (at 0 6 0)
+        (effects (font (size 1 1))))
+      (property "Value" "ATECC608A-MAHDA-S"
+        (at 0 -6 0)
+        (effects (font (size 1 1))))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+        (at 0 0 0)
+        (effects (font (size 1 1)) hide))
+      (symbol "ATECC608A-MAHDA-S_0_1"
+        (rectangle (start -5 5) (end 5 -5) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "ATECC608A-MAHDA-S_1_1"
+        (pin no_connect line (at -8 3 0) (length 3) (name "NC" (effects (font (size 1 1)))) (number "1"))
+        (pin no_connect line (at -8 1 0) (length 3) (name "NC" (effects (font (size 1 1)))) (number "2"))
+        (pin no_connect line (at -8 -1 0) (length 3) (name "NC" (effects (font (size 1 1)))) (number "3"))
+        (pin power_in line (at -8 -3 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "4"))
+        (pin bidirectional line (at 8 3 180) (length 3) (name "SDA" (effects (font (size 1 1)))) (number "5"))
+        (pin input line (at 8 1 180) (length 3) (name "SCL" (effects (font (size 1 1)))) (number "6"))
+        (pin power_in line (at 8 -1 180) (length 3) (name "NC" (effects (font (size 1 1)))) (number "7"))
+        (pin power_in line (at 8 -3 180) (length 3) (name "VCC" (effects (font (size 1 1)))) (number "8"))
+      )
+    )
+    
+    ; TLV62569 Buck Converter
+    (symbol "TLV62569DBVR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U5" (at 0 5 0) (effects (font (size 1 1))))
+      (property "Value" "TLV62569DBVR" (at 0 -5 0) (effects (font (size 1 1))))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "TLV62569DBVR_0_1"
+        (rectangle (start -5 4) (end 5 -4) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "TLV62569DBVR_1_1"
+        (pin power_in line (at -8 3 0) (length 3) (name "VIN" (effects (font (size 1 1)))) (number "4"))
+        (pin power_in line (at -8 0 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "2"))
+        (pin input line (at -8 -3 0) (length 3) (name "EN" (effects (font (size 1 1)))) (number "3"))
+        (pin output line (at 8 3 180) (length 3) (name "SW" (effects (font (size 1 1)))) (number "1"))
+        (pin input line (at 8 -3 180) (length 3) (name "FB" (effects (font (size 1 1)))) (number "5"))
+      )
+    )
+    
+    ; MCP73871 Charger
+    (symbol "MCP73871T-2CCI"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U8" (at 0 8 0) (effects (font (size 1 1))))
+      (property "Value" "MCP73871T-2CCI/ML" (at 0 -8 0) (effects (font (size 1 1))))
+      (property "Footprint" "Package_DFN_QFN:QFN-20-1EP_3x3mm_P0.4mm_EP1.7x1.7mm" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "MCP73871T-2CCI_0_1"
+        (rectangle (start -7 7) (end 7 -7) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "MCP73871T-2CCI_1_1"
+        (pin power_in line (at -10 5 0) (length 3) (name "VIN" (effects (font (size 1 1)))) (number "1"))
+        (pin input line (at -10 3 0) (length 3) (name "EN" (effects (font (size 1 1)))) (number "2"))
+        (pin output line (at -10 1 0) (length 3) (name "STAT1" (effects (font (size 1 1)))) (number "3"))
+        (pin output line (at -10 -1 0) (length 3) (name "STAT2" (effects (font (size 1 1)))) (number "4"))
+        (pin power_in line (at -10 -3 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "5"))
+        (pin power_out line (at 10 5 180) (length 3) (name "BAT" (effects (font (size 1 1)))) (number "6"))
+        (pin input line (at 10 3 180) (length 3) (name "PROG" (effects (font (size 1 1)))) (number "7"))
+        (pin input line (at 10 1 180) (length 3) (name "VSET" (effects (font (size 1 1)))) (number "8"))
+        (pin power_in line (at 10 -1 180) (length 3) (name "THERM" (effects (font (size 1 1)))) (number "9"))
+        (pin power_in line (at 10 -3 180) (length 3) (name "GND2" (effects (font (size 1 1)))) (number "10"))
+      )
+    )
+    
+    ; TXB0108 Level Shifter
+    (symbol "TXB0108PWR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U9" (at 0 12 0) (effects (font (size 1 1))))
+      (property "Value" "TXB0108PWR" (at 0 -12 0) (effects (font (size 1 1))))
+      (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "TXB0108PWR_0_1"
+        (rectangle (start -6 11) (end 6 -11) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "TXB0108PWR_1_1"
+        (pin bidirectional line (at -9 9 0) (length 3) (name "A1" (effects (font (size 1 1)))) (number "1"))
+        (pin bidirectional line (at -9 7 0) (length 3) (name "A2" (effects (font (size 1 1)))) (number "2"))
+        (pin bidirectional line (at -9 5 0) (length 3) (name "A3" (effects (font (size 1 1)))) (number "3"))
+        (pin bidirectional line (at -9 3 0) (length 3) (name "A4" (effects (font (size 1 1)))) (number "4"))
+        (pin bidirectional line (at -9 1 0) (length 3) (name "A5" (effects (font (size 1 1)))) (number "5"))
+        (pin bidirectional line (at -9 -1 0) (length 3) (name "A6" (effects (font (size 1 1)))) (number "6"))
+        (pin bidirectional line (at -9 -3 0) (length 3) (name "A7" (effects (font (size 1 1)))) (number "7"))
+        (pin bidirectional line (at -9 -5 0) (length 3) (name "A8" (effects (font (size 1 1)))) (number "8"))
+        (pin power_in line (at -9 -7 0) (length 3) (name "OE" (effects (font (size 1 1)))) (number "9"))
+        (pin power_in line (at -9 -9 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "10"))
+        (pin power_in line (at -9 -11 0) (length 3) (name "VCCA" (effects (font (size 1 1)))) (number "11"))
+        (pin bidirectional line (at 9 9 180) (length 3) (name "B1" (effects (font (size 1 1)))) (number "12"))
+        (pin bidirectional line (at 9 7 180) (length 3) (name "B2" (effects (font (size 1 1)))) (number "13"))
+        (pin bidirectional line (at 9 5 180) (length 3) (name "B3" (effects (font (size 1 1)))) (number "14"))
+        (pin bidirectional line (at 9 3 180) (length 3) (name "B4" (effects (font (size 1 1)))) (number "15"))
+        (pin bidirectional line (at 9 1 180) (length 3) (name "B5" (effects (font (size 1 1)))) (number "16"))
+        (pin bidirectional line (at 9 -1 180) (length 3) (name "B6" (effects (font (size 1 1)))) (number "17"))
+        (pin bidirectional line (at 9 -3 180) (length 3) (name "B7" (effects (font (size 1 1)))) (number "18"))
+        (pin bidirectional line (at 9 -5 180) (length 3) (name "B8" (effects (font (size 1 1)))) (number "19"))
+        (pin power_in line (at 9 -9 180) (length 3) (name "VCCB" (effects (font (size 1 1)))) (number "20"))
+      )
+    )
+    
+    ; TPD4E05U06 ESD
+    (symbol "TPD4E05U06DQAR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U10" (at 0 5 0) (effects (font (size 1 1))))
+      (property "Value" "TPD4E05U06DQAR" (at 0 -5 0) (effects (font (size 1 1))))
+      (property "Footprint" "Package_SON:USON-10_2.5x1.0mm_P0.5mm" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "TPD4E05U06DQAR_0_1"
+        (rectangle (start -4 4) (end 4 -4) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "TPD4E05U06DQAR_1_1"
+        (pin passive line (at -7 3 0) (length 3) (name "CH1" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at -7 1 0) (length 3) (name "CH2" (effects (font (size 1 1)))) (number "2"))
+        (pin power_in line (at -7 -1 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "3"))
+        (pin passive line (at -7 -3 0) (length 3) (name "CH3" (effects (font (size 1 1)))) (number "4"))
+        (pin passive line (at 7 3 180) (length 3) (name "CH4" (effects (font (size 1 1)))) (number "5"))
+        (pin power_in line (at 7 1 180) (length 3) (name "GND2" (effects (font (size 1 1)))) (number "6"))
+        (pin passive line (at 7 -1 180) (length 3) (name "NC" (effects (font (size 1 1)))) (number "7"))
+        (pin passive line (at 7 -3 180) (length 3) (name "NC2" (effects (font (size 1 1)))) (number "8"))
+      )
+    )
+    
+    ; WS2812B LED
+    (symbol "WS2812B-2020"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D1" (at 0 4 0) (effects (font (size 1 1))))
+      (property "Value" "WS2812B-2020" (at 0 -4 0) (effects (font (size 1 1))))
+      (property "Footprint" "LED_SMD:LED_WS2812B-2020" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "WS2812B-2020_0_1"
+        (rectangle (start -4 3) (end 4 -3) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "WS2812B-2020_1_1"
+        (pin input line (at -7 1 0) (length 3) (name "DIN" (effects (font (size 1 1)))) (number "1"))
+        (pin output line (at 7 1 180) (length 3) (name "DOUT" (effects (font (size 1 1)))) (number "2"))
+        (pin power_in line (at 0 6 270) (length 3) (name "VDD" (effects (font (size 1 1)))) (number "3"))
+        (pin power_in line (at 0 -6 90) (length 3) (name "GND" (effects (font (size 1 1)))) (number "4"))
+      )
+    )
+    
+    ; USB-C Connector
+    (symbol "USB4105-GF-A"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J1" (at 0 12 0) (effects (font (size 1 1))))
+      (property "Value" "USB4105-GF-A" (at 0 -12 0) (effects (font (size 1 1))))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "USB4105-GF-A_0_1"
+        (rectangle (start -6 11) (end 6 -11) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "USB4105-GF-A_1_1"
+        (pin power_in line (at -9 9 0) (length 3) (name "VBUS" (effects (font (size 1 1)))) (number "A4"))
+        (pin power_in line (at -9 7 0) (length 3) (name "GND" (effects (font (size 1 1)))) (number "A1"))
+        (pin bidirectional line (at -9 5 0) (length 3) (name "CC1" (effects (font (size 1 1)))) (number "A5"))
+        (pin bidirectional line (at 9 9 180) (length 3) (name "DP" (effects (font (size 1 1)))) (number "A6"))
+        (pin bidirectional line (at 9 7 180) (length 3) (name "DN" (effects (font (size 1 1)))) (number "A7"))
+        (pin bidirectional line (at 9 5 180) (length 3) (name "CC2" (effects (font (size 1 1)))) (number "B5"))
+        (pin power_in line (at 9 -9 180) (length 3) (name "SBU1" (effects (font (size 1 1)))) (number "A8"))
+        (pin power_in line (at 9 -7 180) (length 3) (name "SBU2" (effects (font (size 1 1)))) (number "B8"))
+        (pin passive line (at 0 -14 90) (length 3) (name "SHIELD" (effects (font (size 1 1)))) (number "S1"))
+      )
+    )
+    
+    ; Generic passive symbols
+    (symbol "C_0402"
+      (property "Reference" "C" (at 0 2 0) (effects (font (size 1 1))))
+      (property "Value" "C" (at 0 -2 0) (effects (font (size 1 1))))
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "C_0402_0_1"
+        (line (start -1 0.5) (end -1 -0.5) (stroke (width 0.15)))
+        (line (start 1 0.5) (end 1 -0.5) (stroke (width 0.15)))
+      )
+      (symbol "C_0402_1_1"
+        (pin passive line (at -2 0 0) (length 1) (name "~" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at 2 0 180) (length 1) (name "~" (effects (font (size 1 1)))) (number "2"))
+      )
+    )
+    
+    (symbol "R_0402"
+      (property "Reference" "R" (at 0 2 0) (effects (font (size 1 1))))
+      (property "Value" "R" (at 0 -2 0) (effects (font (size 1 1))))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "R_0402_0_1"
+        (rectangle (start -1 0.4) (end 1 -0.4) (stroke (width 0.15)) (fill (type none)))
+      )
+      (symbol "R_0402_1_1"
+        (pin passive line (at -2 0 0) (length 1) (name "~" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at 2 0 180) (length 1) (name "~" (effects (font (size 1 1)))) (number "2"))
+      )
+    )
+    
+    (symbol "L_0805"
+      (property "Reference" "L" (at 0 2 0) (effects (font (size 1 1))))
+      (property "Value" "L" (at 0 -2 0) (effects (font (size 1 1))))
+      (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "L_0805_0_1"
+        (arc (start -1 0) (mid -0.5 0.5) (end 0 0) (stroke (width 0.15)))
+        (arc (start 0 0) (mid 0.5 0.5) (end 1 0) (stroke (width 0.15)))
+      )
+      (symbol "L_0805_1_1"
+        (pin passive line (at -2 0 0) (length 1) (name "~" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at 2 0 180) (length 1) (name "~" (effects (font (size 1 1)))) (number "2"))
+      )
+    )
+    
+    ; SMA Connector
+    (symbol "CON-SMA-EDGE-S"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J2" (at 0 4 0) (effects (font (size 1 1))))
+      (property "Value" "CON-SMA-EDGE-S" (at 0 -4 0) (effects (font (size 1 1))))
+      (property "Footprint" "Connector_Coaxial:SMA_Amphenol_132289_EdgeMount" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "CON-SMA-EDGE-S_0_1"
+        (circle (center 0 0) (radius 2) (stroke (width 0.254)) (fill (type none)))
+        (circle (center 0 0) (radius 1) (stroke (width 0.254)) (fill (type background)))
+      )
+      (symbol "CON-SMA-EDGE-S_1_1"
+        (pin passive line (at 3 0 180) (length 1) (name "Signal" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at 0 -5 90) (length 1) (name "GND" (effects (font (size 1 1)))) (number "2"))
+      )
+    )
+    
+    ; Crystal
+    (symbol "Crystal_24MHz"
+      (property "Reference" "Y1" (at 0 3 0) (effects (font (size 1 1))))
+      (property "Value" "ABM8-24.000MHZ-20-B2X-T" (at 0 -3 0) (effects (font (size 1 1))))
+      (property "Footprint" "Crystal:Crystal_SMD_Abracon_ABM8-2Pin_3.2x2.5mm" (at 0 0 0) (effects (font (size 1 1)) hide))
+      (symbol "Crystal_24MHz_0_1"
+        (rectangle (start -1 1) (end 1 -1) (stroke (width 0.15)) (fill (type none)))
+        (line (start -1.5 0.8) (end -1.5 -0.8) (stroke (width 0.15)))
+        (line (start 1.5 0.8) (end 1.5 -0.8) (stroke (width 0.15)))
+      )
+      (symbol "Crystal_24MHz_1_1"
+        (pin passive line (at -3 0 0) (length 1.5) (name "~" (effects (font (size 1 1)))) (number "1"))
+        (pin passive line (at 3 0 180) (length 1.5) (name "~" (effects (font (size 1 1)))) (number "2"))
+      )
+    )
+  )
+  
+  ;; ========================================
+  ;; SCHEMATIC SHEET 1: POWER
+  ;; ========================================
+  
+  (sheet (at 10 10) (size 180 120)
+    (title_block
+      (title "Power Supply")
+      (sheet_number "1")
+    )
+    
+    ;; USB-C Connector J1
+    (symbol (lib_id "USB4105-GF-A") (at 30 40 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000001)
+      (property "Reference" "J1" (at 30 28 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "USB4105-GF-A" (at 30 52 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; USB ESD U10
+    (symbol (lib_id "TPD4E05U06DQAR") (at 60 40 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000002)
+      (property "Reference" "U10" (at 60 35 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TPD4E05U06DQAR" (at 60 45 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; Buck 3.3V U5
+    (symbol (lib_id "TLV62569DBVR") (at 100 35 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000003)
+      (property "Reference" "U5" (at 100 30 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TLV62569DBVR" (at 100 40 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; Buck 1.2V U6
+    (symbol (lib_id "TLV62569DBVR") (at 100 65 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000004)
+      (property "Reference" "U6" (at 100 60 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TLV62569DBVR" (at 100 70 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; LiPo Charger U8
+    (symbol (lib_id "MCP73871T-2CCI") (at 100 100 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000005)
+      (property "Reference" "U8" (at 100 92 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "MCP73871T-2CCI/ML" (at 100 108 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; USB CC pull-downs (5.1kΩ)
+    (symbol (lib_id "R_0402") (at 45 33 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000010)
+      (property "Reference" "R_CC1" (at 45 31 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "5.1k" (at 45 35 0) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "R_0402") (at 45 47 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000011)
+      (property "Reference" "R_CC2" (at 45 45 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "5.1k" (at 45 49 0) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Inductors
+    (symbol (lib_id "L_0805") (at 110 29 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000020)
+      (property "Reference" "L1" (at 110 27 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "2.2µH" (at 110 31 0) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "L_0805") (at 110 59 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000021)
+      (property "Reference" "L2" (at 110 57 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "1.0µH" (at 110 61 0) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Bulk capacitors
+    (symbol (lib_id "C_0402") (at 120 40 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000030)
+      (property "Reference" "C5" (at 120 38 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "10µF" (at 120 42 0) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "C_0402") (at 120 70 0)
+      (uuid a1b2c3d1-0001-4000-8000-000000000031)
+      (property "Reference" "C8" (at 120 68 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "22µF" (at 120 72 0) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; VBUS net label
+    (label "VBUS_5V" (at 39 39 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "USB_DP" (at 53 39 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "USB_DM" (at 53 41 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "VDD_MAIN" (at 125 35 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "VDD_CORE" (at 125 65 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "GND" (at 125 100 0) (effects (font (size 1 1)) (justify left bottom)))
+    (label "BAT+" (at 110 105 0) (effects (font (size 1 1)) (justify left bottom)))
+    
+    ;; Wire connections
+    (wire (pts (xy 30 39) (xy 39 39)) (stroke (width 0.254)))
+    (wire (pts (xy 39 39) (xy 92 39)) (stroke (width 0.508)))
+    (wire (pts (xy 92 39) (xy 100 39)) (stroke (width 0.508)))
+  )
+  
+  ;; ========================================
+  ;; SCHEMATIC SHEET 2: SoC
+  ;; ========================================
+  
+  (sheet (at 200 10) (size 180 120)
+    (title_block
+      (title "CC1352P SoC & Crystals")
+      (sheet_number "2")
+    )
+    
+    ;; CC1352P U1
+    (symbol (lib_id "CC1352P1F3RGZ") (at 280 70 0)
+      (uuid a1b2c3d1-0002-4000-8000-000000000001)
+      (property "Reference" "U1" (at 280 45 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "CC1352P1F3RGZ" (at 280 95 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; 24 MHz Crystal Y1
+    (symbol (lib_id "Crystal_24MHz") (at 230 55 0)
+      (uuid a1b2c3d1-0002-4000-8000-000000000002)
+      (property "Reference" "Y1" (at 230 52 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "24MHz" (at 230 58 0) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Crystal load caps
+    (symbol (lib_id "C_0402") (at 225 60 90)
+      (uuid a1b2c3d1-0002-4000-8000-000000000010)
+      (property "Reference" "C1" (at 223 60 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "12pF" (at 227 60 90) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "C_0402") (at 235 60 90)
+      (uuid a1b2c3d1-0002-4000-8000-000000000011)
+      (property "Reference" "C2" (at 233 60 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "12pF" (at 237 60 90) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Net labels for CC1352P connections
+    (label "SDRAM_DQ0" (at 265 48 0) (effects (font (size 0.8 0.8))))
+    (label "SDRAM_DQ7" (at 265 62 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_CLK" (at 265 64 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_MOSI" (at 265 66 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_MISO" (at 265 68 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_CS" (at 265 70 0) (effects (font (size 0.8 0.8))))
+    (label "I2C_SDA" (at 265 54 0) (effects (font (size 0.8 0.8))))
+    (label "I2C_SCL" (at 265 52 0) (effects (font (size 0.8 0.8))))
+    (label "UART0_TX" (at 295 50 0) (effects (font (size 0.8 0.8))))
+    (label "UART0_RX" (at 295 52 0) (effects (font (size 0.8 0.8))))
+    (label "USB_DP" (at 295 58 0) (effects (font (size 0.8 0.8))))
+    (label "USB_DM" (at 295 56 0) (effects (font (size 0.8 0.8))))
+    (label "SUB_GHZ_LNA" (at 295 70 0) (effects (font (size 0.8 0.8))))
+    (label "SUB_GHZ_PA" (at 295 68 0) (effects (font (size 0.8 0.8))))
+    (label "BLE_RF" (at 295 66 0) (effects (font (size 0.8 0.8))))
+    (label "VDD_MAIN" (at 295 64 0) (effects (font (size 0.8 0.8))))
+    (label "WS2812B_DATA" (at 265 60 0) (effects (font (size 0.8 0.8))))
+    (label "BTN_MODE" (at 265 58 0) (effects (font (size 0.8 0.8))))
+    (label "BTN_ACTION" (at 265 56 0) (effects (font (size 0.8 0.8))))
+    
+    ;; Decoupling caps (8x 100nF around U1)
+    (symbol (lib_id "C_0402") (at 300 78 0) (uuid a1b2c3d1-0002-4000-8000-000000000020)
+      (property "Reference" "C9" (at 300 76 0) (effects (font (size 0.6 0.6))))
+      (property "Value" "100nF" (at 300 80 0) (effects (font (size 0.6 0.6))))
+    )
+  )
+  
+  ;; ========================================
+  ;; SCHEMATIC SHEET 3: MEMORY
+  ;; ========================================
+  
+  (sheet (at 10 140) (size 180 120)
+    (title_block
+      (title "Memory (SDRAM, Flash, SD)")
+      (sheet_number "3")
+    )
+    
+    ;; SDRAM U2
+    (symbol (lib_id "IS66WVS256ALL") (at 50 180 0)
+      (uuid a1b2c3d1-0003-4000-8000-000000000001)
+      (property "Reference" "U2" (at 50 170 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "IS66WVS256ALL-104BLI" (at 50 190 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; SDRAM U3
+    (symbol (lib_id "IS66WVS256ALL") (at 120 180 0)
+      (uuid a1b2c3d1-0003-4000-8000-000000000002)
+      (property "Reference" "U3" (at 120 170 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "IS66WVS256ALL-104BLI" (at 120 190 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; SPI Flash U4
+    (symbol (lib_id "MX25LW1636AMI") (at 50 230 0)
+      (uuid a1b2c3d1-0003-4000-8000-000000000003)
+      (property "Reference" "U4" (at 50 222 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "MX25LW1636AMI" (at 50 238 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; MicroSD Connector J3
+    (symbol (lib_id "DM3AT-SF-PEJ2") (at 140 230 0)
+      (uuid a1b2c3d1-0003-4000-8000-000000000010)
+      (property "Reference" "J3" (at 140 218 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "DM3AT-SF-PEJ2" (at 140 242 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; TXB0108 Level Shifter U9
+    (symbol (lib_id "TXB0108PWR") (at 90 230 0)
+      (uuid a1b2c3d1-0003-4000-8000-000000000020)
+      (property "Reference" "U9" (at 90 218 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "TXB0108PWR" (at 90 242 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; SDRAM decoupling
+    (symbol (lib_id "C_0402") (at 35 195 0) (uuid a1b2c3d1-0003-4000-8000-000000000030)
+      (property "Reference" "C22" (at 35 193 0) (effects (font (size 0.6 0.6))))
+      (property "Value" "100nF" (at 35 197 0) (effects (font (size 0.6 0.6))))
+    )
+    
+    ;; Net labels
+    (label "SDRAM_CLK" (at 39 187 0) (effects (font (size 0.8 0.8))))
+    (label "SDRAM_CS" (at 39 185 0) (effects (font (size 0.8 0.8))))
+    (label "SDRAM_DQ0" (at 39 183 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_CLK" (at 42 235 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_MOSI" (at 42 233 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_MISO" (at 42 231 0) (effects (font (size 0.8 0.8))))
+    (label "FLASH_CS" (at 42 229 0) (effects (font (size 0.8 0.8))))
+    (label "SD_CLK" (at 99 219 0) (effects (font (size 0.8 0.8))))
+    (label "SD_MOSI" (at 99 221 0) (effects (font (size 0.8 0.8))))
+    (label "SD_MISO" (at 99 223 0) (effects (font (size 0.8 0.8))))
+    (label "VDD_MAIN" (at 70 170 0) (effects (font (size 1 1))))
+  )
+  
+  ;; ========================================
+  ;; SCHEMATIC SHEET 4: RF
+  ;; ========================================
+  
+  (sheet (at 200 140) (size 180 120)
+    (title_block
+      (title "RF & Antenna")
+      (sheet_number "4")
+    )
+    
+    ;; SMA Connector J2
+    (symbol (lib_id "CON-SMA-EDGE-S") (at 380 180 0)
+      (uuid a1b2c3d1-0004-4000-8000-000000000001)
+      (property "Reference" "J2" (at 380 176 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "CON-SMA-EDGE-S" (at 380 184 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; RF Matching Network
+    (symbol (lib_id "L_0402") (at 330 175 0) (uuid a1b2c3d1-0004-4000-8000-000000000010)
+      (property "Reference" "L4" (at 330 173 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "10nH" (at 330 177 0) (effects (font (size 0.8 0.8))))
+      (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 0 0) (effects (font (size 1 1)) hide))
+    )
+    (symbol (lib_id "C_0402") (at 340 180 90) (uuid a1b2c3d1-0004-4000-8000-000000000011)
+      (property "Reference" "C27" (at 338 180 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "10pF" (at 342 180 90) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "C_0402") (at 340 170 90) (uuid a1b2c3d1-0004-4000-8000-000000000012)
+      (property "Reference" "C28" (at 338 170 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "0.5pF" (at 342 170 90) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Net labels
+    (label "SUB_GHZ_PA" (at 320 175 0) (effects (font (size 1 1))))
+    (label "SUB_GHZ_LNA" (at 320 185 0) (effects (font (size 1 1))))
+    (label "BLE_RF" (at 230 200 0) (effects (font (size 1 1))))
+    
+    ;; Wire: PA -> L4 -> C27/C28 -> SMA
+    (wire (pts (xy 320 175) (xy 330 175)) (stroke (width 0.3)))
+    (wire (pts (xy 330 175) (xy 340 175)) (stroke (width 0.3)))
+    (wire (pts (xy 340 175) (xy 377 175)) (stroke (width 0.3)))
+  )
+  
+  ;; ========================================
+  ;; SCHEMATIC SHEET 5: SECURITY & IO
+  ;; ========================================
+  
+  (sheet (at 10 270) (size 180 120)
+    (title_block
+      (title "Security & IO (ATECC, LED, Buttons)")
+      (sheet_number "5")
+    )
+    
+    ;; ATECC608A
+    (symbol (lib_id "ATECC608A-MAHDA-S") (at 50 300 0)
+      (uuid a1b2c3d1-0005-4000-8000-000000000001)
+      (property "Reference" "U5" (at 50 294 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ATECC608A-MAHDA-S" (at 50 306 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; WS2812B
+    (symbol (lib_id "WS2812B-2020") (at 140 300 0)
+      (uuid a1b2c3d1-0005-4000-8000-000000000010)
+      (property "Reference" "D1" (at 140 296 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "WS2812B-2020" (at 140 306 0) (effects (font (size 1.27 1.27))))
+    )
+    
+    ;; I2C Pull-ups
+    (symbol (lib_id "R_0402") (at 40 295 90) (uuid a1b2c3d1-0005-4000-8000-000000000020)
+      (property "Reference" "R4a" (at 38 295 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "4.7kΩ" (at 42 295 90) (effects (font (size 0.8 0.8))))
+    )
+    (symbol (lib_id "R_0402") (at 42 295 90) (uuid a1b2c3d1-0005-4000-8000-000000000021)
+      (property "Reference" "R4b" (at 40 295 90) (effects (font (size 0.8 0.8))))
+      (property "Value" "4.7kΩ" (at 44 295 90) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; LED series resistor
+    (symbol (lib_id "R_0402") (at 130 301 0) (uuid a1b2c3d1-0005-4000-8000-000000000030)
+      (property "Reference" "R3" (at 130 299 0) (effects (font (size 0.8 0.8))))
+      (property "Value" "330Ω" (at 130 303 0) (effects (font (size 0.8 0.8))))
+    )
+    
+    ;; Buttons
+    (symbol (lib_id "Switch_Tactile") (at 140 320 0) (uuid a1b2c3d1-0005-4000-8000-000000000040)
+      (property "Reference" "SW1" (at 140 315 0) (effects (font (size 1 1))))
+      (property "Value" "KMR421NGULFS" (at 140 325 0) (effects (font (size 1 1))))
+    )
+    (symbol (lib_id "Switch_Tactile") (at 160 320 0) (uuid a1b2c3d1-0005-4000-8000-000000000041)
+      (property "Reference" "SW2" (at 160 315 0) (effects (font (size 1 1))))
+      (property "Value" "KMR421NGULFS" (at 160 325 0) (effects (font (size 1 1))))
+    )
+    
+    ;; ATECC decoupling
+    (symbol (lib_id "C_0402") (at 42 307 0) (uuid a1b2c3d1-0005-4000-8000-000000000050)
+      (property "Reference" "C19" (at 42 305 0) (effects (font (size 0.6 0.6))))
+      (property "Value" "100nF" (at 42 309 0) (effects (font (size 0.6 0.6))))
+    )
+    
+    ;; Net labels
+    (label "I2C_SDA" (at 58 303 0) (effects (font (size 0.8 0.8))))
+    (label "I2C_SCL" (at 58 301 0) (effects (font (size 0.8 0.8))))
+    (label "WS2812B_DATA" (at 123 301 0) (effects (font (size 0.8 0.8))))
+    (label "BTN_MODE" (at 140 310 0) (effects (font (size 0.8 0.8))))
+    (label "BTN_ACTION" (at 160 310 0) (effects (font (size 0.8 0.8))))
+    (label "VDD_MAIN" (at 50 294 0) (effects (font (size 1 1))))
+    (label "GND" (at 50 307 0) (effects (font (size 1 1))))
+  )
+)
