@@ -1,0 +1,279 @@
+(kicad_pcb (version 20230620) (generator pcbnew)
+
+  (general
+    (thickness 1.0)
+  )
+
+  (paper "A4")
+
+  (title_block
+    (title "ShadowTap - PoE Stealth Network Tap & MITM Implant")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "GND.Cu" signal)
+    (2 "PWR.Cu" signal)
+    (3 "B.Cu" signal)
+    (4 "F.Paste" user)
+    (5 "B.Paste" user)
+    (6 "F.SilkS" user)
+    (7 "B.SilkS" user)
+    (8 "F.Mask" user)
+    (9 "B.Mask" user)
+    (10 "Dwgs.User" user)
+    (11 "Eco1.User" user)
+    (12 "Eco2.User" user)
+    (13 "Edge.Cuts" user)
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "F.Paste" (type "paste"))
+      (layer "F.Mask" (type "mask"))
+      (layer "dielectric 1" (type "core") (thickness 0.089) (epsilon_r 3.9) (loss_tangent 0.02))
+      (layer "GND.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 2" (type "core") (thickness 1.016) (epsilon_r 4.2) (loss_tangent 0.02))
+      (layer "PWR.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 3" (type "core") (thickness 0.089) (epsilon_r 3.9) (loss_tangent 0.02))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+      (layer "B.Paste" (type "paste"))
+      (layer "B.Mask" (type "mask"))
+    )
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.1)
+    (pad_to_paste_clearance_ratio -0.05)
+    (aux_axis_origin 0 0)
+    (grid_origin 0 0)
+  )
+
+  (net_class "default" (clearance 0.15) (trace_width 0.15) (via_dia 0.5) (via_drill 0.2) (uvia_dia 0.3) (uvia_drill 0.1))
+  (net_class "100ohm_diff" (clearance 0.1) (trace_width 0.127) (via_dia 0.5) (via_drill 0.2)
+    (diff_pair_gap 0.127) (diff_pair_width 0.127))
+  (net_class "50ohm_se" (clearance 0.15) (trace_width 0.152) (via_dia 0.5) (via_drill 0.2))
+  (net_class "power" (clearance 0.2) (trace_width 0.4) (via_dia 0.7) (via_drill 0.3))
+  (net_class "GND" (clearance 0.2) (trace_width 0.5) (via_dia 0.7) (via_drill 0.3))
+
+  (nets
+    "GND" "VCC_3V3" "VCC_1V2" "5V_SYS" "VCC_3V3A"
+    "U2_TXD0" "U2_TXD1" "U2_TX_EN" "U2_TX_CLK"
+    "U2_RXD0" "U2_RXD1" "U2_RX_DV" "U2_RX_CLK"
+    "U2_MDIO" "U2_MDC" "U2_INTn" "U2_RSTn"
+    "U3_TXD0" "U3_TXD1" "U3_TX_EN" "U3_TX_CLK"
+    "U3_RXD0" "U3_RXD1" "U3_RX_DV" "U3_RX_CLK"
+    "U3_MDIO" "U3_MDC" "U3_INTn" "U3_RSTn"
+    "J1_TXP" "J1_TXN" "J1_RXP" "J1_RXN"
+    "J2_TXP" "J2_TXN" "J2_RXP" "J2_RXN"
+    "POE_CT_A" "POE_CT_B" "POE_CT_C" "POE_CT_D"
+    "BLE_UART_TX" "BLE_UART_RX" "BLE_CTS" "BLE_RTS"
+    "FLASH_SCK" "FLASH_MOSI" "FLASH_MISO" "FLASH_CS"
+    "EEPROM_SDA" "EEPROM_SCL"
+    "SD_CMD" "SD_CLK" "SD_D0" "SD_D1" "SD_D2" "SD_D3" "SD_CD"
+    "LED_DIN" "BTN_IN" "XTAL_P" "XTAL_N"
+  )
+
+  ; ========== Board Outline ==========
+  (gr_rect (start 0 0) (end 60 40) (layer "Edge.Cuts") (width 0.15) (fill none))
+  ; Corner radii approximated by arcs
+  (gr_arc (start 1.5 1.5) (mid 0.44 0.44) (end 1.5 0) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 58.5 1.5) (mid 59.56 0.44) (end 60 1.5) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 58.5 38.5) (mid 59.56 39.56) (end 58.5 40) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 1.5 38.5) (mid 0.44 39.56) (end 0 38.5) (layer "Edge.Cuts") (width 0.15))
+
+  ; ========== Mounting Holes ==========
+  (footprint "MountingHole:MountingHole_2.2mm_M2" (at 3 3))
+  (footprint "MountingHole:MountingHole_2.2mm_M2" (at 57 3))
+  (footprint "MountingHole:MountingHole_2.2mm_M2" (at 3 37))
+  (footprint "MountingHole:MountingHole_2.2mm_M2" (at 57 37))
+
+  ; ========== Component Footprints ==========
+  ; U1: i.MX RT1062 — center of board
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 30 20)
+    (reference "U1")
+    (value "MIMXRT1062DVL6B")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U2: 88E1510 PHY #1 — left side near J1
+  (footprint "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm" (at 12 16)
+    (reference "U2")
+    (value "88E1510-A0")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U3: 88E1510 PHY #2 — right side near J2
+  (footprint "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm" (at 48 16)
+    (reference "U3")
+    (value "88E1510-A0")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U4: TPS2378 PoE PD — bottom-left
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 8 34)
+    (reference "U4")
+    (value "TPS2378DDA-R-P")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U5: TLV62569 3.3V buck — center
+  (footprint "Package_TO_SOT_SMD:SOT-563" (at 30 32)
+    (reference "U5")
+    (value "TLV62569DBVR")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U6: TLV62569 1.2V buck — center
+  (footprint "Package_TO_SOT_SMD:SOT-563" (at 35 32)
+    (reference "U6")
+    (value "TLV62569DBVR")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U7: IS25LP016D SPI Flash — center-right
+  (footprint "Package_SO:SOP-8_3.9x4.9mm_P1.27mm" (at 42 28)
+    (reference "U7")
+    (value "IS25LP016D-JBLE")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U8: AT24C02C EEPROM — center
+  (footprint "Package_SO:SOP-8_3.9x4.9mm_P1.27mm" (at 36 28)
+    (reference "U8")
+    (value "AT24C02C-SSHL-T")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; U9: nRF52840 M.2 BLE — bottom-center
+  (footprint "Connector_M.2:M.2_Key_E" (at 30 36)
+    (reference "U9")
+    (value "nRF52840-M2")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; J1: RJ45 MagJack Uplink — left edge
+  (footprint "Connector_RJ45:RJ45_Amphenol_8P8C_Shielded" (at 0 16)
+    (reference "J1")
+    (value "LPJG16314A4NL")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; J2: RJ45 MagJack Target — right edge
+  (footprint "Connector_RJ45:RJ45_Amphenol_8P8C_Shielded" (at 60 16)
+    (reference "J2")
+    (value "LPJG16314A4NL")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; J4: microSD — bottom-right
+  (footprint "Connector_Card:microSD_Hirose_DM3AT-SF-PEJM5S" (at 52 36)
+    (reference "J4")
+    (value "DM3AT-SF-PEJM5S")
+    (property "Sheetfile" "shadow-tap.kicad_sch")
+  )
+
+  ; SW1: Reset button — bottom-left
+  (footprint "Button_Switch_SMD:SW_Push_6x6mm_H9.5mm" (at 4 28)
+    (reference "SW1")
+    (value "RESET")
+  )
+
+  ; D1-D4: WS2812B LEDs — bottom edge
+  (footprint "LED_SMD:LED_WS2812B-Mini_PLCC4_3.5x3.5mm" (at 16 36) (reference "D1") (value "WS2812B-Mini"))
+  (footprint "LED_SMD:LED_WS2812B-Mini_PLCC4_3.5x3.5mm" (at 20 36) (reference "D2") (value "WS2812B-Mini"))
+  (footprint "LED_SMD:LED_WS2812B-Mini_PLCC4_3.5x3.5mm" (at 24 36) (reference "D3") (value "WS2812B-Mini"))
+  (footprint "LED_SMD:LED_WS2812B-Mini_PLCC4_3.5x3.5mm" (at 28 36) (reference "D4") (value "WS2812B-Mini"))
+
+  ; ========== High-Speed Routing ==========
+  ; Ethernet diff pairs: J1 ↔ U2 (100Ω diff, 5mil/5mil)
+  (segment (start 3 14) (end 8 14) (width 0.127) (layer "F.Cu") (net "J1_TXP"))
+  (segment (start 3 17) (end 8 17) (width 0.127) (layer "F.Cu") (net "J1_TXN"))
+  (segment (start 3 12) (end 8 12) (width 0.127) (layer "F.Cu") (net "J1_RXP"))
+  (segment (start 3 19) (end 8 19) (width 0.127) (layer "F.Cu") (net "J1_RXN"))
+
+  ; Ethernet diff pairs: J2 ↔ U3 (100Ω diff, 5mil/5mil)
+  (segment (start 57 14) (end 52 14) (width 0.127) (layer "F.Cu") (net "J2_TXP"))
+  (segment (start 57 17) (end 52 17) (width 0.127) (layer "F.Cu") (net "J2_TXN"))
+  (segment (start 57 12) (end 52 12) (width 0.127) (layer "F.Cu") (net "J2_RXP"))
+  (segment (start 57 19) (end 52 19) (width 0.127) (layer "F.Cu") (net "J2_RXN"))
+
+  ; RGMII signals: U1 → U2 (50Ω, 6mil, with 49.9Ω series terms)
+  (segment (start 23 12) (end 18 12) (width 0.152) (layer "F.Cu") (net "U2_TXD0"))
+  (segment (start 23 11) (end 18 11) (width 0.152) (layer "F.Cu") (net "U2_TXD1"))
+  (segment (start 23 10) (end 18 10) (width 0.152) (layer "F.Cu") (net "U2_TX_EN"))
+  (segment (start 23 9) (end 18 9) (width 0.152) (layer "F.Cu") (net "U2_TX_CLK"))
+
+  ; RGMII signals: U1 → U3 (50Ω, 6mil, with 49.9Ω series terms)
+  (segment (start 37 12) (end 42 12) (width 0.152) (layer "F.Cu") (net "U3_TXD0"))
+  (segment (start 37 11) (end 42 11) (width 0.152) (layer "F.Cu") (net "U3_TXD1"))
+  (segment (start 37 10) (end 42 10) (width 0.152) (layer "F.Cu") (net "U3_TX_EN"))
+  (segment (start 37 9) (end 42 9) (width 0.152) (layer "F.Cu") (net "U3_TX_CLK"))
+
+  ; UART: U1 → U9
+  (segment (start 23 18) (end 26 36) (width 0.15) (layer "F.Cu") (net "BLE_UART_TX"))
+  (segment (start 23 19) (end 25 36) (width 0.15) (layer "F.Cu") (net "BLE_UART_RX"))
+
+  ; SPI Flash: U1 → U7
+  (segment (start 37 25) (end 42 25) (width 0.15) (layer "F.Cu") (net "FLASH_SCK"))
+  (segment (start 37 26) (end 42 26) (width 0.15) (layer "F.Cu") (net "FLASH_MOSI"))
+  (segment (start 42 27) (end 37 27) (width 0.15) (layer "F.Cu") (net "FLASH_MISO"))
+  (segment (start 37 28) (end 42 28) (width 0.15) (layer "F.Cu") (net "FLASH_CS"))
+
+  ; SD Card: U1 → J4
+  (segment (start 37 20) (end 52 33) (width 0.152) (layer "F.Cu") (net "SD_CMD"))
+  (segment (start 37 21) (end 52 34) (width 0.152) (layer "F.Cu") (net "SD_CLK"))
+  (segment (start 37 22) (end 52 35) (width 0.152) (layer "F.Cu") (net "SD_D0"))
+  (segment (start 37 23) (end 52 36) (width 0.152) (layer "F.Cu") (net "SD_D1"))
+
+  ; ========== Power Plane Zones (Layer 3) ==========
+  (zone (net "5V_SYS") (layer "PWR.Cu") (uuid z0001)
+    (polygon (pts (xy 18 30) (xy 44 30) (xy 44 35) (xy 18 35)))
+  )
+  (zone (net "VCC_3V3") (layer "PWR.Cu") (uuid z0002)
+    (polygon (pts (xy 18 25) (xy 44 25) (xy 44 29) (xy 18 29)))
+  )
+  (zone (net "VCC_1V2") (layer "PWR.Cu") (uuid z0003)
+    (polygon (pts (xy 25 17) (xy 35 17) (xy 35 23) (xy 25 23)))
+  )
+
+  ; ========== GND Plane (Layer 2 — solid) ==========
+  (zone (net "GND") (layer "GND.Cu") (uuid z0004)
+    (polygon (pts (xy 0 0) (xy 60 0) (xy 60 40) (xy 0 40)))
+  )
+
+  ; ========== GND Stitching Vias ==========
+  (via (at 5 5) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 55 5) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 5 35) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 55 35) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 10 10) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 50 10) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 10 30) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 50 30) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 30 10) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 30 30) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 15 20) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 45 20) (size 0.7) (drill 0.3) (layers "F.Cu" "GND.Cu") (net "GND"))
+
+  ; ========== Thermal Vias under U1 ==========
+  (via (at 29 19) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 30 19) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 31 19) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 29 20) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 30 20) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 31 20) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 29 21) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 30 21) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+  (via (at 31 21) (size 0.5) (drill 0.2) (layers "F.Cu" "GND.Cu") (net "GND"))
+
+  ; ========== Silkscreen Labels ==========
+  (gr_text "ShadowTap v1.0" (at 30 5) (layer "F.SilkS") (effects (font (size 1.5 1.5) (thickness 0.2))))
+  (gr_text "UPLINK" (at 2 9) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+  (gr_text "TARGET" (at 53 9) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+  (gr_text "BLE" (at 30 39) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.1))))
+  (gr_text "uSD" (at 52 39) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.1))))
+  (gr_text "RST" (at 4 26) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.1))))
+)
