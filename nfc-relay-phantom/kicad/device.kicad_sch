@@ -1,0 +1,343 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "8.0")
+
+  (uuid "00000000-0000-0000-0000-000000000001")
+
+  (paper "A3")
+
+  (title_block
+    (title "NFC Relay Phantom")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "Multi-protocol NFC/RFID Security Research Platform")
+  )
+
+  (lib_symbols)
+
+  ;; ==========================================
+  ;; GLOBAL LABELS & NETS
+  ;; ==========================================
+
+  ;; Power nets
+  (global_label "VBUS_5V" (shape input))
+  (global_label "VBAT" (shape input))
+  (global_label "VREG_3V3" (shape input))
+  (global_label "VREG_3V3_NRF" (shape input))
+  (global_label "GND" (shape input))
+
+  ;; SPI1 bus (STM32L4 → PN5180)
+  (global_label "SPI1_NSS" (shape input))
+  (global_label "SPI1_SCK" (shape input))
+  (global_label "SPI1_MOSI" (shape input))
+  (global_label "SPI1_MISO" (shape input))
+  (global_label "PN5180_BUSY" (shape input))
+  (global_label "PN5180_RST" (shape input))
+
+  ;; SPI2 bus (STM32L4 → W25Q128)
+  (global_label "SPI2_NSS" (shape input))
+  (global_label "SPI2_SCK" (shape input))
+  (global_label "SPI2_MOSI" (shape input))
+  (global_label "SPI2_MISO" (shape input))
+  (global_label "FLASH_WP" (shape input))
+  (global_label "FLASH_HOLD" (shape input))
+
+  ;; UART4 (STM32L4 ↔ NRF52832)
+  (global_label "UART4_TX" (shape input))
+  (global_label "UART4_RX" (shape input))
+  (global_label "NRF_RST" (shape input))
+  (global_label "NRF_IRQ" (shape input))
+
+  ;; UART1 (STM32L4 ↔ EM4095)
+  (global_label "UART1_TX" (shape input))
+  (global_label "UART1_RX" (shape input))
+  (global_label "EM4095_SHD" (shape input))
+  (global_label "EM4095_MOD" (shape input))
+
+  ;; I2C1 (STM32L4 → SSD1306 + BQ25896)
+  (global_label "I2C1_SCL" (shape input))
+  (global_label "I2C1_SDA" (shape input))
+  (global_label "OLED_RST" (shape input))
+
+  ;; USB
+  (global_label "USB_DP" (shape input))
+  (global_label "USB_DM" (shape input))
+
+  ;; Antenna
+  (global_label "ANT_NFC_P" (shape input))
+  (global_label "ANT_NFC_N" (shape input))
+  (global_label "ANT_125_P" (shape input))
+  (global_label "ANT_125_N" (shape input))
+
+  ;; LEDs and buttons
+  (global_label "LED_GREEN" (shape input))
+  (global_label "LED_RED" (shape input))
+  (global_label "LED_BLUE" (shape input))
+  (global_label "SW1_BTN" (shape input))
+  (global_label "SW2_BTN" (shape input))
+
+  ;; ==========================================
+  ;; U1: STM32L4S5VIT6 — Main MCU
+  ;; ==========================================
+  (symbol (lib_id "MCU_ST_STM32L4:STM32L4S5VIT6") (at 120 80) 
+    (uuid "10000001-0000-0000-0000-000000000001")
+    (property "Reference" "U1" (at 0 0) (uuid "10000001-0000-0000-0000-000000000002"))
+    (property "Value" "STM32L4S5VIT6" (at 0 5) (uuid "10000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 10) (uuid "10000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32l4s5vi.pdf" (at 0 15) (uuid "10000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U2: NRF52832-CIAB — BLE Coprocessor
+  ;; ==========================================
+  (symbol (lib_id "RF_Module:NRF52832-CIAB") (at 220 80)
+    (uuid "20000001-0000-0000-0000-000000000001")
+    (property "Reference" "U2" (at 0 0) (uuid "20000001-0000-0000-0000-000000000002"))
+    (property "Value" "NRF52832-CIAB" (at 0 5) (uuid "20000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (at 0 10) (uuid "20000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://infocenter.nordicsemi.com/pdf/nRF52832_PS_v1.4.pdf" (at 0 15) (uuid "20000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U3: PN5180A0HN/C2 — NFC Frontend
+  ;; ==========================================
+  (symbol (lib_id "RF_NFC:PN5180A0HN") (at 320 80)
+    (uuid "30000001-0000-0000-0000-000000000001")
+    (property "Reference" "U3" (at 0 0) (uuid "30000001-0000-0000-0000-000000000002"))
+    (property "Value" "PN5180A0HN/C2" (at 0 5) (uuid "30000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_DFN_QFN:HVQFN-40-1EP_6x6mm_P0.5mm_EP4.3x4.3mm" (at 0 10) (uuid "30000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.nxp.com/docs/en/data-sheet/PN5180.pdf" (at 0 15) (uuid "30000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U4: EM4095 — 125 kHz RFID Reader
+  ;; ==========================================
+  (symbol (lib_id "RF_ID:EM4095") (at 420 80)
+    (uuid "40000001-0000-0000-0000-000000000001")
+    (property "Reference" "U4" (at 0 0) (uuid "40000001-0000-0000-0000-000000000002"))
+    (property "Value" "EM4095" (at 0 5) (uuid "40000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 0 10) (uuid "40000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.emmicroelectronic.com/sites/default/files/public/products/datasheets/4095-ds.pdf" (at 0 15) (uuid "40000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U5: W25Q128JVSIQ — 16MB SPI Flash
+  ;; ==========================================
+  (symbol (lib_id "Memory_Flash:W25Q128JVS") (at 520 80)
+    (uuid "50000001-0000-0000-0000-000000000001")
+    (property "Reference" "U5" (at 0 0) (uuid "50000001-0000-0000-0000-000000000002"))
+    (property "Value" "W25Q128JVSIQ" (at 0 5) (uuid "50000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 0 10) (uuid "50000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf" (at 0 15) (uuid "50000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U6: BQ25896RTWR — USB Battery Charger
+  ;; ==========================================
+  (symbol (lib_id "Battery_Management:BQ25896") (at 620 80)
+    (uuid "60000001-0000-0000-0000-000000000001")
+    (property "Reference" "U6" (at 0 0) (uuid "60000001-0000-0000-0000-000000000002"))
+    (property "Value" "BQ25896RTWR" (at 0 5) (uuid "60000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 0 10) (uuid "60000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25896.pdf" (at 0 15) (uuid "60000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U7: TPS6284010YKR — 3.3V Buck Converter
+  ;; ==========================================
+  (symbol (lib_id "Regulator_Switching:TPS62840") (at 720 80)
+    (uuid "70000001-0000-0000-0000-000000000001")
+    (property "Reference" "U7" (at 0 0) (uuid "70000001-0000-0000-0000-000000000002"))
+    (property "Value" "TPS6284010YKR" (at 0 5) (uuid "70000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_DFN_QFN:DSBGA-6_1.5x1.5mm_P0.5mm" (at 0 10) (uuid "70000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62840.pdf" (at 0 15) (uuid "70000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U8: SSD1306Z — OLED Display Controller
+  ;; ==========================================
+  (symbol (lib_id "Display_Graphic:SSD1306") (at 820 80)
+    (uuid "80000001-0000-0000-0000-000000000001")
+    (property "Reference" "U8" (at 0 0) (uuid "80000001-0000-0000-0000-000000000002"))
+    (property "Value" "SSD1306Z" (at 0 5) (uuid "80000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Display_Dogic:OLED_128x64_0.96in_I2C" (at 0 10) (uuid "80000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf" (at 0 15) (uuid "80000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; U9: TLV70033DCKR — 3.3V LDO for NRF52
+  ;; ==========================================
+  (symbol (lib_id "Regulator_Linear:TLV70033DCKR") (at 920 80)
+    (uuid "90000001-0000-0000-0000-000000000001")
+    (property "Reference" "U9" (at 0 0) (uuid "90000001-0000-0000-0000-000000000002"))
+    (property "Value" "TLV70033DCKR" (at 0 5) (uuid "90000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 10) (uuid "90000001-0000-0000-0000-000000000004"))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv700.pdf" (at 0 15) (uuid "90000001-0000-0000-0000-000000000005"))
+  )
+
+  ;; ==========================================
+  ;; J1: USB-C 2.0 Receptacle
+  ;; ==========================================
+  (symbol (lib_id "Connector:USB_C_GSB1") (at 50 80)
+    (uuid "A0000001-0000-0000-0000-000000000001")
+    (property "Reference" "J1" (at 0 0) (uuid "A0000001-0000-0000-0000-000000000002"))
+    (property "Value" "USB4105-GF-A" (at 0 5) (uuid "A0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 0 10) (uuid "A0000001-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; J2: Tag-Connect ARM Debug Header
+  ;; ==========================================
+  (symbol (lib_id "Connector:Tag-Connect_TC2050-NL") (at 50 140)
+    (uuid "A0000002-0000-0000-0000-000000000001")
+    (property "Reference" "J2" (at 0 0) (uuid "A0000002-0000-0000-0000-000000000002"))
+    (property "Value" "TC2050-NL" (at 0 5) (uuid "A0000002-0000-0000-0000-000000000003"))
+    (property "Footprint" "Connector:Tag-Connect_TC2050-NL" (at 0 10) (uuid "A0000002-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; J3: Battery Connector (JST-PH 4-pin)
+  ;; ==========================================
+  (symbol (lib_id "Connector:Conn_01x04") (at 50 200)
+    (uuid "A0000003-0000-0000-0000-000000000001")
+    (property "Reference" "J3" (at 0 0) (uuid "A0000003-0000-0000-0000-000000000002"))
+    (property "Value" "JST-PH_4pin_Battery" (at 0 5) (uuid "A0000003-0000-0000-0000-000000000003"))
+    (property "Footprint" "Connector_JST:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm" (at 0 10) (uuid "A0000003-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Decoupling Capacitors (representative)
+  ;; ==========================================
+  (symbol (lib_id "Device:C_Small") (at 40 260) (uuid "C0000001-0000-0000-0000-000000000001")
+    (property "Reference" "C1" (at 0 -2.54) (uuid "C0000001-0000-0000-0000-000000000002"))
+    (property "Value" "100nF" (at 0 2.54) (uuid "C0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 5) (uuid "C0000001-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Crystal Oscillators
+  ;; ==========================================
+  (symbol (lib_id "Device:Crystal_Small") (at 40 300) (uuid "Y0000001-0000-0000-0000-000000000001")
+    (property "Reference" "Y1" (at 0 -3.81) (uuid "Y0000001-0000-0000-0000-000000000002"))
+    (property "Value" "8MHz" (at 0 3.81) (uuid "Y0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 0 5) (uuid "Y0000001-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:Crystal_Small") (at 80 300) (uuid "Y0000002-0000-0000-0000-000000000001")
+    (property "Reference" "Y2" (at 0 -3.81) (uuid "Y0000002-0000-0000-0000-000000000002"))
+    (property "Value" "32.768kHz" (at 0 3.81) (uuid "Y0000002-0000-0000-0000-000000000003"))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 0 5) (uuid "Y0000002-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:Crystal_Small") (at 120 300) (uuid "Y0000003-0000-0000-0000-000000000001")
+    (property "Reference" "Y3" (at 0 -3.81) (uuid "Y0000003-0000-0000-0000-000000000002"))
+    (property "Value" "32MHz" (at 0 3.81) (uuid "Y0000003-0000-0000-0000-000000000003"))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 0 5) (uuid "Y0000003-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Inductors
+  ;; ==========================================
+  (symbol (lib_id "Device:L_Small") (at 40 340) (uuid "L0000001-0000-0000-0000-000000000001")
+    (property "Reference" "L1" (at 0 -2.54) (uuid "L0000001-0000-0000-0000-000000000002"))
+    (property "Value" "10uH" (at 0 2.54) (uuid "L0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Inductor_SMD:L_3225" (at 0 5) (uuid "L0000001-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:L_Small") (at 80 340) (uuid "L0000002-0000-0000-0000-000000000001")
+    (property "Reference" "L2" (at 0 -2.54) (uuid "L0000002-0000-0000-0000-000000000002"))
+    (property "Value" "22nH" (at 0 2.54) (uuid "L0000002-0000-0000-0000-000000000003"))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 5) (uuid "L0000002-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:L_Small") (at 120 340) (uuid "L0000003-0000-0000-0000-000000000001")
+    (property "Reference" "L3" (at 0 -2.54) (uuid "L0000003-0000-0000-0000-000000000002"))
+    (property "Value" "22nH" (at 0 2.54) (uuid "L0000003-0000-0000-0000-000000000003"))
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric" (at 0 5) (uuid "L0000003-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:L_Small") (at 160 340) (uuid "L0000004-0000-0000-0000-000000000001")
+    (property "Reference" "L4" (at 0 -2.54) (uuid "L0000004-0000-0000-0000-000000000002"))
+    (property "Value" "1.0uH" (at 0 2.54) (uuid "L0000004-0000-0000-0000-000000000003"))
+    (property "Footprint" "Inductor_SMD:L_XGL6045" (at 0 5) (uuid "L0000004-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; ESD Protection
+  ;; ==========================================
+  (symbol (lib_id "Power_Protection:USBLC6-2SC6") (at 50 380) (uuid "D0000001-0000-0000-0000-000000000001")
+    (property "Reference" "D1" (at 0 -5) (uuid "D0000001-0000-0000-0000-000000000002"))
+    (property "Value" "USBLC6-2SC6" (at 0 5) (uuid "D0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 0 10) (uuid "D0000001-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Buttons
+  ;; ==========================================
+  (symbol (lib_id "Switch:SW_Push") (at 40 420) (uuid "SW0000001-0000-0000-0000-000000000001")
+    (property "Reference" "SW1" (at 0 -3) (uuid "SW0000001-0000-0000-0000-000000000002"))
+    (property "Value" "SKQGAFE010" (at 0 3) (uuid "SW0000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x3.5mm" (at 0 8) (uuid "SW0000001-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Switch:SW_Push") (at 80 420) (uuid "SW0000002-0000-0000-0000-000000000001")
+    (property "Reference" "SW2" (at 0 -3) (uuid "SW0000002-0000-0000-0000-000000000002"))
+    (property "Value" "SKQGAFE010" (at 0 3) (uuid "SW0000002-0000-0000-0000-000000000003"))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x3.5mm" (at 0 8) (uuid "SW0000002-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; LEDs
+  ;; ==========================================
+  (symbol (lib_id "Device:LED_Small") (at 40 460) (uuid "LD000001-0000-0000-0000-000000000001")
+    (property "Reference" "LED1" (at 0 -2) (uuid "LD000001-0000-0000-0000-000000000002"))
+    (property "Value" "Green" (at 0 2) (uuid "LD000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 0 5) (uuid "LD000001-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:LED_Small") (at 80 460) (uuid "LD000002-0000-0000-0000-000000000001")
+    (property "Reference" "LED2" (at 0 -2) (uuid "LD000002-0000-0000-0000-000000000002"))
+    (property "Value" "Red" (at 0 2) (uuid "LD000002-0000-0000-0000-000000000003"))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 0 5) (uuid "LD000002-0000-0000-0000-000000000004"))
+  )
+
+  (symbol (lib_id "Device:LED_Small") (at 120 460) (uuid "LD000003-0000-0000-0000-000000000001")
+    (property "Reference" "LED3" (at 0 -2) (uuid "LD000003-0000-0000-0000-000000000002"))
+    (property "Value" "Blue" (at 0 2) (uuid "LD000003-0000-0000-0000-000000000003"))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 0 5) (uuid "LD000003-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Ferrite Bead
+  ;; ==========================================
+  (symbol (lib_id "Device:Ferrite_Bead_Small") (at 40 500) (uuid "FB000001-0000-0000-0000-000000000001")
+    (property "Reference" "FB1" (at 0 -2.54) (uuid "FB000001-0000-0000-0000-000000000002"))
+    (property "Value" "220R" (at 0 2.54) (uuid "FB000001-0000-0000-0000-000000000003"))
+    (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 0 5) (uuid "FB000001-0000-0000-0000-000000000004"))
+  )
+
+  ;; ==========================================
+  ;; Power Tree Connections (Textual)
+  ;; ==========================================
+  ;; VBUS_5V → FB1 → BQ25896.VBUS
+  ;; BQ25896.SYS → TPS62840.VIN → VREG_3V3 (main 3.3V rail)
+  ;; BQ25896.BAT → LiPo connector J3
+  ;; VREG_3V3 → TLV70033.VIN → VREG_3V3_NRF (isolated NRF52 supply)
+  ;; VREG_3V3 → STM32L4 VDD pins, PN5180 VDD, W25Q128 VDD, SSD1306 VDD
+  ;; VREG_3V3_NRF → NRF52832 VDD pins
+
+  ;; ==========================================
+  ;; Signal Tree Connections (Textual)
+  ;; ==========================================
+  ;; STM32L4 SPI1 → PN5180 (NSS, SCK, MISO, MOSI, BUSY, RST)
+  ;; STM32L4 SPI2 → W25Q128 (NSS, SCK, MISO, MOSI, WP, HOLD)
+  ;; STM32L4 UART4 ↔ NRF52832 (TX→RX, RX←TX, RST, IRQ)
+  ;; STM32L4 UART1 ↔ EM4095 (TX→MOD, RX←DEMOD_OUT, SHD)
+  ;; STM32L4 I2C1 → SSD1306 + BQ25896 (SCL, SDA)
+  ;; STM32L4 USB → USB-C J1 (DM, DP)
+  ;; PN5180 ANT1/ANT2 → 13.56 MHz PCB antenna
+  ;; EM4095 ANT1/ANT2 → 125 kHz PCB antenna
+
+)

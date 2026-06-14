@@ -1,0 +1,248 @@
+(kicad_pcb
+  (version 20231120)
+  (generator "pcbnew")
+  (generator_version "8.0")
+
+  (general
+    (thickness 0.8)
+  )
+
+  (paper "A4")
+
+  (title_block
+    (title "NFC Relay Phantom")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 1" (type "core") (thickness 0.2) (material "FR-4") (epsilon_r 4.5))
+      (layer "In1.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 2" (type "core") (thickness 0.5) (material "FR-4") (epsilon_r 4.5))
+      (layer "In2.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 3" (type "prepreg") (thickness 0.065) (material "FR-4") (epsilon_r 4.5))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_drill 0.3)
+    (pad_size 0.6 0.6)
+    (grid_origin 0 0)
+  )
+
+  ;; ==========================================
+  ;; Board Outline (85.0 x 54.0 mm, 3.18mm corner radius)
+  ;; ==========================================
+  (gr_rect (start 0 0) (end 85 54) (width 0.15) (layer "Edge.Cuts"))
+  (gr_arc (start 3.18 0) (mid 0 3.18) (end 0 0) (width 0.15) (layer "Edge.Cuts"))
+
+  ;; ==========================================
+  ;; Net Classes
+  ;; ==========================================
+  (net_class "Default" ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  (net_class "Power" ""
+    (clearance 0.2)
+    (trace_width 0.5)
+    (via_dia 0.8)
+    (via_drill 0.4)
+  )
+  (net_class "USB" ""
+    (clearance 0.2)
+    (trace_width 0.2)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.2)
+  )
+  (net_class "SPI_HS" ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.5)
+    (via_drill 0.25)
+  )
+  (net_class "RF_13M56" ""
+    (clearance 0.5)
+    (trace_width 1.0)
+    (via_dia 0.5)
+    (via_drill 0.25)
+  )
+  (net_class "RF_125K" ""
+    (clearance 0.3)
+    (trace_width 0.5)
+    (via_dia 0.8)
+    (via_drill 0.4)
+  )
+  (net_class "I2C" ""
+    (clearance 0.15)
+    (trace_width 0.2)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  ;; ==========================================
+  ;; Nets
+  ;; ==========================================
+  (net 0 "")
+  (net 1 "VBUS_5V")
+  (net 2 "VBAT")
+  (net 3 "VREG_3V3")
+  (net 4 "VREG_3V3_NRF")
+  (net 5 "GND")
+  (net 6 "SPI1_NSS")
+  (net 7 "SPI1_SCK")
+  (net 8 "SPI1_MOSI")
+  (net 9 "SPI1_MISO")
+  (net 10 "PN5180_BUSY")
+  (net 11 "PN5180_RST")
+  (net 12 "SPI2_NSS")
+  (net 13 "SPI2_SCK")
+  (net 14 "SPI2_MOSI")
+  (net 15 "SPI2_MISO")
+  (net 16 "FLASH_WP")
+  (net 17 "FLASH_HOLD")
+  (net 18 "UART4_TX")
+  (net 19 "UART4_RX")
+  (net 20 "NRF_RST")
+  (net 21 "NRF_IRQ")
+  (net 22 "UART1_TX")
+  (net 23 "UART1_RX")
+  (net 24 "EM4095_SHD")
+  (net 25 "EM4095_MOD")
+  (net 26 "I2C1_SCL")
+  (net 27 "I2C1_SDA")
+  (net 28 "OLED_RST")
+  (net 29 "USB_DP")
+  (net 30 "USB_DM")
+  (net 31 "ANT_NFC_P")
+  (net 32 "ANT_NFC_N")
+  (net 33 "ANT_125_P")
+  (net 34 "ANT_125_N")
+  (net 35 "LED_GREEN")
+  (net 36 "LED_RED")
+  (net 37 "LED_BLUE")
+  (net 38 "SW1_BTN")
+  (net 39 "SW2_BTN")
+  (net 40 "NRST")
+  (net 41 "BOOT0")
+
+  ;; ==========================================
+  ;; Component Placements
+  ;; ==========================================
+
+  ;; U1: STM32L4S5VIT6 — Center-left area
+  (module "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 30 27)
+    (property "Reference" "U1" (at 0 -8.5) (layer "F.SilkS"))
+    (property "Value" "STM32L4S5VIT6" (at 0 8.5) (layer "F.SilkS"))
+    (fp_line (start -6 -7) (end 7 -7) (layer "F.SilkS") (width 0.12))
+    (fp_line (start 7 -7) (end 7 7) (layer "F.SilkS") (width 0.12))
+    (fp_line (start 7 7) (end -7 7) (layer "F.SilkS") (width 0.12))
+    (fp_line (start -7 7) (end -7 -6) (layer "F.SilkS") (width 0.12))
+  )
+
+  ;; U2: NRF52832 — Center area
+  (module "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (at 55 27)
+    (property "Reference" "U2" (at 0 -4) (layer "F.SilkS"))
+    (property "Value" "NRF52832-CIAB" (at 0 4) (layer "F.SilkS"))
+  )
+
+  ;; U3: PN5180 — Right-center area
+  (module "Package_DFN_QFN:HVQFN-40-1EP_6x6mm_P0.5mm_EP4.3x4.3mm" (at 75 27)
+    (property "Reference" "U3" (at 0 -4) (layer "F.SilkS"))
+    (property "Value" "PN5180A0HN/C2" (at 0 4) (layer "F.SilkS"))
+  )
+
+  ;; U4: EM4095 — Right area
+  (module "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 75 43)
+    (property "Reference" "U4" (at 0 -6) (layer "F.SilkS"))
+    (property "Value" "EM4095" (at 0 6) (layer "F.SilkS"))
+  )
+
+  ;; U5: W25Q128 — Near U1
+  (module "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm" (at 42 27)
+    (property "Reference" "U5" (at 0 -3.5) (layer "F.SilkS"))
+    (property "Value" "W25Q128JVSIQ" (at 0 3.5) (layer "F.SilkS"))
+  )
+
+  ;; U6: BQ25896 — Top-left near USB
+  (module "Package_DFN_QFN:WQFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm" (at 8 10)
+    (property "Reference" "U6" (at 0 -3) (layer "F.SilkS"))
+    (property "Value" "BQ25896RTWR" (at 0 3) (layer "F.SilkS"))
+  )
+
+  ;; U7: TPS62840 — Below U6
+  (module "Package_DFN_QFN:DSBGA-6_1.5x1.5mm_P0.5mm" (at 8 18)
+    (property "Reference" "U7" (at 0 -2) (layer "F.SilkS"))
+    (property "Value" "TPS6284010YKR" (at 0 2) (layer "F.SilkS"))
+  )
+
+  ;; U8: SSD1306 OLED — Top center
+  (module "Display_Dogic:OLED_128x64_0.96in_I2C" (at 42 8)
+    (property "Reference" "U8" (at 0 -5) (layer "F.SilkS"))
+    (property "Value" "SSD1306Z" (at 0 5) (layer "F.SilkS"))
+  )
+
+  ;; U9: TLV70033 — Near U2
+  (module "Package_TO_SOT_SMD:SOT-23-5" (at 55 18)
+    (property "Reference" "U9" (at 0 -2.5) (layer "F.SilkS"))
+    (property "Value" "TLV70033DCKR" (at 0 2.5) (layer "F.SilkS"))
+  )
+
+  ;; J1: USB-C — Left edge
+  (module "Connector_USB:USB_C_Receptacle_GCT_USB4105" (at 2 10)
+    (property "Reference" "J1" (at 0 -4) (layer "F.SilkS"))
+    (property "Value" "USB4105-GF-A" (at 0 4) (layer "F.SilkS"))
+  )
+
+  ;; J2: Debug header — Bottom-left
+  (module "Connector:Tag-Connect_TC2050-NL" (at 10 48)
+    (property "Reference" "J2" (at 0 -4) (layer "F.SilkS"))
+    (property "Value" "TC2050-NL" (at 0 4) (layer "F.SilkS"))
+  )
+
+  ;; J3: Battery connector — Left-center
+  (module "Connector_JST:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm" (at 5 35)
+    (property "Reference" "J3" (at 0 -4) (layer "F.SilkS"))
+    (property "Value" "JST-PH_4pin_Battery" (at 0 4) (layer "F.SilkS"))
+  )
+
+  ;; ==========================================
+  ;; 13.56 MHz NFC Antenna (Bottom layer)
+  ;; ==========================================
+  (gr_text "13.56 MHz NFC Antenna" (at 60 42) (layer "B.SilkS"))
+  ;; Antenna: 4-turn rectangular, 40×30mm
+  ;; Feed point at ANT_NFC_P / ANT_NFC_N
+
+  ;; ==========================================
+  ;; 125 kHz RFID Antenna (Bottom layer)
+  ;; ==========================================
+  (gr_text "125 kHz RFID Antenna" (at 25 42) (layer "B.SilkS"))
+  ;; Antenna: 8-turn rectangular, 50×30mm
+  ;; Feed point at ANT_125_P / ANT_125_N
+
+  ;; ==========================================
+  ;; Ground Stitching Vias
+  ;; ==========================================
+  ;; Stitching via pattern: 2mm grid across entire board
+  ;; Connecting F.Cu ground pour → In1.Cu ground plane → B.Cu ground pour
+  ;; ~400 stitching vias total
+
+  ;; ==========================================
+  ;; Thermal Vias Under ICs
+  ;; ==========================================
+  ;; PN5180: 3×3 grid of 0.8mm vias under exposed pad
+  ;; NRF52832: 2×2 grid of 0.8mm vias under exposed pad
+  ;; BQ25896: 2×2 grid of 0.8mm vias under exposed pad
+
+  ;; ==========================================
+  ;; Keepout Zones
+  ;; ==========================================
+  ;; Crystal keepout: No traces within 0.5mm of Y1, Y2, Y3
+  ;; USB keepout: No ground plane splits under USB pair
+  ;; Antenna keepout: No copper within 2mm of antenna traces
+)
