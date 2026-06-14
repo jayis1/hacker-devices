@@ -1,0 +1,281 @@
+(kicad_pcb
+  (version 20240101)
+  (generator "kicad")
+  
+  (general
+    (thickness 1.6)
+  )
+  
+  (paper "A4")
+  
+  (title_block
+    (title "PHANTOM - USB HID Emulation Payload Injector")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "RP2040 Multi-Profile HID Attack Platform")
+    (comment 2 "BOM < $20 | 50mm x 25mm USB-A Stick")
+  )
+  
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal)
+    (2 "In2.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+  
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "Prepreg" (type "dielectric") (thickness 0.1) (material "Prepreg 1080") (epsilon_r 4.4))
+      (layer "In1.Cu" (type "copper") (thickness 0.035))
+      (layer "Core" (type "dielectric") (thickness 0.5) (material "FR4") (epsilon_r 4.4))
+      (layer "In2.Cu" (type "copper") (thickness 0.035))
+      (layer "Prepreg" (type "dielectric") (thickness 0.1) (material "Prepreg 1080") (epsilon_r 4.4))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_size 0.5 0.5)
+    (pad_drill 0.2)
+    (pad_to_mask_clearance 0.05)
+    (grid_origin 0 0)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (plot_on_all_layers_selection 0x0000000_00000000)
+      (disable_apert_macros false)
+      (use_gerber_extensions true)
+      (use_gerber_attributes true)
+      (use_gerber_advanced_attributes true)
+      (create_gerber_job_file true)
+      (dashed_line_dash_ratio 12.0)
+      (dashed_line_gap_ratio 3.0)
+      (svgprecision 4)
+      (aux_origin 0 0)
+      (plotmode 1)
+      (excludeedgelayer true)
+      (plotframeref false)
+      (viasonmask false)
+      (creategerberjobfile false)
+      (svguseinch false)
+      (svgroundcorder false)
+    )
+  )
+  
+  (netclass ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (uvia_dia 0.4)
+    (uvia_drill 0.2)
+    (diff_pair_gap 0.12)
+    (diff_pair_width 0.18)
+  )
+  
+  (netclass "Power"
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  
+  (netclass "USB"
+    (clearance 0.2)
+    (trace_width 0.18)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (diff_pair_gap 0.12)
+    (diff_pair_width 0.18)
+  )
+  
+  ; Board outline: 50mm x 25mm USB-A stick
+  (gr_rect (start 0 0) (end 50 25) (layer "Edge.Cuts") (width 0.15) (uuid "edge-1"))
+  
+  ; USB-A plug edge (first 12mm, centered)
+  (gr_line (start 0 6.5) (end 0 18.5) (layer "Edge.Cuts") (width 0.15) (uuid "edge-2"))
+  
+  ; Keepout area for ESP32-C3 antenna (bottom side, last 15mm)
+  (gr_rect (start 35 0) (end 50 25) (layer "Dwgs.User") (width 0.1) (uuid "keepout-1"))
+  (gr_text "ESP32-C3 ANTENNA KEEPOUT\nNo copper on any layer" (at 42.5 12.5) (layer "Dwgs.User")
+    (uuid "keepout-text-1"))
+  
+  ; Component placements (F.Cu = top, B.Cu = bottom)
+  
+  ; RP2040 (QFN-56, center of board)
+  (footprint "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm"
+    (at 20 12.5)
+    (uuid "fp-u1")
+    (property "Reference" "U1" (at 0 -5) (layer "F.SilkS"))
+    (property "Value" "RP2040" (at 0 5) (layer "F.Fab"))
+  )
+  
+  ; W25Q128JVSIQ (SOIC-8, near RP2040 SPI0 pins)
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 30 8)
+    (uuid "fp-u2")
+    (property "Reference" "U2" (at 0 -3.5) (layer "F.SilkS"))
+    (property "Value" "W25Q128JVSIQ" (at 0 3.5) (layer "F.Fab"))
+  )
+  
+  ; ESP32-C3-MINI-1 (bottom side, antenna at edge)
+  (footprint "RF_Module:ESP32-C3-MINI-1"
+    (at 38 12.5)
+    (uuid "fp-u3")
+    (property "Reference" "U3" (at 0 -7) (layer "B.SilkS"))
+    (property "Value" "ESP32-C3-MINI-1" (at 0 7) (layer "B.Fab"))
+  )
+  
+  ; SSD1306 OLED (bottom side, left area)
+  (footprint "Display:SSD1306_0.49in_OLED_I2C"
+    (at 10 12.5)
+    (uuid "fp-u4")
+    (property "Reference" "U4" (at 0 -5) (layer "B.SilkS"))
+    (property "Value" "SSD1306_128x64_OLED" (at 0 5) (layer "B.Fab"))
+  )
+  
+  ; MCP73831 (top side, near battery connector)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5"
+    (at 35 18)
+    (uuid "fp-u5")
+    (property "Reference" "U5" (at 0 -2.5) (layer "F.SilkS"))
+    (property "Value" "MCP73831T-2ACI/OT" (at 0 2.5) (layer "F.Fab"))
+  )
+  
+  ; AP2112K-3.3 (top side)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5"
+    (at 15 20)
+    (uuid "fp-u6")
+    (property "Reference" "U6" (at 0 -2.5) (layer "F.SilkS"))
+    (property "Value" "AP2112K-3.3" (at 0 2.5) (layer "F.Fab"))
+  )
+  
+  ; AP2112K-1.8 (top side)
+  (footprint "Package_TO_SOT_SMD:SOT-23-5"
+    (at 15 5)
+    (uuid "fp-u7")
+    (property "Reference" "U7" (at 0 -2.5) (layer "F.SilkS"))
+    (property "Value" "AP2112K-1.8" (at 0 2.5) (layer "F.Fab"))
+  )
+  
+  ; TS3USB221A (near USB connector)
+  (footprint "Package_DFN_QFN:VQFN-10-1EP_2.5x2.5mm_P0.5mm_EP1.25x1.25mm"
+    (at 5 12.5)
+    (uuid "fp-u8")
+    (property "Reference" "U8" (at 0 -3) (layer "F.SilkS"))
+    (property "Value" "TS3USB221A" (at 0 3) (layer "F.Fab"))
+  )
+  
+  ; W25Q16JVSIQ (boot flash, very close to RP2040 QSPI)
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 27 16)
+    (uuid "fp-u9")
+    (property "Reference" "U9" (at 0 -3.5) (layer "F.SilkS"))
+    (property "Value" "W25Q16JVSIQ" (at 0 3.5) (layer "F.Fab"))
+  )
+  
+  ; WS2812B LED
+  (footprint "LED_SMD:LED_WS2812B-2020"
+    (at 40 20)
+    (uuid "fp-d1")
+    (property "Reference" "D1" (at 0 -2) (layer "F.SilkS"))
+    (property "Value" "WS2812B-2020" (at 0 2) (layer "F.Fab"))
+  )
+  
+  ; Crystal 12MHz
+  (footprint "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
+    (at 12 8)
+    (uuid "fp-y1")
+    (property "Reference" "Y1" (at 0 -3) (layer "F.SilkS"))
+    (property "Value" "12MHz" (at 0 3) (layer "F.Fab"))
+  )
+  
+  ; EC11 Rotary Encoder (side-mounted)
+  (footprint "Encoder:Bourns_EC11_Vertical"
+    (at 45 12.5)
+    (uuid "fp-enc1")
+    (property "Reference" "ENC1" (at 0 -5) (layer "F.SilkS"))
+    (property "Value" "EC11" (at 0 5) (layer "F.Fab"))
+  )
+  
+  ; Kill Switch (slide switch)
+  (footprint "Button_Switch_SMD:SW_SPDT_CK-WS0242"
+    (at 5 4)
+    (uuid "fp-sw1")
+    (property "Reference" "SW1" (at 0 -3) (layer "F.SilkS"))
+    (property "Value" "SW_SPDT_Kill" (at 0 3) (layer "F.Fab"))
+  )
+  
+  ; Battery connector (JST PH 2-pin)
+  (footprint "Connector:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm"
+    (at 35 22)
+    (uuid "fp-bat1")
+    (property "Reference" "BAT1" (at 0 -3) (layer "F.SilkS"))
+    (property "Value" "3.7V_500mAh_LiPo" (at 0 3) (layer "F.Fab"))
+  )
+  
+  ; USB-A plug edge fingers
+  (footprint "Connector:USB-A-Plug-Edge"
+    (at 2 12.5)
+    (uuid "fp-j1")
+    (property "Reference" "J1" (at 0 -5) (layer "F.SilkS"))
+    (property "Value" "USB-A_Plug_Edge" (at 0 5) (layer "F.Fab"))
+  )
+  
+  ; Decoupling capacitors (0402, placed near IC VDD pins)
+  ; C3-C8: RP2040 VDD decoupling (6x 100nF)
+  ; C9-C10: VDD bulk (2x 10µF)
+  ; C11-C13: ESP32-C3 decoupling
+  ; C14-C15: Flash decoupling
+  ; C16-C17: Crystal load caps (27pF)
+  ; C1: VBUS bulk (10µF)
+  ; C18: MCP73831 timing (1µF)
+  ; C19: MCP73831 VBAT (4.7µF)
+  
+  ; Pull-up resistors (0402)
+  ; R1: RUN pull-up (10kΩ)
+  ; R2: BOOT_BTN pull-up (10kΩ)
+  ; R3: ADC divider upper (1kΩ)
+  ; R4: ADC divider lower (3.3kΩ)
+  ; R5: MCP73831 charge current (27.4kΩ)
+  ; R6: WS2812B series (100Ω)
+  ; R7: I2C SDA pull-up (4.7kΩ)
+  ; R8: I2C SCL pull-up (4.7kΩ)
+  ; R9: KILL_SW pull-up (10kΩ)
+  ; R10: ENC_BTN pull-up (10kΩ)
+  ; R11: ESP_RST pull-up (10kΩ)
+  ; R12: Flash WP pull-up (10kΩ)
+  
+  ; Ferrite bead
+  ; FB1: VBUS filtering (600Ω @ 100MHz)
+  
+  ; Ground plane stitching vias (every 2mm around perimeter)
+  ; ~50 via locations around board edge
+  
+  ; USB differential pair routing (top layer only)
+  ; D+ and D- from RP2040 USB_DP/DM → TS3USB221A → USB-A edge
+  ; Length matched ±0.15mm, 90Ω differential impedance
+  ; 0.18mm trace width, 0.12mm gap
+  
+  ; QSPI boot flash routing (short, direct)
+  ; GPIO0-GPIO5 → W25Q16 (under 5mm)
+  
+  ; SPI0 payload flash routing
+  ; GPIO16-GPIO19 → W25Q128 (under 10mm)
+)

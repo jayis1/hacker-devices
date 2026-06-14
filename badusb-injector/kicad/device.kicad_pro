@@ -1,0 +1,155 @@
+(kicad_pro
+  (version 20240101)
+  (generator "kicad")
+  
+  (general
+    (thickness 1.6)
+  )
+  
+  (paper "A4")
+  
+  (title_block
+    (title "PHANTOM - USB HID Emulation Payload Injector")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "RP2040 Multi-Profile HID Attack Platform")
+    (comment 2 "BOM < $20 | 50mm x 25mm USB-A Stick")
+  )
+  
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal)
+    (2 "In2.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+  
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "Prepreg" (type "dielectric") (thickness 0.1) (material "Prepreg 1080") (epsilon_r 4.4))
+      (layer "In1.Cu" (type "copper") (thickness 0.035))
+      (layer "Core" (type "dielectric") (thickness 0.5) (material "FR4") (epsilon_r 4.4))
+      (layer "In2.Cu" (type "copper") (thickness 0.035))
+      (layer "Prepreg" (type "dielectric") (thickness 0.1) (material "Prepreg 1080") (epsilon_r 4.4))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_size 0.5 0.5)
+    (pad_drill 0.2)
+    (pad_to_mask_clearance 0.05)
+    (grid_origin 0 0)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (plot_on_all_layers_selection 0x0000000_00000000)
+      (disable_apert_macros false)
+      (use_gerber_extensions true)
+      (use_gerber_attributes true)
+      (use_gerber_advanced_attributes true)
+      (create_gerber_job_file true)
+      (dashed_line_dash_ratio 12.0)
+      (dashed_line_gap_ratio 3.0)
+      (svgprecision 4)
+      (aux_origin 0 0)
+      (plotmode 1)
+      (excludeedgelayer true)
+      (plotframeref false)
+      (viasonmask false)
+      (creategerberjobfile false)
+      (svguseinch false)
+      (svgroundcorder false)
+    )
+  )
+  
+  (netclass ""
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (uvia_dia 0.4)
+    (uvia_drill 0.2)
+    (diff_pair_gap 0.12)
+    (diff_pair_width 0.18)
+  )
+  
+  (netclass "Power"
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  
+  (netclass "USB"
+    (clearance 0.2)
+    (trace_width 0.18)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (diff_pair_gap 0.12)
+    (diff_pair_width 0.18)
+  )
+  
+  (netclass "SPI"
+    (clearance 0.15)
+    (trace_width 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+  
+  (nets
+    ; Power nets
+    "VBUS_5V" "VBAT" "VDD_3V3" "VDD_1V8" "GND"
+    
+    ; QSPI boot flash
+    "QSPI_SCLK" "QSPI_SS" "QSPI_SD0" "QSPI_SD1" "QSPI_SD2" "QSPI_SD3"
+    
+    ; SPI0 payload flash
+    "SPI0_CSn" "SPI0_SCK" "SPI0_TX" "SPI0_RX"
+    
+    ; I2C
+    "I2C0_SDA" "I2C0_SCL"
+    
+    ; UART
+    "UART0_TX" "UART0_RX" "ESP_RST_N"
+    
+    ; USB
+    "USB_DP" "USB_DM" "USB_HOST_DP" "USB_HOST_DM" "USB_MUX_CTRL"
+    
+    ; Rotary encoder
+    "ENC_A" "ENC_B" "ENC_BTN"
+    
+    ; Controls
+    "KILL_SW_N" "BOOT_BTN" "LED_DATA" "LED_EN" "BAT_SENSE"
+    
+    ; ESP32-C3
+    "WIFI_STATUS" "BLE_STATUS"
+    
+    ; Crystal
+    "XIN" "XOUT"
+    
+    ; Analog switch
+    "SW_SEL" "SW_D1P" "SW_D1N" "SW_COM_P" "SW_COM_N"
+    
+    ; Battery
+    "BAT_SENSE_DIV"
+    
+    ; MCP73831
+    "CHG_STAT" "CHG_PROG"
+  )
+)
