@@ -1,0 +1,419 @@
+(kicad_pcb
+  (version 20230621)
+  (generator "pcbnew")
+  (general
+    (thickness 1.6)
+  )
+  (page "A4")
+  (title_block
+    (title "CAN Bus Infiltrator")
+    (date "2026-06-14")
+    (rev "1.0")
+    (company "hackdev.io")
+  )
+
+  ;; ========== LAYER STACKUP ==========
+  (layers
+    (0 "F.Cu" signal)
+    (31 "B.Cu" signal)
+    (1 "In1.Cu" power "GND Plane")
+    (2 "In2.Cu" power "PWR Plane")
+    (32 "B.Paste" auxiliary)
+    (33 "F.Paste" auxiliary)
+    (34 "B.SilkS" auxiliary "Bottom Silkscreen")
+    (35 "F.SilkS" auxiliary "Top Silkscreen")
+    (36 "B.Mask" auxiliary)
+    (37 "F.Mask" auxiliary)
+    (38 "Dwgs.User" auxiliary "User Drawings")
+    (39 "Cmts.User" auxiliary "User Comments")
+    (40 "Eco1.User" auxiliary)
+    (41 "Eco2.User" auxiliary)
+    (42 "Edge.Cuts" auxiliary "Board Outline")
+    (43 "Margin" auxiliary)
+    (44 "B.CrtYd" auxiliary "Bottom Courtyard")
+    (45 "F.CrtYd" auxiliary "Top Courtyard")
+    (46 "B.Fab" auxiliary)
+    (47 "F.Fab" auxiliary)
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 1" (type "prepreg") (thickness 0.2) (material "FR-4") (epsilon_r 4.6))
+      (layer "In1.Cu" (type "copper") (thickness 0.035) (name "GND"))
+      (layer "dielectric 2" (type "core") (thickness 1.0) (material "FR-4") (epsilon_r 4.6))
+      (layer "In2.Cu" (type "copper") (thickness 0.035) (name "PWR"))
+      (layer "dielectric 3" (type "prepreg") (thickness 0.2) (material "FR-4") (epsilon_r 4.6))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.05)
+    (grid_origin 0 0)
+    (trace_width 0.2)
+    (trace_clearance 0.15)
+    (via_size 0.6)
+    (via_drill 0.3)
+    (via_min_size 0.4)
+    (via_min_drill 0.2)
+    (diff_pair_width 0.11)
+    (diff_pair_gap 0.15)
+    (segment_width 0.2)
+  )
+
+  ;; ========== NET CLASSES ==========
+  (net_class "Default"
+    (clearance 0.15)
+    (trace_width 0.2)
+    (via_dia 0.6)
+    (via_drill 0.3)
+    (uvia_dia 0.3)
+    (uvia_drill 0.1)
+  )
+  (net_class "CAN_Diff"
+    (clearance 0.2)
+    (trace_width 0.2)
+    (diff_pair_gap 0.12)
+    (diff_pair_width 0.2)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  (net_class "Power"
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  (net_class "RF"
+    (clearance 0.2)
+    (trace_width 0.18)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+  (net_class "USB_Diff"
+    (clearance 0.15)
+    (trace_width 0.11)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.11)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  ;; ========== BOARD OUTLINE ==========
+  ;; 65mm x 35mm rectangle
+  (gr_rect (start 0 0) (end 65 35) (layer "Edge.Cuts") (width 0.15) (uuid e0000001))
+
+  ;; ========== MOUNTING HOLES ==========
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5"
+    (at 3 3) (uuid e0000010)
+    (pad "" np_thru_hole circle (at 0 0) (size 2.7 2.7) (drill 2.7)
+      (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5"
+    (at 62 3) (uuid e0000011)
+    (pad "" np_thru_hole circle (at 0 0) (size 2.7 2.7) (drill 2.7)
+      (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5"
+    (at 62 32) (uuid e0000012)
+    (pad "" np_thru_hole circle (at 0 0) (size 2.7 2.7) (drill 2.7)
+      (layers "*.Cu" "*.Mask"))
+  )
+  (footprint "MountingHole:MountingHole_2.7mm_M2.5"
+    (at 3 32) (uuid e0000013)
+    (pad "" np_thru_hole circle (at 0 0) (size 2.7 2.7) (drill 2.7)
+      (layers "*.Cu" "*.Mask"))
+  )
+
+  ;; ========== COMPONENT PLACEMENT (Top Side) ==========
+
+  ;; --- OBD-II Connector (bottom edge, centered) ---
+  (footprint "Connector_Dsub:DSUB-16_Male_Horizontal_P2.77x2.84mm_EdgeMount"
+    (at 32.5 33) (uuid e0000100)
+    (property "Reference" "J1")
+    (property "Value" "345000216")
+  )
+
+  ;; --- CAN Transceiver CH1 ---
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 10 22) (uuid e0000101)
+    (property "Reference" "U3")
+    (property "Value" "TJA1050T/VC")
+  )
+
+  ;; --- CAN Transceiver CH2 ---
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 10 12) (uuid e0000102)
+    (property "Reference" "U4")
+    (property "Value" "TJA1050T/VC")
+  )
+
+  ;; --- ISO1050 CH1 ---
+  (footprint "Package_DIP:DIP-8_W7.62mm"
+    (at 20 22) (uuid e0000103)
+    (property "Reference" "U5")
+    (property "Value" "ISO1050DUB")
+  )
+
+  ;; --- ISO1050 CH2 ---
+  (footprint "Package_DIP:DIP-8_W7.62mm"
+    (at 20 12) (uuid e0000104)
+    (property "Reference" "U6_ISO")
+    (property "Value" "ISO1050DUB")
+  )
+
+  ;; --- STM32F407VGT6 (center) ---
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+    (at 37 17.5) (uuid e0000200)
+    (property "Reference" "U1")
+    (property "Value" "STM32F407VGT6")
+  )
+
+  ;; --- nRF52840 (upper right) ---
+  (footprint "Package_DFN_QFN:Nordic_QFN-73_7x7mm_P0.5mm"
+    (at 52 10) (uuid e0000300)
+    (property "Reference" "U2")
+    (property "Value" "nRF52840-QIAA")
+  )
+
+  ;; --- Buck Converter ---
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at 10 28) (uuid e0000400)
+    (property "Reference" "U8")
+    (property "Value" "MP2307DN")
+  )
+
+  ;; --- LDO ---
+  (footprint "Package_TO_SOT_SMD:SOT-89-3"
+    (at 15 28) (uuid e0000401)
+    (property "Reference" "U7")
+    (property "Value" "RT9193-33GB")
+  )
+
+  ;; --- EEPROM ---
+  (footprint "Package_SO:TSSOP-8_4.4x3mm_P0.65mm"
+    (at 45 25) (uuid e0000500)
+    (property "Reference" "U6_EEPROM")
+    (property "Value" "AT24C02C-PHM")
+  )
+
+  ;; --- Buck Inductor ---
+  (footprint "Inductor_SMD:L_Wuerth_MAPI-3012"
+    (at 13 28) (uuid e0000402)
+    (property "Reference" "L1")
+    (property "Value" "4.7uH")
+  )
+
+  ;; --- USB-C Connector (right edge) ---
+  (footprint "Connector_USB:USB_C_Receptacle_GCT_USB4105"
+    (at 63.5 28) (uuid e0000403)
+    (property "Reference" "J2")
+    (property "Value" "USB4105-GF")
+  )
+
+  ;; --- microSD Slot (right edge, below USB-C) ---
+  (footprint "Connector_Card:microSD_Molex_5040771891"
+    (at 63.5 20) (uuid e0000501)
+    (property "Reference" "J3")
+    (property "Value" "5040771891")
+  )
+
+  ;; --- SWD Debug Header ---
+  (footprint "Connector_PinHeader_1.27mm:PinHeader_1x05_P1.27mm_Vertical"
+    (at 58 28) (uuid e0000502)
+    (property "Reference" "J4")
+    (property "Value" "SWD_Debug")
+  )
+
+  ;; --- WS2812B LEDs (top edge) ---
+  (footprint "LED_SMD:LED_WS2812B-Mini_3.5x3.5mm_P1.5mm"
+    (at 25 2) (uuid e0000600)
+    (property "Reference" "LED1")
+    (property "Value" "WS2812B-Mini")
+  )
+  (footprint "LED_SMD:LED_WS2812B-Mini_3.5x3.5mm_P1.5mm"
+    (at 33 2) (uuid e0000601)
+    (property "Reference" "LED2")
+    (property "Value" "WS2812B-Mini")
+  )
+  (footprint "LED_SMD:LED_WS2812B-Mini_3.5x3.5mm_P1.5mm"
+    (at 41 2) (uuid e0000602)
+    (property "Reference" "LED3")
+    (property "Value" "WS2812B-Mini")
+  )
+  (footprint "LED_SMD:LED_WS2812B-Mini_3.5x3.5mm_P1.5mm"
+    (at 49 2) (uuid e0000603)
+    (property "Reference" "LED4")
+    (property "Value" "WS2812B-Mini")
+  )
+
+  ;; --- TVS Diode Arrays ---
+  (footprint "Package_TO_SOT_SMD:SOT-23-6"
+    (at 6 22) (uuid e0000700)
+    (property "Reference" "D1")
+    (property "Value" "SRV05-4")
+  )
+  (footprint "Package_TO_SOT_SMD:SOT-23-6"
+    (at 6 12) (uuid e0000701)
+    (property "Reference" "D2")
+    (property "Value" "SRV05-4")
+  )
+  (footprint "Package_TO_SOT_SMD:SOT-23-6"
+    (at 6 17) (uuid e0000702)
+    (property "Reference" "D3")
+    (property "Value" "SRV05-4")
+  )
+  (footprint "Package_TO_SOT_SMD:SOT-23-6"
+    (at 6 27) (uuid e0000703)
+    (property "Reference" "D4")
+    (property "Value" "SRV05-4")
+  )
+
+  ;; --- USB ESD ---
+  (footprint "Package_TO_SOT_SMD:SOT-143"
+    (at 59 28) (uuid e0000704)
+    (property "Reference" "D5")
+    (property "Value" "PRTR5V0U2X")
+  )
+
+  ;; --- Schottky OR Diodes ---
+  (footprint "Diode_SMD:D_SMC"
+    (at 8 28) (uuid e0000705)
+    (property "Reference" "D6")
+    (property "Value" "SS34")
+  )
+  (footprint "Diode_SMD:D_SMC"
+    (at 8 30) (uuid e0000706)
+    (property "Reference" "D7")
+    (property "Value" "SS34")
+  )
+
+  ;; --- Crystals ---
+  (footprint "Crystal:Crystal_SMD_HC49-SD"
+    (at 42 22) (uuid e0000800)
+    (property "Reference" "Y1")
+    (property "Value" "8MHz")
+  )
+  (footprint "Crystal:Crystal_SMD_3215-2"
+    (at 37 28) (uuid e0000801)
+    (property "Reference" "Y2")
+    (property "Value" "32.768kHz")
+  )
+  (footprint "Crystal:Crystal_SMD_3215-2"
+    (at 56 6) (uuid e0000802)
+    (property "Reference" "Y3")
+    (property "Value" "32MHz")
+  )
+
+  ;; ========== ANTENNA KEEP-OUT ZONE ==========
+  (gr_circle (center 52 10) (end 57 10) (layer "F.Cu") (width 0.1) (uuid e0000900))
+  (gr_text "ANTENNA KEEP-OUT" (at 52 10) (layer "F.SilkS") (uuid e0000901))
+
+  ;; ========== ISOLATION BARRIER ==========
+  (gr_line (start 16 0) (end 16 35) (layer "Dwgs.User") (width 0.2) (uuid e0000902))
+  (gr_text "ISOLATION BARRIER" (at 16 17.5 90) (layer "Dwgs.User") (uuid e0000903))
+
+  ;; ========== GROUND PLANES ==========
+  (zone (net "GND") (net_name "GND") (layer "In1.Cu") (uuid e0001000)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (coords (xy 0 0) (xy 16 0) (xy 16 35) (xy 0 35)))
+  )
+  (zone (net "GND") (net_name "GND") (layer "In1.Cu") (uuid e0001001)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (coords (xy 16.5 0) (xy 65 0) (xy 65 35) (xy 16.5 35)))
+  )
+  (zone (net "GND_ISO") (net_name "GND_ISO") (layer "In1.Cu") (uuid e0001002)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (coords (xy 16 0) (xy 16.5 0) (xy 16.5 35) (xy 16 35)))
+  )
+
+  ;; ========== POWER PLANES (In2.Cu) ==========
+  (zone (net "VCC_3V3") (net_name "VCC_3V3") (layer "In2.Cu") (uuid e0001100)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (coords (xy 16.5 0) (xy 65 0) (xy 65 35) (xy 16.5 35)))
+  )
+  (zone (net "VCC_5V") (net_name "VCC_5V") (layer "In2.Cu") (uuid e0001101)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.3))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (coords (xy 0 0) (xy 16 0) (xy 16 35) (xy 0 35)))
+  )
+
+  ;; ========== SILKSCREEN MARKINGS ==========
+  (gr_text "CAN Bus Infiltrator v1.0" (at 32.5 17.5) (layer "F.SilkS") (uuid e0001200))
+  (gr_text "hackdev.io" (at 32.5 19) (layer "F.SilkS") (uuid e0001201))
+  (gr_text "CAN1" (at 5 22) (layer "F.SilkS") (uuid e0001202))
+  (gr_text "CAN2" (at 5 12) (layer "F.SilkS") (uuid e0001203))
+  (gr_text "ISO" (at 18 17) (layer "F.SilkS") (uuid e0001204))
+  (gr_text "BLE" (at 52 14) (layer "F.SilkS") (uuid e0001205))
+  (gr_text "MCU" (at 37 14) (layer "F.SilkS") (uuid e0001206))
+  (gr_text "PWR" (at 12 28) (layer "F.SilkS") (uuid e0001207))
+  (gr_text "USB" (at 63 28) (layer "F.SilkS") (uuid e0001208))
+  (gr_text "SD" (at 63 20) (layer "F.SilkS") (uuid e0001209))
+  (gr_text "EEPROM" (at 45 27) (layer "F.SilkS") (uuid e0001210))
+
+  ;; ========== THERMAL VIAS ==========
+  ;; Under MP2307DN (4 vias on 1mm pitch)
+  (via (at 10 28) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0001))
+  (via (at 10 29) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0002))
+  (via (at 11 28) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0003))
+  (via (at 11 29) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0004))
+
+  ;; Under STM32 (9 vias on 1mm pitch, 3x3)
+  (via (at 34 16) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0010))
+  (via (at 35 16) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0011))
+  (via (at 36 16) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0012))
+  (via (at 34 17) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0013))
+  (via (at 35 17) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0014))
+  (via (at 36 17) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0015))
+  (via (at 34 18) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0016))
+  (via (at 35 18) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0017))
+  (via (at 36 18) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0018))
+
+  ;; Under nRF52840 (4 vias)
+  (via (at 51 9) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0020))
+  (via (at 53 9) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0021))
+  (via (at 51 11) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0022))
+  (via (at 53 11) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid tv0023))
+
+  ;; ========== EDGE STITCHING VIAS ==========
+  ;; Via fence every 2mm along board edges (excerpt)
+  (via (at 0 5) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0001))
+  (via (at 0 7) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0002))
+  (via (at 0 9) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0003))
+  (via (at 0 11) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0004))
+  (via (at 0 13) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0005))
+  (via (at 0 15) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0006))
+  (via (at 0 17) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0007))
+  (via (at 0 19) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0008))
+  (via (at 0 21) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0009))
+  (via (at 0 23) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0010))
+  (via (at 0 25) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0011))
+  (via (at 0 27) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0012))
+  (via (at 0 29) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0013))
+  (via (at 65 5) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0020))
+  (via (at 65 7) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0021))
+  (via (at 65 9) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0022))
+  (via (at 65 11) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0023))
+  (via (at 65 13) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0024))
+  (via (at 65 15) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0025))
+  (via (at 65 17) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0026))
+  (via (at 65 19) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0027))
+  (via (at 65 21) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0028))
+  (via (at 65 23) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0029))
+  (via (at 65 25) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0030))
+  (via (at 65 27) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0031))
+  (via (at 65 29) (size 0.6) (drill 0.3) (layers "F.Cu" "B.Cu") (net "GND") (uuid ev0032))
+)
