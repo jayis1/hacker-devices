@@ -1,17 +1,476 @@
-(kicad_sch (version 20230121) (generator "eeschema")
-  (uuid "d09b6716-43f1-46f9-8692-06b3e7784f1b")
-  (paper "A4")
+(kicad_sch (version 20231007) (generator "eeschema")
+  (uuid e3b0c442-98fc-1c14-9afb-7d2f3a4b5c6d)
+  (paper "A3")
+  (title_block
+    (title "VoltGlitcher Pro - Voltage Glitch Injection Tool")
+    (date "2026-01-15")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "STM32F407VGT6 + iCE40HX1K-TQ144")
+  )
+
   (lib_symbols
-    (symbol "STM32H723VGT6" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "U1" (at 0 30.48 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "STM32H723VGT6" (at 0 27.94 0) (effects (font (size 1.27 1.27))))
+    (symbol "MCU_ST_STM32F4:STM32F407VGT6"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U1" (at 0 50.8 0))
+      (property "Value" "STM32F407VGT6" (at 0 48.26 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32f407vg.pdf" (at 0 0 0))
     )
-    (symbol "ICE40UP5K" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
-      (property "Reference" "U2" (at 0 20.32 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "ICE40UP5K" (at 0 17.78 0) (effects (font (size 1.27 1.27))))
+    (symbol "FPGA_Lattice:iCE40HX1K-TQ144"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U11" (at 0 76.2 0))
+      (property "Value" "iCE40HX1K-TQ144" (at 0 73.66 0))
+      (property "Footprint" "Package_QFP:TQFP-144_20x20mm_P0.5mm" (at 0 0 0))
+      (property "Datasheet" "https://www.latticesemi.com/view-document?document_id=40955" (at 0 0 0))
+    )
+    (symbol "Driver_Gate:UCC27511DBVR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U6" (at 0 5.08 0))
+      (property "Value" "UCC27511DBVR" (at 0 2.54 0))
+      (property "Footprint" "Package_SO:VSSOP-8_2.3x2mm_P0.5mm" (at 0 0 0))
+    )
+    (symbol "Transistor_FET:SiS426DN"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q1" (at 0 5.08 0))
+      (property "Value" "SiS426DN" (at 0 2.54 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SuperSOT-6" (at 0 0 0))
+    )
+    (symbol "Transistor_FET:IRLML6344TRPBF"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q2" (at 0 5.08 0))
+      (property "Value" "IRLML6344TRPBF" (at 0 2.54 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0))
+    )
+    (symbol "Transistor_FET:BSS84P"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Q3" (at 0 5.08 0))
+      (property "Value" "BSS84P" (at 0 2.54 0))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0 0))
+    )
+    (symbol "Regulator_Switching:TLV62569DBVR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U2" (at 0 5.08 0))
+      (property "Value" "TLV62569DBVR" (at 0 2.54 0))
+    )
+    (symbol "Regulator_Linear:TPS7A7001DDAR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U4" (at 0 5.08 0))
+      (property "Value" "TPS7A7001DDAR" (at 0 2.54 0))
+    )
+    (symbol "Sensor_Current:INA210NA"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U7" (at 0 5.08 0))
+      (property "Value" "INA210NA" (at 0 2.54 0))
+    )
+    (symbol "Isolator_Opto:TLP291-4"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U8" (at 0 5.08 0))
+      (property "Value" "TLP291-4" (at 0 2.54 0))
+    )
+    (symbol "Memory_EEPROM:CAT24C256WI-GT3"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U9" (at 0 5.08 0))
+      (property "Value" "CAT24C256WI-GT3" (at 0 2.54 0))
+    )
+    (symbol "Sensor_Current:INA219AIDCNR"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U10" (at 0 5.08 0))
+      (property "Value" "INA219AIDCNR" (at 0 2.54 0))
     )
   )
-  (sheet_instances
-    (path "/" (page "1"))
+
+  ;; ============================================================================
+  ;; Power Input Section
+  ;; ============================================================================
+  (junction (at 25.4 25.4) (diameter 0))
+  (wire (pts (xy 20.32 25.4) (xy 30.48 25.4)))
+  (wire (pts (xy 25.4 25.4) (xy 25.4 30.48)))
+  (label "VCC_5V" (at 25.4 25.4 0))
+  (label "GND" (at 25.4 30.48 0))
+
+  ;; USB Micro-B connector J1
+  (symbol (lib_id "Connector:USB_B_Micro") (at 15.24 25.4 0)
+    (unit 1)
+    (pin "VBUS" (uuid 00000000-0001))
+    (pin "D-" (uuid 00000000-0002))
+    (pin "D+" (uuid 00000000-0003))
+    (pin "ID" (uuid 00000000-0004))
+    (pin "GND" (uuid 00000000-0005))
+    (pin "SHIELD" (uuid 00000000-0006))
   )
+
+  ;; ============================================================================
+  ;; Power Regulation Section
+  ;; ============================================================================
+
+  ;; U2: TLV62569DBVR — 5V→1.2V buck for FPGA core
+  (symbol (lib_id "Regulator_Switching:TLV62569DBVR") (at 50.8 40.64 0)
+    (unit 1)
+    (pin "VIN" (uuid 00000000-0010))
+    (pin "EN" (uuid 00000000-0011))
+    (pin "SW" (uuid 00000000-0012))
+    (pin "FB" (uuid 00000000-0013))
+    (pin "PG" (uuid 00000000-0014))
+    (pin "GND" (uuid 00000000-0015))
+  )
+  (wire (pts (xy 25.4 25.4) (xy 50.8 25.4)))
+  (wire (pts (xy 50.8 25.4) (xy 50.8 40.64)))
+  (label "VCC_5V" (at 50.8 25.4 0))
+  (label "VCC_1V2" (at 66.04 40.64 0))
+  (label "REG_1V2_EN" (at 50.8 35.56 0))
+  (label "REG_1V2_PG" (at 66.04 45.72 0))
+
+  ;; U3: TLV62569DBVR — 5V→3.3V buck
+  (symbol (lib_id "Regulator_Switching:TLV62569DBVR") (at 50.8 60.96 0)
+    (unit 1)
+    (pin "VIN" (uuid 00000000-0020))
+    (pin "EN" (uuid 00000000-0021))
+    (pin "SW" (uuid 00000000-0022))
+    (pin "FB" (uuid 00000000-0023))
+    (pin "PG" (uuid 00000000-0024))
+    (pin "GND" (uuid 00000000-0025))
+  )
+  (label "VCC_3V3" (at 66.04 60.96 0))
+  (label "REG_3V3_EN" (at 50.8 55.88 0))
+  (label "REG_3V3_PG" (at 66.04 66.04 0))
+
+  ;; U4: TPS7A7001DDAR — 3.3V→1.8V LDO for FPGA aux
+  (symbol (lib_id "Regulator_Linear:TPS7A7001DDAR") (at 50.8 81.28 0)
+    (unit 1)
+  )
+  (label "VCC_1V8" (at 66.04 81.28 0))
+
+  ;; U5: TPS7A7001DDAR — 3.3V→2.5V LDO for FPGA PLL
+  (symbol (lib_id "Regulator_Linear:TPS7A7001DDAR") (at 50.8 96.52 0)
+    (unit 1)
+  )
+  (label "VCC_2V5" (at 66.04 96.52 0))
+
+  ;; ============================================================================
+  ;; MCU: STM32F407VGT6 (U1) — Main processor
+  ;; ============================================================================
+  (symbol (lib_id "MCU_ST_STM32F4:STM32F407VGT6") (at 114.3 60.96 0)
+    (unit 1)
+    ;; Power pins
+    (pin "VDD" (uuid 00000000-0100))
+    (pin "VDDA" (uuid 00000000-0101))
+    (pin "VSS" (uuid 00000000-0102))
+    (pin "VSSA" (uuid 00000000-0103))
+    (pin "VBAT" (uuid 00000000-0104))
+    (pin "NRST" (uuid 00000000-0105))
+
+    ;; GPIO Port A
+    (pin "PA0" (uuid 00000000-0110))   ;; ADC1_IN0 — Target VCC
+    (pin "PA1" (uuid 00000000-0111))   ;; REG_1V2_EN
+    (pin "PA2" (uuid 00000000-0112))   ;; USART2_TX / REG_3V3_EN
+    (pin "PA3" (uuid 00000000-0113))   ;; USART2_RX / REG_1V8_EN
+    (pin "PA4" (uuid 00000000-0114))   ;; SPI1_NSS / REG_2V5_EN
+    (pin "PA5" (uuid 00000000-0115))   ;; SPI1_SCK / ADC1_IN5
+    (pin "PA6" (uuid 00000000-0116))   ;; ADC1_IN6 — Shunt current
+    (pin "PA7" (uuid 00000000-0117))   ;; ADC1_IN7 — EM coil voltage
+    (pin "PA9" (uuid 00000000-0118))   ;; USART1_TX — Trigger UART
+    (pin "PA10" (uuid 00000000-0119))  ;; USART1_RX — Trigger UART
+    (pin "PA11" (uuid 00000000-0120))  ;; USB_DM
+    (pin "PA12" (uuid 00000000-0121))  ;; USB_DP
+    (pin "PA13" (uuid 00000000-0122))  ;; SWDIO / JTAG TMS
+    (pin "PA14" (uuid 00000000-0123))  ;; SWCLK / JTAG TCK
+
+    ;; GPIO Port B
+    (pin "PB0" (uuid 00000000-0130))   ;; TRIG0 — GPIO trigger (opto-isolated)
+    (pin "PB3" (uuid 00000000-0131))   ;; JTAG TDI
+    (pin "PB4" (uuid 00000000-0132))   ;; SPI1_MISO / JTAG TDO
+    (pin "PB5" (uuid 00000000-0133))   ;; SPI1_MOSI
+    (pin "PB6" (uuid 00000000-0134))   ;; I2C1_SCL / FPGA_CRESET_B
+    (pin "PB7" (uuid 00000000-0135))   ;; I2C1_SDA / FPGA_CDONE
+    (pin "PB8" (uuid 00000000-0136))   ;; REG_1V2_PG
+    (pin "PB9" (uuid 00000000-0137))   ;; REG_3V3_PG
+    (pin "PB12" (uuid 00000000-0138))  ;; SPI2_NSS — SD card
+    (pin "PB13" (uuid 00000000-0139))  ;; SPI2_SCK — SD card
+    (pin "PB14" (uuid 00000000-0140))  ;; GLITCH_CLK_GATE / SPI2_MISO
+    (pin "PB15" (uuid 00000000-0141))  ;; GLITCH_CLK_EN / SPI2_MOSI
+
+    ;; GPIO Port C
+    (pin "PC0" (uuid 00000000-0150))
+    (pin "PC1" (uuid 00000000-0151))   ;; FPGA_INT
+    (pin "PC2" (uuid 00000000-0152))   ;; FPGA_WAKE
+    (pin "PC3" (uuid 00000000-0153))   ;; FPGA_SUSPEND
+    (pin "PC4" (uuid 00000000-0154))   ;; SD card detect
+    (pin "PC6" (uuid 00000000-0155))   ;; GLITCH_SHUNT_GATE
+    (pin "PC7" (uuid 00000000-0156))   ;; GATE_DRIVER_EN
+    (pin "PC8" (uuid 00000000-0157))   ;; GATE_DRIVER_FAULT
+    (pin "PC9" (uuid 00000000-0158))   ;; GLITCH_EM_GATE
+    (pin "PC10" (uuid 00000000-0159))  ;; GLITCH_EM_EN
+    (pin "PC13" (uuid 00000000-0160))  ;; Manual trigger button
+  )
+
+  ;; VDD connections
+  (wire (pts (xy 114.3 25.4) (xy 114.3 30.48)))
+  (label "VCC_3V3" (at 114.3 25.4 0))
+
+  ;; ============================================================================
+  ;; FPGA: iCE40HX1K-TQ144 (U11) — Timing co-processor
+  ;; ============================================================================
+  (symbol (lib_id "FPGA_Lattice:iCE40HX1K-TQ144") (at 190.5 60.96 0)
+    (unit 1)
+    ;; Power pins
+    (pin "VCC_CORE" (uuid 00000000-0200))
+    (pin "VCC_IO" (uuid 00000000-0201))
+    (pin "VCC_PLL" (uuid 00000000-0202))
+    (pin "VCC_AUX" (uuid 00000000-0203))
+    (pin "GND" (uuid 00000000-0204))
+
+    ;; Config pins
+    (pin "CRESET_B" (uuid 00000000-0210))
+    (pin "CDONE" (uuid 00000000-0211))
+    (pin "SPI_SCK" (uuid 00000000-0212))
+    (pin "SPI_SI" (uuid 00000000-0213))   ;; MOSI from MCU perspective
+    (pin "SPI_SO" (uuid 00000000-0214))   ;; MISO from MCU perspective
+    (pin "SPI_CS_B" (uuid 00000000-0215))
+
+    ;; I/O Bank 0 — Glitch outputs
+    (pin "IOB_0" (uuid 00000000-0220))   ;; → GLITCH_SHUNT gate driver
+    (pin "IOB_1" (uuid 00000000-0221))   ;; → GLITCH_EM gate driver
+    (pin "IOB_2" (uuid 00000000-0222))   ;; → GLITCH_CLK gate driver
+    (pin "IOB_3" (uuid 00000000-0223))   ;; → DAC for EM amplitude
+
+    ;; I/O Bank 1 — Trigger inputs
+    (pin "IOT_0" (uuid 00000000-0230))   ;; ← TRIG0 (GPIO)
+    (pin "IOT_1" (uuid 00000000-0231))   ;; ← TRIG1 (UART RX)
+    (pin "IOT_2" (uuid 00000000-0232))   ;; ← JTAG TCK
+    (pin "IOT_3" (uuid 00000000-0233))   ;; ← JTAG TMS
+    (pin "IOT_4" (uuid 00000000-0234))   ;; ← JTAG TDI
+    (pin "IOT_5" (uuid 00000000-0235))   ;; ← JTAG TDO
+
+    ;; I/O Bank 2 — MCU interface
+    (pin "IOL_0" (uuid 00000000-0240))   ;; ←→ FPGA_INT
+    (pin "IOL_1" (uuid 00000000-0241))   ;; ← FPGA_WAKE
+    (pin "IOL_2" (uuid 00000000-0242))   ;; ← FPGA_SUSPEND
+
+    ;; PLL pins
+    (pin "PLL_CLKIN" (uuid 00000000-0250))
+    (pin "PLL_CLKOUT" (uuid 00000000-0251))
+  )
+
+  ;; FPGA power connections
+  (wire (pts (xy 190.5 25.4) (xy 190.5 30.48)))
+  (label "VCC_1V2" (at 185.42 25.4 0))
+  (label "VCC_3V3" (at 195.58 25.4 0))
+  (label "VCC_1V8" (at 200.66 25.4 0))
+  (label "VCC_2V5" (at 205.74 25.4 0))
+
+  ;; FPGA config signals
+  (wire (pts (xy 114.3 50.8) (xy 190.5 50.8)))
+  (label "FPGA_CRESET_B" (at 152.4 50.8 0))
+  (wire (pts (xy 190.5 48.26) (xy 114.3 48.26)))
+  (label "FPGA_CDONE" (at 152.4 48.26 0))
+
+  ;; SPI bus connections MCU↔FPGA
+  (wire (pts (xy 129.54 55.88) (xy 175.26 55.88)))
+  (label "SPI1_SCK" (at 152.4 55.88 0))
+  (wire (pts (xy 129.54 58.42) (xy 175.26 58.42)))
+  (label "SPI1_MISO" (at 152.4 58.42 0))
+  (wire (pts (xy 129.54 60.96) (xy 175.26 60.96)))
+  (label "SPI1_MOSI" (at 152.4 60.96 0))
+  (wire (pts (xy 129.54 63.5) (xy 175.26 63.5)))
+  (label "SPI1_NSS" (at 152.4 63.5 0))
+
+  ;; ============================================================================
+  ;; Glitch Output Stage
+  ;; ============================================================================
+
+  ;; U6: UCC27511DBVR gate driver for Q1
+  (symbol (lib_id "Driver_Gate:UCC27511DBVR") (at 254 40.64 0)
+    (unit 1)
+    (pin "IN" (uuid 00000000-0300))
+    (pin "EN" (uuid 00000000-0301))
+    (pin "OUT" (uuid 00000000-0302))
+    (pin "FAULT" (uuid 00000000-0303))
+    (pin "VDD" (uuid 00000000-0304))
+    (pin "GND" (uuid 00000000-0305))
+  )
+  (wire (pts (xy 114.3 86.36) (xy 254 86.36)))
+  (label "GLITCH_SHUNT_GATE" (at 180.34 86.36 0))
+
+  ;; Q1: SiS426DN — VCC shunt MOSFET
+  (symbol (lib_id "Transistor_FET:SiS426DN") (at 279.4 40.64 0)
+    (unit 1)
+    (pin "G" (uuid 00000000-0310))
+    (pin "S" (uuid 00000000-0311))
+    (pin "D" (uuid 00000000-0312))
+  )
+  (wire (pts (xy 254 40.64) (xy 279.4 40.64)))
+  (label "VCC_TARGET" (at 279.4 35.56 0))
+  (label "GND" (at 279.4 45.72 0))
+
+  ;; Q2: IRLML6344TRPBF — EM coil driver
+  (symbol (lib_id "Transistor_FET:IRLML6344TRPBF") (at 279.4 60.96 0)
+    (unit 1)
+    (pin "G" (uuid 00000000-0320))
+    (pin "S" (uuid 00000000-0321))
+    (pin "D" (uuid 00000000-0322))
+  )
+  (wire (pts (xy 205.74 60.96) (xy 279.4 60.96)))
+  (label "GLITCH_EM_GATE" (at 241.3 60.96 0))
+  (label "EM_COIL" (at 279.4 55.88 0))
+
+  ;; Q3: BSS84P — Clock glitch (P-channel)
+  (symbol (lib_id "Transistor_FET:BSS84P") (at 279.4 81.28 0)
+    (unit 1)
+    (pin "G" (uuid 00000000-0330))
+    (pin "S" (uuid 00000000-0331))
+    (pin "D" (uuid 00000000-0332))
+  )
+  (wire (pts (xy 208.28 81.28) (xy 279.4 81.28)))
+  (label "GLITCH_CLK_GATE" (at 241.3 81.28 0))
+  (label "TARGET_CLK" (at 279.4 76.2 0))
+
+  ;; ============================================================================
+  ;; Current Sensing: U7 INA210NA
+  ;; ============================================================================
+  (symbol (lib_id "Sensor_Current:INA210NA") (at 304.8 40.64 0)
+    (unit 1)
+    (pin "IN+" (uuid 00000000-0400))
+    (pin "IN-" (uuid 00000000-0401))
+    (pin "OUT" (uuid 00000000-0402))
+    (pin "REF" (uuid 00000000-0403))
+    (pin "V+" (uuid 00000000-0404))
+    (pin "GND" (uuid 00000000-0405))
+  )
+  (wire (pts (xy 279.4 40.64) (xy 304.8 40.64)))
+  (wire (pts (xy 114.3 93.98) (xy 304.8 93.98)))
+  (label "ADC_SHUNT_CURR" (at 210.82 93.98 0))
+
+  ;; ============================================================================
+  ;; Opto-isolator: U8 TLP291-4 (for trigger input isolation)
+  ;; ============================================================================
+  (symbol (lib_id "Isolator_Opto:TLP291-4") (at 304.8 60.96 0)
+    (unit 1)
+    (pin "A1" (uuid 00000000-0410))
+    (pin "K1" (uuid 00000000-0411))
+    (pin "E1" (uuid 00000000-0412))
+    (pin "C1" (uuid 00000000-0413))
+  )
+  (wire (pts (xy 304.8 55.88) (xy 304.8 50.8)))
+  (label "TRIG0_ISO_OUT" (at 304.8 50.8 0))
+
+  ;; ============================================================================
+  ;; EEPROM: U9 CAT24C256WI-GT3
+  ;; ============================================================================
+  (symbol (lib_id "Memory_EEPROM:CAT24C256WI-GT3") (at 325.12 40.64 0)
+    (unit 1)
+    (pin "A0" (uuid 00000000-0500))
+    (pin "A1" (uuid 00000000-0501))
+    (pin "A2" (uuid 00000000-0502))
+    (pin "SCL" (uuid 00000000-0503))
+    (pin "SDA" (uuid 00000000-0504))
+    (pin "WP" (uuid 00000000-0505))
+    (pin "VCC" (uuid 00000000-0506))
+    (pin "GND" (uuid 00000000-0507))
+  )
+  (wire (pts (xy 325.12 30.48) (xy 325.12 35.56)))
+  (label "VCC_3V3" (at 325.12 30.48 0))
+  (wire (pts (xy 114.3 68.58) (xy 325.12 68.58)))
+  (label "I2C_SCL" (at 220.98 68.58 0))
+  (wire (pts (xy 114.3 71.12) (xy 325.12 71.12)))
+  (label "I2C_SDA" (at 220.98 71.12 0))
+
+  ;; ============================================================================
+  ;; Voltage/Current Monitor: U10 INA219AIDCNR
+  ;; ============================================================================
+  (symbol (lib_id "Sensor_Current:INA219AIDCNR") (at 325.12 81.28 0)
+    (unit 1)
+    (pin "IN+" (uuid 00000000-0510))
+    (pin "IN-" (uuid 00000000-0511))
+    (pin "SCL" (uuid 00000000-0512))
+    (pin "SDA" (uuid 00000000-0513))
+    (pin "VCC" (uuid 00000000-0514))
+    (pin "GND" (uuid 00000000-0515))
+  )
+
+  ;; ============================================================================
+  ;; Status LEDs
+  ;; ============================================================================
+  (symbol (lib_id "Device:LED") (at 350.52 40.64 0) (unit 1))
+  (label "LED_POWER" (at 360.68 40.64 0))
+  (symbol (lib_id "Device:LED") (at 350.52 50.8 0) (unit 1))
+  (label "LED_GLITCH" (at 360.68 50.8 0))
+  (symbol (lib_id "Device:LED") (at 350.52 60.96 0) (unit 1))
+  (label "LED_TRIGGER" (at 360.68 60.96 0))
+  (symbol (lib_id "Device:LED") (at 350.52 71.12 0) (unit 1))
+  (label "LED_ERROR" (at 360.68 71.12 0))
+
+  ;; ============================================================================
+  ;; Connectors
+  ;; ============================================================================
+
+  ;; J2: ARM SWD debug header (2x5)
+  (symbol (lib_id "Connector:Conn_ARM_JTAG_SWD_10") (at 15.24 50.8 0)
+    (unit 1)
+  )
+
+  ;; J3: Glitch output header (1x6)
+  (symbol (lib_id "Connector:Conn_01x06") (at 350.52 86.36 0)
+    (unit 1)
+  )
+  (label "VCC_TARGET" (at 350.52 86.36 0))
+  (label "GND" (at 350.52 88.9 0))
+  (label "EM_COIL+" (at 350.52 91.44 0))
+  (label "EM_COIL-" (at 350.52 93.98 0))
+  (label "TARGET_CLK" (at 350.52 96.52 0))
+  (label "TARGET_CLK_GND" (at 350.52 99.06 0))
+
+  ;; J4: Trigger input header (1x4)
+  (symbol (lib_id "Connector:Conn_01x04") (at 350.52 106.68 0)
+    (unit 1)
+  )
+  (label "TRIG0_GPIO" (at 350.52 106.68 0))
+  (label "TRIG1_UART_RX" (at 350.52 109.22 0))
+  (label "TRIG2_JTAG" (at 350.52 111.76 0))
+  (label "TRIG_GND" (at 350.52 114.3 0))
+
+  ;; J5: Target UART header (1x4)
+  (symbol (lib_id "Connector:Conn_01x04") (at 350.52 119.38 0)
+    (unit 1)
+  )
+  (label "TARGET_TX" (at 350.52 119.38 0))
+  (label "TARGET_RX" (at 350.52 121.92 0))
+  (label "TARGET_GND" (at 350.52 124.46 0))
+  (label "TARGET_VCC" (at 350.52 127 0))
+
+  ;; ============================================================================
+  ;; Decoupling Capacitors (selection)
+  ;; ============================================================================
+  (symbol (lib_id "Device:C") (at 76.2 25.4 0) (unit 1))
+  (label "100nF" (at 76.2 20.32 0))  ;; U1 decoupling
+  (symbol (lib_id "Device:C") (at 83.82 25.4 0) (unit 1))
+  (label "4.7µF" (at 83.82 20.32 0))  ;; U1 bulk
+  (symbol (lib_id "Device:C") (at 215.9 25.4 0) (unit 1))
+  (label "100nF" (at 215.9 20.32 0))  ;; U11 decoupling
+  (symbol (lib_id "Device:C") (at 223.52 25.4 0) (unit 1))
+  (label "10µF" (at 223.52 20.32 0))  ;; U11 bulk
+
+  ;; Crystal Y1: 8MHz HSE
+  (symbol (lib_id "Device:Crystal") (at 99.06 30.48 0) (unit 1))
+  (label "8MHz" (at 99.06 25.4 0))
+
+  ;; Crystal Y2: 32.768kHz LSE
+  (symbol (lib_id "Device:Crystal") (at 99.06 38.1 0) (unit 1))
+  (label "32.768kHz" (at 99.06 33.02 0))
+
+  ;; SD card slot J6
+  (symbol (lib_id "Connector:MicroSD") (at 99.06 111.76 0) (unit 1))
+  (label "SD_SPI2" (at 99.06 106.68 0))
 )

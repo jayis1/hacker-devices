@@ -1,40 +1,49 @@
-{
-  "boards": [],
-  "create_time": "2023-10-27T10:00:00Z",
-  "generator": "KiCad",
-  "meta": {
-    "version": 1
-  },
-  "net_settings": {
-    "classes": [
-      {
-        "clearance": 0.15,
-        "diff_paire_gap": 0.2,
-        "diff_pair_width": 0.2,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
-        "name": "Default",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "u_via_diameter": 0.3,
-        "u_via_drill": 0.1,
-        "via_diameter": 0.5,
-        "via_drill": 0.3,
-        "wire_width": 0.2
-      },
-      {
-        "clearance": 0.2,
-        "diff_pair_gap": 0.2,
-        "diff_pair_width": 0.2,
-        "name": "HighPower",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.8,
-        "via_drill": 0.5,
-        "wire_width": 0.5
-      }
-    ],
-    "nets": []
-  },
-  "project": {
-    "name": "volt-glitcher"
-  }
-}
+(kicad_pro (version 20231007)
+  (generator "kicad")
+  (general
+    (name "VoltGlitcher Pro")
+    (desc "High-Precision Voltage Glitch Injection Tool")
+    (company "Hacker Devices")
+    (revision "1.0")
+    (date "2026-01-15")
+  )
+  (sheets
+    (sheet "main" "Main schematic")
+    (sheet "mcu" "STM32F407 MCU")
+    (sheet "fpga" "iCE40HX1K FPGA")
+    (sheet "power" "Power supplies")
+    (sheet "glitch" "Glitch output stage")
+    (sheet "trigger" "Trigger inputs")
+    (sheet "usb" "USB interface")
+    (sheet "io" "Connectors & indicators")
+  )
+  (layers
+    (layer "F.Cu" signal)
+    (layer "In1.Cu" signal)
+    (layer "In2.Cu" signal)
+    (layer "B.Cu" signal)
+  )
+  (nets
+    (net "VCC_5V" "5V input from USB")
+    (net "VCC_3V3" "3.3V main rail")
+    (net "VCC_1V2" "1.2V FPGA core")
+    (net "VCC_1V8" "1.8V FPGA aux")
+    (net "VCC_2V5" "2.5V FPGA PLL")
+    (net "GND" "System ground")
+    (net "GLITCH_SHUNT" "VCC shunt MOSFET gate")
+    (net "GLITCH_EM" "EM coil driver gate")
+    (net "GLITCH_CLK" "Clock glitch MOSFET gate")
+    (net "SPI1_SCK" "FPGA SPI clock")
+    (net "SPI1_MISO" "FPGA SPI MISO")
+    (net "SPI1_MOSI" "FPGA SPI MOSI")
+    (net "SPI1_NSS" "FPGA SPI chip select")
+    (net "FPGA_CRESET_B" "FPGA config reset")
+    (net "FPGA_CDONE" "FPGA config done")
+  )
+  (design_rules
+    (min_trace_width 0.1)
+    (min_clearance 0.1)
+    (min_via_dia 0.4)
+    (min_via_drill 0.2)
+  )
+)

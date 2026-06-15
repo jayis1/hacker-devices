@@ -1,14 +1,53 @@
 {
-  "name": "VoltGlitcherApp",
+  "name": "volt-glitcher-app",
   "version": "1.0.0",
-  "private": true,
+  "description": "VoltGlitcher Pro — High-Precision Voltage Glitch Injection Tool Companion App",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "lint": "eslint app/",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "build:ios": "cd ios && xcodebuild -scheme VoltGlitcher -configuration Release archive"
+  },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.72.3",
-    "@react-navigation/native": "^6.1.7",
-    "@react-navigation/stack": "^6.3.17",
-    "react-native-ble-plx": "^3.1.2",
-    "react-native-svg": "^13.9.0",
-    "victory-native": "^36.6.11"
-  }
+    "react-native": "0.73.4",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.12",
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "react-native-usb-serial": "^2.0.3",
+    "react-native-ble-plx": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/runtime": "^7.23.9",
+    "@react-native/eslint-config": "^0.73.2",
+    "@react-native/metro-config": "^0.73.5",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "metro-react-native-babel-preset": "^0.77.0",
+    "react-test-renderer": "18.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true,
+  "license": "MIT",
+  "author": "Hacker Devices",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hacker-devices/volt-glitcher"
+  },
+  "keywords": [
+    "fault-injection",
+    "voltage-glitch",
+    "hardware-security",
+    "embedded",
+    "fpga",
+    "stm32"
+  ]
 }
