@@ -1,0 +1,414 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.15,
+        "copper_text_size_h": 1.0,
+        "copper_text_size_v": 1.0,
+        "copper_text_thickness": 0.15,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.12,
+        "silk_text_size_h": 0.8,
+        "silk_text_size_v": 0.8,
+        "silk_text_thickness": 0.12,
+        "pcb_text_size_h": 1.0,
+        "pcb_text_size_v": 1.0,
+        "pcb_text_thickness": 0.15,
+        "courtyard_line_width": 0.05
+      },
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.14,
+          "via_gap": 0.14,
+          "width": 0.14
+        }
+      ],
+      "drc_exclusions": [],
+      "rules": {
+        "min_copper_edge_clearance": 0.4,
+        "min_hole_to_hole": 0.25,
+        "min_track_width": 0.1,
+        "min_clearance": 0.1,
+        "min_connection_width": 0.1,
+        "min_annular_width": 0.1,
+        "min_via_diameter": 0.45,
+        "min_via_drill": 0.2,
+        "min_microvia_diameter": 0.3,
+        "min_microvia_drill": 0.1,
+        "solder_mask_to_copper_clearance": 0.05,
+        "min_silk_clearance": 0.15,
+        "allow_soldermask_bridges_in_footprints": false
+      },
+      "track_widths": [
+        0.1,
+        0.15,
+        0.18,
+        0.22,
+        0.3,
+        0.5,
+        1.0
+      ],
+      "via_dimensions": [
+        {
+          "diameter": 0.45,
+          "drill": 0.2
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.3
+        }
+      ],
+      "zones_allow_external_fillets": false
+    },
+    "layer_presets": [
+      {
+        "name": "4-layer",
+        "layers": [
+          "F.Cu",
+          "In1.Cu",
+          "In2.Cu",
+          "B.Cu"
+        ]
+      }
+    ],
+    "viewports": []
+  },
+  "board": {
+    "active_layer": 0,
+    "active_layer_preset": "4-layer",
+    "auto_track_width": true,
+    "hidden_netclasses": [],
+    "hidden_nets": [],
+    "high_contrast_mode": 0,
+    "net_color_mode": 1,
+    "netclass_assignments": {
+      "Default": {
+        "netclass": "Default",
+        "nets": []
+      },
+      "Power": {
+        "netclass": "Power",
+        "nets": [
+          "+3V3",
+          "+1V2",
+          "+1V35",
+          "+1V8",
+          "+1V0",
+          "VSYS",
+          "VBUS"
+        ]
+      },
+      "HS_50Ohm": {
+        "netclass": "HS_50Ohm",
+        "nets": [
+          "/eMMC_CLK",
+          "/eMMC_CMD",
+          "/eMMC_DAT0",
+          "/eMMC_DAT1",
+          "/eMMC_DAT2",
+          "/eMMC_DAT3",
+          "/eMMC_DAT4",
+          "/eMMC_DAT5",
+          "/eMMC_DAT6",
+          "/eMMC_DAT7",
+          "/SD_CLK",
+          "/SD_CMD",
+          "/SD_DAT0",
+          "/SD_DAT1",
+          "/SD_DAT2",
+          "/SD_DAT3",
+          "/QSPI_CLK",
+          "/QSPI_IO0",
+          "/QSPI_IO1",
+          "/QSPI_IO2",
+          "/QSPI_IO3",
+          "/QSPI_NCS"
+        ]
+      },
+      "Diff_100Ohm": {
+        "netclass": "Diff_100Ohm",
+        "nets": [
+          "/DDR_CK",
+          "/DDR_CK_N",
+          "/DDR_LDQS",
+          "/DDR_LDQS_N",
+          "/DDR_UDQS",
+          "/DDR_UDQS_N"
+        ]
+      },
+      "USB_90Ohm": {
+        "netclass": "USB_90Ohm",
+        "nets": [
+          "/USB_DP",
+          "/USB_DM"
+        ]
+      }
+    },
+    "netclass_patterns": [],
+    "netclasses": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "track_width": 0.15,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "Power",
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "track_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "HS_50Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.18,
+        "track_width": 0.18,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "Diff_100Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.14,
+        "diff_pair_width": 0.14,
+        "track_width": 0.14,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "USB_90Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.14,
+        "diff_pair_width": 0.22,
+        "track_width": 0.22,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      }
+    ],
+    "nets": [],
+    "plot_black_and_white": false,
+    "tent_vias": true,
+    "use_default_via": true
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 2
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "track_width": 0.15,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "Power",
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "track_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "HS_50Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.18,
+        "track_width": 0.18,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "Diff_100Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.14,
+        "diff_pair_width": 0.14,
+        "track_width": 0.14,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      },
+      {
+        "name": "USB_90Ohm",
+        "clearance": 0.21,
+        "diff_pair_gap": 0.14,
+        "diff_pair_width": 0.22,
+        "track_width": 0.22,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "uvia_diameter": 0.3,
+        "uvia_drill": 0.1
+      }
+    ],
+    "meta": {
+      "version": 2
+    },
+    "netclass_assignments": {
+      "Default": {
+        "netclass": "Default",
+        "nets": []
+      },
+      "Power": {
+        "netclass": "Power",
+        "nets": [
+          "+3V3",
+          "+1V2",
+          "+1V35",
+          "+1V8",
+          "+1V0",
+          "VSYS",
+          "VBUS"
+        ]
+      },
+      "HS_50Ohm": {
+        "netclass": "HS_50Ohm",
+        "nets": [
+          "/eMMC_CLK",
+          "/eMMC_CMD",
+          "/eMMC_DAT0",
+          "/eMMC_DAT1",
+          "/eMMC_DAT2",
+          "/eMMC_DAT3",
+          "/eMMC_DAT4",
+          "/eMMC_DAT5",
+          "/eMMC_DAT6",
+          "/eMMC_DAT7",
+          "/SD_CLK",
+          "/SD_CMD",
+          "/SD_DAT0",
+          "/SD_DAT1",
+          "/SD_DAT2",
+          "/SD_DAT3",
+          "/QSPI_CLK",
+          "/QSPI_IO0",
+          "/QSPI_IO1",
+          "/QSPI_IO2",
+          "/QSPI_IO3",
+          "/QSPI_NCS"
+        ]
+      },
+      "Diff_100Ohm": {
+        "netclass": "Diff_100Ohm",
+        "nets": [
+          "/DDR_CK",
+          "/DDR_CK_N",
+          "/DDR_LDQS",
+          "/DDR_LDQS_N",
+          "/DDR_UDQS",
+          "/DDR_UDQS_N"
+        ]
+      },
+      "USB_90Ohm": {
+        "netclass": "USB_90Ohm",
+        "nets": [
+          "/USB_DP",
+          "/USB_DM"
+        ]
+      }
+    },
+    "netclass_patterns": []
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "specctra_dsn": "",
+      "step": "",
+      "vrml": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 1,
+    "drawing": {
+      "default_line_thickness": 0.1524,
+      "default_text_size": 1.524,
+      "dashed_lines_dash_length_ratio": 12.0,
+      "dashed_lines_gap_length_ratio": 3.0,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size_choice": 3,
+      "label_size_ratio": 1.0,
+      "operating_point_overlay_i_precision": 2,
+      "operating_point_overlay_i_range": "~A",
+      "operating_point_overlay_v_precision": 2,
+      "operating_point_overlay_v_range": "~V",
+      "overbar_offset_ratio": 1.0,
+      "pin_symbol_size": 25.0,
+      "text_offset_ratio": 0.15
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 2
+    },
+    "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "fix_passive_vals": false,
+      "meta": {
+        "version": 2
+      },
+      "model_mode": 0,
+      "workbook_filename": ""
+    },
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_adjust_passive_values": false,
+    "spice_external_command": "spice \"%I\"",
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    [
+      "e7d1f4e0-5a2b-4c3d-9e8f-1a2b3c4d5e6f",
+      ""
+    ]
+  ],
+  "text_variables": {
+    "board_title": "eMMC Flash Dumper",
+    "date": "2026-06-15",
+    "designer": "Nous Research",
+    "rev": "1.0",
+    "company": "Nous Research"
+  }
+}

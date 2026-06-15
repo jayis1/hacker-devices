@@ -1,0 +1,44 @@
+{
+  "name": "emmc-flash-dumper-app",
+  "version": "1.0.0",
+  "description": "Companion app for eMMC Flash Dumper — forensic flash acquisition platform",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "react-native start --web",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-native": "^0.76.0",
+    "@react-navigation/native": "^7.0.0",
+    "@react-navigation/bottom-tabs": "^7.0.0",
+    "react-native-screens": "^4.0.0",
+    "react-native-safe-area-context": "^5.0.0",
+    "react-native-usb": "^1.2.0",
+    "react-native-fs": "^2.20.0",
+    "react-native-share": "^11.0.0",
+    "buffer": "^6.0.3",
+    "crc-32": "^1.2.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.0",
+    "@babel/preset-env": "^7.25.0",
+    "@babel/runtime": "^7.25.0",
+    "@react-native/babel-preset": "^0.76.0",
+    "@react-native/eslint-config": "^0.76.0",
+    "@react-native/metro-config": "^0.76.0",
+    "@react-native/typescript-config": "^0.76.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}
