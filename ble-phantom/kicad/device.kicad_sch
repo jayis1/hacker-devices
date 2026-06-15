@@ -1,0 +1,388 @@
+(kicad_sch
+  (version 20240101)
+  (generator "hacker-devices")
+  (uuid e0000000-0000-0000-0000-000000000001)
+  
+  (title_block
+    (title "BLE Phantom - Dual BLE Security Research Platform")
+    (company "Hacker Devices")
+    (rev "1.0")
+    (date "2026-06-15")
+  )
+  
+  ;; ============================================================
+  ;; Library symbols
+  ;; ============================================================
+  
+  (symbol "STM32F401CCU6"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U1" (at 0 25.4 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "STM32F401CCU6" (at 0 -25.4 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP3.5x3.5mm" (at 0 0 0))
+    (symbol "STM32F401CCU6_0_1"
+      (rectangle (start -12.7 24.13) (end 12.7 -24.13) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "STM32F401CCU6_1_1"
+      (pin power_in line (at -2.54 26.67 270) (length 2.54) (name "VBAT" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin input line (at -15.24 6.35 0) (length 2.54) (name "PC13/BUTTON" (effects (font (size 1.27 1.27)))) (number "2"))
+      (pin output line (at 15.24 -6.35 180) (length 2.54) (name "PC14/LED_USB" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin output line (at 15.24 -8.89 180) (length 2.54) (name "PC15/LED_PWR" (effects (font (size 1.27 1.27)))) (number "4"))
+      (pin input line (at -15.24 13.97 0) (length 2.54) (name "PH0/OSC_IN" (effects (font (size 1.27 1.27)))) (number "5"))
+      (pin output line (at -15.24 11.43 0) (length 2.54) (name "PH1/OSC_OUT" (effects (font (size 1.27 1.27)))) (number "6"))
+      (pin input line (at -15.24 3.81 0) (length 2.54) (name "NRST" (effects (font (size 1.27 1.27)))) (number "7"))
+      (pin power_in line (at 0 -26.67 90) (length 2.54) (name "VSSA" (effects (font (size 1.27 1.27)))) (number "8"))
+      (pin power_in line (at 2.54 26.67 270) (length 2.54) (name "VDDA" (effects (font (size 1.27 1.27)))) (number "9"))
+      (pin input line (at -15.24 1.27 0) (length 2.54) (name "PA0/RADIO_A_IRQ" (effects (font (size 1.27 1.27)))) (number "10"))
+      (pin input line (at -15.24 -1.27 0) (length 2.54) (name "PA1/RADIO_B_IRQ" (effects (font (size 1.27 1.27)))) (number "11"))
+      (pin output line (at 15.24 11.43 180) (length 2.54) (name "PA2/UART_TX" (effects (font (size 1.27 1.27)))) (number "12"))
+      (pin input line (at 15.24 8.89 180) (length 2.54) (name "PA3/UART_RX" (effects (font (size 1.27 1.27)))) (number "13"))
+      (pin output line (at 15.24 -11.43 180) (length 2.54) (name "PA4/RADIO_A_RST" (effects (font (size 1.27 1.27)))) (number "14"))
+      (pin output line (at -15.24 -3.81 0) (length 2.54) (name "PA5/SPI1_SCK" (effects (font (size 1.27 1.27)))) (number "15"))
+      (pin input line (at -15.24 -6.35 0) (length 2.54) (name "PA6/SPI1_MISO" (effects (font (size 1.27 1.27)))) (number "16"))
+      (pin output line (at -15.24 -8.89 0) (length 2.54) (name "PA7/SPI1_MOSI" (effects (font (size 1.27 1.27)))) (number "17"))
+      (pin output line (at 15.24 3.81 180) (length 2.54) (name "PB0/LED_RADIO_A" (effects (font (size 1.27 1.27)))) (number "18"))
+      (pin output line (at 15.24 1.27 180) (length 2.54) (name "PB1/LED_RADIO_B" (effects (font (size 1.27 1.27)))) (number "19"))
+      (pin output line (at 15.24 -13.97 180) (length 2.54) (name "PB2/RADIO_B_RST" (effects (font (size 1.27 1.27)))) (number "20"))
+      (pin output line (at 15.24 -19.05 180) (length 2.54) (name "PB10/SPI2_SCK" (effects (font (size 1.27 1.27)))) (number "21"))
+      (pin input line (at 15.24 -21.59 180) (length 2.54) (name "PB11/SPI2_MISO" (effects (font (size 1.27 1.27)))) (number "22"))
+      (pin output line (at 15.24 -16.51 180) (length 2.54) (name "PB12/SPI2_NSS" (effects (font (size 1.27 1.27)))) (number "23"))
+      (pin power_in line (at 5.08 26.67 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "24"))
+      (pin power_in line (at 5.08 -26.67 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "25"))
+      (pin output line (at -15.24 -11.43 0) (length 2.54) (name "PB15/SPI2_MOSI" (effects (font (size 1.27 1.27)))) (number "28"))
+      (pin output line (at 15.24 6.35 180) (length 2.54) (name "PA8/SPI1_NSS_MANUAL" (effects (font (size 1.27 1.27)))) (number "29"))
+      (pin input line (at 15.24 13.97 180) (length 2.54) (name "PA9/VBUS_DETECT" (effects (font (size 1.27 1.27)))) (number "30"))
+      (pin bidirectional line (at -15.24 -13.97 0) (length 2.54) (name "PA11/USB_DM" (effects (font (size 1.27 1.27)))) (number "32"))
+      (pin bidirectional line (at -15.24 -16.51 0) (length 2.54) (name "PA12/USB_DP" (effects (font (size 1.27 1.27)))) (number "33"))
+      (pin bidirectional line (at 15.24 19.05 180) (length 2.54) (name "PA13/SWDIO" (effects (font (size 1.27 1.27)))) (number "34"))
+      (pin input line (at 15.24 16.51 180) (length 2.54) (name "PA14/SWCLK" (effects (font (size 1.27 1.27)))) (number "35"))
+      (pin input line (at 15.24 -3.81 180) (length 2.54) (name "BOOT0" (effects (font (size 1.27 1.27)))) (number "42"))
+      (pin power_in line (at 7.62 26.67 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "46"))
+      (pin power_in line (at 7.62 -26.67 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "45"))
+    )
+  )
+
+  (symbol "nRF52832-QFAA"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U?" (at 0 22.86 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "nRF52832-QFAA" (at 0 -22.86 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (at 0 0 0))
+    (symbol "nRF52832-QFAA_0_1"
+      (rectangle (start -10.16 21.59) (end 10.16 -21.59) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "nRF52832-QFAA_1_1"
+      (pin passive line (at -12.7 20.32 0) (length 2.54) (name "DEC1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin input line (at -12.7 17.78 0) (length 2.54) (name "P0.00/XLCLK1" (effects (font (size 1.27 1.27)))) (number "2"))
+      (pin input line (at -12.7 15.24 0) (length 2.54) (name "P0.01/XLCLK2" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin input line (at -12.7 5.08 0) (length 2.54) (name "P0.05/SPI_CSN" (effects (font (size 1.27 1.27)))) (number "9"))
+      (pin output line (at -12.7 2.54 0) (length 2.54) (name "P0.06/SPI_MISO" (effects (font (size 1.27 1.27)))) (number "10"))
+      (pin input line (at -12.7 0 0) (length 2.54) (name "P0.07/SPI_MOSI" (effects (font (size 1.27 1.27)))) (number "11"))
+      (pin input line (at -12.7 -2.54 0) (length 2.54) (name "P0.08/SPI_SCK" (effects (font (size 1.27 1.27)))) (number "12"))
+      (pin output line (at 12.7 10.16 180) (length 2.54) (name "P0.09/IRQ" (effects (font (size 1.27 1.27)))) (number "13"))
+      (pin input line (at -12.7 -5.08 0) (length 2.54) (name "P0.10/RESET" (effects (font (size 1.27 1.27)))) (number "14"))
+      (pin power_in line (at -2.54 24.13 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "7"))
+      (pin power_in line (at 0 24.13 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "8"))
+      (pin power_in line (at 2.54 24.13 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "32"))
+      (pin power_in line (at 5.08 24.13 270) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "44"))
+      (pin power_in line (at 0 -24.13 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "37"))
+      (pin power_in line (at 2.54 -24.13 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "38"))
+      (pin power_in line (at -2.54 -24.13 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "45"))
+      (pin passive line (at -12.7 7.62 0) (length 2.54) (name "DEC2" (effects (font (size 1.27 1.27)))) (number "31"))
+      (pin passive line (at -12.7 -7.62 0) (length 2.54) (name "DEC3" (effects (font (size 1.27 1.27)))) (number "33"))
+      (pin passive line (at -12.7 -10.16 0) (length 2.54) (name "DCC" (effects (font (size 1.27 1.27)))) (number "34"))
+      (pin output line (at 12.7 17.78 180) (length 2.54) (name "ANT1" (effects (font (size 1.27 1.27)))) (number "35"))
+      (pin power_in line (at 12.7 15.24 180) (length 2.54) (name "ANT2/GND" (effects (font (size 1.27 1.27)))) (number "36"))
+      (pin passive line (at -12.7 -12.7 0) (length 2.54) (name "DEC4" (effects (font (size 1.27 1.27)))) (number "42"))
+      (pin passive line (at -12.7 -15.24 0) (length 2.54) (name "DEC5" (effects (font (size 1.27 1.27)))) (number "43"))
+      (pin input line (at 12.7 7.62 180) (length 2.54) (name "SWDCLK" (effects (font (size 1.27 1.27)))) (number "29"))
+      (pin bidirectional line (at 12.7 5.08 180) (length 2.54) (name "SWDIO" (effects (font (size 1.27 1.27)))) (number "30"))
+    )
+  )
+
+  (symbol "MCP73831T-2ACI"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U4" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MCP73831T-2ACI/OT" (at 0 -5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+    (symbol "MCP73831T-2ACI_0_1"
+      (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "MCP73831T-2ACI_1_1"
+      (pin power_in line (at -7.62 2.54 0) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "4"))
+      (pin power_out line (at 7.62 2.54 180) (length 2.54) (name "VBAT" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin output line (at 7.62 -2.54 180) (length 2.54) (name "STAT" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin input line (at -7.62 -2.54 0) (length 2.54) (name "PROG" (effects (font (size 1.27 1.27)))) (number "5"))
+      (pin power_in line (at 0 -6.35 90) (length 2.54) (name "VSS" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  (symbol "TLV1117LV33"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U5" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TLV1117LV33DCYR" (at 0 -5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2" (at 0 0 0))
+    (symbol "TLV1117LV33_0_1"
+      (rectangle (start -5.08 3.81) (end 5.08 -3.81) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "TLV1117LV33_1_1"
+      (pin power_in line (at -7.62 0 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin power_out line (at 7.62 0 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "2"))
+      (pin power_in line (at 0 -6.35 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin input line (at -7.62 -2.54 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "4"))
+    )
+  )
+
+  (symbol "PRTR5V0U2X"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U6" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "PRTR5V0U2X,215" (at 0 -5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-143" (at 0 0 0))
+    (symbol "PRTR5V0U2X_0_1"
+      (rectangle (start -3.81 3.81) (end 3.81 -3.81) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "PRTR5V0U2X_1_1"
+      (pin passive line (at -6.35 2.54 0) (length 2.54) (name "I/O1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin power_in line (at 0 -6.35 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "2"))
+      (pin passive line (at 6.35 2.54 180) (length 2.54) (name "I/O2" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin power_in line (at 0 6.35 270) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "4"))
+    )
+  )
+
+  (symbol "Crystal_32kHz"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "Y?" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "32.768kHz" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 0 0 0))
+    (symbol "Crystal_32kHz_0_1"
+      (rectangle (start -2.54 1.27) (end 2.54 -1.27) (stroke (width 0.254) (type default)) (fill (type none)))
+      (line (start -1.27 1.27) (end -1.27 2.54) (stroke (width 0.254)))
+      (line (start 1.27 1.27) (end 1.27 2.54) (stroke (width 0.254)))
+      (line (start -1.27 -1.27) (end -1.27 -2.54) (stroke (width 0.254)))
+      (line (start 1.27 -1.27) (end 1.27 -2.54) (stroke (width 0.254)))
+    )
+    (symbol "Crystal_32kHz_1_1"
+      (pin passive line (at 0 5.08 270) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin passive line (at 0 -5.08 90) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  (symbol "Crystal_8MHz"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "Y2" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "8MHz" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_HC49-SMD" (at 0 0 0))
+    (symbol "Crystal_8MHz_0_1"
+      (rectangle (start -3.81 1.27) (end 3.81 -1.27) (stroke (width 0.254) (type default)) (fill (type none)))
+    )
+    (symbol "Crystal_8MHz_1_1"
+      (pin passive line (at 0 5.08 270) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin passive line (at 0 -5.08 90) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  (symbol "Antenna_2_4GHz"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "ANT?" (at 0 5.08 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "2450AT18A100E" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_Antenna:Johanson_2450AT18A100_0805" (at 0 0 0))
+    (symbol "Antenna_2_4GHz_0_1"
+      (arc (start 0 0) (mid -1.27 2.54) (end 0 5.08) (stroke (width 0.508)))
+      (arc (start 0 0) (mid 1.27 2.54) (end 0 5.08) (stroke (width 0.508)))
+    )
+    (symbol "Antenna_2_4GHz_1_1"
+      (pin input line (at 0 -2.54 90) (length 2.54) (name "FEED" (effects (font (size 1.27 1.27)))) (number "1"))
+    )
+  )
+
+  (symbol "USB_A_Plug"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "J1" (at 0 7.62 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "USB_A_Plug_RightAngle" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_USB:USB_A_Plug_RightAngle" (at 0 0 0))
+    (symbol "USB_A_Plug_0_1"
+      (rectangle (start -5.08 6.35) (end 5.08 -6.35) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "USB_A_Plug_1_1"
+      (pin power_out line (at -7.62 5.08 0) (length 2.54) (name "VBUS" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin bidirectional line (at -7.62 2.54 0) (length 2.54) (name "D-" (effects (font (size 1.27 1.27)))) (number "2"))
+      (pin bidirectional line (at -7.62 0 0) (length 2.54) (name "D+" (effects (font (size 1.27 1.27)))) (number "3"))
+      (pin power_out line (at -7.62 -2.54 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "4"))
+      (pin passive line (at -7.62 -5.08 0) (length 2.54) (name "SHIELD" (effects (font (size 1.27 1.27)))) (number "5"))
+    )
+  )
+
+  (symbol "LED_Red_0603"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "D?" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "Red_LED" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 0 0 0))
+    (symbol "LED_Red_0603_0_1"
+      (polyline (pts (xy -1.27 0) (xy 1.27 0)) (stroke (width 0.254)))
+      (polyline (pts (xy -1.27 1.27) (xy 1.27 0) (xy -1.27 -1.27)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy 1.27 1.27) (xy 1.27 -1.27)) (stroke (width 0.254)))
+    )
+    (symbol "LED_Red_0603_1_1"
+      (pin input line (at -3.81 0 0) (length 2.54) (name "A" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin output line (at 3.81 0 180) (length 2.54) (name "K" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  (symbol "Resistor_0402"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "R?" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "R" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0 0))
+    (symbol "Resistor_0402_0_1"
+      (rectangle (start -2.54 0.635) (end 2.54 -0.635) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "Resistor_0402_1_1"
+      (pin passive line (at -5.08 0 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin passive line (at 5.08 0 180) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  (symbol "Capacitor_0402"
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "C?" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "C" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0 0))
+    (symbol "Capacitor_0402_0_1"
+      (line (start -1.27 0.635) (end 1.27 0.635) (stroke (width 0.254)))
+      (line (start -1.27 -0.635) (end 1.27 -0.635) (stroke (width 0.254)))
+    )
+    (symbol "Capacitor_0402_1_1"
+      (pin passive line (at 0 3.81 270) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1"))
+      (pin passive line (at 0 -3.81 90) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2"))
+    )
+  )
+
+  ;; ============================================================
+  ;; Schematic connections
+  ;; ============================================================
+  
+  ;; Power section
+  (wire (net "VBUS") (pts (xy 50.8 25.4) (xy 71.12 25.4)))
+  (wire (net "VBUS") (pts (xy 71.12 25.4) (xy 71.12 27.94)))
+  (wire (net "VBUS") (pts (xy 50.8 25.4) (xy 50.8 40.64)))
+  (wire (net "3V3") (pts (xy 81.28 30.48) (xy 101.6 30.48)))
+  (wire (net "3V3") (pts (xy 101.6 30.48) (xy 101.6 101.6)))
+  (wire (net "3V3") (pts (xy 101.6 101.6) (xy 149.86 101.6)))
+  (wire (net "3V3") (pts (xy 149.86 101.6) (xy 149.86 30.48)))
+  (wire (net "GND") (pts (xy 50.8 30.48) (xy 71.12 30.48)))
+  (wire (net "GND") (pts (xy 71.12 30.48) (xy 71.12 35.56)))
+  (wire (net "GND") (pts (xy 50.8 30.48) (xy 50.8 45.72)))
+
+  ;; USB data lines through ESD protection
+  (wire (net "USB_DM") (pts (xy 50.8 33.02) (xy 63.5 33.02)))
+  (wire (net "USB_DP") (pts (xy 50.8 35.56) (xy 63.5 35.56)))
+  (wire (net "USB_DM_ESD") (pts (xy 63.5 33.02) (xy 81.28 33.02)))
+  (wire (net "USB_DP_ESD") (pts (xy 63.5 35.56) (xy 81.28 35.56)))
+  
+  ;; Crystal for STM32
+  (wire (net "HSE_IN") (pts (xy 111.76 50.8) (xy 121.92 50.8)))
+  (wire (net "HSE_OUT") (pts (xy 111.76 53.34) (xy 121.92 53.34)))
+
+  ;; SPI0 - Radio A
+  (wire (net "SPIA_SCK") (pts (xy 149.86 60.96) (xy 160.02 60.96)))
+  (wire (net "SPIA_MISO") (pts (xy 160.02 63.5) (xy 149.86 63.5)))
+  (wire (net "SPIA_MOSI") (pts (xy 149.86 66.04) (xy 160.02 66.04)))
+  (wire (net "SPIA_CS") (pts (xy 149.86 68.58) (xy 160.02 68.58)))
+  (wire (net "SPIA_IRQ") (pts (xy 160.02 71.12) (xy 149.86 71.12)))
+  (wire (net "SPIA_RST") (pts (xy 149.86 73.66) (xy 160.02 73.66)))
+
+  ;; SPI1 - Radio B
+  (wire (net "SPIB_SCK") (pts (xy 149.86 81.28) (xy 160.02 81.28)))
+  (wire (net "SPIB_MISO") (pts (xy 160.02 83.82) (xy 149.86 83.82)))
+  (wire (net "SPIB_MOSI") (pts (xy 149.86 86.36) (xy 160.02 86.36)))
+  (wire (net "SPIB_CS") (pts (xy 149.86 88.9) (xy 160.02 88.9)))
+  (wire (net "SPIB_IRQ") (pts (xy 160.02 91.44) (xy 149.86 91.44)))
+  (wire (net "SPIB_RST") (pts (xy 149.86 93.98) (xy 160.02 93.98)))
+
+  ;; LED connections
+  (wire (net "LED_RADIO_A") (pts (xy 149.86 35.56) (xy 160.02 35.56)))
+  (wire (net "LED_RADIO_B") (pts (xy 149.86 38.1) (xy 160.02 38.1)))
+  (wire (net "LED_USB") (pts (xy 149.86 40.64) (xy 160.02 40.64)))
+  (wire (net "LED_POWER") (pts (xy 149.86 43.18) (xy 160.02 43.18)))
+
+  ;; Antenna connections
+  (wire (net "RF_A") (pts (xy 175.26 55.88) (xy 190.5 55.88)))
+  (wire (net "RF_B") (pts (xy 175.26 101.6) (xy 190.5 101.6)))
+
+  ;; ============================================================
+  ;; Component instances
+  ;; ============================================================
+  
+  (symbol_instances
+    (symbol_instance (path "/U1") (reference "U1") (unit 1) (value "STM32F401CCU6"))
+    (symbol_instance (path "/U2") (reference "U2") (unit 1) (value "nRF52832-QFAA"))
+    (symbol_instance (path "/U3") (reference "U3") (unit 1) (value "nRF52832-QFAA"))
+    (symbol_instance (path "/U4") (reference "U4") (unit 1) (value "MCP73831T-2ACI/OT"))
+    (symbol_instance (path "/U5") (reference "U5") (unit 1) (value "TLV1117LV33DCYR"))
+    (symbol_instance (path "/U6") (reference "U6") (unit 1) (value "PRTR5V0U2X,215"))
+    (symbol_instance (path "/Y1") (reference "Y1") (unit 1) (value "32.768kHz"))
+    (symbol_instance (path "/Y2") (reference "Y2") (unit 1) (value "8MHz"))
+    (symbol_instance (path "/Y3") (reference "Y3") (unit 1) (value "32.768kHz"))
+    (symbol_instance (path "/Y4") (reference "Y4") (unit 1) (value "32.768kHz"))
+    (symbol_instance (path "/ANT1") (reference "ANT1") (unit 1) (value "2450AT18A100E"))
+    (symbol_instance (path "/ANT2") (reference "ANT2") (unit 1) (value "2450AT18A100E"))
+    (symbol_instance (path "/J1") (reference "J1") (unit 1) (value "USB_A_Plug_RightAngle"))
+    (symbol_instance (path "/J2") (reference "J2") (unit 1) (value "Molex_5034800700"))
+    (symbol_instance (path "/SW1") (reference "SW1") (unit 1) (value "SKQGAFE010"))
+    (symbol_instance (path "/D1") (reference "D1") (unit 1) (value "Red_LED"))
+    (symbol_instance (path "/D2") (reference "D2") (unit 1) (value "Red_LED"))
+    (symbol_instance (path "/D3") (reference "D3") (unit 1) (value "Red_LED"))
+    (symbol_instance (path "/D4") (reference "D4") (unit 1) (value "Red_LED"))
+    (symbol_instance (path "/D5") (reference "D5") (unit 1) (value "RB521S30T1G"))
+    (symbol_instance (path "/R1") (reference "R1") (unit 1) (value "2.0k"))
+    (symbol_instance (path "/R2") (reference "R2") (unit 1) (value "10k"))
+    (symbol_instance (path "/R3") (reference "R3") (unit 1) (value "330"))
+    (symbol_instance (path "/R4") (reference "R4") (unit 1) (value "330"))
+    (symbol_instance (path "/R5") (reference "R5") (unit 1) (value "330"))
+    (symbol_instance (path "/R6") (reference "R6") (unit 1) (value "330"))
+    (symbol_instance (path "/R7") (reference "R7") (unit 1) (value "22"))
+    (symbol_instance (path "/R8") (reference "R8") (unit 1) (value "22"))
+    (symbol_instance (path "/R9") (reference "R9") (unit 1) (value "1.5k"))
+    (symbol_instance (path "/R10") (reference "R10") (unit 1) (value "4.7k"))
+    (symbol_instance (path "/R11") (reference "R11") (unit 1) (value "4.7k"))
+    (symbol_instance (path "/C1") (reference "C1") (unit 1) (value "4.7uF"))
+    (symbol_instance (path "/C2") (reference "C2") (unit 1) (value "1uF"))
+    (symbol_instance (path "/C3") (reference "C3") (unit 1) (value "4.7uF"))
+    (symbol_instance (path "/C4") (reference "C4") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C5") (reference "C5") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C6") (reference "C6") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C7") (reference "C7") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C8") (reference "C8") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C9") (reference "C9") (unit 1) (value "1uF"))
+    (symbol_instance (path "/C10") (reference "C10") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C11") (reference "C11") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C12") (reference "C12") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C13") (reference "C13") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C14") (reference "C14") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C15") (reference "C15") (unit 1) (value "1uF"))
+    (symbol_instance (path "/C16") (reference "C16") (unit 1) (value "1uF"))
+    (symbol_instance (path "/C17") (reference "C17") (unit 1) (value "1uF"))
+    (symbol_instance (path "/C18") (reference "C18") (unit 1) (value "100nF"))
+    (symbol_instance (path "/C20") (reference "C20") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C21") (reference "C21") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C22") (reference "C22") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C23") (reference "C23") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C24") (reference "C24") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C25") (reference "C25") (unit 1) (value "12pF"))
+    (symbol_instance (path "/C26") (reference "C26") (unit 1) (value "0.5pF"))
+    (symbol_instance (path "/C27") (reference "C27") (unit 1) (value "0.5pF"))
+    (symbol_instance (path "/L1") (reference "L1") (unit 1) (value "10nH"))
+    (symbol_instance (path "/L2") (reference "L2") (unit 1) (value "10nH"))
+    (symbol_instance (path "/L3") (reference "L3") (unit 1) (value "3.3nH"))
+  )
+)
