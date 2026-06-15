@@ -1,0 +1,17 @@
+(kicad_sch (version 20230121) (generator "eeschema")
+  (uuid "d09b6716-43f1-46f9-8692-06b3e7784f1b")
+  (paper "A4")
+  (lib_symbols
+    (symbol "STM32H723VGT6" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at 0 30.48 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "STM32H723VGT6" (at 0 27.94 0) (effects (font (size 1.27 1.27))))
+    )
+    (symbol "ICE40UP5K" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at 0 20.32 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "ICE40UP5K" (at 0 17.78 0) (effects (font (size 1.27 1.27))))
+    )
+  )
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

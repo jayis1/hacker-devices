@@ -1,0 +1,617 @@
+(kicad_sch (version 20231014) (generator eeschema)
+
+  (uuid e4a7d5a1-0b3c-4f8e-9d2a-1c5e6f7a8b9c)
+
+  (title_block
+    (title "Infrared Phantom - IR Security Research Toolkit")
+    (date "2026-06-15")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "CERN-OHL-S v2")
+  )
+
+  ;; ========================================
+  ;; Power Section
+  ;; ========================================
+
+  ;; USB Connector (USB-A Male Plug)
+  (symbol "Connector:USB_A_M" (in_bom yes) (on_board yes)
+    (at 25.4 25.4)
+    (uuid a1b2c3d4-0001-4000-8000-000000000001)
+    (property "Reference" "J1" (at 25.4 20.32 0))
+    (property "Value" "USB-A-M-PLUG" (at 25.4 22.86 0))
+    (pin "VBUS" (uuid 10000001))   ;; +5V from USB
+    (pin "D+" (uuid 10000002))     ;; USB Data+
+    (pin "D-" (uuid 10000003))     ;; USB Data-
+    (pin "GND" (uuid 10000004))    ;; USB Ground
+    (pin "SHIELD" (uuid 10000005)) ;; USB Shield
+  )
+
+  ;; USB ESD Protection
+  (symbol "Device:D_TVS" (in_bom yes) (on_board yes)
+    (at 38.1 25.4)
+    (uuid a1b2c3d4-0001-4000-8000-000000000002)
+    (property "Reference" "D1" (at 38.1 22.86 0))
+    (property "Value" "PRTR5V0U2X" (at 38.1 27.94 0))
+    (pin "1" (uuid 20000001))  ;; D+
+    (pin "2" (uuid 20000002))  ;; GND
+    (pin "3" (uuid 20000003))  ;; D-
+    (pin "4" (uuid 20000004))  ;; VBUS
+  )
+
+  ;; Buck Converter (3.3V)
+  (symbol "Regulator_Switching:TLV62569" (in_bom yes) (on_board yes)
+    (at 50.8 38.1)
+    (uuid a1b2c3d4-0001-4000-8000-000000000003)
+    (property "Reference" "U7" (at 50.8 33.02 0))
+    (property "Value" "TLV62569DCNR" (at 50.8 35.56 0))
+    (pin "VIN" (uuid 30000001))    ;; +5V input
+    (pin "GND" (uuid 30000002))    ;; Ground
+    (pin "EN" (uuid 30000003))      ;; Enable (tie to VIN)
+    (pin "SW" (uuid 30000004))     ;; Switch output
+    (pin "FB" (uuid 30000005))     ;; Feedback
+    (pin "PGND" (uuid 30000006))   ;; Power ground
+  )
+
+  ;; Buck Inductor
+  (symbol "Device:L" (in_bom yes) (on_board yes)
+    (at 63.5 38.1)
+    (uuid a1b2c3d4-0001-4000-8000-000000000004)
+    (property "Reference" "L1" (at 63.5 35.56 0))
+    (property "Value" "2.2uH" (at 63.5 40.64 0))
+    (property "Footprint" "Inductor_SMD:L_2016_0805Metric" (at 63.5 38.1 0))
+    (pin "1" (uuid 40000001))  ;; SW side
+    (pin "2" (uuid 40000002))  ;; Output side
+  )
+
+  ;; Feedback Resistors
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 71.12 43.18)
+    (uuid a1b2c3d4-0001-4000-8000-000000000005)
+    (property "Reference" "R8" (at 71.12 40.64 0))
+    (property "Value" "100k" (at 71.12 45.72 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 71.12 43.18 0))
+    (pin "1" (uuid 50000001))
+    (pin "2" (uuid 50000002))
+  )
+
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 71.12 50.8)
+    (uuid a1b2c3d4-0001-4000-8000-000000000006)
+    (property "Reference" "R9" (at 71.12 48.26 0))
+    (property "Value" "22k" (at 71.12 53.34 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 71.12 50.8 0))
+    (pin "1" (uuid 60000001))
+    (pin "2" (uuid 60000002))
+  )
+
+  ;; LDO (1.8V)
+  (symbol "Regulator_Linear:LP3985-1.8" (in_bom yes) (on_board yes)
+    (at 88.9 38.1)
+    (uuid a1b2c3d4-0001-4000-8000-000000000007)
+    (property "Reference" "U8" (at 88.9 33.02 0))
+    (property "Value" "LP3985IM5-1.8" (at 88.9 35.56 0))
+    (pin "VIN" (uuid 70000001))
+    (pin "GND" (uuid 70000002))
+    (pin "EN" (uuid 70000003))
+    (pin "BYP" (uuid 70000004))
+    (pin "VOUT" (uuid 70000005))
+  )
+
+  ;; Power flags
+  (symbol "power:+5V" (in_bom no) (on_board no) (at 25.4 20.32)
+    (uuid a1b2c3d4-0001-4000-8000-000000000008))
+  (symbol "power:+3V3" (in_bom no) (on_board no) (at 76.2 35.56)
+    (uuid a1b2c3d4-0001-4000-8000-000000000009))
+  (symbol "power:+1V8" (in_bom no) (on_board no) (at 96.52 35.56)
+    (uuid a1b2c3d4-0001-4000-8000-000000000010))
+  (symbol "power:GND" (in_bom no) (on_board no) (at 25.4 55.88)
+    (uuid a1b2c3d4-0001-4000-8000-000000000011))
+
+  ;; ========================================
+  ;; MCU Section — STM32H743VIT6
+  ;; ========================================
+
+  (symbol "MCU_ST_STM32H7:STM32H743VIT6" (in_bom yes) (on_board yes)
+    (at 139.7 101.6)
+    (uuid a1b2c3d4-0002-4000-8000-000000000001)
+    (property "Reference" "U1" (at 139.7 50.8 0))
+    (property "Value" "STM32H743VIT6" (at 139.7 53.34 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 139.7 101.6 0))
+    ;; Key pins (not all 100 shown — schematic reference only)
+    (pin "PA0" (uuid 80000001))     ;; nRF_INT
+    (pin "PA1" (uuid 80000002))     ;; USER_BTN
+    (pin "PA2" (uuid 80000003))     ;; SPI1_MOSI
+    (pin "PA3" (uuid 80000004))     ;; SPI1_MISO
+    (pin "PA4" (uuid 80000005))     ;; SPI1_NSS
+    (pin "PA5" (uuid 80000006))     ;; SPI1_SCK
+    (pin "PA6" (uuid 80000007))     ;; IR_DIGITAL (TIM3_CH1)
+    (pin "PA7" (uuid 80000008))     ;; IR_ANALOG (ADC1_IN7)
+    (pin "PA9" (uuid 80000009))     ;; USART1_TX (nRF)
+    (pin "PA10" (uuid 80000010))    ;; USART1_RX (nRF)
+    (pin "PA13" (uuid 80000011))    ;; SWDIO
+    (pin "PA14" (uuid 80000012))    ;; SWCLK
+    (pin "PB3" (uuid 80000013))     ;; SPI3_SCK (SD)
+    (pin "PB4" (uuid 80000014))     ;; SPI3_MISO (SD)
+    (pin "PB5" (uuid 80000015))     ;; SPI3_MOSI (SD)
+    (pin "PB6" (uuid 80000016))     ;; OLED_RST
+    (pin "PB7" (uuid 80000017))     ;; OLED_DC
+    (pin "PC0" (uuid 80000018))     ;; ULPI_STP
+    (pin "PC1" (uuid 80000019))     ;; ULPI_DIR
+    (pin "PC2" (uuid 80000020))     ;; ULPI_NXT
+    (pin "PC3" (uuid 80000021))     ;; ULPI_CLK
+    (pin "PD0" (uuid 80000022))     ;; nRF_RESET
+    (pin "PD1" (uuid 80000023))     ;; nRF_RTS
+    (pin "PD2" (uuid 80000024))     ;; IR_PWM (TIM3_CH1)
+    (pin "PD4" (uuid 80000025))     ;; SD_CMD_DIR
+    (pin "PD5" (uuid 80000026))     ;; SD_D3
+    (pin "PD6" (uuid 80000027))     ;; SD_D2
+    (pin "PD7" (uuid 80000028))     ;; SD_D1
+    (pin "PD8-PD15" (uuid 80000029)) ;; ULPI_D[7:0]
+    (pin "PE0" (uuid 80000030))     ;; nRF_CTS
+    (pin "PE1" (uuid 80000031))     ;; IR_LED_EN
+    (pin "PE2" (uuid 80000032))     ;; LED_STATUS
+    (pin "PE3" (uuid 80000033))     ;; LED_ERROR
+    (pin "PE4" (uuid 80000034))     ;; IR_PWM_GATE (TIM3_CH2)
+    (pin "PE5" (uuid 80000035))     ;; OLED_CS
+    (pin "PE6" (uuid 80000036))     ;; SD_CD
+    (pin "NRST" (uuid 80000037))    ;; System reset
+    (pin "BOOT0" (uuid 80000038))   ;; Boot mode
+    (pin "VBAT" (uuid 80000039))    ;; Backup battery
+    (pin "VDD" (uuid 80000040))     ;; 3.3V (multiple)
+    (pin "VSS" (uuid 80000041))     ;; Ground (multiple)
+    (pin "VDDA" (uuid 80000042))    ;; 3.3V analog
+    (pin "VSSA" (uuid 80000043))    ;; Analog ground
+    (pin "VCAP1" (uuid 80000044))   ;; 1.2V SMPS cap
+    (pin "PH0" (uuid 80000045))     ;; HSE_IN (25 MHz)
+    (pin "PH1" (uuid 80000046))     ;; HSE_OUT (25 MHz)
+  )
+
+  ;; BOOT0 pull-down
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 114.3 139.7)
+    (uuid a1b2c3d4-0002-4000-8000-000000000002)
+    (property "Reference" "R1" (at 114.3 137.16 0))
+    (property "Value" "10k" (at 114.3 142.24 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 114.3 139.7 0))
+    (pin "1" (uuid 81000001))
+    (pin "2" (uuid 81000002))
+  )
+
+  ;; ========================================
+  ;; USB Section — USB3320 ULPI PHY
+  ;; ========================================
+
+  (symbol "Interface_USB:USB3320-EZ" (in_bom yes) (on_board yes)
+    (at 63.5 101.6)
+    (uuid a1b2c3d4-0003-4000-8000-000000000001)
+    (property "Reference" "U3" (at 63.5 76.2 0))
+    (property "Value" "USB3320-EZK" (at 63.5 78.74 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm" (at 63.5 101.6 0))
+    (pin "DP" (uuid 90000001))        ;; USB D+
+    (pin "DM" (uuid 90000002))        ;; USB D-
+    (pin "CLK" (uuid 90000003))       ;; ULPI_CLK → PC3
+    (pin "STP" (uuid 90000004))       ;; ULPI_STP ← PC0
+    (pin "DIR" (uuid 90000005))       ;; ULPI_DIR → PC1
+    (pin "NXT" (uuid 90000006))       ;; ULPI_NXT → PC2
+    (pin "D0-D7" (uuid 90000007))     ;; ULPI_D[7:0] → PD8-PD15
+    (pin "VBUS" (uuid 90000008))      ;; VBUS detect
+    (pin "ID" (uuid 90000009))        ;; GND (device mode)
+    (pin "VDDA33" (uuid 90000010))   ;; 3.3V analog
+    (pin "VDDA18" (uuid 90000011))   ;; 1.8V core
+    (pin "VDD33" (uuid 90000012))    ;; 3.3V digital
+    (pin "GND" (uuid 90000013))      ;; Ground
+    (pin "XTAL1" (uuid 90000014))    ;; 27 MHz crystal
+    (pin "XTAL2" (uuid 90000015))    ;; 27 MHz crystal
+    (pin "RESET" (uuid 90000016))     ;; Reset (active-low, pull-up)
+  )
+
+  ;; USB series resistors
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 45.72 96.52)
+    (uuid a1b2c3d4-0003-4000-8000-000000000002)
+    (property "Reference" "R4" (at 45.72 93.98 0))
+    (property "Value" "27.4" (at 45.72 99.06 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 45.72 96.52 0))
+    (pin "1" (uuid 91000001))
+    (pin "2" (uuid 91000002))
+  )
+
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 45.72 106.68)
+    (uuid a1b2c3d4-0003-4000-8000-000000000003)
+    (property "Reference" "R5" (at 45.72 104.14 0))
+    (property "Value" "27.4" (at 45.72 109.22 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 45.72 106.68 0))
+    (pin "1" (uuid 92000001))
+    (pin "2" (uuid 92000002))
+  )
+
+  ;; 27 MHz crystal for USB PHY
+  (symbol "Device:Crystal" (in_bom yes) (on_board yes)
+    (at 50.8 121.92)
+    (uuid a1b2c3d4-0003-4000-8000-000000000004)
+    (property "Reference" "Y1" (at 50.8 119.38 0))
+    (property "Value" "27.000MHz" (at 50.8 124.46 0))
+    (property "Footprint" "Crystal:Crystal_SMD_5032-2Pin_5.0x3.2mm" (at 50.8 121.92 0))
+    (pin "1" (uuid 93000001))
+    (pin "2" (uuid 93000002))
+  )
+
+  ;; ========================================
+  ;; IR Receiver Section — TSMP58000
+  ;; ========================================
+
+  (symbol "Sensor_Optical:TSMP58000" (in_bom yes) (on_board yes)
+    (at 203.2 50.8)
+    (uuid a1b2c3d4-0004-4000-8000-000000000001)
+    (property "Reference" "U6" (at 203.2 43.18 0))
+    (property "Value" "TSMP58000" (at 203.2 45.72 0))
+    (pin "VOUT" (uuid a0000001))    ;; Analog → PA7 (ADC1_IN7)
+    (pin "GND" (uuid a0000002))     ;; Ground
+    (pin "VCC" (uuid a0000003))     ;; 3.3V
+    (pin "OUT" (uuid a0000004))     ;; Digital → PA6 (TIM3_CH1)
+  )
+
+  ;; ========================================
+  ;; IR Transmitter Section — MOSFET Driver + LED Array
+  ;; ========================================
+
+  ;; NPN driver for P-MOSFET
+  (symbol "Transistor_BJT:BC847C" (in_bom yes) (on_board yes)
+    (at 210.82 73.66)
+    (uuid a1b2c3d4-0004-4000-8000-000000000002)
+    (property "Reference" "Q11" (at 210.82 68.58 0))
+    (property "Value" "BC847C" (at 210.82 71.12 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 210.82 73.66 0))
+    (pin "B" (uuid a1000001))  ;; Base → R3 1k → PD2 (TIM3_CH1)
+    (pin "C" (uuid a1000002))  ;; Collector → Si2312CDS gate
+    (pin "E" (uuid a1000003))  ;; Emitter → GND
+  )
+
+  ;; P-MOSFET for LED array switching
+  (symbol "Transistor_FET:Si2312CDS" (in_bom yes) (on_board yes)
+    (at 218.44 66.04)
+    (uuid a1b2c3d4-0004-4000-8000-000000000003)
+    (property "Reference" "Q1" (at 218.44 60.96 0))
+    (property "Value" "Si2312CDS" (at 218.44 63.5 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-323" (at 218.44 66.04 0))
+    (pin "G" (uuid a2000001))  ;; Gate ← BC847C collector
+    (pin "S" (uuid a2000002))  ;; Source → VBUS (5V)
+    (pin "D" (uuid a2000003))  ;; Drain → IR LED anodes
+  )
+
+  ;; Gate resistor
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 200.66 73.66)
+    (uuid a1b2c3d4-0004-4000-8000-000000000004)
+    (property "Reference" "R3" (at 200.66 71.12 0))
+    (property "Value" "1k" (at 200.66 76.2 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 200.66 73.66 0))
+    (pin "1" (uuid a3000001))  ;; ← STM32 PD2 (IR_PWM)
+    (pin "2" (uuid a3000002))  ;; → BC847C base
+  )
+
+  ;; IR LED array (9x TSAL6100, shown as single symbol)
+  (symbol "LED:TSAL6100_Array" (in_bom yes) (on_board yes)
+    (at 228.6 76.2)
+    (uuid a1b2c3d4-0004-4000-8000-000000000005)
+    (property "Reference" "Q2-Q10" (at 228.6 68.58 0))
+    (property "Value" "TSAL6100_x9" (at 228.6 71.12 0))
+    (property "Footprint" "ir_phantom:TSAL6100_3x3_Array" (at 228.6 76.2 0))
+    (pin "A" (uuid a4000001))    ;; Anodes → Si2312CDS drain (via R6/R7 current limiters)
+    (pin "K" (uuid a4000002))    ;; Cathodes → GND
+  )
+
+  ;; Current limiting resistors (per string of 3 LEDs)
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 223.52 68.58)
+    (uuid a1b2c3d4-0004-4000-8000-000000000006)
+    (property "Reference" "R6" (at 223.52 66.04 0))
+    (property "Value" "10" (at 223.52 71.12 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 223.52 68.58 0))
+    (pin "1" (uuid a5000001))
+    (pin "2" (uuid a5000002))
+  )
+
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 223.52 76.2)
+    (uuid a1b2c3d4-0004-4000-8000-000000000007)
+    (property "Reference" "R7" (at 223.52 73.66 0))
+    (property "Value" "10" (at 223.52 78.74 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 223.52 76.2 0))
+    (pin "1" (uuid a6000001))
+    (pin "2" (uuid a6000002))
+  )
+
+  ;; Gate filter capacitor
+  (symbol "Device:C" (in_bom yes) (on_board yes)
+    (at 213.36 81.28)
+    (uuid a1b2c3d4-0004-4000-8000-000000000008)
+    (property "Reference" "C27" (at 213.36 78.74 0))
+    (property "Value" "10nF" (at 213.36 83.82 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 213.36 81.28 0))
+    (pin "1" (uuid a7000001))
+    (pin "2" (uuid a7000002))
+  )
+
+  ;; ========================================
+  ;; SPI NOR Flash — W25Q128JVSIQ
+  ;; ========================================
+
+  (symbol "Memory_Flash:W25Q128JVS" (in_bom yes) (on_board yes)
+    (at 101.6 139.7)
+    (uuid a1b2c3d4-0005-4000-8000-000000000001)
+    (property "Reference" "U4" (at 101.6 132.08 0))
+    (property "Value" "W25Q128JVSIQ" (at 101.6 134.62 0))
+    (property "Footprint" "Package_SO:SOP-8_3.9x4.9mm_P1.27mm" (at 101.6 139.7 0))
+    (pin "/CS" (uuid b0000001))      ;; PA4 (SPI1_NSS)
+    (pin "DO" (uuid b0000002))       ;; PA3 (SPI1_MISO)
+    (pin "/WP" (uuid b0000003))      ;; 3V3
+    (pin "GND" (uuid b0000004))      ;; GND
+    (pin "DI" (uuid b0000005))       ;; PA2 (SPI1_MOSI)
+    (pin "CLK" (uuid b0000006))      ;; PA5 (SPI1_SCK)
+    (pin "/HOLD" (uuid b0000007))   ;; 3V3
+    (pin "VCC" (uuid b0000008))      ;; 3V3
+  )
+
+  ;; ========================================
+  ;; OLED Display — SSD1306
+  ;; ========================================
+
+  (symbol "Display_Graphics:SSD1306_128x32" (in_bom yes) (on_board yes)
+    (at 165.1 152.4)
+    (uuid a1b2c3d4-0005-4000-8000-000000000002)
+    (property "Reference" "U5" (at 165.1 144.78 0))
+    (property "Value" "SSD1306_128x32_SPI" (at 165.1 147.32 0))
+    (pin "SCLK" (uuid b1000001))    ;; PB5 (SPI2_SCK)
+    (pin "SDA" (uuid b1000002))     ;; PB3 (SPI2_MOSI)
+    (pin "/CS" (uuid b1000003))     ;; PE5 (GPIO)
+    (pin "DC" (uuid b1000004))      ;; PB7 (GPIO)
+    (pin "/RES" (uuid b1000005))    ;; PB6 (GPIO)
+    (pin "VCC" (uuid b1000006))     ;; 3V3
+    (pin "GND" (uuid b1000007))     ;; GND
+  )
+
+  ;; ========================================
+  ;; BLE Module — nRF52840-M.2
+  ;; ========================================
+
+  (symbol "RF_Bluetooth:nRF52840-M2" (in_bom yes) (on_board yes)
+    (at 101.6 50.8)
+    (uuid a1b2c3d4-0006-4000-8000-000000000001)
+    (property "Reference" "U2" (at 101.6 38.1 0))
+    (property "Value" "nRF52840-M.2" (at 101.6 40.64 0))
+    (pin "VDD" (uuid c0000001))       ;; 3V3
+    (pin "GND" (uuid c0000002))       ;; GND
+    (pin "P0.05/TX" (uuid c0000003))  ;; → PA10 (USART1_RX)
+    (pin "P0.06/RX" (uuid c0000004))  ;; ← PA9 (USART1_TX)
+    (pin "P0.07/CTS" (uuid c0000005))  ;; ← PE0
+    (pin "P0.08/RTS" (uuid c0000006))  ;; ← PD1
+    (pin "P0.11/RESET" (uuid c0000007)) ;; ← PD0
+    (pin "P0.12/INT" (uuid c0000008))  ;; → PA0
+  )
+
+  ;; nRF reset pull-up
+  (symbol "Device:R" (in_bom yes) (on_board yes)
+    (at 88.9 45.72)
+    (uuid a1b2c3d4-0006-4000-8000-000000000002)
+    (property "Reference" "R2" (at 88.9 43.18 0))
+    (property "Value" "100k" (at 88.9 48.26 0))
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 88.9 45.72 0))
+    (pin "1" (uuid c1000001))
+    (pin "2" (uuid c1000002))
+  )
+
+  ;; ========================================
+  ;; microSD Card Slot
+  ;; ========================================
+
+  (symbol "Connector:microSD_Card" (in_bom yes) (on_board yes)
+    (at 203.2 139.7)
+    (uuid a1b2c3d4-0007-4000-8000-000000000001)
+    (property "Reference" "J2" (at 203.2 127 0))
+    (property "Value" "microSD_Card" (at 203.2 129.54 0))
+    (pin "CLK" (uuid d0000001))      ;; PB5 (SPI3_SCK / SDMMC1_CK)
+    (pin "CMD" (uuid d0000002))      ;; PB3 (SPI3_MOSI / SDMMC1_CMD)
+    (pin "D0" (uuid d0000003))       ;; PB4 (SPI3_MISO / SDMMC1_D0)
+    (pin "D1" (uuid d0000004))       ;; PD7 (SDMMC1_D1)
+    (pin "D2" (uuid d0000005))       ;; PD6 (SDMMC1_D2)
+    (pin "D3" (uuid d0000006))       ;; PD5 (SDMMC1_D3)
+    (pin "CD" (uuid d0000007))       ;; PE6 (SD_CD)
+    (pin "VCC" (uuid d0000008))      ;; 3V3
+    (pin "GND" (uuid d0000009))     ;; GND
+  )
+
+  ;; ========================================
+  ;; Crystals
+  ;; ========================================
+
+  ;; 25 MHz HSE for STM32
+  (symbol "Device:Crystal" (in_bom yes) (on_board yes)
+    (at 121.92 127)
+    (uuid a1b2c3d4-0008-4000-8000-000000000001)
+    (property "Reference" "Y2" (at 121.92 124.46 0))
+    (property "Value" "25.000MHz" (at 121.92 129.54 0))
+    (property "Footprint" "Crystal:Crystal_SMD_5032-2Pin_5.0x3.2mm" (at 121.92 127 0))
+    (pin "1" (uuid e0000001))  ;; PH0 (HSE_IN)
+    (pin "2" (uuid e0000002))  ;; PH1 (HSE_OUT)
+  )
+
+  ;; 32.768 kHz LSE for RTC
+  (symbol "Device:Crystal" (in_bom yes) (on_board yes)
+    (at 132.08 127)
+    (uuid a1b2c3d4-0008-4000-8000-000000000002)
+    (property "Reference" "Y3" (at 132.08 124.46 0))
+    (property "Value" "32.768kHz" (at 132.08 129.54 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 132.08 127 0))
+    (pin "1" (uuid e1000001))
+    (pin "2" (uuid e1000002))
+  )
+
+  ;; ========================================
+  ;; User Button & Status LEDs
+  ;; ========================================
+
+  (symbol "Switch:SW_Push" (in_bom yes) (on_board yes)
+    (at 228.6 104.14)
+    (uuid a1b2c3d4-0009-4000-8000-000000000001)
+    (property "Reference" "SW1" (at 228.6 99.06 0))
+    (property "Value" "SKQGADE010" (at 228.6 101.6 0))
+    (property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" (at 228.6 104.14 0))
+    (pin "1" (uuid f0000001))  ;; → PA1 (USER_BTN), pulled high
+    (pin "2" (uuid f0000002))  ;; → GND
+  )
+
+  ;; Status LED (Green)
+  (symbol "Device:LED" (in_bom yes) (on_board yes)
+    (at 228.6 114.3)
+    (uuid a1b2c3d4-0009-4000-8000-000000000002)
+    (property "Reference" "D3" (at 228.6 111.76 0))
+    (property "Value" "Green" (at 228.6 116.84 0))
+    (pin "A" (uuid f1000001))  ;; → PE2 (LED_STATUS)
+    (pin "K" (uuid f1000002))  ;; → GND via 330R
+  )
+
+  ;; Error LED (Red)
+  (symbol "Device:LED" (in_bom yes) (on_board yes)
+    (at 228.6 124.46)
+    (uuid a1b2c3d4-0009-4000-8000-000000000003)
+    (property "Reference" "D4" (at 228.6 121.92 0))
+    (property "Value" "Red" (at 228.6 127 0))
+    (pin "A" (uuid f2000001))  ;; → PE3 (LED_ERROR)
+    (pin "K" (uuid f2000002))  ;; → GND via 330R
+  )
+
+  ;; ========================================
+  ;; Decoupling Capacitors (representative)
+  ;; ========================================
+
+  (symbol "Device:C" (in_bom yes) (on_board yes)
+    (at 139.7 165.1)
+    (uuid a1b2c3d4-000a-4000-8000-000000000001)
+    (property "Reference" "C11-C20" (at 139.7 162.56 0))
+    (property "Value" "100nF_x10" (at 139.7 167.64 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 139.7 165.1 0))
+    ;; One per VDD pin, placed adjacent to MCU
+  )
+
+  (symbol "Device:C" (in_bom yes) (on_board yes)
+    (at 152.4 165.1)
+    (uuid a1b2c3d4-000a-4000-8000-000000000002)
+    (property "Reference" "C8" (at 152.4 162.56 0))
+    (property "Value" "10uF" (at 152.4 167.64 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 152.4 165.1 0))
+  )
+
+  (symbol "Device:C" (in_bom yes) (on_board yes)
+    (at 165.1 165.1)
+    (uuid a1b2c3d4-000a-4000-8000-000000000003)
+    (property "Reference" "C9" (at 165.1 162.56 0))
+    (property "Value" "10uF" (at 165.1 167.64 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 165.1 165.1 0))
+  )
+
+  (symbol "Device:C" (in_bom yes) (on_board yes)
+    (at 177.8 165.1)
+    (uuid a1b2c3d4-000a-4000-8000-000000000004)
+    (property "Reference" "C28" (at 177.8 162.56 0))
+    (property "Value" "4.7uF" (at 177.8 167.64 0))
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 177.8 165.1 0))
+  )
+
+  ;; ========================================
+  ;; Net Labels
+  ;; ========================================
+
+  (net_class "Default"
+    (clearance 0.2)
+    (trace_width 0.2)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "Power"
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  (net_class "USB_HS"
+    (clearance 0.15)
+    (trace_width 0.2)
+    (diff_pair_width 0.2)
+    (diff_pair_gap 0.15)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "Analog"
+    (clearance 0.25)
+    (trace_width 0.25)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  ;; Power nets
+  (net 1 "VBUS" (class "Power"))
+  (net 2 "+3V3" (class "Power"))
+  (net 3 "+1V8" (class "Power"))
+  (net 4 "GND" (class "Power"))
+  (net 5 "VDDA" (class "Analog"))
+
+  ;; Signal nets
+  (net 10 "USB_DP" (class "USB_HS"))
+  (net 11 "USB_DM" (class "USB_HS"))
+  (net 12 "IR_ANALOG" (class "Analog"))
+  (net 13 "IR_DIGITAL")
+  (net 14 "IR_PWM")
+  (net 15 "IR_PWM_GATE")
+  (net 16 "IR_LED_EN")
+  (net 17 "SPI1_SCK")
+  (net 18 "SPI1_MOSI")
+  (net 19 "SPI1_MISO")
+  (net 20 "SPI1_NSS")
+  (net 21 "SPI2_SCK")
+  (net 22 "SPI2_MOSI")
+  (net 23 "OLED_CS")
+  (net 24 "OLED_DC")
+  (net 25 "OLED_RST")
+  (net 26 "USART1_TX")
+  (net 27 "USART1_RX")
+  (net 28 "nRF_CTS")
+  (net 29 "nRF_RTS")
+  (net 30 "nRF_RESET")
+  (net 31 "nRF_INT")
+  (net 32 "SDMMC1_CLK")
+  (net 33 "SDMMC1_CMD")
+  (net 34 "SDMMC1_D0")
+  (net 35 "SDMMC1_D1")
+  (net 36 "SDMMC1_D2")
+  (net 37 "SDMMC1_D3")
+  (net 38 "SD_CD")
+  (net 39 "USER_BTN")
+  (net 40 "LED_STATUS")
+  (net 41 "LED_ERROR")
+  (net 42 "ULPI_CLK")
+  (net 43 "ULPI_STP")
+  (net 44 "ULPI_DIR")
+  (net 45 "ULPI_NXT")
+  (net 46 "ULPI_D0")
+  (net 47 "ULPI_D1")
+  (net 48 "ULPI_D2")
+  (net 49 "ULPI_D3")
+  (net 50 "ULPI_D4")
+  (net 51 "ULPI_D5")
+  (net 52 "ULPI_D6")
+  (net 53 "ULPI_D7")
+  (net 54 "HSE_IN")
+  (net 55 "HSE_OUT")
+  (net 56 "LSE_IN")
+  (net 57 "LSE_OUT")
+  (net 58 "SWDIO")
+  (net 59 "SWCLK")
+  (net 60 "NRST")
+  (net 61 "BOOT0")
+)

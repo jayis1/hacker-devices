@@ -1,0 +1,325 @@
+(kicad_pcb (version 20231014) (generator pcbnew)
+
+  (general
+    (thickness 1.0)
+    (drawings 10)
+    (tracks 0)
+    (zones 0)
+    (modules 20)
+    (nets 62)
+  )
+
+  (title_block
+    (title "Infrared Phantom - IR Security Research Toolkit")
+    (date "2026-06-15")
+    (rev "1.0")
+    (company "Hacker Devices")
+    (comment 1 "CERN-OHL-S v2")
+  )
+
+  ;; ========================================
+  ;; Board Outline — 85mm x 34mm USB Dongle
+  ;; ========================================
+
+  (gr_rect (start 0 0) (end 85 34) (layer "Edge.Cuts") (width 0.15))
+  
+  ;; USB-A plug extension (12mm)
+  (gr_line (start 0 7) (end -12 7) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start -12 7) (end -12 27) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start -12 27) (end 0 27) (layer "Edge.Cuts") (width 0.15))
+  
+  ;; Corner radius (1mm)
+  (gr_arc (start 1 1) (mid 0 0.293) (end 0 1) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 84 1) (mid 84.707 0) (end 85 1) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 84 33) (mid 85 34) (end 84 34) (layer "Edge.Cuts") (width 0.15))
+  (gr_arc (start 1 33) (mid 0 34) (end 0 33) (layer "Edge.Cuts") (width 0.15))
+
+  ;; USB-A plug edge fingers (gold-plated contacts)
+  (gr_rect (start -12 8) (end -1 26) (layer "F.Cu") (width 0.1))
+  (gr_line (start -10 8) (end -10 26) (layer "F.SilkS") (width 0.1))
+  (gr_line (start -8 8) (end -8 26) (layer "F.SilkS") (width 0.1))
+  (gr_line (start -6 8) (end -6 26) (layer "F.SilkS") (width 0.1))
+  (gr_line (start -4 8) (end -4 26) (layer "F.SilkS") (width 0.1))
+
+  ;; ========================================
+  ;; Layer Stackup
+  ;; ========================================
+
+  (layer "F.Cu" (type "signal"))
+  (layer "In1.Cu" (type "ground"))
+  (layer "In2.Cu" (type "power"))
+  (layer "B.Cu" (type "signal"))
+
+  (layer "F.SilkS")
+  (layer "B.SilkS")
+  (layer "F.Mask")
+  (layer "B.Mask")
+  (layer "F.Paste")
+  (layer "B.Paste")
+  (layer "F.CrtYd")
+  (layer "B.CrtYd")
+  (layer "Dwgs.User")
+
+  ;; ========================================
+  ;; Design Rules
+  ;; ========================================
+
+  (design_settings
+    (min_clearance 0.2)
+    (min_track_width 0.2)
+    (min_via_diameter 0.4)
+    (min_via_drill 0.2)
+    (min_microvia_diameter 0.2)
+    (min_microvia_drill 0.1)
+    (min_hole_diameter 0.2)
+    (min_annular_width 0.1)
+    (pad_size 0.6 0.6)
+  )
+
+  ;; ========================================
+  ;; Net Classes
+  ;; ========================================
+
+  (net_class "Default" ""
+    (clearance 0.2)
+    (trace_width 0.2)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.2)
+  )
+
+  (net_class "Power" ""
+    (clearance 0.2)
+    (trace_width 0.4)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  (net_class "USB_HS" "USB 2.0 High-Speed differential pair"
+    (clearance 0.15)
+    (trace_width 0.2)
+    (via_dia 0.4)
+    (via_drill 0.2)
+    (diff_pair_gap 0.15)
+    (diff_pair_width 0.2)
+  )
+
+  (net_class "Analog" "Analog signals from IR receiver"
+    (clearance 0.25)
+    (trace_width 0.25)
+    (via_dia 0.4)
+    (via_drill 0.2)
+  )
+
+  (net_class "High_Current" "IR LED array drive"
+    (clearance 0.3)
+    (trace_width 1.0)
+    (via_dia 0.6)
+    (via_drill 0.3)
+  )
+
+  ;; ========================================
+  ;; Component Placement (Top Side - F.Cu)
+  ;; ========================================
+
+  ;; USB Connector (left edge)
+  (module "Connector_USB:USB_A_Male_Plug_SMD" (at -6 17) (layer "F.Cu")
+    (reference "J1")
+    (value "USB-A-M-PLUG")
+  )
+
+  ;; USB ESD Protection (near connector)
+  (module "Package_TO_SOT_SMD:SOT-143" (at 8 17) (layer "F.Cu")
+    (reference "D1")
+    (value "PRTR5V0U2X")
+  )
+
+  ;; USB PHY (near connector)
+  (module "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm" (at 18 17) (layer "F.Cu")
+    (reference "U3")
+    (value "USB3320-EZK")
+  )
+
+  ;; STM32H743VIT6 (center of board)
+  (module "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 45 17) (layer "F.Cu")
+    (reference "U1")
+    (value "STM32H743VIT6")
+  )
+
+  ;; nRF52840 BLE module (top area)
+  (module "RF_Module:nRF52840-M2" (at 70 8) (layer "F.Cu")
+    (reference "U2")
+    (value "nRF52840-M.2")
+  )
+
+  ;; Buck converter (near USB)
+  (module "Package_TO_SOT_SMD:SOT-23-6" (at 12 27) (layer "F.Cu")
+    (reference "U7")
+    (value "TLV62569DCNR")
+  )
+
+  ;; LDO
+  (module "Package_TO_SOT_SMD:SOT-23-5" (at 18 27) (layer "F.Cu")
+    (reference "U8")
+    (value "LP3985IM5-1.8")
+  )
+
+  ;; SPI NOR Flash
+  (module "Package_SO:SOP-8_3.9x4.9mm_P1.27mm" (at 70 25) (layer "F.Cu")
+    (reference "U4")
+    (value "W25Q128JVSIQ")
+  )
+
+  ;; IR Receiver (front edge)
+  (module "Sensor_Optical:TSMP58000" (at 78 5) (layer "F.Cu")
+    (reference "U6")
+    (value "TSMP58000")
+  )
+
+  ;; microSD slot (right side)
+  (module "Connector_Card:microSD_Molex_5033981892" (at 82 17) (layer "F.Cu")
+    (reference "J2")
+    (value "microSD_Card")
+  )
+
+  ;; OLED Display
+  (module "Display_OLED:SSD1306_128x32_0.49in" (at 60 28) (layer "F.Cu")
+    (reference "U5")
+    (value "SSD1306_128x32_SPI")
+  )
+
+  ;; 25 MHz Crystal (near MCU)
+  (module "Crystal:Crystal_SMD_5032-2Pin_5.0x3.2mm" (at 35 28) (layer "F.Cu")
+    (reference "Y2")
+    (value "25.000MHz")
+  )
+
+  ;; 27 MHz Crystal (near USB PHY)
+  (module "Crystal:Crystal_SMD_5032-2Pin_5.0x3.2mm" (at 12 22) (layer "F.Cu")
+    (reference "Y1")
+    (value "27.000MHz")
+  )
+
+  ;; MOSFET driver
+  (module "Package_TO_SOT_SMD:SOT-23" (at 72 12) (layer "F.Cu")
+    (reference "Q1")
+    (value "Si2312CDS")
+  )
+
+  ;; NPN transistor
+  (module "Package_TO_SOT_SMD:SOT-23" (at 68 12) (layer "F.Cu")
+    (reference "Q11")
+    (value "BC847C")
+  )
+
+  ;; ========================================
+  ;; Component Placement (Bottom Side - B.Cu)
+  ;; ========================================
+
+  ;; IR LED Array (3x3, bottom side, front-facing)
+  (module "LED_THT:IR_LED_5mm" (at 65 27) (layer "B.Cu")
+    (reference "Q2") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 68 27) (layer "B.Cu")
+    (reference "Q3") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 71 27) (layer "B.Cu")
+    (reference "Q4") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 65 30) (layer "B.Cu")
+    (reference "Q5") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 68 30) (layer "B.Cu")
+    (reference "Q6") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 71 30) (layer "B.Cu")
+    (reference "Q7") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 65 33) (layer "B.Cu")  ;; Adjusted to fit 34mm width
+    (reference "Q8") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 68 33) (layer "B.Cu")
+    (reference "Q9") (value "TSAL6100")
+  )
+  (module "LED_THT:IR_LED_5mm" (at 71 33) (layer "B.Cu")
+    (reference "Q10") (value "TSAL6100")
+  )
+
+  ;; User Button (bottom side)
+  (module "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" (at 78 27) (layer "B.Cu")
+    (reference "SW1")
+    (value "SKQGADE010")
+  )
+
+  ;; Status LEDs (bottom side)
+  (module "LED_SMD:LED_0603" (at 75 27) (layer "B.Cu")
+    (reference "D3") (value "Green")
+  )
+  (module "LED_SMD:LED_0603" (at 75 30) (layer "B.Cu")
+    (reference "D4") (value "Red")
+  )
+
+  ;; 32.768 kHz Crystal (bottom side)
+  (module "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 35 7) (layer "B.Cu")
+    (reference "Y3") (value "32.768kHz")
+  )
+
+  ;; ========================================
+  ;; Ground Plane (In1.Cu - Layer 2)
+  ;; ========================================
+
+  (zone (net 4) (net_name "GND") (layer "In1.Cu") (uuid ground-plane)
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.25) (thermal_bridge_width 0.25))
+    (polygon (pts (xy 0 0) (xy 85 0) (xy 85 34) (xy 0 34)))
+  )
+
+  ;; ========================================
+  ;; Power Plane (In2.Cu - Layer 3)
+  ;; Split plane: 3V3 (70%), VBUS (25%), 1V8 (5%)
+  ;; ========================================
+
+  (zone (net 2) (net_name "+3V3") (layer "In2.Cu") (uuid power-3v3)
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.25) (thermal_bridge_width 0.25))
+    (polygon (pts (xy 5 2) (xy 80 2) (xy 80 22) (xy 5 22)))
+  )
+
+  (zone (net 1) (net_name "VBUS") (layer "In2.Cu") (uuid power-vbus)
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.25) (thermal_bridge_width 0.25))
+    (polygon (pts (xy 0 4) (xy 5 4) (xy 5 30) (xy 0 30)))
+  )
+
+  (zone (net 3) (net_name "+1V8") (layer "In2.Cu") (uuid power-1v8)
+    (hatch full 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill (thermal_gap 0.25) (thermal_bridge_width 0.25))
+    (polygon (pts (xy 15 24) (xy 30 24) (xy 30 32) (xy 15 32)))
+  )
+
+  ;; ========================================
+  ;; Silkscreen Labels
+  ;; ========================================
+
+  (gr_text "Infrared Phantom v1.0" (at 42.5 17) (layer "F.SilkS")
+    (effects (font (size 1.5 1.5) (thickness 0.2)))
+  )
+  (gr_text "IR RX ←" (at 78 2) (layer "F.SilkS")
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
+  (gr_text "IR TX →" (at 68 25) (layer "B.SilkS")
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
+  (gr_text "hacker-devices" (at 42.5 31) (layer "B.SilkS")
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
+)
