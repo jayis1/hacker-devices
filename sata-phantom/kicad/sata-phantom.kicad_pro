@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "author": "jayis1",
+    "version": "1.0.0",
+    "date": "2025-06-16"
+  },
+  "project": {
+    "name": "SATA Phantom",
+    "title": "SATA Bus Interposer for Security Research",
+    "company": "jayis1",
+    "revision": "1.0",
+    "board": {
+      "width_mm": 48.0,
+      "height_mm": 28.0,
+      "layers": 4,
+      "thickness_mm": 0.8
+    },
+    "files": {
+      "schematic": "sata-phantom.kicad_sch",
+      "pcb": "sata-phantom.kicad_pcb",
+      "netlist": "sata-phantom.net"
+    },
+    "lib_dirs": [
+      "libraries"
+    ],
+    "3d_models_dir": "3d_models",
+    "output_dir": "output"
+  },
+  "design_settings": {
+    "defaults": {
+      "track_width_mm": 0.2,
+      "via_diameter_mm": 0.4,
+      "via_hole_mm": 0.25,
+      "clearance_mm": 0.15,
+      "grid_mm": 0.5
+    },
+    "templates": {
+      "schematic": {
+        "page_width": 11.0,
+        "page_height": 8.5,
+        "paper": "USLetter"
+      }
+    }
+  },
+  "erc": {
+    "check_erc": true,
+    "ignore_same_net_errors": false,
+    "rules": {
+      "severity": {
+        "unconnected_pins": "error",
+        "no_driver": "error",
+        "power_conflict": "error",
+        "off_grid": "warning"
+      }
+    }
+  },
+  "drc": {
+    "check_drc": true,
+    "rules": {
+      "clearance": "error",
+      "track_width": "error",
+      "annular_width": "error",
+      "hole_size": "error",
+      "silk_overlap": "warning",
+      "unconnected_items": "error"
+    }
+  },
+  "notes": [
+    "SATA Phantom — Designed by jayis1, 2025",
+    "SATA differential pairs require 100Ω controlled impedance on layer 1 (F.Cu) with reference to layer 2 (GND plane).",
+    "All SATA signal traces must be matched within 5 mils for each differential pair.",
+    "Use 0402 passives for all decoupling; use 0603 for PSU feedback resistors.",
+    "FPGA decoupling: 1x 100nF + 1x 10µF per VCCINT/VCCIO rail group, placed as close to pins as possible.",
+    "ESP32 decoupling: 100nF on each VDD pin, 10µF bulk per VDD group."
+  ]
+}

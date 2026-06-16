@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "author": "jayis1",
+    "version": "1.0.0",
+    "date": "2025-06-16",
+    "description": "SATA Phantom — SATA Bus Interposer for Security Research"
+  },
+  "project": {
+    "name": "sata-phantom",
+    "title": "SATA Phantom — SATA Bus Interposer",
+    "company": "jayis1",
+    "revision": "1.0",
+    "board": {
+      "width_mm": 48.0,
+      "height_mm": 28.0,
+      "layers": 4,
+      "thickness_mm": 0.8,
+      "finish": "ENIG",
+      "impedance_ohm": 100
+    },
+    "design_rules": {
+      "min_trace_mm": 0.15,
+      "min_via_mm": 0.3,
+      "min_clearance_mm": 0.15,
+      "min_hole_mm": 0.25
+    }
+  },
+  "design_blocks": [
+    {
+      "ref": "U1",
+      "value": "GW1N-LV1",
+      "package": "QFN48",
+      "manufacturer": "Gowin Semiconductor",
+      "description": "FPGA — SATA PHY and link-layer frame processor",
+      "supply_3v3": ["VCCIO", "VCC"],
+      "supply_1v2": ["VCCINT", "VCCAUX"],
+      "pins": {
+        "total": 48,
+        "digital_io": 36,
+        "special": ["SATA_RX_P", "SATA_RX_N", "SATA_TX_P", "SATA_TX_N", "SPI_MOSI", "SPI_MISO", "SPI_SCLK", "SPI_CS", "IRQ_OUT", "DONE", "RESET_IN"]
+      }
+    },
+    {
+      "ref": "U2",
+      "value": "ESP32-S3-WROOM-1",
+      "package": "SMD-41",
+      "manufacturer": "Espressif",
+      "description": "MCU — System controller, C2, exfiltration",
+      "supply_3v3": ["VDD"],
+      "features": ["WiFi 2.4GHz", "BLE 5.0", "2× Xtensa LX7 @ 240 MHz", "16 MB Flash", "512 KB SRAM"],
+      "interfaces": ["SPI (FPGA)", "UART (debug)", "I2C (battery)", "GPIO (e-Paper, LEDs, power)"]
+    },
+    {
+      "ref": "U3",
+      "value": "SN75LVCP601",
+      "package": "WQFN-24",
+      "manufacturer": "Texas Instruments",
+      "description": "2:1 SATA Redriver/MUX — Host-side differential pair",
+      "supply_3v3": ["VDD"],
+      "channels": 2,
+      "data_rate_gbps": 6.0,
+      "pins": {
+        "mux_sel": "GPIO from FPGA",
+        "sata_in_p": "SATA_HSIP",
+        "sata_in_n": "SATA_HSIN",
+        "sata_out_p": "SATA_HSOP",
+        "sata_out_n": "SATA_HSON"
+      }
+    },
+    {
+      "ref": "U4",
+      "value": "SN75LVCP601",
+      "package": "WQFN-24",
+      "manufacturer": "Texas Instruments",
+      "description": "2:1 SATA Redriver/MUX — Drive-side differential pair",
+      "supply_3v3": ["VDD"],
+      "channels": 2,
+      "data_rate_gbps": 6.0,
+      "pins": {
+        "mux_sel": "GPIO from FPGA",
+        "sata_in_p": "SATA_DSIP",
+        "sata_in_n": "SATA_DSIN",
+        "sata_out_p": "SATA_DSOP",
+        "sata_out_n": "SATA_DSON"
+      }
+    },
+    {
+      "ref": "U5",
+      "value": "TPS62065",
+      "package": "VSON-8",
+      "manufacturer": "Texas Instruments",
+      "description": "3.3V Buck Converter — SATA 5V/12V to 3.3V rail",
+      "input": "SATA_5V or SATA_12V",
+      "output": "3.3V @ 2A",
+      "efficiency_pct": 95,
+      "switching_freq_khz": 3000,
+      "passives": ["L1=2.2µH", "C1=22µF input", "C2=22µF output", "R1=10kΩ FB top", "R2=10kΩ FB bot"]
+    },
+    {
+      "ref": "U6",
+      "value": "TPS74801T",
+      "package": "WSON-8",
+      "manufacturer": "Texas Instruments",
+      "description": "1.2V LDO — FPGA core voltage",
+      "input": "3.3V",
+      "output": "1.2V @ 1.5A",
+      "dropout_mv": 130,
+      "passives": ["C1=10µF input", "C2=10µF output", "R1=10kΩ FB top", "R2=4.99kΩ FB bot"]
+    },
+    {
+      "ref": "U7",
+      "value": "MAX17048",
+      "package": "8-WLP",
+      "manufacturer": "Maxim Integrated",
+      "description": "Battery fuel gauge — LiPo monitor",
+      "i2c_addr": "0x36",
+      "interface": "I2C (SDA, SCL)",
+      "alert_pin": "GPIO to ESP32 (INTERRUPT)"
+    },
+    {
+      "ref": "U8",
+      "value": "W25Q64JV",
+      "package": "SOIC-8",
+      "manufacturer": "Winbond",
+      "description": "64 Mbit SPI Flash — FPGA configuration + firmware storage",
+      "interface": "SPI (CLK, MOSI, MISO, CS)",
+      "connected_to": "FPGA (primary), ESP32 (secondary, for firmware OTA)"
+    },
+    {
+      "ref": "U9",
+      "value": "CP2102N",
+      "package": "QFN-28",
+      "manufacturer": "Silicon Labs",
+      "description": "USB-to-UART Bridge — Debug console",
+      "interface": "USB-C ↔ UART (TX/RX to ESP32)",
+      "features": ["USB 2.0 Full Speed", "Hardware flow control", "Baud up to 3 Mbps"]
+    },
+    {
+      "ref": "U10",
+      "value": "SiT9120",
+      "package": "QFN-6",
+      "manufacturer": "SiTime",
+      "description": "25.000 MHz MEMS Oscillator — Reference clock for SATA PLL",
+      "frequency_mhz": 25.0,
+      "stability_ppm": 10,
+      "output_type": "LVCMOS",
+      "connected_to": "FPGA clock input"
+    },
+    {
+      "ref": "U11",
+      "value": "SiT9120",
+      "package": "QFN-6",
+      "manufacturer": "SiTime",
+      "description": "40.000 MHz MEMS Oscillator — ESP32 external clock",
+      "frequency_mhz": 40.0,
+      "stability_ppm": 10,
+      "connected_to": "ESP32-S3 XTAL input"
+    },
+    {
+      "ref": "U12",
+      "value": "GDEH0154D67",
+      "package": "FPC-24",
+      "manufacturer": "Waveshare / Goodisplay",
+      "description": "1.54\" e-Paper Display — Status output",
+      "resolution": "200×200",
+      "interface": "SPI (MOSI, SCLK, CS, DC, BUSY, RESET)"
+    },
+    {
+      "ref": "J1",
+      "value": "SATA 22-pin Receptacle (Host)",
+      "description": "SATA connector — connects to host motherboard/controller",
+      "pins": [
+        {"pin": 1, "signal": "GND"},
+        {"pin": 2, "signal": "SATA_HP_A+"},
+        {"pin": 3, "signal": "SATA_HP_A-"},
+        {"pin": 4, "signal": "GND"},
+        {"pin": 5, "signal": "SATA_HP_B-"},
+        {"pin": 6, "signal": "SATA_HP_B+"},
+        {"pin": 7, "signal": "GND"},
+        {"pin": 8, "signal": "SATA_5V"},
+        {"pin": 9, "signal": "SATA_5V"},
+        {"pin": 10, "signal": "GND"},
+        {"pin": 11, "signal": "SATA_DAS"},
+        {"pin": 12, "signal": "GND"},
+        {"pin": 13, "signal": "SATA_12V"},
+        {"pin": 14, "signal": "SATA_12V"},
+        {"pin": 15, "signal": "GND"},
+        {"pin": 16, "signal": "SATA_HP_B+"},
+        {"pin": 17, "signal": "SATA_HP_B-"},
+        {"pin": 18, "signal": "GND"},
+        {"pin": 19, "signal": "SATA_HP_A-"},
+        {"pin": 20, "signal": "SATA_HP_A+"},
+        {"pin": 21, "signal": "GND"},
+        {"pin": 22, "signal": "GND"}
+      ],
+      "staggered": true
+    },
+    {
+      "ref": "J2",
+      "value": "SATA 22-pin Plug (Drive)",
+      "description": "SATA connector — connects to target storage drive",
+      "pins": [
+        {"pin": 1, "signal": "GND"},
+        {"pin": 2, "signal": "SATA_DP_A+"},
+        {"pin": 3, "signal": "SATA_DP_A-"},
+        {"pin": 4, "signal": "GND"},
+        {"pin": 5, "signal": "SATA_DP_B-"},
+        {"pin": 6, "signal": "SATA_DP_B+"},
+        {"pin": 7, "signal": "GND"},
+        {"pin": 8, "signal": "SATA_5V (passthrough)"},
+        {"pin": 9, "signal": "SATA_5V (passthrough)"},
+        {"pin": 10, "signal": "GND"},
+        {"pin": 11, "signal": "SATA_DAS (passthrough)"},
+        {"pin": 12, "signal": "GND"},
+        {"pin": 13, "signal": "SATA_12V (passthrough)"},
+        {"pin": 14, "signal": "SATA_12V (passthrough)"},
+        {"pin": 15, "signal": "GND"},
+        {"pin": 16, "signal": "SATA_DP_B+"},
+        {"pin": 17, "signal": "SATA_DP_B-"},
+        {"pin": 18, "signal": "GND"},
+        {"pin": 19, "signal": "SATA_DP_A-"},
+        {"pin": 20, "signal": "SATA_DP_A+"},
+        {"pin": 21, "signal": "GND"},
+        {"pin": 22, "signal": "GND"}
+      ],
+      "staggered": true
+    },
+    {
+      "ref": "J3",
+      "value": "USB-C Receptacle",
+      "manufacturer": "Amphenol / TE",
+      "description": "USB Type-C — Debug console (CP2102N) and battery charging",
+      "features": ["USB 2.0 (D+, D-) to CP2102N", "VBUS to TPS62065 for 3.3V", "CC1/CC2 with 5.1kΩ pulldowns"]
+    },
+    {
+      "ref": "BAT1",
+      "value": "CP-402035",
+      "description": "100 mAh LiPo Battery (3.7V)",
+      "dimensions": "40×20×3.5 mm",
+      "protection": "Built-in overcharge/overdischarge protection PCB",
+      "connector": "JST-PH 2-pin",
+      "connection": "TPS62065 (boost mode) + MAX17048 voltage monitor"
+    },
+    {
+      "ref": "LED1",
+      "value": "WS2812B",
+      "package": "LED-5050",
+      "description": "RGB Status LED — Mode indication",
+      "pins": {"VCC": "3.3V", "GND": "GND", "DIN": "GPIO48 from ESP32"},
+      "current_ma": 20
+    },
+    {
+      "ref": "SW1",
+      "value": "Momentary Tactile Switch",
+      "description": "Configuration button — Factory reset / mode select",
+      "connection": "GPIO to ESP32 with 10kΩ pull-up"
+    },
+    {
+      "ref": "R1-R20",
+      "value": "0402 Resistors",
+      "description": "Pull-up/down resistors, voltage divider for SATA detect, FB resistors for PSUs"
+    },
+    {
+      "ref": "C1-C30",
+      "value": "0402/0603 Capacitors",
+      "description": "Decoupling caps (100nF per power pin), bulk caps (10-22µF), PSU bypass"
+    },
+    {
+      "ref": "L1-L4",
+      "value": "Inductors",
+      "description": "L1=2.2µH (TPS62065), L2-L4=ferrite beads for power filtering"
+    }
+  ],
+  "netlist": [
+    {"net": "GND", "type": "power", "connections": ["J1.GND", "J2.GND", "U1.GND", "U2.GND", "U3.GND", "U4.GND", "U5.GND", "U6.GND", "U7.GND", "U8.GND", "U9.GND", "U10.GND", "U11.GND", "U12.GND", "BAT1.GND", "LED1.GND", "C1-C30.GND"]},
+    {"net": "VCC_3V3", "type": "power", "connections": ["U5.OUT", "U1.VCCIO", "U2.VDD", "U3.VDD", "U4.VDD", "U7.VDD", "U8.VCC", "U9.VDD", "U10.VDD", "U11.VDD", "LED1.VCC", "R1-R20.PULLUP"]},
+    {"net": "VCC_1V2", "type": "power", "connections": ["U6.OUT", "U1.VCCINT", "U1.VCCAUX"]},
+    {"net": "SATA_5V", "type": "power", "connections": ["J1.8", "J1.9", "J2.8", "J2.9", "U5.IN"]},
+    {"net": "SATA_12V", "type": "power", "connections": ["J1.13", "J1.14", "J2.13", "J2.14", "U5.IN (via UVLO)"]},
+    {"net": "VBUS_USB", "type": "power", "connections": ["J3.VBUS", "U9.VBUS", "U5.IN (via OR-ing)"]},
+    {"net": "BAT_PLUS", "type": "power", "connections": ["BAT1.POS", "U7.BAT", "U5.IN (via boost)"]},
+    {"net": "SATA_HP_A+", "type": "high_speed_diff", "impedance": 100, "connections": ["J1.2", "U3.SATA_IN_P"]},
+    {"net": "SATA_HP_A-", "type": "high_speed_diff", "impedance": 100, "connections": ["J1.3", "U3.SATA_IN_N"]},
+    {"net": "SATA_HP_B+", "type": "high_speed_diff", "impedance": 100, "connections": ["J1.6", "J1.16", "U3.SATA_IN_P"]},
+    {"net": "SATA_HP_B-", "type": "high_speed_diff", "impedance": 100, "connections": ["J1.5", "J1.17", "U3.SATA_IN_N"]},
+    {"net": "SATA_DP_A+", "type": "high_speed_diff", "impedance": 100, "connections": ["J2.2", "U4.SATA_OUT_P"]},
+    {"net": "SATA_DP_A-", "type": "high_speed_diff", "impedance": 100, "connections": ["J2.3", "U4.SATA_OUT_N"]},
+    {"net": "SATA_DP_B+", "type": "high_speed_diff", "impedance": 100, "connections": ["J2.6", "J2.16", "U4.SATA_OUT_P"]},
+    {"net": "SATA_DP_B-", "type": "high_speed_diff", "impedance": 100, "connections": ["J2.5", "J2.17", "U4.SATA_OUT_N"]},
+    {"net": "FPGA_SATA_TX+", "type": "high_speed_diff", "impedance": 100, "connections": ["U1.SATA_TX_P", "U3.SATA_OUT_P"]},
+    {"net": "FPGA_SATA_TX-", "type": "high_speed_diff", "impedance": 100, "connections": ["U1.SATA_TX_N", "U3.SATA_OUT_N"]},
+    {"net": "FPGA_SATA_RX+", "type": "high_speed_diff", "impedance": 100, "connections": ["U1.SATA_RX_P", "U4.SATA_IN_P"]},
+    {"net": "FPGA_SATA_RX-", "type": "high_speed_diff", "impedance": 100, "connections": ["U1.SATA_RX_N", "U4.SATA_IN_N"]},
+    {"net": "SPI_MOSI", "type": "digital", "connections": ["U2.GPIO11", "U1.SPI_MOSI", "U8.MOSI"]},
+    {"net": "SPI_MISO", "type": "digital", "connections": ["U2.GPIO12", "U1.SPI_MISO", "U8.MISO"]},
+    {"net": "SPI_SCLK", "type": "digital", "connections": ["U2.GPIO13", "U1.SPI_SCLK", "U8.CLK"]},
+    {"net": "SPI_CS_FPGA", "type": "digital", "connections": ["U2.GPIO10", "U1.SPI_CS"]},
+    {"net": "SPI_CS_FLASH", "type": "digital", "connections": ["U2.GPIO4", "U8.CS"]},
+    {"net": "FPGA_IRQ", "type": "digital", "connections": ["U1.IRQ_OUT", "U2.GPIO14"]},
+    {"net": "FPGA_RESET", "type": "digital", "connections": ["U2.GPIO15", "U1.RESET_IN"]},
+    {"net": "FPGA_DONE", "type": "digital", "connections": ["U1.DONE", "U2.GPIO17"]},
+    {"net": "EPD_MOSI", "type": "digital", "connections": ["U2.GPIO46", "U12.MOSI"]},
+    {"net": "EPD_SCLK", "type": "digital", "connections": ["U2.GPIO3", "U12.SCLK"]},
+    {"net": "EPD_CS", "type": "digital", "connections": ["U2.GPIO9", "U12.CS"]},
+    {"net": "EPD_DC", "type": "digital", "connections": ["U2.GPIO18", "U12.DC"]},
+    {"net": "EPD_RESET", "type": "digital", "connections": ["U2.GPIO8", "U12.RESET"]},
+    {"net": "EPD_BUSY", "type": "digital", "connections": ["U2.GPIO7", "U12.BUSY"]},
+    {"net": "I2C_SDA", "type": "digital", "connections": ["U2.GPIO1", "U7.SDA"]},
+    {"net": "I2C_SCL", "type": "digital", "connections": ["U2.GPIO2", "U7.SCL"]},
+    {"net": "BAT_ALERT", "type": "digital", "connections": ["U7.ALRT", "U2.GPIO5"]},
+    {"net": "UART_TX", "type": "digital", "connections": ["U2.GPIO43", "U9.RXD"]},
+    {"net": "UART_RX", "type": "digital", "connections": ["U2.GPIO44", "U9.TXD"]},
+    {"net": "USB_D+", "type": "usb_diff", "connections": ["J3.D+", "U9.D+"]},
+    {"net": "USB_D-", "type": "usb_diff", "connections": ["J3.D-", "U9.D-"]},
+    {"net": "LED_DATA", "type": "digital", "connections": ["U2.GPIO48", "LED1.DIN"]},
+    {"net": "SATA_DAS", "type": "digital", "connections": ["J1.11", "J2.11", "U2.GPIO39"]},
+    {"net": "BTN_CONFIG", "type": "digital", "connections": ["SW1.OUT", "U2.GPIO0", "R1=10kΩ pull-up to VCC_3V3"]},
+    {"net": "PWR_SATA_DET", "type": "analog", "connections": ["J1.8", "U2.GPIO38 (voltage divider: 10k+10k)"]},
+    {"net": "PWR_USB_DET", "type": "digital", "connections": ["J3.VBUS", "U2.GPIO40"]},
+    {"net": "CLK_25MHZ", "type": "clock", "connections": ["U10.OUT", "U1.CLK_IN"]},
+    {"net": "CLK_40MHZ", "type": "clock", "connections": ["U11.OUT", "U2.XTAL_IN"]}
+  ],
+  "notes": [
+    "All SATA differential pairs must be length-matched (±5 mils) and have 100Ω ± 10% differential impedance.",
+    "FPGA core 1.2V rail must be sequenced before 3.3V IO rail per Gowin datasheet.",
+    "SATA signal path: Host TX → Redriver#1 → FPGA RX (inspect path) → FPGA TX → Redriver#2 → Drive RX. Reverse for drive→host.",
+    "ESP32 antenna is on-board printed inverted-F (no external antenna needed).",
+    "Battery charging is handled by a dedicated TP4056 charging module on the battery PCB.",
+    "All high-speed traces must be on top layer with contiguous ground plane on layer 2.",
+    "Keep SPI clock traces short (< 50mm) for 40 MHz operation.",
+    "Crystal oscillators must have ground plane cut-out beneath them to reduce parasitic capacitance.",
+    "Firmware can be updated via USB-C (CP2102N → ESP32 UART bootloader) or OTA via WiFi."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "author": "jayis1",
+    "version": "1.0.0",
+    "revision": "1.0",
+    "date": "2025-06-16",
+    "tool": "KiCad 7.0",
+    "application": "pcbnew"
+  },
+  "board": {
+    "design_settings": {
+      "rules": {
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.3,
+        "min_via_hole": 0.25,
+        "min_clearance": 0.15,
+        "min_copper_width": 0.15,
+        "allow_soldermask_bridges": false
+      },
+      "layers": {
+        "count": 4,
+        "order": ["F.Cu", "GND.Cu", "PWR.Cu", "B.Cu"],
+        "thickness": {
+          "total_mm": 0.8,
+          "copper_1oz_mm": 0.035,
+          "prepreg_mm": 0.2,
+          "core_mm": 0.3,
+          "prepreg2_mm": 0.2
+        }
+      },
+      "stackup": [
+        {"layer": "F.Cu", "type": "copper", "thickness_mm": 0.035, "material": "Copper", "purpose": "Signal + Power"},
+        {"layer": "Prepreg", "type": "dielectric", "thickness_mm": 0.2, "material": "FR4 (εr=4.5)"},
+        {"layer": "GND.Cu", "type": "copper", "thickness_mm": 0.035, "material": "Copper", "purpose": "Ground Plane (contiguous)"},
+        {"layer": "Core", "type": "dielectric", "thickness_mm": 0.3, "material": "FR4 (εr=4.5)"},
+        {"layer": "PWR.Cu", "type": "copper", "thickness_mm": 0.035, "material": "Copper", "purpose": "Power Distribution + Aux Signals"},
+        {"layer": "Prepreg", "type": "dielectric", "thickness_mm": 0.2, "material": "FR4 (εr=4.5)"},
+        {"layer": "B.Cu", "type": "copper", "thickness_mm": 0.035, "material": "Copper", "purpose": "Signal + Components"}
+      ],
+      "tracks": {
+        "default_width_mm": 0.2,
+        "power_track_width_mm": 0.5,
+        "high_speed_track_width_mm": 0.2,
+        "high_speed_spacing_mm": 0.2,
+        "differential_pairs": [
+          {"name": "SATA_HP", "width_mm": 0.2, "gap_mm": 0.2, "impedance_ohm": 100},
+          {"name": "SATA_DP", "width_mm": 0.2, "gap_mm": 0.2, "impedance_ohm": 100},
+          {"name": "FPGA_SATA_TX", "width_mm": 0.2, "gap_mm": 0.2, "impedance_ohm": 100},
+          {"name": "FPGA_SATA_RX", "width_mm": 0.2, "gap_mm": 0.2, "impedance_ohm": 100},
+          {"name": "USB_D", "width_mm": 0.3, "gap_mm": 0.3, "impedance_ohm": 90}
+        ]
+      },
+      "vias": {
+        "default_diameter_mm": 0.4,
+        "default_hole_mm": 0.25,
+        "microvia_diameter_mm": 0.2,
+        "microvia_hole_mm": 0.1
+      },
+      "soldermask": {
+        "expansion_mm": 0.05,
+        "min_bridge_width_mm": 0.1
+      },
+      "silkscreen": {
+        "line_width_mm": 0.1,
+        "text_size_mm": 0.8
+      }
+    },
+    "physical": {
+      "width_mm": 48.0,
+      "height_mm": 28.0,
+      "edge_clearance_mm": 0.5,
+      "mounting_holes": [
+        {"x_mm": 3.0, "y_mm": 3.0, "diameter_mm": 2.5},
+        {"x_mm": 45.0, "y_mm": 3.0, "diameter_mm": 2.5},
+        {"x_mm": 3.0, "y_mm": 25.0, "diameter_mm": 2.5},
+        {"x_mm": 45.0, "y_mm": 25.0, "diameter_mm": 2.5}
+      ]
+    },
+    "placement": {
+      "components": [
+        {"ref": "J1", "x_mm": 2.0, "y_mm": 14.0, "rotation_deg": 0, "side": "F.Cu", "description": "SATA Host Connector (left edge)"},
+        {"ref": "J2", "x_mm": 46.0, "y_mm": 14.0, "rotation_deg": 180, "side": "F.Cu", "description": "SATA Drive Connector (right edge)"},
+        {"ref": "U3", "x_mm": 10.0, "y_mm": 14.0, "rotation_deg": 0, "side": "F.Cu", "description": "Host-side Redriver (near J1)"},
+        {"ref": "U4", "x_mm": 38.0, "y_mm": 14.0, "rotation_deg": 0, "side": "F.Cu", "description": "Drive-side Redriver (near J2)"},
+        {"ref": "U1", "x_mm": 24.0, "y_mm": 14.0, "rotation_deg": 0, "side": "F.Cu", "description": "Gowin FPGA (center, between redrivers)"},
+        {"ref": "U2", "x_mm": 24.0, "y_mm": 5.0, "rotation_deg": 0, "side": "F.Cu", "description": "ESP32-S3 (top of board)"},
+        {"ref": "U10", "x_mm": 18.0, "y_mm": 20.0, "rotation_deg": 0, "side": "F.Cu", "description": "25 MHz Oscillator (below FPGA)"},
+        {"ref": "U11", "x_mm": 30.0, "y_mm": 20.0, "rotation_deg": 0, "side": "F.Cu", "description": "40 MHz Oscillator (below FPGA)"},
+        {"ref": "U8", "x_mm": 14.0, "y_mm": 5.0, "rotation_deg": 0, "side": "F.Cu", "description": "SPI Flash (near ESP32)"},
+        {"ref": "U5", "x_mm": 10.0, "y_mm": 22.0, "rotation_deg": 0, "side": "B.Cu", "description": "3.3V Buck Converter (bottom)"},
+        {"ref": "U6", "x_mm": 38.0, "y_mm": 22.0, "rotation_deg": 0, "side": "B.Cu", "description": "1.2V LDO (bottom)"},
+        {"ref": "U9", "x_mm": 5.0, "y_mm": 5.0, "rotation_deg": 0, "side": "F.Cu", "description": "USB-UART Bridge (near J3)"},
+        {"ref": "J3", "x_mm": 2.0, "y_mm": 5.0, "rotation_deg": 0, "side": "F.Cu", "description": "USB-C Connector (left edge, top)"},
+        {"ref": "U7", "x_mm": 40.0, "y_mm": 5.0, "rotation_deg": 0, "side": "F.Cu", "description": "Battery Gauge (right edge, top)"},
+        {"ref": "BAT1", "x_mm": 24.0, "y_mm": 25.0, "rotation_deg": 0, "side": "B.Cu", "description": "LiPo Battery (bottom center, under PCB)"},
+        {"ref": "U12", "x_mm": 24.0, "y_mm": 8.0, "rotation_deg": 0, "side": "F.Cu", "description": "e-Paper Display (mounted on top via FPC)"},
+        {"ref": "LED1", "x_mm": 44.0, "y_mm": 10.0, "rotation_deg": 0, "side": "F.Cu", "description": "RGB Status LED (right edge)"},
+        {"ref": "SW1", "x_mm": 6.0, "y_mm": 10.0, "rotation_deg": 0, "side": "F.Cu", "description": "Config Button (left side)"}
+      ]
+    },
+    "routing": {
+      "notes": [
+        "SATA differential pairs (SATA_HP_A±, SATA_HP_B±, SATA_DP_A±, SATA_DP_B±, FPGA_SATA_TX±, FPGA_SATA_RX±): route on F.Cu with 100Ω differential impedance. No vias on these nets. Length match within 5 mils.",
+        "USB D±: route on F.Cu with 90Ω differential impedance. Keep as short as possible.",
+        "SPI bus (MOSI, MISO, SCLK, CS): route on F.Cu. Keep total length under 50mm. Use 45-degree bends.",
+        "All power rails (VCC_3V3, VCC_1V2): use PWR.Cu plane segments with 0.5mm minimum traces. Star topology from regulator outputs.",
+        "High-speed clock lines (CLK_25MHZ, CLK_40MHZ): route on F.Cu, keep under 20mm, guard trace with GND vias.",
+        "Decoupling capacitors: place within 2mm of each power pin. Use 100nF + 10µF per power domain.",
+        "All vias: tented on top and bottom to prevent solder wicking.",
+        "Keep 0.3mm clearance from board edge for all copper."
+      ]
+    }
+  }
+}
