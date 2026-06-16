@@ -5,7 +5,7 @@
  * PCIe Screamer NVMe interposer board. All pins are defined with
  * their ball number, bank, alternate function, and connected peripheral.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

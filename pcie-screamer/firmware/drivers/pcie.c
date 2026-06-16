@@ -12,7 +12,7 @@
  *   - Configuration space (Type 0)
  *   - MSI/MSI-X interrupt generation
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

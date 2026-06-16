@@ -14,7 +14,7 @@
  * Security: Injection is gated by the INJECT_ENABLE and INJECT_ARMED
  * control bits. Both must be set before a TLP can be injected.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

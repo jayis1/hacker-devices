@@ -15,7 +15,7 @@
  *   RX (USB → FPGA): Wait for RXF# low, assert OE# low,
  *                     assert RD# low, read D[31:0], de-assert RD#.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

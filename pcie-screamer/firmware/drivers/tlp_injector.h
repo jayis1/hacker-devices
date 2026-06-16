@@ -2,7 +2,7 @@
  * drivers/tlp_injector.h — TLP Injector Driver Interface
  *
  * PCIe Screamer — NVMe Interposer
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

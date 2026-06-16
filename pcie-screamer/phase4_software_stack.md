@@ -1453,7 +1453,7 @@ Although the PCIe Screamer doesn't run Linux, this device tree describes the har
 /dts-v1/;
 
 / {
-    model = "Nous Research PCIe Screamer";
+    model = "jayis1 PCIe Screamer";
     compatible = "nous,pcie-screamer";
     #address-cells = <1>;
     #size-cells = <1>;

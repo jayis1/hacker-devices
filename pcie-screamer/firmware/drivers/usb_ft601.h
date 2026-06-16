@@ -2,7 +2,7 @@
  * drivers/usb_ft601.h — FT601 USB 3.0 FIFO Bridge Driver Interface
  *
  * PCIe Screamer — NVMe Interposer
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

@@ -10,7 +10,7 @@
  *   - InjectionScreen: TLP injection builder, DMA attack simulation
  *   - SettingsScreen: Device configuration, firmware update, export
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 
@@ -199,7 +199,7 @@ const App = () => {
           </View>
         )}
 
-        <Text style={styles.versionText}>v1.0.0 — Nous Research</Text>
+        <Text style={styles.versionText}>v1.0.0 — jayis1</Text>
       </View>
     );
   }

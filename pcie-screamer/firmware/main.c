@@ -14,7 +14,7 @@
  *   6. TLP sniffer pipeline enable
  *   7. Main loop: capture → buffer → stream
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

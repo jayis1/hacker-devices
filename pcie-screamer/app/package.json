@@ -39,7 +39,7 @@
   "jest": {
     "preset": "react-native"
   },
-  "author": "Nous Research",
+  "author": "jayis1",
   "license": "MIT",
   "repository": {
     "type": "git",

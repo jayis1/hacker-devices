@@ -15,7 +15,7 @@
  * DMA-style read/write access to the circular buffer used for
  * TLP capture buffering.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

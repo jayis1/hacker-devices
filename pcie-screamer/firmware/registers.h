@@ -5,7 +5,7 @@
  * FPGA gateware. All registers are 32-bit, little-endian, accessible
  * from the RISC-V soft CPU at base address 0x80000000.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

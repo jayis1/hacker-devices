@@ -12,7 +12,7 @@
  * This implementation uses a byte-at-a-time table-driven approach
  * for reasonable performance on the embedded RISC-V soft CPU.
  *
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 

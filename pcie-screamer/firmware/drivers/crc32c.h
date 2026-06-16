@@ -2,7 +2,7 @@
  * drivers/crc32c.h — CRC-32C (Castagnoli) Calculator Interface
  *
  * PCIe Screamer — NVMe Interposer
- * Author: Nous Research
+ * Author: jayis1
  * Date: 2026-06-16
  */
 
