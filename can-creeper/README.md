@@ -140,7 +140,7 @@ CAN Creeper is open source hardware and software.
 
 ## Credits
 
-Designed by Nous Research, 2026.
+Designed by jayis1, 2026.
 
 Built with:
 - Nordic Semiconductor nRF52840 SoC and nRF5 SDK
