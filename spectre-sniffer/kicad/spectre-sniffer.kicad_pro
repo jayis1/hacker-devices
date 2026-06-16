@@ -1,0 +1,238 @@
+{
+  "author": "jayis1",
+  "version": 20200121,
+  "project": {
+    "name": "Spectre-Sniffer",
+    "description": "Portable Electromagnetic Side-Channel Analysis and Tempest Surveillance Device",
+    "board": {
+      "width": 100.0,
+      "height": 80.0,
+      "layer_count": 4,
+      "thickness": 1.6
+    }
+  },
+  "sheets": [
+    {
+      "name": "Main",
+      "components": [
+        {
+          "reference": "U1",
+          "value": "ESP32-S3-WROOM-1",
+          "footprint": "Module_ESP32:ESP32-S3-WROOM-1",
+          "datasheet": "https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_datasheet_en.pdf",
+          "description": "Dual-core Xtensa LX7 MCU with WiFi/BLE"
+        },
+        {
+          "reference": "U2",
+          "value": "iCE40UP5K-UWG30",
+          "footprint": "Package_UFBGA:UFBGA-30_2.5x2.5mm_P0.4mm",
+          "datasheet": "https://www.latticesemi.com/products/fpgaandcpld/ice40ultraplus",
+          "description": "FPGA for real-time signal processing"
+        },
+        {
+          "reference": "U3",
+          "value": "LTC2208CUP-14",
+          "footprint": "Package_QFP:QFN-64-1EP_9x9mm_P0.5mm",
+          "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/2208fb.pdf",
+          "description": "16-bit 130 MSPS ADC"
+        },
+        {
+          "reference": "U4",
+          "value": "PSA4-5043+",
+          "footprint": "RF_Mini-Circuits:Mini-Circuits_CD542",
+          "datasheet": "https://www.minicircuits.com/pdfs/PSA4-5043+.pdf",
+          "description": "Wideband LNA 0.4-8 GHz"
+        },
+        {
+          "reference": "U5",
+          "value": "PSA4-5043+",
+          "footprint": "RF_Mini-Circuits:Mini-Circuits_CD542",
+          "datasheet": "https://www.minicircuits.com/pdfs/PSA4-5043+.pdf",
+          "description": "Wideband LNA (channel 2)"
+        },
+        {
+          "reference": "U6",
+          "value": "MAX2682",
+          "footprint": "Package_SO:MSOP-8_3x3mm_P0.65mm",
+          "datasheet": "https://www.maximintegrated.com/en/products/MAX2682",
+          "description": "RF Downconverter 400MHz-2.5GHz"
+        },
+        {
+          "reference": "U7",
+          "value": "PE82305",
+          "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+          "datasheet": "https://www.psemi.com/products/tunable-filters",
+          "description": "Tunable Bandpass Filter 10-3000MHz"
+        },
+        {
+          "reference": "U8",
+          "value": "ILI9341",
+          "footprint": "Display:ILI9341_2.8in",
+          "datasheet": "https://cdn-shop.adafruit.com/datasheets/ILI9341.pdf",
+          "description": "2.8\" TFT LCD Display Controller"
+        },
+        {
+          "reference": "U9",
+          "value": "CP2102N",
+          "footprint": "Package_DFN_QFN:QFN-20-1EP_3x3mm_P0.5mm",
+          "datasheet": "https://www.silabs.com/documents/public/data-sheets/cp2102n-datasheet.pdf",
+          "description": "USB-to-UART Bridge"
+        },
+        {
+          "reference": "U10",
+          "value": "MCP73871",
+          "footprint": "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm",
+          "datasheet": "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73871.pdf",
+          "description": "Li-Ion Battery Charger with Power Path"
+        },
+        {
+          "reference": "U11",
+          "value": "TPS63020",
+          "footprint": "Package_DFN_QFN:QFN-12-1EP_3x3mm_P0.5mm",
+          "datasheet": "https://www.ti.com/lit/ds/symlink/tps63020.pdf",
+          "description": "Buck-Boost Converter 3.3V Output"
+        },
+        {
+          "reference": "U12",
+          "value": "DS3231",
+          "footprint": "Package_SO:SOIC-16W_7.5x10.3mm_P1.27mm",
+          "datasheet": "https://www.analog.com/media/en/technical-documentation/data-sheets/DS3231.pdf",
+          "description": "Precision RTC with Temperature Compensation"
+        },
+        {
+          "reference": "U13",
+          "value": "TP4056",
+          "footprint": "Package_SO:SOP-8_3.9x4.9mm_P1.27mm",
+          "datasheet": "https://www.tp4056.com/datasheet/",
+          "description": "Li-Ion Battery Charger"
+        },
+        {
+          "reference": "U14",
+          "value": "DW01",
+          "footprint": "Package_SOT:SOT-23-6",
+          "datasheet": "https://www.diodes.com/assets/Datasheets/DW01.pdf",
+          "description": "Battery Protection IC"
+        },
+        {
+          "reference": "J1",
+          "value": "USB-C",
+          "footprint": "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+          "description": "USB-C Connector for Power and Data"
+        },
+        {
+          "reference": "J2",
+          "value": "SMA_H",
+          "footprint": "Connector_Coaxial:SMA_Amphenol_132134-15_EdgeMount",
+          "description": "H-Field Probe SMA Connector"
+        },
+        {
+          "reference": "J3",
+          "value": "SMA_E",
+          "footprint": "Connector_Coaxial:SMA_Amphenol_132134-15_EdgeMount",
+          "description": "E-Field Probe SMA Connector"
+        },
+        {
+          "reference": "J4",
+          "value": "microSD",
+          "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
+          "description": "microSD Card Slot"
+        },
+        {
+          "reference": "J5",
+          "value": "BATTERY",
+          "footprint": "Battery:BatteryHolder_Keystone_104_1x18650",
+          "description": "18650 Battery Holder"
+        },
+        {
+          "reference": "SW1",
+          "value": "BUTTON_A",
+          "footprint": "Button_Switch_THT:SW_PUSH_6mm",
+          "description": "User Button A (Select)"
+        },
+        {
+          "reference": "SW2",
+          "value": "BUTTON_B",
+          "footprint": "Button_Switch_THT:SW_PUSH_6mm",
+          "description": "User Button B (Back)"
+        },
+        {
+          "reference": "SW3",
+          "value": "BUTTON_C",
+          "footprint": "Button_Switch_THT:SW_PUSH_6mm",
+          "description": "User Button C (Action)"
+        },
+        {
+          "reference": "LED1",
+          "value": "RGB_LED",
+          "footprint": "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm",
+          "description": "RGB Status LED"
+        },
+        {
+          "reference": "X1",
+          "value": "40MHz_XTAL",
+          "footprint": "Crystal:Crystal_HC49-U_Vertical",
+          "description": "40 MHz Main Crystal"
+        },
+        {
+          "reference": "X2",
+          "value": "32.768kHz_XTAL",
+          "footprint": "Crystal:Crystal_SMD_3215-2pin_3.2x1.5mm",
+          "description": "32.768 kHz RTC Crystal"
+        }
+      ],
+      "nets": [
+        {"name": "VCC_3V3", "pins": ["U1-1", "U2-1", "U8-1", "U9-1", "U12-1", "LED1-1"]},
+        {"name": "VCC_1V8", "pins": ["U2-2", "U3-1"]},
+        {"name": "VCC_1V2", "pins": ["U2-3", "U3-2"]},
+        {"name": "GND", "pins": ["U1-2", "U2-4", "U3-3", "U4-1", "U5-1", "U6-1", "U7-1", "U8-2", "U9-2", "U10-1", "U11-1", "U12-2", "J1-1", "J2-1", "J3-1", "J4-1", "J5-1", "SW1-1", "SW2-1", "SW3-1", "LED1-2"]},
+        {"name": "VBAT", "pins": ["J5-2", "U10-2", "U13-1"]},
+        {"name": "USB_D+", "pins": ["J1-2", "U9-3"]},
+        {"name": "USB_D-", "pins": ["J1-3", "U9-4"]},
+        {"name": "UART_TX", "pins": ["U1-43", "U9-5"]},
+        {"name": "UART_RX", "pins": ["U1-44", "U9-6"]},
+        {"name": "FPGA_SPI_MOSI", "pins": ["U1-12", "U2-5"]},
+        {"name": "FPGA_SPI_MISO", "pins": ["U1-11", "U2-6"]},
+        {"name": "FPGA_SPI_CLK", "pins": ["U1-13", "U2-7"]},
+        {"name": "FPGA_SPI_CS", "pins": ["U1-14", "U2-8"]},
+        {"name": "FPGA_CRESET", "pins": ["U1-15", "U2-9"]},
+        {"name": "FPGA_CDONE", "pins": ["U1-16", "U2-10"]},
+        {"name": "FPGA_IRQ", "pins": ["U1-17", "U2-11"]},
+        {"name": "ADC_LVDS_P", "pins": ["U3-4", "U2-12"]},
+        {"name": "ADC_LVDS_N", "pins": ["U3-5", "U2-13"]},
+        {"name": "ADC_CLK_P", "pins": ["U3-6", "U2-14"]},
+        {"name": "ADC_CLK_N", "pins": ["U3-7", "U2-15"]},
+        {"name": "ADC_ENC_P", "pins": ["U3-8", "U2-16"]},
+        {"name": "ADC_ENC_N", "pins": ["U3-9", "U2-17"]},
+        {"name": "RF_INPUT", "pins": ["J2-2", "U4-2"]},
+        {"name": "RF_LNA1_OUT", "pins": ["U4-3", "U7-2"]},
+        {"name": "RF_FILTER_OUT", "pins": ["U7-3", "U6-2"]},
+        {"name": "RF_DOWNCONV_OUT", "pins": ["U6-3", "U3-10"]},
+        {"name": "RF_LNA2_IN", "pins": ["J3-2", "U5-2"]},
+        {"name": "RF_LNA2_OUT", "pins": ["U5-3", "U3-11"]},
+        {"name": "DISPLAY_SPI_MOSI", "pins": ["U1-35", "U8-3"]},
+        {"name": "DISPLAY_SPI_CLK", "pins": ["U1-36", "U8-4"]},
+        {"name": "DISPLAY_CS", "pins": ["U1-34", "U8-5"]},
+        {"name": "DISPLAY_DC", "pins": ["U1-33", "U8-6"]},
+        {"name": "DISPLAY_RST", "pins": ["U1-32", "U8-7"]},
+        {"name": "DISPLAY_BL", "pins": ["U1-21", "U8-8"]},
+        {"name": "SD_CS", "pins": ["U1-10", "J4-2"]},
+        {"name": "SD_DETECT", "pins": ["U1-9", "J4-3"]},
+        {"name": "I2C_SDA", "pins": ["U1-40", "U12-3"]},
+        {"name": "I2C_SCL", "pins": ["U1-41", "U12-4"]},
+        {"name": "LNA1_EN", "pins": ["U1-1", "U4-4"]},
+        {"name": "LNA2_EN", "pins": ["U1-2", "U5-4"]},
+        {"name": "DOWNCONV_EN", "pins": ["U1-7", "U6-4"]},
+        {"name": "FILTER_TUNE_CLK", "pins": ["U1-4", "U7-4"]},
+        {"name": "FILTER_TUNE_DATA", "pins": ["U1-5", "U7-5"]},
+        {"name": "FILTER_TUNE_LE", "pins": ["U1-6", "U7-6"]},
+        {"name": "BUTTON_A", "pins": ["U1-0", "SW1-2"]},
+        {"name": "BUTTON_B", "pins": ["U1-46", "SW2-2"]},
+        {"name": "BUTTON_C", "pins": ["U1-45", "SW3-2"]},
+        {"name": "LED_STATUS", "pins": ["U1-48", "LED1-3"]},
+        {"name": "BAT_ADC", "pins": ["U1-4", "U10-3"]},
+        {"name": "CHARGING_STATUS", "pins": ["U1-5", "U10-4"]},
+        {"name": "CHARGE_FULL", "pins": ["U1-6", "U10-5"]}
+      ]
+    }
+  ]
+}
