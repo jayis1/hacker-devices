@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "filename": "hdmi-siphon.kicad_pro",
+    "version": 1
+  },
+  "project": {
+    "name": "HDMI-Siphon",
+    "title": "Transparent HDMI Interposer for Security Research",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "board": "hdmi-siphon"
+  },
+  "board": {
+    "design_settings": {
+      "rules": {
+        "min_track_width": "0.15mm",
+        "min_track_spacing": "0.15mm",
+        "min_via_diameter": "0.5mm",
+        "min_via_hole": "0.25mm",
+        "min_hole_size": "0.25mm",
+        "clearance_same_net": "0.15mm",
+        "clearance_different_nets": "0.15mm",
+        "silk_to_copper": "0.15mm",
+        "silk_to_silk": "0.15mm",
+        "copper_to_edge": "0.3mm",
+        "hole_to_copper": "0.3mm",
+        "hole_to_edge": "0.3mm"
+      },
+      "layers": {
+        "copper": 4,
+        "stackup": [
+          { "layer": "F.Cu", "type": "signal", "thickness": "0.035mm" },
+          { "layer": "GND",  "type": "internal", "thickness": "0.035mm" },
+          { "layer": "PWR",  "type": "internal", "thickness": "0.035mm" },
+          { "layer": "B.Cu", "type": "signal", "thickness": "0.035mm" }
+        ]
+      },
+      "diff_pairs": [
+        { "net_class": "HDMI_TMDS", "width": "0.15mm", "gap": "0.15mm" }
+      ],
+      "net_classes": [
+        {
+          "name": "Default",
+          "clearance": "0.15mm",
+          "trace_width": "0.254mm",
+          "via_diameter": "0.5mm",
+          "via_hole": "0.25mm"
+        },
+        {
+          "name": "Power",
+          "clearance": "0.3mm",
+          "trace_width": "0.5mm",
+          "via_diameter": "0.7mm",
+          "via_hole": "0.4mm"
+        },
+        {
+          "name": "HDMI_TMDS",
+          "clearance": "0.15mm",
+          "trace_width": "0.15mm",
+          "via_diameter": "0.5mm",
+          "via_hole": "0.25mm"
+        }
+      ]
+    },
+    "board_outline": {
+      "width": "65mm",
+      "height": "45mm",
+      "edge_clearance": "0.3mm",
+      "corners": "rounded",
+      "radius": "2mm"
+    },
+    "mounting_holes": [
+      { "x": "5mm", "y": "5mm", "diameter": "3.2mm" },
+      { "x": "60mm", "y": "5mm", "diameter": "3.2mm" },
+      { "x": "5mm", "y": "40mm", "diameter": "3.2mm" },
+      { "x": "60mm", "y": "40mm", "diameter": "3.2mm" }
+    ]
+  },
+  "design": {
+    "schematic": "hdmi-siphon.kicad_sch",
+    "pcb": "hdmi-siphon.kicad_pcb",
+    "libraries": [
+      { "name": "power", "type": "sym_lib" },
+      { "name": "connector_hdmi", "type": "sym_lib" },
+      { "name": "regulator_linear", "type": "sym_lib" },
+      { "name": "memory_eeprom", "type": "sym_lib" },
+      { "name": "interface_spi", "type": "sym_lib" },
+      { "name": "mcu_espressif", "type": "sym_lib" },
+      { "name": "fpga_lattice", "type": "sym_lib" },
+      { "name": "battery_management", "type": "sym_lib" },
+      { "name": "interface_usb", "type": "sym_lib" }
+    ],
+    "symbol_lib_table": [
+      { "uri": "${KICAD8_SYMBOL_DIR}/power.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/connector.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/regulator.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/memory.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/interface.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/mcu.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/fpga.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/battery.kicad_sym" },
+      { "uri": "${KICAD8_SYMBOL_DIR}/usb.kicad_sym" }
+    ]
+  },
+  "erc": {
+    "check_annotations": true,
+    "check_power": true,
+    "check_off_grid": true,
+    "check_single_pin": false
+  }
+}

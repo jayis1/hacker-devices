@@ -1,0 +1,375 @@
+(kicad_pcb (version 20231122) (generator "jayis1")
+
+  (page "A4")
+  
+  (title_block
+    (title "HDMI-Siphon — Transparent HDMI Interposer PCB")
+    (date "2026-06-17")
+    (rev "1.0.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: Proprietary — Authorized Security Research Use Only")
+  )
+
+  ;; Board outline: 65mm x 45mm, rounded corners
+  (gr_poly
+    (pts
+      (xy 0 0) (xy 65 0) (xy 65 45) (xy 0 45)
+    )
+    (layer "Edge.Cuts") (width 0.15)
+  )
+
+  ;; Mounting holes (4x M3, 3.2mm diameter)
+  (gr_circle (center 5 5) (end 5 6.6) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 60 5) (end 60 6.6) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 5 40) (end 5 41.6) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 60 40) (end 60 41.6) (layer "Edge.Cuts") (width 0.15))
+
+  ;; ============================================================================
+  ;; Layer Stackup
+  ;; ============================================================================
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 1" (type "prepreg" (thickness 0.2) (material "FR-4") (epsilon_r 4.5)))
+      (layer "In1.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 2" (type "core" (thickness 0.7) (material "FR-4") (epsilon_r 4.5)))
+      (layer "In2.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 3" (type "prepreg" (thickness 0.2) (material "FR-4") (epsilon_r 4.5)))
+      (layer "B.Cu" (type "copper" (thickness 0.035)))
+    )
+    (copper_finish "ENIG")
+    (solder_mask (type "liquid_photoimageable") (color "green"))
+    (silk_screen (type "epoxy_ink") (color "white"))
+  )
+
+  ;; ============================================================================
+  ;; Net Classes
+  ;; ============================================================================
+  (net_class "Default" (clearance 0.15) (trace_width 0.254) (via_dia 0.5) (via_drill 0.25))
+  (net_class "Power" (clearance 0.3) (trace_width 0.5) (via_dia 0.7) (via_drill 0.4))
+  (net_class "HDMI_TMDS" (clearance 0.15) (trace_width 0.15) (via_dia 0.5) (via_drill 0.25))
+
+  ;; ============================================================================
+  ;; Component Footprints (Placement)
+  ;; ============================================================================
+
+  ;; J1 — HDMI IN (left side, centered vertically)
+  (module "Connector_HDMI:HDMI_A_Female_SMT"
+    (at 5 22.5 0)
+    (layer "F.Cu")
+    (reference "J1")
+    (value "HDMI IN")
+  )
+
+  ;; J2 — HDMI OUT (right side, centered vertically)
+  (module "Connector_HDMI:HDMI_A_Female_SMT"
+    (at 60 22.5 180)
+    (layer "F.Cu")
+    (reference "J2")
+    (value "HDMI OUT")
+  )
+
+  ;; U1 — TFP401 HDMI Receiver (near J1)
+  (module "Package_QFP:HTQFP-100_14x14mm_P0.5mm"
+    (at 15 15 0)
+    (layer "F.Cu")
+    (reference "U1")
+    (value "TFP401APZP")
+  )
+
+  ;; U2 — TFP410 HDMI Transmitter (near J2)
+  (module "Package_QFP:HTQFP-64_10x10mm_P0.5mm"
+    (at 50 15 0)
+    (layer "F.Cu")
+    (reference "U2")
+    (value "TFP410PAP")
+  )
+
+  ;; U3 — FPGA iCE40UP5K (center)
+  (module "Package_CSP:WLCSP-30_2.6x3.1mm_P0.5mm"
+    (at 32.5 15 0)
+    (layer "F.Cu")
+    (reference "U3")
+    (value "iCE40UP5K-UWG30")
+  )
+
+  ;; U5 — SDRAM (below FPGA)
+  (module "Package_SO:TSOPII-54_22x10.16mm_P0.8mm"
+    (at 32.5 25 0)
+    (layer "F.Cu")
+    (reference "U5")
+    (value "IS42S16160J-6TL")
+  )
+
+  ;; U4 — ESP32-S3 (bottom area)
+  (module "Module:ESP32-S3-WROOM-1"
+    (at 32.5 36 0)
+    (layer "F.Cu")
+    (reference "U4")
+    (value "ESP32-S3-WROOM-1")
+  )
+
+  ;; U6 — EDID EEPROM (top-right)
+  (module "Package_TO_SOT_SMD:SOT-23-5"
+    (at 45 5 0)
+    (layer "F.Cu")
+    (reference "U6")
+    (value "24LC02BT-I/OT")
+  )
+
+  ;; U7 — Level Shifter (top-right)
+  (module "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
+    (at 45 9 0)
+    (layer "F.Cu")
+    (reference "U7")
+    (value "TXS0108EPWR")
+  )
+
+  ;; U8 — I²C Mux (top)
+  (module "Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm"
+    (at 32.5 5 0)
+    (layer "F.Cu")
+    (reference "U8")
+    (value "TCA9548APWR")
+  )
+
+  ;; U9 — CH340C USB-Serial (bottom-left)
+  (module "Package_SO:SOP-16_3.9x9.9mm_P1.27mm"
+    (at 12 40 0)
+    (layer "F.Cu")
+    (reference "U9")
+    (value "CH340C")
+  )
+
+  ;; J3 — USB-C Connector (bottom-left edge)
+  (module "Connector_USB:USB_C_Receptacle_16P"
+    (at 12 45 0)
+    (layer "F.Cu")
+    (reference "J3")
+    (value "USB-C")
+  )
+
+  ;; J4 — microSD Slot (bottom-right)
+  (module "Connector_Card:microSD_Socket_Push-Pull"
+    (at 50 42 0)
+    (layer "F.Cu")
+    (reference "J4")
+    (value "microSD")
+  )
+
+  ;; U10 — MCP73831 Battery Charger (bottom-center)
+  (module "Package_TO_SOT_SMD:SOT-23-5"
+    (at 25 36 0)
+    (layer "F.Cu")
+    (reference "U10")
+    (value "MCP73831T-2ACI/OT")
+  )
+
+  ;; U11 — 3.3V LDO (bottom-left)
+  (module "Package_TO_SOT_SMD:SOT-23-3"
+    (at 18 36 0)
+    (layer "F.Cu")
+    (reference "U11")
+    (value "XC6206P332MR")
+  )
+
+  ;; U12 — 1.8V LDO (bottom-left)
+  (module "Package_TO_SOT_SMD:SOT-23-3"
+    (at 22 40 0)
+    (layer "F.Cu")
+    (reference "U12")
+    (value "XC6206P182MR")
+  )
+
+  ;; LED1 — RGB Status LED (top-left)
+  (module "LED_SMD:LED_SK6812-MINI"
+    (at 10 5 0)
+    (layer "F.Cu")
+    (reference "LED1")
+    (value "SK6812-MINI")
+  )
+
+  ;; SW1, SW2 — Buttons (top-left)
+  (module "Button_Switch_SMD:SW_SPST_TL3342"
+    (at 10 10 0)
+    (layer "F.Cu")
+    (reference "SW1")
+    (value "Config")
+  )
+  (module "Button_Switch_SMD:SW_SPST_TL3342"
+    (at 10 14 0)
+    (layer "F.Cu")
+    (reference "SW2")
+    (value "Capture")
+  )
+
+  ;; Q1, Q2 — CEC level shift MOSFETs
+  (module "Package_TO_SOT_SMD:SOT-23"
+    (at 18 9 0)
+    (layer "F.Cu")
+    (reference "Q1")
+    (value "BSS138")
+  )
+  (module "Package_TO_SOT_SMD:SOT-23"
+    (at 22 9 0)
+    (layer "F.Cu")
+    (reference "Q2")
+    (value "BSS138")
+  )
+
+  ;; BT1 — Battery connector (pads for Li-Po leads)
+  (module "Battery:Battery_Cell"
+    (at 32.5 42 0)
+    (layer "F.Cu")
+    (reference "BT1")
+    (value "LP503048")
+  )
+
+  ;; ============================================================================
+  ;; Decoupling Capacitors (placed near ICs)
+  ;; ============================================================================
+  ;; C1-C4 near TFP401
+  (module "Capacitor_SMD:C_0402"
+    (at 14 12 0) (layer "F.Cu") (reference "C1") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 14 13 0) (layer "F.Cu") (reference "C2") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 14 14 0) (layer "F.Cu") (reference "C3") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 16 12 0) (layer "F.Cu") (reference "C4") (value "10uF")
+  )
+
+  ;; C5-C8 near TFP410
+  (module "Capacitor_SMD:C_0402"
+    (at 49 12 0) (layer "F.Cu") (reference "C5") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 49 13 0) (layer "F.Cu") (reference "C6") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 49 14 0) (layer "F.Cu") (reference "C7") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 51 12 0) (layer "F.Cu") (reference "C8") (value "10uF")
+  )
+
+  ;; C9, C10 near FPGA
+  (module "Capacitor_SMD:C_0402"
+    (at 31 12 0) (layer "F.Cu") (reference "C9") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 31 13 0) (layer "F.Cu") (reference "C10") (value "100nF")
+  )
+
+  ;; C11, C12 near ESP32-S3
+  (module "Capacitor_SMD:C_0402"
+    (at 31 35 0) (layer "F.Cu") (reference "C11") (value "100nF")
+  )
+  (module "Capacitor_SMD:C_0402"
+    (at 31 36 0) (layer "F.Cu") (reference "C12") (value "10uF")
+  )
+
+  ;; C13, C14 near LDOs
+  (module "Capacitor_SMD:C_0603"
+    (at 17 35 0) (layer "F.Cu") (reference "C13") (value "10uF")
+  )
+  (module "Capacitor_SMD:C_0603"
+    (at 21 39 0) (layer "F.Cu") (reference "C14") (value "10uF")
+  )
+
+  ;; ============================================================================
+  ;; Resistors
+  ;; ============================================================================
+  ;; R1, R2 — I²C pull-ups (10k)
+  (module "Resistor_SMD:R_0402"
+    (at 32 8 0) (layer "F.Cu") (reference "R1") (value "10k")
+  )
+  (module "Resistor_SMD:R_0402"
+    (at 32 9 0) (layer "F.Cu") (reference "R2") (value "10k")
+  )
+
+  ;; R3, R4 — TFP401/410 REXT resistors (5.1k)
+  (module "Resistor_SMD:R_0402"
+    (at 14 17 0) (layer "F.Cu") (reference "R3") (value "5.1k")
+  )
+  (module "Resistor_SMD:R_0402"
+    (at 49 17 0) (layer "F.Cu") (reference "R4") (value "5.1k")
+  )
+
+  ;; R5, R6 — Battery voltage divider
+  (module "Resistor_SMD:R_0402"
+    (at 30 38 0) (layer "F.Cu") (reference "R5") (value "100k")
+  )
+  (module "Resistor_SMD:R_0402"
+    (at 30 39 0) (layer "F.Cu") (reference "R6") (value "47k")
+  )
+
+  ;; L1 — Ferrite bead for power
+  (module "Inductor_SMD:L_0603"
+    (at 25 34 0) (layer "F.Cu") (reference "L1") (value "330R@100MHz")
+  )
+
+  ;; ============================================================================
+  ;; Copper Zones (GND pour on all layers)
+  ;; ============================================================================
+  (zone
+    (net 0) (net_name "GND")
+    (layer "F.Cu")
+    (polygon
+      (pts (xy 2 2) (xy 63 2) (xy 63 43) (xy 2 43))
+    )
+    (fill_mode (mode "solid"))
+    (priority 1)
+    (min_thickness 0.15)
+  )
+
+  (zone
+    (net 0) (net_name "GND")
+    (layer "In1.Cu")
+    (polygon
+      (pts (xy 0 0) (xy 65 0) (xy 65 45) (xy 0 45))
+    )
+    (fill_mode (mode "solid"))
+    (priority 1)
+    (min_thickness 0.15)
+  )
+
+  ;; Power zone for 3.3V on In2.Cu
+  (zone
+    (net 0) (net_name "+3.3V")
+    (layer "In2.Cu")
+    (polygon
+      (pts (xy 0 0) (xy 65 0) (xy 65 45) (xy 0 45))
+    )
+    (fill_mode (mode "solid"))
+    (priority 1)
+    (min_thickness 0.15)
+  )
+
+  (zone
+    (net 0) (net_name "GND")
+    (layer "B.Cu")
+    (polygon
+      (pts (xy 2 2) (xy 63 2) (xy 63 43) (xy 2 43))
+    )
+    (fill_mode (mode "solid"))
+    (priority 1)
+    (min_thickness 0.15)
+  )
+
+  ;; ============================================================================
+  ;; Silk Screen Labels
+  ;; ============================================================================
+  (gr_text "HDMI-Siphon v1.0" (at 15 3 0) (layer "F.SilkS") (effects (font (size 1.5 1.5) bold)))
+  (gr_text "Author: jayis1" (at 15 4.5 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "INPUT" (at 5 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "OUTPUT" (at 56 20 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "USB-C" (at 10 44 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "SD" (at 52 44 0) (layer "F.SilkS") (effects (font (size 1 1))))
+  (gr_text "AUTHORIZED SECURITY RESEARCH ONLY" (at 15 44 0) (layer "B.SilkS") (effects (font (size 0.8 0.8))))
+
+)
