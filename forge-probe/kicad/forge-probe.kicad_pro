@@ -1,0 +1,227 @@
+{
+  "author": "jayis1",
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "line_width": 0.1,
+        "text_size": 1.27,
+        "via_size": 0.5,
+        "via_drill": 0.25,
+        "track_width": 0.15,
+        "clearance": 0.15,
+        "silk_line_width": 0.1,
+        "silk_text_size": 0.8
+      },
+      "rule_severities": {
+        "silk_over_copper": "warning",
+        "silk_over_edge": "warning",
+        "annular_width": "error"
+      },
+      "tracks": {
+        "min_width": 0.1,
+        "min_diff_pair_width": 0.1,
+        "min_clearance": 0.1,
+        "min_diff_pair_gap": 0.15,
+        "min_through_via": 0.2,
+        "min_micro_via": 0.1,
+        "min_bury_via": 0.1,
+        "max_len": 0,
+        "max_through_via": 3.0,
+        "max_micro_via": 1.0,
+        "max_bury_via": 1.0
+      },
+      "zones": {
+        "min_clearance": 0.15
+      }
+    },
+    "layer_presets": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 1
+    },
+    "pin_map": [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "rules": {
+      "enable": true,
+      "skip_unconnected": false,
+      "similarity": 0.9
+    }
+  },
+  "librarie": {
+    "libraries": [
+      {"name": "MCU_ST_STM32H7", "type": "KiCad", "uri": "${KIPRJMOD}/lib/MCU_ST_STM32H7.kicad_sym"},
+      {"name": "FPGA_Lattice", "type": "KiCad", "uri": "${KIPRJMOD}/lib/FPGA_Lattice.kicad_sym"},
+      {"name": "Interface_Connector", "type": "KiCad", "uri": "${KIPRJMOD}/lib/Interface_Connector.kicad_sym"},
+      {"name": "Power_Management", "type": "KiCad", "uri": "${KIPRJMOD}/lib/Power_Management.kicad_sym"},
+      {"name": "Sensor_Current", "type": "KiCad", "uri": "${KIPRJMOD}/lib/Sensor_Current.kicad_sym"},
+      {"name": "Regulator_Linear", "type": "KiCad", "uri": "${KIPRJMOD}/lib/Regulator_Linear.kicad_sym"},
+      {"name": "Device", "type": "KiCad", "uri": "${KIPRJMOD}/lib/Device.kicad_sym"}
+    ]
+  },
+  "meta": {
+    "filename": "forge-probe.kicad_pro",
+    "version": 2
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "diff_pair_gap": 0.3,
+        "diff_pair_width": 0.2,
+        "line_width": 0.15,
+        "microvia_dia": 0.3,
+        "microvia_drill": 0.15,
+        "via_dia": 0.5,
+        "via_drill": 0.25,
+        "wire_width": 0.15
+      },
+      {
+        "name": "Power",
+        "clearance": 0.2,
+        "diff_pair_gap": 0.3,
+        "diff_pair_width": 0.3,
+        "line_width": 0.3,
+        "microvia_dia": 0.3,
+        "microvia_drill": 0.15,
+        "via_dia": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 0.3
+      },
+      {
+        "name": "High_Speed",
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "line_width": 0.15,
+        "microvia_dia": 0.3,
+        "microvia_drill": 0.15,
+        "via_dia": 0.4,
+        "via_drill": 0.2,
+        "wire_width": 0.15
+      },
+      {
+        "name": "JTAG",
+        "clearance": 0.15,
+        "line_width": 0.15,
+        "via_dia": 0.5,
+        "via_drill": 0.25,
+        "wire_width": 0.15
+      },
+      {
+        "name": "USB",
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.15,
+        "line_width": 0.1,
+        "via_dia": 0.4,
+        "via_drill": 0.2,
+        "wire_width": 0.1
+      }
+    ]
+  },
+  "pages": [
+    {
+      "number": "1",
+      "name": "Main_Power",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "2",
+      "name": "MCU_STM32H743",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "3",
+      "name": "FPGA_iCE40UP5K",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "4",
+      "name": "JTAG_SWD_Interface",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "5",
+      "name": "USB_and_SD_Card",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "6",
+      "name": "MPIO_Level_Shifters",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    },
+    {
+      "number": "7",
+      "name": "Voltage_Regulators",
+      "width": 1200,
+      "height": 800,
+      "sheet": {"x": 0, "y": 0}
+    }
+  ],
+  "sheets": [
+    {
+      "name": "Main_Power",
+      "uuid": "00000000-0000-0000-0000-000000000001"
+    },
+    {
+      "name": "MCU_STM32H743",
+      "uuid": "00000000-0000-0000-0000-000000000002"
+    },
+    {
+      "name": "FPGA_iCE40UP5K",
+      "uuid": "00000000-0000-0000-0000-000000000003"
+    },
+    {
+      "name": "JTAG_SWD_Interface",
+      "uuid": "00000000-0000-0000-0000-000000000004"
+    },
+    {
+      "name": "USB_and_SD_Card",
+      "uuid": "00000000-0000-0000-0000-000000000005"
+    },
+    {
+      "name": "MPIO_Level_Shifters",
+      "uuid": "00000000-0000-0000-0000-000000000006"
+    },
+    {
+      "name": "Voltage_Regulators",
+      "uuid": "00000000-0000-0000-0000-000000000007"
+    }
+  ],
+  "title": "Forge-Probe: Silicon Backdoor Debug Probe",
+  "company": "jayis1 Labs",
+  "date": "2026-06-17",
+  "rev": "1.0",
+  "comment1": "Author: jayis1",
+  "comment2": "License: Authorized Security Research Use Only",
+  "comment3": "PCB: 6-layer, 0.8 mm, ENIG finish",
+  "comment4": "Dimensions: 55 x 30 mm"
+}
