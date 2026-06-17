@@ -1,0 +1,731 @@
+(kicad_sch (version 20230620) (generator eeschema)
+
+  (uuid a1b2c3d4-f1b0-0001-4000-8000-000000000001)
+
+  (paper "A3")
+
+  (title_block
+    (title "FiberPhantom — Covert Fiber Optic Network Tap & MITM Implant")
+    (date "2026-06-17")
+    (rev "1.0")
+    (company "Hacker Devices — jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "For authorized security research use only")
+  )
+
+  ; ========== LIBRARIES ==========
+  (lib_symbols)
+
+  ; ========== POWER SYMBOLS ==========
+  (symbol "power:VCC_3V3" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VCC_3V3" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000001))
+  )
+
+  (symbol "power:VCC_1V2" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VCC_1V2" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000002))
+  )
+
+  (symbol "power:VBAT" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VBAT" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000003))
+  )
+
+  (symbol "power:VBUS" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VBUS" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000004))
+  )
+
+  (symbol "power:GND" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 -3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "GND" (at 0 -3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27))
+      (stroke (width 0)) (fill (type outline)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000005))
+  )
+
+  (symbol "power:VCC_5V" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VCC_5V" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000006))
+  )
+
+  (symbol "power:VAPD_65V" (power) (pin_names (offset 0)) (in_bom yes)
+    (property "Reference" "#PWR" (at 0 3.81 90) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "VAPD_65V" (at 0 3.81 0) (effects (font (size 1.27 1.27)))
+    (symbol (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (xy 0.762 1.27) (xy -0.762 1.27))
+      (stroke (width 0)) (fill (type none)))
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000007))
+  )
+
+  ; ========== COMPONENT: U1 — RP2040 (Main MCU) ==========
+  (symbol "MCU:RP2040" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "RP2040" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP5.6x5.6mm" (at 0 0 0))
+    (property "Datasheet" "https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" (at 0 0 0))
+    (symbol
+      (rectangle (start -25.4 25.4) (end 25.4 -25.4) (stroke (width 0.254)) (fill (type background)))
+    )
+    ; GPIO pins (left side)
+    (pin "GPIO0"  (input) (at -27.94 22.86 0) (uuid 10000000-0000-0000-0000-000000000001))
+    (pin "GPIO1"  (input) (at -27.94 20.32 0) (uuid 10000000-0000-0000-0000-000000000002))
+    (pin "GPIO2"  (bidirectional) (at -27.94 17.78 0) (uuid 10000000-0000-0000-0000-000000000003))
+    (pin "GPIO3"  (bidirectional) (at -27.94 15.24 0) (uuid 10000000-0000-0000-0000-000000000004))
+    (pin "GPIO4"  (bidirectional) (at -27.94 12.7 0) (uuid 10000000-0000-0000-0000-000000000005))
+    (pin "GPIO5"  (bidirectional) (at -27.94 10.16 0) (uuid 10000000-0000-0000-0000-000000000006))
+    (pin "GPIO6"  (bidirectional) (at -27.94 7.62 0) (uuid 10000000-0000-0000-0000-000000000007))
+    (pin "GPIO7"  (bidirectional) (at -27.94 5.08 0) (uuid 10000000-0000-0000-0000-000000000008))
+    (pin "GPIO8"  (bidirectional) (at -27.94 2.54 0) (uuid 10000000-0000-0000-0000-000000000009))
+    (pin "GPIO9"  (bidirectional) (at -27.94 0 0) (uuid 10000000-0000-0000-0000-000000000010))
+    (pin "GPIO10" (bidirectional) (at -27.94 -2.54 0) (uuid 10000000-0000-0000-0000-000000000011))
+    (pin "GPIO11" (bidirectional) (at -27.94 -5.08 0) (uuid 10000000-0000-0000-0000-000000000012))
+    (pin "GPIO12" (bidirectional) (at -27.94 -7.62 0) (uuid 10000000-0000-0000-0000-000000000013))
+    (pin "GPIO13" (bidirectional) (at -27.94 -10.16 0) (uuid 10000000-0000-0000-0000-000000000014))
+    (pin "GPIO14" (bidirectional) (at -27.94 -12.7 0) (uuid 10000000-0000-0000-0000-000000000015))
+    (pin "GPIO15" (bidirectional) (at -27.94 -15.24 0) (uuid 10000000-0000-0000-0000-000000000016))
+    (pin "GPIO16" (bidirectional) (at -27.94 -17.78 0) (uuid 10000000-0000-0000-0000-000000000017))
+    (pin "GPIO17" (bidirectional) (at -27.94 -20.32 0) (uuid 10000000-0000-0000-0000-000000000018))
+    (pin "GPIO18" (bidirectional) (at -27.94 -22.86 0) (uuid 10000000-0000-0000-0000-000000000019))
+    (pin "GPIO19" (bidirectional) (at -27.94 -25.4 0) (uuid 10000000-0000-0000-0000-000000000020))
+    ; Right side pins
+    (pin "GPIO20" (bidirectional) (at 27.94 22.86 180) (uuid 10000000-0000-0000-0000-000000000021))
+    (pin "GPIO21" (bidirectional) (at 27.94 20.32 180) (uuid 10000000-0000-0000-0000-000000000022))
+    (pin "GPIO22" (bidirectional) (at 27.94 17.78 180) (uuid 10000000-0000-0000-0000-000000000023))
+    (pin "GPIO23" (bidirectional) (at 27.94 15.24 180) (uuid 10000000-0000-0000-0000-000000000024))
+    (pin "GPIO24" (bidirectional) (at 27.94 12.7 180) (uuid 10000000-0000-0000-0000-000000000025))
+    (pin "GPIO25" (bidirectional) (at 27.94 10.16 180) (uuid 10000000-0000-0000-0000-000000000026))
+    (pin "GPIO26" (bidirectional) (at 27.94 7.62 180) (uuid 10000000-0000-0000-0000-000000000027))
+    (pin "GPIO27" (bidirectional) (at 27.94 5.08 180) (uuid 10000000-0000-0000-0000-000000000028))
+    (pin "GPIO28" (bidirectional) (at 27.94 2.54 180) (uuid 10000000-0000-0000-0000-000000000029))
+    (pin "GPIO29" (bidirectional) (at 27.94 0 0) (uuid 10000000-0000-0000-0000-000000000030))
+    ; Power pins
+    (pin "VCC_3V3" (power_in) (at 0 27.94 270) (uuid 10000000-0000-0000-0000-000000000031))
+    (pin "GND"    (power_in) (at 0 -27.94 90) (uuid 10000000-0000-0000-0000-000000000032))
+    (pin "XIN"    (input) (at 10.16 -27.94 90) (uuid 10000000-0000-0000-0000-000000000033))
+    (pin "XOUT"   (output) (at 12.7 -27.94 90) (uuid 10000000-0000-0000-0000-000000000034))
+    (pin "USB_DP" (bidirectional) (at 15.24 -27.94 90) (uuid 10000000-0000-0000-0000-000000000035))
+    (pin "USB_DM" (bidirectional) (at 17.78 -27.94 90) (uuid 10000000-0000-0000-0000-000000000036))
+    (pin "RUN"    (input) (at -10.16 -27.94 90) (uuid 10000000-0000-0000-0000-000000000037))
+    (pin "SWCLK"  (input) (at -12.7 -27.94 90) (uuid 10000000-0000-0000-0000-000000000038))
+    (pin "SWDIO"  (bidirectional) (at -15.24 -27.94 90) (uuid 10000000-0000-0000-0000-000000000039))
+    (pin "3V3_EN" (output) (at -17.78 -27.94 90) (uuid 10000000-0000-0000-0000-000000000040))
+  )
+
+  ; ========== COMPONENT: U2 — iCE40 UP5K FPGA ==========
+  (symbol "FPGA:iCE40-UP5K-SG48" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "iCE40-UP5K-SG48" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm" (at 0 0 0))
+    (property "Datasheet" "https://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/iCE40/iCE40-UltraPlusFamilyDataSheet.ashx" (at 0 0 0))
+    (symbol
+      (rectangle (start -20.32 20.32) (end 20.32 -20.32) (stroke (width 0.254)) (fill (type background)))
+    )
+    ; SPI config pins (left)
+    (pin "CDONE"   (output) (at -22.86 17.78 0) (uuid 20000000-0000-0000-0000-000000000001))
+    (pin "CRESET_N" (input) (at -22.86 15.24 0) (uuid 20000000-0000-0000-0000-000000000002))
+    (pin "SDO"     (output) (at -22.86 12.7 0) (uuid 20000000-0000-0000-0000-000000000003))
+    (pin "SDI"     (input)  (at -22.86 10.16 0) (uuid 20000000-0000-0000-0000-000000000004))
+    (pin "SCK"     (input)  (at -22.86 7.62 0) (uuid 20000000-0000-0000-0000-000000000005))
+    (pin "CS_N"    (input)  (at -22.86 5.08 0) (uuid 20000000-0000-0000-0000-000000000006))
+    ; User I/O (right side)
+    (pin "IO_0"    (bidirectional) (at 22.86 17.78 180) (uuid 20000000-0000-0000-0000-000000000007))
+    (pin "IO_1"    (bidirectional) (at 22.86 15.24 180) (uuid 20000000-0000-0000-0000-000000000008))
+    (pin "IO_2"    (bidirectional) (at 22.86 12.7 180) (uuid 20000000-0000-0000-0000-000000000009))
+    (pin "IO_3"    (bidirectional) (at 22.86 10.16 180) (uuid 20000000-0000-0000-0000-000000000010))
+    (pin "IO_4"    (bidirectional) (at 22.86 7.62 180) (uuid 20000000-0000-0000-0000-000000000011))
+    (pin "IO_5"    (bidirectional) (at 22.86 5.08 180) (uuid 20000000-0000-0000-0000-000000000012))
+    (pin "IO_6"    (bidirectional) (at 22.86 2.54 180) (uuid 20000000-0000-0000-0000-000000000013))
+    (pin "IO_7"    (bidirectional) (at 22.86 0 0) (uuid 20000000-0000-0000-0000-000000000014))
+    ; Data path pins
+    (pin "DATA_RX_P" (input) (at 0 22.86 270) (uuid 20000000-0000-0000-0000-000000000015))
+    (pin "DATA_RX_N" (input) (at 2.54 22.86 270) (uuid 20000000-0000-0000-0000-000000000016))
+    (pin "DATA_TX_P" (output) (at 0 -22.86 90) (uuid 20000000-0000-0000-0000-000000000017))
+    (pin "DATA_TX_N" (output) (at 2.54 -22.86 90) (uuid 20000000-0000-0000-0000-000000000018))
+    ; Power
+    (pin "VCC_1V2" (power_in) (at -10.16 -22.86 90) (uuid 20000000-0000-0000-0000-000000000019))
+    (pin "VCC_3V3" (power_in) (at -12.7 -22.86 90) (uuid 20000000-0000-0000-0000-000000000020))
+    (pin "GND"     (power_in) (at -15.24 -22.86 90) (uuid 20000000-0000-0000-0000-000000000021))
+  )
+
+  ; ========== COMPONENT: U3 — nRF52840 BLE Module ==========
+  (symbol "RF:nRF52840-Module" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "nRF52840-Module" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "RF_Module:Murata-Type-1SC" (at 0 0 0))
+    (property "Datasheet" "https://infocenter.nordicsemi.com/topic/struct_pwr/struct/pwr.html" (at 0 0 0))
+    (symbol
+      (rectangle (start -15.24 15.24) (end 15.24 -15.24) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "VCC"    (power_in) (at 0 17.78 270) (uuid 30000000-0000-0000-0000-000000000001))
+    (pin "GND"    (power_in) (at 0 -17.78 90) (uuid 30000000-0000-0000-0000-000000000002))
+    (pin "UART_TX" (output) (at -17.78 7.62 0) (uuid 30000000-0000-0000-0000-000000000003))
+    (pin "UART_RX" (input)  (at -17.78 5.08 0) (uuid 30000000-0000-0000-0000-000000000004))
+    (pin "UART_CTS" (input) (at -17.78 2.54 0) (uuid 30000000-0000-0000-0000-000000000005))
+    (pin "UART_RTS" (output) (at -17.78 0 0) (uuid 30000000-0000-0000-0000-000000000006))
+    (pin "RESET_N" (input) (at -17.78 -5.08 0) (uuid 30000000-0000-0000-0000-000000000007))
+    (pin "SWDIO"  (bidirectional) (at 17.78 7.62 180) (uuid 30000000-0000-0000-0000-000000000008))
+    (pin "SWCLK"  (input) (at 17.78 5.08 180) (uuid 30000000-0000-0000-0000-000000000009))
+    (pin "ANT"    (bidirectional) (at 17.78 0 180) (uuid 30000000-0000-0000-0000-000000000010))
+  )
+
+  ; ========== COMPONENT: U4 — MAX3658 TIA (Transimpedance Amplifier) ==========
+  (symbol "Analog:MAX3658" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MAX3658" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:QSOP-16_3.9x4.9mm_P0.635mm" (at 0 0 0))
+    (property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/MAX3658.pdf" (at 0 0 0))
+    (symbol
+      (rectangle (start -10.16 10.16) (end 10.16 -10.16) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "IN_P"   (input) (at -12.7 5.08 0) (uuid 40000000-0000-0000-0000-000000000001))
+    (pin "IN_N"   (input) (at -12.7 2.54 0) (uuid 40000000-0000-0000-0000-000000000002))
+    (pin "OUT_P"  (output) (at 12.7 5.08 180) (uuid 40000000-0000-0000-0000-000000000003))
+    (pin "OUT_N"  (output) (at 12.7 2.54 180) (uuid 40000000-0000-0000-0000-000000000004))
+    (pin "VCC_3V3" (power_in) (at 0 12.7 270) (uuid 40000000-0000-0000-0000-000000000005))
+    (pin "GND"    (power_in) (at 0 -12.7 90) (uuid 40000000-0000-0000-0000-000000000006))
+    (pin "VREF"   (output) (at 12.7 -2.54 180) (uuid 40000000-0000-0000-0000-000000000007))
+    (pin "MONITOR" (output) (at 12.7 -5.08 180) (uuid 40000000-0000-0000-0000-000000000008))
+  )
+
+  ; ========== COMPONENT: U5 — Excelitas C30659 InGaAs APD ==========
+  (symbol "Sensor:C30659-APD" (in_bom yes) (on_board yes)
+    (property "Reference" "D" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "C30659" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "OptoDevice:TO-46-3" (at 0 0 0))
+    (property "Datasheet" "https://www.excelitas.com/product/c30659" (at 0 0 0))
+    (symbol
+      (triangle (pts (xy -5.08 5.08) (xy -5.08 -5.08) (xy 5.08 0)) (stroke (width 0.254)) (fill (type none)))
+    )
+    (pin "CATHODE" (passive) (at 0 7.62 270) (uuid 50000000-0000-0000-0000-000000000001))
+    (pin "ANODE"   (passive) (at 0 -7.62 90) (uuid 50000000-0000-0000-0000-000000000002))
+  )
+
+  ; ========== COMPONENT: U6 — 1310nm VCSEL ==========
+  (symbol "Opto:VCSEL-1310" (in_bom yes) (on_board yes)
+    (property "Reference" "D" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "VCSEL-1310nm" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "OptoDevice:TO-46-2" (at 0 0 0))
+    (symbol
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy -2.54 0) (xy 2.54 0)) (stroke (width 0.254)) (fill (type none)))
+    )
+    (pin "ANODE"   (passive) (at -7.62 0 0) (uuid 60000000-0000-0000-0000-000000000001))
+    (pin "CATHODE" (passive) (at 7.62 0 180) (uuid 60000000-0000-0000-0000-000000000002))
+  )
+
+  ; ========== COMPONENT: U7 — W25Q128 SPI Flash (FPGA bitstream) ==========
+  (symbol "Memory:W25Q128" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "W25Q128JV" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0 0))
+    (symbol
+      (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "CS_N"  (input) (at -10.16 5.08 0) (uuid 70000000-0000-0000-0000-000000000001))
+    (pin "DO"   (output) (at -10.16 2.54 0) (uuid 70000000-0000-0000-0000-000000000002))
+    (pin "WP_N" (input) (at -10.16 0 0) (uuid 70000000-0000-0000-0000-000000000003))
+    (pin "GND"  (power_in) (at 0 -10.16 90) (uuid 70000000-0000-0000-0000-000000000004))
+    (pin "DI"   (input) (at 10.16 2.54 180) (uuid 70000000-0000-0000-0000-000000000005))
+    (pin "CLK"  (input) (at 10.16 5.08 180) (uuid 70000000-0000-0000-0000-000000000006))
+    (pin "HOLD_N" (input) (at 10.16 0 180) (uuid 70000000-0000-0000-0000-000000000007))
+    (pin "VCC"  (power_in) (at 0 10.16 270) (uuid 70000000-0000-0000-0000-000000000008))
+  )
+
+  ; ========== COMPONENT: U8/U9 — LDOs ==========
+  (symbol "Regulator:AP2112K-3V3" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AP2112K-3.3" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+    (symbol
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "VIN"  (power_in) (at -7.62 2.54 0) (uuid 80000000-0000-0000-0000-000000000001))
+    (pin "GND"  (power_in) (at 0 -7.62 90) (uuid 80000000-0000-0000-0000-000000000002))
+    (pin "EN"   (input) (at -7.62 -2.54 0) (uuid 80000000-0000-0000-0000-000000000003))
+    (pin "VOUT" (power_out) (at 7.62 2.54 180) (uuid 80000000-0000-0000-0000-000000000004))
+    (pin "BYP"  (passive) (at 7.62 -2.54 180) (uuid 80000000-0000-0000-0000-000000000005))
+  )
+
+  (symbol "Regulator:AP2112K-1V2" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "AP2112K-1.2" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+    (symbol
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "VIN"  (power_in) (at -7.62 2.54 0) (uuid 81000000-0000-0000-0000-000000000001))
+    (pin "GND"  (power_in) (at 0 -7.62 90) (uuid 81000000-0000-0000-0000-000000000002))
+    (pin "EN"   (input) (at -7.62 -2.54 0) (uuid 81000000-0000-0000-0000-000000000003))
+    (pin "VOUT" (power_out) (at 7.62 2.54 180) (uuid 81000000-0000-0000-0000-000000000004))
+    (pin "BYP"  (passive) (at 7.62 -2.54 180) (uuid 81000000-0000-0000-0000-000000000005))
+  )
+
+  ; ========== COMPONENT: U10 — MCP73831 LiPo Charger ==========
+  (symbol "Battery:MCP73831" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MCP73831" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0 0))
+    (symbol
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "VDD"  (power_in) (at -7.62 2.54 0) (uuid 90000000-0000-0000-0000-000000000001))
+    (pin "GND"  (power_in) (at 0 -7.62 90) (uuid 90000000-0000-0000-0000-000000000002))
+    (pin "PROG" (passive) (at 7.62 -2.54 180) (uuid 90000000-0000-0000-0000-000000000003))
+    (pin "STAT" (output) (at 7.62 0 180) (uuid 90000000-0000-0000-0000-000000000004))
+    (pin "VBAT" (power_out) (at 7.62 2.54 180) (uuid 90000000-0000-0000-0000-000000000005))
+  )
+
+  ; ========== COMPONENT: U12 — TPS61085 Boost Converter (APD bias) ==========
+  (symbol "Regulator:TPS61085" (in_bom yes) (on_board yes)
+    (property "Reference" "U" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "TPS61085" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Package_DFN_QFN:VSSOP-8_2.4x2.3mm_P0.5mm" (at 0 0 0))
+    (symbol
+      (rectangle (start -7.62 7.62) (end 7.62 -7.62) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "EN"    (input) (at -10.16 5.08 0) (uuid A0000000-0000-0000-0000-000000000001))
+    (pin "VIN"   (power_in) (at -10.16 2.54 0) (uuid A0000000-0000-0000-0000-000000000002))
+    (pin "SW"    (bidirectional) (at -10.16 -2.54 0) (uuid A0000000-0000-0000-0000-000000000003))
+    (pin "GND"   (power_in) (at 0 -10.16 90) (uuid A0000000-0000-0000-0000-000000000004))
+    (pin "FB"    (input) (at 10.16 -2.54 180) (uuid A0000000-0000-0000-0000-000000000005))
+    (pin "VOUT"  (power_out) (at 10.16 2.54 180) (uuid A0000000-0000-0000-0000-000000000006))
+    (pin "MODE"  (input) (at 10.16 5.08 180) (uuid A0000000-0000-0000-0000-000000000007))
+    (pin "SS"    (passive) (at 10.16 -5.08 180) (uuid A0000000-0000-0000-0000-000000000008))
+  )
+
+  ; ========== COMPONENT: OPT1 — 2×2 Fused Fiber Coupler ==========
+  (symbol "Optical:FusedCoupler2x2" (in_bom yes) (on_board yes)
+    (property "Reference" "OPT" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "FusedCoupler_90:10" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Optical:LC_Coupler_Module" (at 0 0 0))
+    (symbol
+      (rectangle (start -10.16 7.62) (end 10.16 -7.62) (stroke (width 0.254)) (fill (type background)))
+      (polyline (pts (xy -10.16 2.54) (xy -2.54 2.54)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy -10.16 -2.54) (xy -2.54 -2.54)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy -2.54 2.54) (xy 2.54 -2.54)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy -2.54 -2.54) (xy 2.54 2.54)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy 2.54 2.54) (xy 10.16 2.54)) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy 2.54 -2.54) (xy 10.16 -2.54)) (stroke (width 0.254)) (fill (type none)))
+    )
+    (pin "PORT1_IN"   (passive) (at -12.7 2.54 0) (uuid B0000000-0000-0000-0000-000000000001))
+    (pin "PORT2_IN"   (passive) (at -12.7 -2.54 0) (uuid B0000000-0000-0000-0000-000000000002))
+    (pin "PORT3_OUT"  (passive) (at 12.7 2.54 180) (uuid B0000000-0000-0000-0000-000000000003))
+    (pin "PORT4_OUT"  (passive) (at 12.7 -2.54 180) (uuid B0000000-0000-0000-0000-000000000004))
+  )
+
+  ; ========== COMPONENT: J1 — USB-C Receptacle ==========
+  (symbol "Connector:USB-C" (in_bom yes) (on_board yes)
+    (property "Reference" "J" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "USB-C_16P" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector_USB:USB-C_16P_Receptacle" (at 0 0 0))
+    (symbol
+      (rectangle (start -10.16 12.7) (end 10.16 -12.7) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "VBUS"  (power_in) (at -12.7 10.16 0) (uuid C0000000-0000-0000-0000-000000000001))
+    (pin "GND"   (power_in) (at -12.7 7.62 0) (uuid C0000000-0000-0000-0000-000000000002))
+    (pin "DP1"   (bidirectional) (at -12.7 5.08 0) (uuid C0000000-0000-0000-0000-000000000003))
+    (pin "DN1"   (bidirectional) (at -12.7 2.54 0) (uuid C0000000-0000-0000-0000-000000000004))
+    (pin "DP2"   (bidirectional) (at -12.7 0 0) (uuid C0000000-0000-0000-0000-000000000005))
+    (pin "DN2"   (bidirectional) (at -12.7 -2.54 0) (uuid C0000000-0000-0000-0000-000000000006))
+    (pin "CC1"   (bidirectional) (at -12.7 -5.08 0) (uuid C0000000-0000-0000-0000-000000000007))
+    (pin "CC2"   (bidirectional) (at -12.7 -7.62 0) (uuid C0000000-0000-0000-0000-000000000008))
+  )
+
+  ; ========== COMPONENT: J2 — MicroSD Socket ==========
+  (symbol "Connector:MicroSD" (in_bom yes) (on_board yes)
+    (property "Reference" "J" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "MicroSD_SPI" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector:MicroSD_Molex_503398-1892" (at 0 0 0))
+    (symbol
+      (rectangle (start -10.16 10.16) (end 10.16 -10.16) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "CS_N"  (input) (at -12.7 7.62 0) (uuid D0000000-0000-0000-0000-000000000001))
+    (pin "MOSI"  (input) (at -12.7 5.08 0) (uuid D0000000-0000-0000-0000-000000000002))
+    (pin "MISO"  (output) (at -12.7 2.54 0) (uuid D0000000-0000-0000-0000-000000000003))
+    (pin "SCK"   (input) (at -12.7 0 0) (uuid D0000000-0000-0000-0000-000000000004))
+    (pin "VCC"   (power_in) (at -12.7 -5.08 0) (uuid D0000000-0000-0000-0000-000000000005))
+    (pin "GND"   (power_in) (at -12.7 -7.62 0) (uuid D0000000-0000-0000-0000-000000000006))
+    (pin "DET"   (passive) (at 12.7 7.62 180) (uuid D0000000-0000-0000-0000-000000000007))
+  )
+
+  ; ========== COMPONENT: J3 — SFP+ Edge Connector ==========
+  (symbol "Connector:SFP_Edge" (in_bom yes) (on_board yes)
+    (property "Reference" "J" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "SFP+_20P" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Connector:SFP_cage_20pad" (at 0 0 0))
+    (symbol
+      (rectangle (start -12.7 15.24) (end 12.7 -15.24) (stroke (width 0.254)) (fill (type background)))
+    )
+    (pin "TX_FAULT" (output) (at -15.24 12.7 0) (uuid E0000000-0000-0000-0000-000000000001))
+    (pin "TX_DIS"   (input) (at -15.24 10.16 0) (uuid E0000000-0000-0000-0000-000000000002))
+    (pin "SCL"      (bidirectional) (at -15.24 7.62 0) (uuid E0000000-0000-0000-0000-000000000003))
+    (pin "SDA"      (bidirectional) (at -15.24 5.08 0) (uuid E0000000-0000-0000-0000-000000000004))
+    (pin "RX_LOS"   (output) (at -15.24 2.54 0) (uuid E0000000-0000-0000-0000-000000000005))
+    (pin "RD_N"     (output) (at -15.24 -2.54 0) (uuid E0000000-0000-0000-0000-000000000006))
+    (pin "RD_P"     (output) (at -15.24 -5.08 0) (uuid E0000000-0000-0000-0000-000000000007))
+    (pin "TD_P"     (input) (at 15.24 -5.08 180) (uuid E0000000-0000-0000-0000-000000000008))
+    (pin "TD_N"     (input) (at 15.24 -2.54 180) (uuid E0000000-0000-0000-0000-000000000009))
+    (pin "VCCR"     (power_in) (at 15.24 5.08 180) (uuid E0000000-0000-0000-0000-000000000010))
+    (pin "VCC"      (power_in) (at 15.24 7.62 180) (uuid E0000000-0000-0000-0000-000000000011))
+    (pin "VCCT"     (power_in) (at 15.24 10.16 180) (uuid E0000000-0000-0000-0000-000000000012))
+    (pin "GND"      (power_in) (at 15.24 12.7 180) (uuid E0000000-0000-0000-0000-000000000013))
+  )
+
+  ; ========== COMPONENT: BAT1 — LiPo Battery ==========
+  (symbol "Device:Battery" (in_bom yes) (on_board yes)
+    (property "Reference" "BAT" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "LiPo_1200mAh" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Battery:BatteryHolder_Keystone_1042_18650" (at 0 0 0))
+    (symbol
+      (rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254)) (fill (type none)))
+      (polyline (pts (xy -2.54 2.54) (xy 2.54 2.54)) (stroke (width 0.508)) (fill (type none)))
+      (polyline (pts (xy -1.27 5.08) (xy -1.27 2.54)) (stroke (width 0.508)) (fill (type none)))
+    )
+    (pin "+" (passive) (at 0 7.62 270) (uuid F0000000-0000-0000-0000-000000000001))
+    (pin "-" (passive) (at 0 -7.62 90) (uuid F0000000-0000-0000-0000-000000000002))
+  )
+
+  ; ========== COMPONENT: Crystal Y1 ==========
+  (symbol "Device:Crystal" (in_bom yes) (on_board yes)
+    (property "Reference" "Y" (at 0 0 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "12MHz" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "Crystal:Crystal_SMD_HC-49S" (at 0 0 0))
+    (symbol
+      (rectangle (start -2.54 2.54) (end 2.54 -2.54) (stroke (width 0.254)) (fill (type none)))
+    )
+    (pin "1" (passive) (at -5.08 0 0) (uuid F1000000-0000-0000-0000-000000000001))
+    (pin "2" (passive) (at 5.08 0 180) (uuid F1000000-0000-0000-0000-000000000002))
+  )
+
+  ; ========== NET CONNECTIONS ==========
+
+  ; ---- Power: VBUS (USB) → MCP73831 → VBAT (LiPo) → LDOs → VCC_3V3 / VCC_1V2 ----
+
+  (net "VBUS"
+    (node (ref J1) (pin "VBUS"))
+    (node (ref U10) (pin "VDD"))
+  )
+
+  (net "VBAT"
+    (node (ref U10) (pin "VBAT"))
+    (node (ref BAT1) (pin "+"))
+    (node (ref U8) (pin "VIN"))
+    (node (ref U9) (pin "VIN"))
+    (node (ref U12) (pin "VIN"))
+  )
+
+  (net "VCC_3V3"
+    (node (ref U8) (pin "VOUT"))
+    (node (ref U1) (pin "VCC_3V3"))
+    (node (ref U2) (pin "VCC_3V3"))
+    (node (ref U3) (pin "VCC"))
+    (node (ref U4) (pin "VCC_3V3"))
+    (node (ref U7) (pin "VCC"))
+    (node (ref J2) (pin "VCC"))
+  )
+
+  (net "VCC_1V2"
+    (node (ref U9) (pin "VOUT"))
+    (node (ref U2) (pin "VCC_1V2"))
+  )
+
+  (net "VCC_5V"
+    (node (ref J1) (pin "VBUS"))
+  )
+
+  (net "VAPD_65V"
+    (node (ref U12) (pin "VOUT"))
+    (node (ref U5) (pin "CATHODE"))
+  )
+
+  (net "GND"
+    (node (ref J1) (pin "GND"))
+    (node (ref U10) (pin "GND"))
+    (node (ref U8) (pin "GND"))
+    (node (ref U9) (pin "GND"))
+    (node (ref U1) (pin "GND"))
+    (node (ref U2) (pin "GND"))
+    (node (ref U3) (pin "GND"))
+    (node (ref U4) (pin "GND"))
+    (node (ref U7) (pin "GND"))
+    (node (ref U12) (pin "GND"))
+    (node (ref J2) (pin "GND"))
+    (node (ref J3) (pin "GND"))
+    (node (ref BAT1) (pin "-"))
+  )
+
+  ; ---- RP2040 ↔ FPGA SPI (SPI0) ----
+
+  (net "FPGA_SCK"
+    (node (ref U1) (pin "GPIO2"))
+    (node (ref U2) (pin "SCK"))
+  )
+
+  (net "FPGA_MOSI"
+    (node (ref U1) (pin "GPIO3"))
+    (node (ref U2) (pin "SDI"))
+  )
+
+  (net "FPGA_MISO"
+    (node (ref U1) (pin "GPIO4"))
+    (node (ref U2) (pin "SDO"))
+  )
+
+  (net "FPGA_CS_N"
+    (node (ref U1) (pin "GPIO5"))
+    (node (ref U2) (pin "CS_N"))
+  )
+
+  (net "FPGA_CDONE"
+    (node (ref U1) (pin "GPIO6"))
+    (node (ref U2) (pin "CDONE"))
+  )
+
+  (net "FPGA_CRESET_N"
+    (node (ref U1) (pin "GPIO7"))
+    (node (ref U2) (pin "CRESET_N"))
+  )
+
+  (net "FPGA_IRQ"
+    (node (ref U1) (pin "GPIO8"))
+    (node (ref U2) (pin "IO_0"))
+  )
+
+  ; ---- RP2040 ↔ SD Card SPI (SPI1) ----
+
+  (net "SD_SCK"
+    (node (ref U1) (pin "GPIO10"))
+    (node (ref J2) (pin "SCK"))
+  )
+
+  (net "SD_MOSI"
+    (node (ref U1) (pin "GPIO11"))
+    (node (ref J2) (pin "MOSI"))
+  )
+
+  (net "SD_MISO"
+    (node (ref U1) (pin "GPIO12"))
+    (node (ref J2) (pin "MISO"))
+  )
+
+  (net "SD_CS_N"
+    (node (ref U1) (pin "GPIO13"))
+    (node (ref J2) (pin "CS_N"))
+  )
+
+  (net "SD_DETECT"
+    (node (ref U1) (pin "GPIO14"))
+    (node (ref J2) (pin "DET"))
+  )
+
+  ; ---- RP2040 ↔ nRF52840 UART ----
+
+  (net "BLE_TX"
+    (node (ref U1) (pin "GPIO16"))
+    (node (ref U3) (pin "UART_RX"))
+  )
+
+  (net "BLE_RX"
+    (node (ref U1) (pin "GPIO17"))
+    (node (ref U3) (pin "UART_TX"))
+  )
+
+  (net "BLE_CTS"
+    (node (ref U1) (pin "GPIO18"))
+    (node (ref U3) (pin "UART_CTS"))
+  )
+
+  (net "BLE_RTS"
+    (node (ref U1) (pin "GPIO19"))
+    (node (ref U3) (pin "UART_RTS"))
+  )
+
+  (net "BLE_NRESET"
+    (node (ref U1) (pin "GPIO20"))
+    (node (ref U3) (pin "RESET_N"))
+  )
+
+  ; ---- APD bias control ----
+
+  (net "APD_BIAS_DAC"
+    (node (ref U1) (pin "GPIO22"))
+  )
+
+  (net "APD_BOOST_EN"
+    (node (ref U1) (pin "GPIO23"))
+    (node (ref U12) (pin "EN"))
+  )
+
+  (net "APD_LEVEL_ADC"
+    (node (ref U1) (pin "GPIO26"))
+    (node (ref U4) (pin "MONITOR"))
+  )
+
+  (net "APD_BIAS_FB"
+    (node (ref U12) (pin "FB"))
+  )
+
+  ; ---- Optical signal path ----
+
+  (net "APD_ANODE"
+    (node (ref U5) (pin "ANODE"))
+    (node (ref U4) (pin "IN_P"))
+  )
+
+  (net "TIA_OUT_P"
+    (node (ref U4) (pin "OUT_P"))
+    (node (ref U2) (pin "DATA_RX_P"))
+  )
+
+  (net "TIA_OUT_N"
+    (node (ref U4) (pin "OUT_N"))
+    (node (ref U2) (pin "DATA_RX_N"))
+  )
+
+  ; ---- VCSEL modulation ----
+
+  (net "VCSEL_EN"
+    (node (ref U1) (pin "GPIO24"))
+  )
+
+  (net "VCSEL_MOD_P"
+    (node (ref U1) (pin "GPIO25"))
+    (node (ref U2) (pin "DATA_TX_P"))
+  )
+
+  (net "VCSEL_MOD_N"
+    (node (ref U1) (pin "GPIO15"))
+    (node (ref U2) (pin "DATA_TX_N"))
+  )
+
+  ; ---- Optical coupler ----
+
+  (net "COUPLER_TAP_OUT"
+    (node (ref OPT1) (pin "PORT4_OUT"))
+    (node (ref U5) (pin "CATHODE"))
+  )
+
+  ; ---- Mode straps ----
+
+  (net "MODE_STRAP0"
+    (node (ref U1) (pin "GPIO27"))
+  )
+
+  (net "MODE_STRAP1"
+    (node (ref U1) (pin "GPIO28"))
+  )
+
+  ; ---- LEDs ----
+
+  (net "LED_R"
+    (node (ref U1) (pin "GPIO9"))
+  )
+
+  (net "LED_G"
+    (node (ref U1) (pin "GPIO29"))
+  )
+
+  ; ---- USB ----
+
+  (net "USB_DP"
+    (node (ref J1) (pin "DP1"))
+    (node (ref U1) (pin "USB_DP"))
+  )
+
+  (net "USB_DM"
+    (node (ref J1) (pin "DN1"))
+    (node (ref U1) (pin "USB_DM"))
+  )
+
+  ; ---- Crystal ----
+
+  (net "XIN"
+    (node (ref U1) (pin "XIN"))
+    (node (ref Y1) (pin "1"))
+  )
+
+  (net "XOUT"
+    (node (ref U1) (pin "XOUT"))
+    (node (ref Y1) (pin "2"))
+  )
+
+  ; ---- FPGA config flash ----
+
+  (net "FLASH_CS_N"
+    (node (ref U2) (pin "IO_1"))
+    (node (ref U7) (pin "CS_N"))
+  )
+
+  (net "FLASH_DO"
+    (node (ref U7) (pin "DO"))
+    (node (ref U2) (pin "IO_2"))
+  )
+
+  (net "FLASH_DI"
+    (node (ref U7) (pin "DI"))
+    (node (ref U2) (pin "IO_3"))
+  )
+
+  (net "FLASH_CLK"
+    (node (ref U7) (pin "CLK"))
+    (node (ref U2) (pin "IO_4"))
+  )
+
+  ; ---- SFP+ signals (pass-through mode) ----
+
+  (net "SFP_RX_P"
+    (node (ref J3) (pin "RD_P"))
+    (node (ref U2) (pin "IO_5"))
+  )
+
+  (net "SFP_RX_N"
+    (node (ref J3) (pin "RD_N"))
+    (node (ref U2) (pin "IO_6"))
+  )
+
+  (net "SFP_TX_P"
+    (node (ref U2) (pin "IO_7"))
+    (node (ref J3) (pin "TD_P"))
+  )
+
+  (net "SFP_SDA"
+    (node (ref U1) (pin "GPIO21"))
+    (node (ref J3) (pin "SDA"))
+  )
+
+  ; ---- VCSEL drive ----
+
+  (net "VCSEL_ANODE"
+    (node (ref U6) (pin "ANODE"))
+    (node (ref U2) (pin "DATA_TX_P"))
+  )
+
+  (net "VCSEL_CATHODE"
+    (node (ref U6) (pin "CATHODE"))
+    (node (ref U2) (pin "DATA_TX_N"))
+  )
+
+  ; ---- Coupler injection ----
+
+  (net "COUPLER_INJECT"
+    (node (ref U6) (pin "ANODE"))
+    (node (ref OPT1) (pin "PORT2_IN"))
+  )
+
+)
