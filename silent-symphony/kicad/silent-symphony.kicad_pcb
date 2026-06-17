@@ -1,0 +1,487 @@
+(kicad_pcb (version 20240101) (host kicad 8.0)
+
+  (general
+    (thickness 1.6)
+    (layer_count 4)
+    (cross_section
+      (layer 0 "F.Cu" (thickness 0.035) (conductivity 58000000))
+      (layer 1 "In1.Cu" (thickness 0.035) (conductivity 58000000))
+      (layer 2 "In2.Cu" (thickness 0.035) (conductivity 58000000))
+      (layer 3 "B.Cu" (thickness 0.035) (conductivity 58000000))
+      (via_stack
+        (via_type micro_in_2_3)
+        (physical
+          (via_diameter 0.25)
+          (via_drill 0.12)
+        )
+      )
+    )
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 1" (type "prepreg" (thickness 0.1) (material "FR4") (er 4.2)))
+      (layer "In1.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 2" (type "core" (thickness 0.71) (material "FR4") (er 4.2)))
+      (layer "In2.Cu" (type "copper" (thickness 0.035)))
+      (layer "dielectric 3" (type "prepreg" (thickness 0.1) (material "FR4") (er 4.2)))
+      (layer "B.Cu" (type "copper" (thickness 0.035)))
+    )
+    (polarity_arc_center yes)
+    (solder_mask_min_width 0.1)
+    (solder_mask_to_copper_minimum 0.05)
+    (solder_mask_to_silk_minimum 0.05)
+    (solder_paste_ratio 0.85)
+    (solder_paste_ratio_to_fill 0.7)
+    (track_clearance 0.15)
+    (zone_clearance 0.3)
+    (zone_min_clearance 0.1)
+    (min_clearance 0.1)
+    (min_track_width 0.1)
+    (min_via_diameter 0.25)
+    (min_via_drill 0.12)
+    (min_hole_to_hole 0.3)
+    (min_hole_to_copper 0.15)
+    (min_hole_to_edge 0.5)
+    (min_annular_ring 0.08)
+    (min_silk_to_silk 0.15)
+    (min_silk_to_copper 0.15)
+    (min_silk_to_edge 0.3)
+    (min_copper_to_edge 0.3)
+  )
+
+  (page A4)
+
+  (title_block
+    (title "SILENT-SYMPHONY — Ultrasonic Covert Channel Communicator")
+    (date "2026-06-17")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "BOM: ~$62 @ 1K")
+  )
+
+  ; ===== Board Outline =====
+  (gr_poly
+    (pts
+      (xy 0 0) (xy 70 0) (xy 70 40) (xy 0 40)
+    )
+    (layer "Edge.Cuts") (width 0.1)
+  )
+
+  ; Board mounting holes (corners)
+  (gr_circle (center (xy 3.5 3.5)) (end (xy 4.5 3.5)) (layer "Edge.Cuts") (width 0.1))
+  (gr_circle (center (xy 66.5 3.5)) (end (xy 67.5 3.5)) (layer "Edge.Cuts") (width 0.1))
+  (gr_circle (center (xy 3.5 36.5)) (end (xy 4.5 36.5)) (layer "Edge.Cuts") (width 0.1))
+  (gr_circle (center (xy 66.5 36.5)) (end (xy 67.5 36.5)) (layer "Edge.Cuts") (width 0.1))
+
+  ; ===== Keepout Zones =====
+  ; Ultrasonic transducer area (keepout for top components)
+  (zone
+    (net 0) (net_name "") (layer "F.Cu") (tstamp "ZONE_KEEPOUT_TX")
+    (priority 99)
+    (min_thickness 0.2)
+    (pad_connections no_connect)
+    (filled_areas_thickness no)
+    (keepout (tracks not_allowed) (vias not_allowed) (pads not_allowed) (copper pour not_allowed))
+    (polygon
+      (pts
+        (xy 56 5) (xy 68 5) (xy 68 18) (xy 56 18)
+      )
+    )
+  )
+
+  ; MEMS mic area (keepout)
+  (zone
+    (net 0) (net_name "") (layer "F.Cu") (tstamp "ZONE_KEEPOUT_MIC")
+    (priority 99)
+    (min_thickness 0.2)
+    (pad_connections no_connect)
+    (filled_areas_thickness no)
+    (keepout (tracks not_allowed) (vias not_allowed) (pads not_allowed) (copper pour not_allowed))
+    (polygon
+      (pts
+        (xy 2 22) (xy 14 22) (xy 14 35) (xy 2 35)
+      )
+    )
+  )
+
+  ; ===== Stackup Notes =====
+  (gr_text "4-LAYER: SIG-GND-VCC-SIG | IMPEDANCE: 50Ω ±10% (RF) | 90Ω DIFF (I2S)" 
+    (at (xy 35 37)) (layer "F.SilkS") (effects (font (size 0.8 0.8) (thickness 0.12)))
+  )
+  (gr_text "SILENT-SYMPHONY v1.0  jayis1" 
+    (at (xy 35 2)) (layer "F.SilkS") (effects (font (size 1.0 1.0) (thickness 0.15)))
+  )
+
+  ; ===== Power Supply Components =====
+  ; TP4056 LiPo Charger (U2) — bottom-left area
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (at (xy 10 28)) (layer "F.Cu") (tstamp "FP_U2")
+    (property "Reference" "U2") (property "Value" "TP4056")
+    (pad "1" smd rect (at 0 0) (size 1.27 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 1.27 0) (size 1.27 0.6) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 2.54 0) (size 1.27 0.6) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 0 4.9) (size 1.27 0.6) (layers "F.Cu") (net 15))  ; BAT
+    (pad "5" smd rect (at 1.27 4.9) (size 1.27 0.6) (layers "F.Cu") (net 1)) ; VCC
+    (pad "6" smd rect (at 2.54 4.9) (size 1.27 0.6) (layers "F.Cu") (net 0)) ; PROG
+    (pad "7" smd rect (at 3.81 4.9) (size 1.27 0.6) (layers "F.Cu") (net 0)) ; CHRG
+    (pad "8" smd rect (at 3.81 0) (size 1.27 0.6) (layers "F.Cu") (net 0))   ; STDBY
+  )
+
+  ; Battery connector (J2)
+  (footprint "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.0mm_Vertical"
+    (at (xy 8 35)) (layer "F.Cu") (tstamp "FP_J2")
+    (property "Reference" "J2") (property "Value" "BATTERY")
+    (pad "1" thru_hole rect (at 0 0) (size 2.0 2.0) (drill 1.0) (layers "F.Cu" "B.Cu") (net 15))
+    (pad "2" thru_hole rect (at 2.0 0) (size 2.0 2.0) (drill 1.0) (layers "F.Cu" "B.Cu") (net 0))
+  )
+
+  ; SGM6603 Boost Converter (U3)
+  (footprint "Package_TO_SOT_THT:TSOT-23-5"
+    (at (xy 20 28)) (layer "F.Cu") (tstamp "FP_U3")
+    (property "Reference" "U3") (property "Value" "SGM6603-5.0YN5G")
+    (pad "1" smd rect (at 0 0) (size 0.6 0.3) (layers "F.Cu") (net 15))  ; EN (tied to BAT)
+    (pad "2" smd rect (at 0.95 0) (size 0.6 0.3) (layers "F.Cu") (net 0)) ; GND
+    (pad "3" smd rect (at 1.9 0) (size 0.6 0.3) (layers "F.Cu") (net 0))  ; SW (to inductor)
+    (pad "4" smd rect (at 0 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 15)) ; VIN (from BAT)
+    (pad "5" smd rect (at 1.9 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 1)) ; VOUT (5V)
+  )
+
+  ; L1 for boost converter
+  (footprint "Inductor_SMD:L_0805_2012Metric"
+    (at (xy 20 25)) (layer "F.Cu") (tstamp "FP_L1")
+    (property "Reference" "L1") (property "Value" "4.7uH")
+    (pad "1" smd rect (at -0.7 0) (size 1.2 0.8) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.7 0) (size 1.2 0.8) (layers "F.Cu") (net 1))
+  )
+
+  ; RT9013-3.3 (U4)
+  (footprint "Package_TO_SOT_THT:SOT-23-5"
+    (at (xy 30 30)) (layer "F.Cu") (tstamp "FP_U4")
+    (property "Reference" "U4") (property "Value" "RT9013-3.3GB")
+    (pad "1" smd rect (at 0 0) (size 0.6 0.3) (layers "F.Cu") (net 1))    ; VIN (5V)
+    (pad "2" smd rect (at 0.95 0) (size 0.6 0.3) (layers "F.Cu") (net 0))  ; GND
+    (pad "3" smd rect (at 1.9 0) (size 0.6 0.3) (layers "F.Cu") (net 1))   ; EN (5V)
+    (pad "4" smd rect (at 0 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 0))  ; BP (noise bypass)
+    (pad "5" smd rect (at 1.9 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 3)) ; VOUT (3.3V)
+  )
+
+  ; RT9013-1.8 (U5)
+  (footprint "Package_TO_SOT_THT:SOT-23-5"
+    (at (xy 30 35)) (layer "F.Cu") (tstamp "FP_U5")
+    (property "Reference" "U5") (property "Value" "RT9013-1.8GB")
+    (pad "1" smd rect (at 0 0) (size 0.6 0.3) (layers "F.Cu") (net 3))    ; VIN (3.3V)
+    (pad "2" smd rect (at 0.95 0) (size 0.6 0.3) (layers "F.Cu") (net 0))  ; GND
+    (pad "3" smd rect (at 1.9 0) (size 0.6 0.3) (layers "F.Cu") (net 3))   ; EN (3.3V)
+    (pad "4" smd rect (at 0 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 0))  ; BP
+    (pad "5" smd rect (at 1.9 -1.9) (size 0.6 0.3) (layers "F.Cu") (net 7)) ; VOUT (1.8V)
+  )
+
+  ; ===== Decoupling Capacitors =====
+  ; Main 3.3V rail bulk + decoupling near MCU
+  (footprint "Capacitor_SMD:C_0805_2012Metric"
+    (at (xy 35 28)) (layer "F.Cu") (tstamp "FP_C1")
+    (property "Reference" "C1") (property "Value" "10uF")
+    (pad "1" smd rect (at -0.9 0) (size 1.4 1.0) (layers "F.Cu") (net 3))
+    (pad "2" smd rect (at 0.9 0) (size 1.4 1.0) (layers "F.Cu") (net 0))
+  )
+
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at (xy 40 28)) (layer "F.Cu") (tstamp "FP_C2")
+    (property "Reference" "C2") (property "Value" "100nF")
+    (pad "1" smd rect (at -0.3 0) (size 0.5 0.6) (layers "F.Cu") (net 3))
+    (pad "2" smd rect (at 0.3 0) (size 0.5 0.6) (layers "F.Cu") (net 0))
+  )
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (at (xy 41 28)) (layer "F.Cu") (tstamp "FP_C3")
+    (property "Reference" "C3") (property "Value" "100nF")
+    (pad "1" smd rect (at -0.3 0) (size 0.5 0.6) (layers "F.Cu") (net 3))
+    (pad "2" smd rect (at 0.3 0) (size 0.5 0.6) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== STM32H743 MCU (U1) =====
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+    (at (xy 38 15)) (layer "F.Cu") (tstamp "FP_U1")
+    (property "Reference" "U1") (property "Value" "STM32H743VIT6")
+    (pad "1" smd rect (at 0 0) (size 1.6 0.3) (layers "F.Cu") (net 3))
+    (pad "2" smd rect (at 0.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 1.0 0) (size 1.6 0.3) (layers "F.Cu") (net 7))
+    (pad "4" smd rect (at 1.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "5" smd rect (at 2.0 0) (size 1.6 0.3) (layers "F.Cu") (net 3))
+    (pad "6" smd rect (at 2.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "7" smd rect (at 3.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "8" smd rect (at 3.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "9" smd rect (at 4.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "10" smd rect (at 4.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "11" smd rect (at 5.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "12" smd rect (at 5.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "13" smd rect (at 6.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "14" smd rect (at 6.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "15" smd rect (at 7.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "16" smd rect (at 7.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "17" smd rect (at 8.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "18" smd rect (at 8.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "19" smd rect (at 9.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "20" smd rect (at 9.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "21" smd rect (at 10.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "22" smd rect (at 10.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "23" smd rect (at 11.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "24" smd rect (at 11.5 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    (pad "25" smd rect (at 12.0 0) (size 1.6 0.3) (layers "F.Cu") (net 0))
+    ; Right edge (pads 26-50) — simplified
+    ; Bottom edge (pads 51-75)
+    ; Left edge (pads 76-100)
+    ; For brevity, showing main power/ground connections
+    (pad "100" smd rect (at 0 14) (size 1.6 0.3) (layers "F.Cu") (net 3))  ; VDD
+    (pad "99" smd rect (at 0.5 14) (size 1.6 0.3) (layers "F.Cu") (net 3)) ; VDD
+    (pad "98" smd rect (at 1.0 14) (size 1.6 0.3) (layers "F.Cu") (net 0)) ; VSS
+    (pad "97" smd rect (at 1.5 14) (size 1.6 0.3) (layers "F.Cu") (net 0)) ; VSS
+    (pad "75" smd rect (at 0 7) (size 1.6 0.3) (layers "F.Cu") (net 3))    ; VDD
+    (pad "50" smd rect (at 14 7) (size 1.6 0.3) (layers "F.Cu") (net 3))   ; VDD
+    (pad "49" smd rect (at 14 6.5) (size 1.6 0.3) (layers "F.Cu") (net 0)) ; VSS
+  )
+
+  ; ===== WM8731 Codec (U8) =====
+  (footprint "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm"
+    (at (xy 45 22)) (layer "F.Cu") (tstamp "FP_U8")
+    (property "Reference" "U8") (property "Value" "WM8731SEDS")
+    (pad "1" smd rect (at 0 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.65 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 1.3 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 1.95 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "5" smd rect (at 2.6 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "6" smd rect (at 3.25 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "7" smd rect (at 3.9 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "8" smd rect (at 4.55 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "9" smd rect (at 5.2 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "10" smd rect (at 5.85 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "11" smd rect (at 6.5 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "12" smd rect (at 7.15 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "13" smd rect (at 7.8 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "14" smd rect (at 8.45 0) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "15" smd rect (at 0 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "16" smd rect (at 0.65 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "17" smd rect (at 1.3 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "18" smd rect (at 1.95 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "19" smd rect (at 2.6 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "20" smd rect (at 3.25 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "21" smd rect (at 3.9 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "22" smd rect (at 4.55 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "23" smd rect (at 5.2 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "24" smd rect (at 5.85 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "25" smd rect (at 6.5 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "26" smd rect (at 7.15 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "27" smd rect (at 7.8 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+    (pad "28" smd rect (at 8.45 10.2) (size 1.5 0.4) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== MAX98357A Amplifier (U6) =====
+  (footprint "Package_DFN_DFN:DFN-14_3x4mm_P0.4mm"
+    (at (xy 48 18)) (layer "F.Cu") (tstamp "FP_U6")
+    (property "Reference" "U6") (property "Value" "MAX98357AETE+")
+    (pad "1" smd rect (at 0 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.4 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 0.8 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 1.2 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "5" smd rect (at 1.6 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "6" smd rect (at 2.0 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "7" smd rect (at 2.4 0) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "8" smd rect (at 0 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "9" smd rect (at 0.4 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "10" smd rect (at 0.8 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "11" smd rect (at 1.2 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "12" smd rect (at 1.6 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "13" smd rect (at 2.0 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "14" smd rect (at 2.4 4) (size 0.6 0.3) (layers "F.Cu") (net 0))
+    (pad "15" smd rect (at -0.6 1.5) (size 1.8 2.5) (layers "F.Cu") (net 0)) ; EP
+  )
+
+  ; ===== nRF52840 BLE Module (U9) =====
+  (footprint "Package_DFN_QFN:QFN-73-1EP_9x9mm_P0.5mm"
+    (at (xy 25 15)) (layer "F.Cu") (tstamp "FP_U9")
+    (property "Reference" "U9") (property "Value" "nRF52840-QIAA")
+    (pad "1" smd rect (at 0 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+    (pad "10" smd rect (at 4.5 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+    (pad "11" smd rect (at 5.0 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+    (pad "12" smd rect (at 5.5 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+    (pad "13" smd rect (at 6.0 0) (size 0.5 0.25) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== W25Q128 Flash (U10) =====
+  (footprint "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm"
+    (at (xy 20 20)) (layer "F.Cu") (tstamp "FP_U10")
+    (property "Reference" "U10") (property "Value" "W25Q128JVSIQ")
+    (pad "1" smd rect (at 0 0) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 1.27 0) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 2.54 0) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 3.81 0) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "5" smd rect (at 0 5.23) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "6" smd rect (at 1.27 5.23) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "7" smd rect (at 2.54 5.23) (size 1.8 0.6) (layers "F.Cu") (net 0))
+    (pad "8" smd rect (at 3.81 5.23) (size 1.8 0.6) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== AD8694 Pre-Amp (U7) =====
+  (footprint "Package_SO:TSSOP-14_4.4x5mm_P0.65mm"
+    (at (xy 12 12)) (layer "F.Cu") (tstamp "FP_U7")
+    (property "Reference" "U7") (property "Value" "AD8694ARUZ")
+    (pad "1" smd rect (at 0 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.65 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 1.3 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 1.95 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "5" smd rect (at 2.6 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "6" smd rect (at 3.25 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "7" smd rect (at 3.9 0) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "8" smd rect (at 0 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "9" smd rect (at 0.65 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "10" smd rect (at 1.3 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "11" smd rect (at 1.95 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "12" smd rect (at 2.6 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "13" smd rect (at 3.25 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+    (pad "14" smd rect (at 3.9 5) (size 1.2 0.3) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== Ultrasonic Transducers (LS1, LS2) =====
+  (footprint "Ultrasonic:Murata_MA40S4S"
+    (at (xy 62 11.5)) (layer "F.Cu") (tstamp "FP_LS1")
+    (property "Reference" "LS1") (property "Value" "MA40S4S")
+    (pad "1" smd rect (at 0 0) (size 3.0 2.0) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0 4.0) (size 3.0 2.0) (layers "F.Cu") (net 0))
+  )
+
+  (footprint "Ultrasonic:Murata_MA40S4S"
+    (at (xy 62 28.5)) (layer "F.Cu") (tstamp "FP_LS2")
+    (property "Reference" "LS2") (property "Value" "MA40S4S")
+    (pad "1" smd rect (at 0 0) (size 3.0 2.0) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0 4.0) (size 3.0 2.0) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== MEMS Microphones (MIC1, MIC2) =====
+  (footprint "Microphone:Knowles_SPU0410LR5H"
+    (at (xy 8 13)) (layer "F.Cu") (tstamp "FP_MIC1")
+    (property "Reference" "MIC1") (property "Value" "SPU0410LR5H-QB-7")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.0) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0 1.5) (size 1.5 1.0) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 0 3.0) (size 1.5 1.0) (layers "F.Cu") (net 0))
+  )
+
+  (footprint "Microphone:Knowles_SPU0410LR5H"
+    (at (xy 8 28)) (layer "F.Cu") (tstamp "FP_MIC2")
+    (property "Reference" "MIC2") (property "Value" "SPU0410LR5H-QB-7")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.0) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0 1.5) (size 1.5 1.0) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 0 3.0) (size 1.5 1.0) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== USB-C Connector (J1) =====
+  (footprint "Connector_USB:USB_C_Receptacle_16P"
+    (at (xy 0 20)) (layer "F.Cu") (tstamp "FP_J1")
+    (property "Reference" "J1") (property "Value" "USB-C")
+    (pad "A1" thru_hole rect (at 0 0) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "A4" thru_hole rect (at 2.0 0) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 1)) ; VBUS (5V)
+    (pad "A6" thru_hole rect (at 5.0 0) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0)) ; DP
+    (pad "A7" thru_hole rect (at 6.0 0) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0)) ; DN
+    (pad "B1" thru_hole rect (at 0 2.5) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "B4" thru_hole rect (at 2.0 2.5) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 1)) ; VBUS
+    (pad "B6" thru_hole rect (at 5.0 2.5) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "B7" thru_hole rect (at 6.0 2.5) (size 1.5 1.5) (drill 0.6) (layers "F.Cu" "B.Cu") (net 0))
+  )
+
+  ; ===== SWD Header (J3) =====
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm"
+    (at (xy 15 35)) (layer "F.Cu") (tstamp "FP_J3")
+    (property "Reference" "J3") (property "Value" "SWD")
+    (pad "1" thru_hole rect (at 0 0) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "2" thru_hole rect (at 0 2.54) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "3" thru_hole rect (at 0 5.08) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "4" thru_hole rect (at 0 7.62) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "5" thru_hole rect (at 0 10.16) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "6" thru_hole rect (at 2.54 0) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "7" thru_hole rect (at 2.54 2.54) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "8" thru_hole rect (at 2.54 5.08) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "9" thru_hole rect (at 2.54 7.62) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+    (pad "10" thru_hole rect (at 2.54 10.16) (size 1.5 1.5) (drill 0.8) (layers "F.Cu" "B.Cu") (net 0))
+  )
+
+  ; ===== LEDs =====
+  (footprint "LED_SMD:LED_5050_5.0x5.0mm"
+    (at (xy 50 30)) (layer "F.Cu") (tstamp "FP_D1")
+    (property "Reference" "D1") (property "Value" "RGB")
+    (pad "1" smd rect (at 0 0) (size 1.5 1.5) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 2.5 0) (size 1.5 1.5) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 0 2.5) (size 1.5 1.5) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 2.5 2.5) (size 1.5 1.5) (layers "F.Cu") (net 0))
+  )
+
+  ; Yellow/Red LEDs along bottom edge
+  (footprint "LED_SMD:LED_0805_2012Metric" (at (xy 52 35)) (layer "F.Cu") (tstamp "FP_D2")
+    (property "Reference" "D2") (property "Value" "TX")
+    (pad "1" smd rect (at -0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+  )
+  (footprint "LED_SMD:LED_0805_2012Metric" (at (xy 54 35)) (layer "F.Cu") (tstamp "FP_D3")
+    (property "Reference" "D3") (property "Value" "RX")
+    (pad "1" smd rect (at -0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+  )
+  (footprint "LED_SMD:LED_0805_2012Metric" (at (xy 56 35)) (layer "F.Cu") (tstamp "FP_D4")
+    (property "Reference" "D4") (property "Value" "BEACON")
+    (pad "1" smd rect (at -0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+  )
+  (footprint "LED_SMD:LED_0805_2012Metric" (at (xy 58 35)) (layer "F.Cu") (tstamp "FP_D5")
+    (property "Reference" "D5") (property "Value" "FAULT")
+    (pad "1" smd rect (at -0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0.5 0) (size 0.8 0.6) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== Crystal (Y1) =====
+  (footprint "Crystal:Crystal_SMD_3225-4pin_3.2x2.5mm"
+    (at (xy 32 15)) (layer "F.Cu") (tstamp "FP_Y1")
+    (property "Reference" "Y1") (property "Value" "25MHz")
+    (pad "1" smd rect (at -1.25 0) (size 1.0 0.8) (layers "F.Cu") (net 0))
+    (pad "2" smd rect (at 0 0) (size 1.0 0.8) (layers "F.Cu") (net 0))
+    (pad "3" smd rect (at 1.25 0) (size 1.0 0.8) (layers "F.Cu") (net 0))
+    (pad "4" smd rect (at 0 -1.6) (size 1.0 0.8) (layers "F.Cu") (net 0))
+  )
+
+  ; ===== Ground Fill (Bottom Layer) =====
+  (zone
+    (net 0) (net_name "GND") (layer "B.Cu") (tstamp "ZONE_GND_BOTTOM")
+    (priority 1)
+    (min_thickness 0.2)
+    (fill yes (mode thermal))
+    (polygon
+      (pts
+        (xy 2 2) (xy 68 2) (xy 68 38) (xy 2 38)
+      )
+    )
+  )
+
+  ; ===== Ground Fill (Inner Layer 1) =====
+  (zone
+    (net 0) (net_name "GND") (layer "In1.Cu") (tstamp "ZONE_GND_IN1")
+    (priority 1)
+    (min_thickness 0.2)
+    (fill yes (mode thermal))
+    (polygon
+      (pts
+        (xy 2 2) (xy 68 2) (xy 68 38) (xy 2 38)
+      )
+    )
+  )
+
+  ; ===== 3.3V Power Fill (Inner Layer 2) =====
+  (zone
+    (net 3) (net_name "3.3V") (layer "In2.Cu") (tstamp "ZONE_3V3_IN2")
+    (priority 1)
+    (min_thickness 0.2)
+    (fill yes (mode thermal))
+    (polygon
+      (pts
+        (xy 2 2) (xy 68 2) (xy 68 38) (xy 2 38)
+      )
+    )
+  )
+)

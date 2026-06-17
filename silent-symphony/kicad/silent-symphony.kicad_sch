@@ -1,0 +1,397 @@
+(kicad_sch (version 20240101) (host kicad 8.0)
+  (uuid "4c7d8e2f-1a3b-4c5d-8e7f-9a0b1c2d3e4f")
+
+  (title_block
+    (title "SILENT-SYMPHONY — Ultrasonic Covert Channel Communicator")
+    (date "2026-06-17")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "SPDX: CERN-OHL-S v2")
+    (comment 3 "BOM Cost: ~$62 @ 1K")
+  )
+
+  (symbol "MCU:STM32H743VITx" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1") (property "Value" "STM32H743VIT6")
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+    (pin "1" (uuid "11111111-1111-1111-1111-111111111001"))
+    (pin "2" (uuid "11111111-1111-1111-1111-111111111002"))
+  )
+
+  (symbol "Power:VCC" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR01") (property "Value" "3.3V")
+    (pin "1" (uuid "22222222-2222-2222-2222-222222222001"))
+  )
+
+  (symbol "Power:VCC" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR02") (property "Value" "5V")
+    (pin "1" (uuid "22222222-2222-2222-2222-222222222002"))
+  )
+
+  (symbol "Power:VCC" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR03") (property "Value" "1.8V")
+    (pin "1" (uuid "22222222-2222-2222-2222-222222222003"))
+  )
+
+  (symbol "Power:GND" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR04") (property "Value" "GND")
+    (pin "1" (uuid "33333333-3333-3333-3333-333333333001"))
+  )
+
+  (symbol "Power:GNDA" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR05") (property "Value" "GNDA")
+    (pin "1" (uuid "33333333-3333-3333-3333-333333333002"))
+  )
+
+  ; === Battery & Power Management ===
+  (symbol "TP4056" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2") (property "Value" "TP4056")
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
+    (pin "4" (uuid "44444444-4444-4444-4444-444444444001")) ; BAT
+    (pin "5" (uuid "44444444-4444-4444-4444-444444444002")) ; VCC
+    (pin "6" (uuid "44444444-4444-4444-4444-444444444003")) ; PROG
+    (pin "7" (uuid "44444444-4444-4444-4444-444444444004")) ; CHRG
+    (pin "8" (uuid "44444444-4444-4444-4444-444444444005")) ; STDBY
+  )
+
+  (symbol "SGM6603-5.0" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3") (property "Value" "SGM6603-5.0YN5G")
+    (property "Footprint" "Package_TO_SOT_THT:TSOT-23-5")
+    (pin "1" (uuid "55555555-5555-5555-5555-555555555001")) ; EN
+    (pin "2" (uuid "55555555-5555-5555-5555-555555555002")) ; GND
+    (pin "3" (uuid "55555555-5555-5555-5555-555555555003")) ; SW
+    (pin "4" (uuid "55555555-5555-5555-5555-555555555004")) ; VIN
+    (pin "5" (uuid "55555555-5555-5555-5555-555555555005")) ; VOUT
+  )
+
+  (symbol "RT9013-3.3" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4") (property "Value" "RT9013-3.3GB")
+    (property "Footprint" "Package_TO_SOT_THT:SOT-23-5")
+    (pin "1" (uuid "66666666-6666-6666-6666-666666666001")) ; VIN
+    (pin "2" (uuid "66666666-6666-6666-6666-666666666002")) ; GND
+    (pin "3" (uuid "66666666-6666-6666-6666-666666666003")) ; EN
+    (pin "4" (uuid "66666666-6666-6666-6666-666666666004")) ; BP
+    (pin "5" (uuid "66666666-6666-6666-6666-666666666005")) ; VOUT
+  )
+
+  (symbol "RT9013-1.8" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5") (property "Value" "RT9013-1.8GB")
+    (property "Footprint" "Package_TO_SOT_THT:SOT-23-5")
+    (pin "1" (uuid "77777777-7777-7777-7777-777777777001")) ; VIN
+    (pin "2" (uuid "77777777-7777-7777-7777-777777777002")) ; GND
+    (pin "3" (uuid "77777777-7777-7777-7777-777777777003")) ; EN
+    (pin "4" (uuid "77777777-7777-7777-7777-777777777004")) ; BP
+    (pin "5" (uuid "77777777-7777-7777-7777-777777777005")) ; VOUT
+  )
+
+  ; === Ultrasonic Transducers ===
+  (symbol "Murata_MA40S4S" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "LS1") (property "Value" "MA40S4S")
+    (property "Footprint" "Ultrasonic:Murata_MA40S4S")
+    (pin "1" (uuid "88888888-8888-8888-8888-888888888001")) ; +
+    (pin "2" (uuid "88888888-8888-8888-8888-888888888002")) ; -
+  )
+
+  (symbol "Murata_MA40S4S" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "LS2") (property "Value" "MA40S4S")
+    (property "Footprint" "Ultrasonic:Murata_MA40S4S")
+    (pin "1" (uuid "88888888-8888-8888-8888-888888888003")) ; +
+    (pin "2" (uuid "88888888-8888-8888-8888-888888888004")) ; -
+  )
+
+  ; === MEMS Microphones ===
+  (symbol "Knowles_SPU0410LR5H" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "MIC1") (property "Value" "SPU0410LR5H-QB-7")
+    (property "Footprint" "Microphone:Knowles_SPU0410LR5H")
+    (pin "1" (uuid "99999999-9999-9999-9999-999999999001")) ; OUTPUT
+    (pin "2" (uuid "99999999-9999-9999-9999-999999999002")) ; GND
+    (pin "3" (uuid "99999999-9999-9999-9999-999999999003")) ; VDD
+  )
+
+  (symbol "Knowles_SPU0410LR5H" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "MIC2") (property "Value" "SPU0410LR5H-QB-7")
+    (property "Footprint" "Microphone:Knowles_SPU0410LR5H")
+    (pin "1" (uuid "99999999-9999-9999-9999-999999999004")) ; OUTPUT
+    (pin "2" (uuid "99999999-9999-9999-9999-999999999005")) ; GND
+    (pin "3" (uuid "99999999-9999-9999-9999-999999999006")) ; VDD
+  )
+
+  ; === Audio Amplifier (MAX98357A) ===
+  (symbol "MAX98357A" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U6") (property "Value" "MAX98357AETE+")
+    (property "Footprint" "Package_DFN_DFN:DFN-14_3x4mm_P0.4mm")
+    (pin "1" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa01")) ; BCLK
+    (pin "2" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa02")) ; DIN
+    (pin "3" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa03")) ; LRCLK
+    (pin "4" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa04")) ; VDD
+    (pin "5" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa05")) ; OUT+
+    (pin "6" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa06")) ; OUT-
+    (pin "7" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa07")) ; GAIN
+    (pin "8" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa08")) ; SHDN
+  )
+
+  ; === Pre-Amp (AD8694) ===
+  (symbol "AD8694" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U7") (property "Value" "AD8694ARUZ")
+    (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm")
+    (pin "1" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb01")) ; OUT1
+    (pin "2" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb02")) ; IN1-
+    (pin "3" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb03")) ; IN1+
+    (pin "4" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb04")) ; V+
+    (pin "5" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb05")) ; IN2+
+    (pin "6" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb06")) ; IN2-
+    (pin "7" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb07")) ; OUT2
+    (pin "8" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb08")) ; OUT3
+    (pin "9" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbb09")) ; IN3-
+    (pin "10" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb10")) ; IN3+
+    (pin "11" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb11")) ; V-
+    (pin "12" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb12")) ; IN4+
+    (pin "13" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb13")) ; IN4-
+    (pin "14" (uuid "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbb14")) ; OUT4
+  )
+
+  ; === Audio Codec (WM8731) ===
+  (symbol "WM8731S" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U8") (property "Value" "WM8731SEDS")
+    (property "Footprint" "Package_SO:SSOP-28_5.3x10.2mm_P0.65mm")
+    (pin "1" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc01")) ; MCLK
+    (pin "2" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc02")) ; BCLK
+    (pin "3" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc03")) ; DACDAT
+    (pin "4" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc04")) ; DACLRC
+    (pin "5" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc05")) ; ADCDAT
+    (pin "6" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc06")) ; ADCLRC
+    (pin "7" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc07")) ; MODE
+    (pin "8" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc08")) ; CSB
+    (pin "9" (uuid "cccccccc-cccc-cccc-cccc-cccccccccc09")) ; SCLK
+    (pin "10" (uuid "cccccccc-cccc-cccc-cccc-cccccccc10")) ; SDIN
+    (pin "11" (uuid "cccccccc-cccc-cccc-cccc-cccccccc11")) ; AVDD
+    (pin "12" (uuid "cccccccc-cccc-cccc-cccc-cccccccc12")) ; LOUT
+    (pin "13" (uuid "cccccccc-cccc-cccc-cccc-cccccccc13")) ; ROUT
+    (pin "15" (uuid "cccccccc-cccc-cccc-cccc-cccccccc15")) ; HPVDD
+    (pin "16" (uuid "cccccccc-cccc-cccc-cccc-cccccccc16")) ; LHPOUT
+    (pin "17" (uuid "cccccccc-cccc-cccc-cccc-cccccccc17")) ; RHPOUT
+    (pin "18" (uuid "cccccccc-cccc-cccc-cccc-cccccccc18")) ; DBVDD
+    (pin "19" (uuid "cccccccc-cccc-cccc-cccc-cccccccc19")) ; DCVDD
+    (pin "20" (uuid "cccccccc-cccc-cccc-cccc-cccccccc20")) ; RESET
+  )
+
+  ; === BLE Module (nRF52840) ===
+  (symbol "nRF52840" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U9") (property "Value" "nRF52840-QIAA")
+    (property "Footprint" "Package_DFN_QFN:QFN-73-1EP_9x9mm_P0.5mm")
+    (pin "1" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd01")) ; P0.00
+    (pin "2" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd02")) ; P0.01
+    (pin "10" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd10")) ; P0.09 (UART TX)
+    (pin "11" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd11")) ; P0.10 (UART RX)
+    (pin "12" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd12")) ; P0.11 (UART CTS)
+    (pin "13" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd13")) ; P0.12 (UART RTS)
+    (pin "14" (uuid "dddddddd-dddd-dddd-dddd-dddddddddd14")) ; P0.13
+  )
+
+  ; === Flash Memory (W25Q128JV) ===
+  (symbol "W25Q128JV" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U10") (property "Value" "W25Q128JVSIQ")
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    (pin "1" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee01")) ; /CS
+    (pin "2" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee02")) ; IO0/DO
+    (pin "3" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee03")) ; IO1/DI
+    (pin "4" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee04")) ; IO2/WP
+    (pin "5" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee05")) ; VSS
+    (pin "6" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee06")) ; IO3/HOLD
+    (pin "7" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee07")) ; CLK
+    (pin "8" (uuid "eeeeeeee-eeee-eeee-eeee-eeeeeeeeee08")) ; VCC
+  )
+
+  ; === PSRAM (IS66WVH8M8DBLI) ===
+  (symbol "IS66WVH8M8DBLI" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U11") (property "Value" "IS66WVH8M8DBLI-166")
+    (property "Footprint" "Package_BGA:BGA-48_6x8mm_P0.5mm")
+    (pin "A1" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff01")) ; A0
+    (pin "B1" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff02")) ; A1
+    (pin "D1" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff03")) ; DQ0
+    (pin "D2" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff04")) ; DQ1
+    (pin "E1" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff05")) ; DQ2
+    (pin "E2" (uuid "ffffffff-ffff-ffff-ffff-ffffffffff06")) ; DQ3
+  )
+
+  ; === USB-C Connector ===
+  (symbol "USB_C_16P" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1") (property "Value" "USB_C_16P")
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_16P")
+    (pin "A1" (uuid "11111111-1111-1111-1111-111111111a01")) ; GND
+    (pin "A4" (uuid "11111111-1111-1111-1111-111111111a04")) ; VBUS
+    (pin "A6" (uuid "11111111-1111-1111-1111-111111111a06")) ; DP
+    (pin "A7" (uuid "11111111-1111-1111-1111-111111111a07")) ; DN
+  )
+
+  ; === Passive Components ===
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R1") (property "Value" "4k7")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R2") (property "Value" "1k")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R3") (property "Value" "10k")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R4") (property "Value" "100k")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R5") (property "Value" "22R")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R6") (property "Value" "330R")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R7") (property "Value" "2k2")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R8") (property "Value" "47R")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+  (symbol "R" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "R9") (property "Value" "4k7")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+  )
+
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C1") (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C2") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C3") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C4") (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C5") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C6") (property "Value" "1uF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C7") (property "Value" "22pF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C8") (property "Value" "22pF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C9") (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C10") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C11") (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+  )
+  (symbol "C" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "C12") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+  )
+
+  ; === Crystal (25 MHz HSE) ===
+  (symbol "Crystal" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "Y1") (property "Value" "25MHz")
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4pin_3.2x2.5mm")
+    (pin "1" (uuid "00000000-0000-0000-0000-000000000001")) ; IN
+    (pin "3" (uuid "00000000-0000-0000-0000-000000000003")) ; OUT
+  )
+
+  ; === LEDs ===
+  (symbol "LED" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "D1") (property "Value" "RGB_LED_SM5050")
+    (property "Footprint" "LED_SMD:LED_5050_5.0x5.0mm")
+    (pin "1" (uuid "12121212-1212-1212-1212-121212121201")) ; R_ANODE
+    (pin "2" (uuid "12121212-1212-1212-1212-121212121202")) ; G_ANODE
+    (pin "3" (uuid "12121212-1212-1212-1212-121212121203")) ; B_ANODE
+    (pin "4" (uuid "12121212-1212-1212-1212-121212121204")) ; COMMON_CATHODE
+  )
+
+  (symbol "LED" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "D2") (property "Value" "LED_0805_YELLOW")
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric")
+  )
+  (symbol "LED" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "D3") (property "Value" "LED_0805_YELLOW")
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric")
+  )
+  (symbol "LED" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "D4") (property "Value" "LED_0805_YELLOW")
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric")
+  )
+  (symbol "LED" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "D5") (property "Value" "LED_0805_RED")
+    (property "Footprint" "LED_SMD:LED_0805_2012Metric")
+  )
+
+  ; === Battery Connector ===
+  (symbol "JST_PH_2PIN" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "J2") (property "Value" "JST-PH-2PIN")
+    (property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.0mm_Vertical")
+    (pin "1" (uuid "13131313-1313-1313-1313-131313131301")) ; BAT+
+    (pin "2" (uuid "13131313-1313-1313-1313-131313131302")) ; BAT-
+  )
+
+  ; === Inductors (for DC-DC) ===
+  (symbol "L" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "L1") (property "Value" "4.7uH")
+    (property "Footprint" "Inductor_SMD:L_0805_2012Metric")
+  )
+  (symbol "L" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "L2") (property "Value" "10uH")
+    (property "Footprint" "Inductor_SMD:L_0805_2012Metric")
+  )
+
+  ; === Test Points / Headers ===
+  (symbol "Conn_01x10" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "J3") (property "Value" "SWD_10PIN")
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm")
+  )
+  (symbol "Conn_01x06" (excluded_from_sim no) (in_bom yes) (on_board yes)
+    (property "Reference" "J4") (property "Value" "UART_BREAKOUT")
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm")
+  )
+)
