@@ -1,0 +1,28 @@
+{
+  "name": "trace-reaper-app",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "GPL-2.0",
+  "description": "Companion app for the TRACE-REAPER portable power-side-channel analyzer. Author: jayis1.",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-ble-plx": "^3.1.2",
+    "react-native-base64": "^0.2.1",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "react-native-screens": "^3.29.0",
+    "react-native-safe-area-context": "^4.8.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "eslint": "^8.50.0"
+  }
+}

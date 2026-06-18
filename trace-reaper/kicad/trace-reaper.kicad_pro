@@ -1,0 +1,67 @@
+{
+    "meta": {
+        "filename": "trace-reaper.kicad_pro",
+        "version": 2
+    },
+    "project": {
+        "name": "TRACE-REAPER",
+        "author": "jayis1",
+        "version": "1.0.0",
+        "id": "a1b2c3d4-e5f6-4a5b-8c7d-9e0f1a2b3c4d"
+    },
+    "board": {
+        "width": 82.0,
+        "height": 24.0,
+        "thickness": 1.6,
+        "layers": 4
+    },
+    "design_settings": {
+        "defaults": {
+            "track_width": 0.15,
+            "clearance": 0.15,
+            "via_diameter": 0.3,
+            "via_drill": 0.15,
+            "track_min_width": 0.1,
+            "clearance_min": 0.1
+        },
+        "rules": {
+            "min_track_width": 0.1,
+            "min_clearance": 0.1,
+            "min_via_diameter": 0.25,
+            "min_via_drill": 0.1
+        },
+        "layer_presets": [
+            {"name": "F.Cu",    "type": "copper", "thickness": 0.035},
+            {"name": "dielectric 1", "type": "prepreg", "thickness": 0.1, "material": "FR4", "er": 4.2},
+            {"name": "In1.Cu",  "type": "copper", "thickness": 0.035},
+            {"name": "dielectric 2", "type": "core", "thickness": 0.71, "material": "FR4", "er": 4.2},
+            {"name": "In2.Cu",  "type": "copper", "thickness": 0.035},
+            {"name": "dielectric 3", "type": "prepreg", "thickness": 0.1, "material": "FR4", "er": 4.2},
+            {"name": "B.Cu",    "type": "copper", "thickness": 0.035}
+        ]
+    },
+    "net_classes": [
+        {
+            "name": "Default",
+            "clearance": 0.15,
+            "track_width": 0.15,
+            "via_diameter": 0.3,
+            "via_drill": 0.15
+        },
+        {
+            "name": "Analog",
+            "clearance": 0.2,
+            "track_width": 0.2,
+            "via_diameter": 0.35,
+            "via_drill": 0.15,
+            "nets": ["AIN+", "AIN-", "TRIG_LVL", "EM_IN", "SHUNT_IN"]
+        },
+        {
+            "name": "RF",
+            "clearance": 0.2,
+            "track_width": 0.2,
+            "via_diameter": 0.35,
+            "via_drill": 0.15
+        }
+    ]
+}
