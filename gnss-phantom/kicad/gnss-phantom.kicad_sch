@@ -1,0 +1,703 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad-symbols")
+  (generator_version "8.0")
+  (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+  (paper "A3")
+  (title_block
+    (title "GNSS-Phantom GPX-1 — GPS/GNSS Spoofing Platform")
+    (date "2026-06-18")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: Proprietary — Authorized Security Research Use Only")
+    (comment 3 "WARNING: GNSS spoofing is illegal outside authorized RF-shielded labs")
+  )
+
+  (lib_symbols
+    ;; ---- STM32H743VI main MCU ----
+    (symbol "MCU_ST_STM32H7:STM32H743VIT6"
+      (pin_names
+        (offset 1.016)
+      )
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U1"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "STM32H743VIT6"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_BGA:TFBGA-100_8x8mm_P0.8mm"
+        (at 0 -80 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf"
+        (at 0 -83 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "STM32H743VIT6_0_1"
+        (rectangle (start -25.4 30.48) (end 25.4 -30.48)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -27.94 27.94 0) (length 2.54) (name "VBAT") (number "6") )
+        (pin power_in line (at -27.94 25.4 0) (length 2.54) (name "VDD") (number "11"))
+        (pin power_in line (at -27.94 22.86 0) (length 2.54) (name "VDD") (number "19"))
+        (pin power_in line (at -27.94 20.32 0) (length 2.54) (name "VDD") (number "28"))
+        (pin power_in line (at -27.94 17.78 0) (length 2.54) (name "VDD") (number "50"))
+        (pin power_in line (at -27.94 15.24 0) (length 2.54) (name "VDD") (number "75"))
+        (pin power_in line (at -27.94 12.7 0) (length 2.54) (name "VDD") (number "100"))
+        (pin power_in line (at -27.94 10.16 0) (length 2.54) (name "VSS") (number "10"))
+        (pin power_in line (at -27.94 7.62 0) (length 2.54) (name "VSS") (number "27"))
+        (pin power_in line (at -27.94 5.08 0) (length 2.54) (name "VSS") (number "49"))
+        (pin power_in line (at -27.94 2.54 0) (length 2.54) (name "VSS") (number "74"))
+        (pin power_in line (at -27.94 0 0) (length 2.54) (name "VSS") (number "99"))
+        (pin power_in line (at -27.94 -2.54 0) (length 2.54) (name "VDDA") (number "22"))
+        (pin power_in line (at -27.94 -5.08 0) (length 2.54) (name "VSSA") (number "20"))
+        (pin power_in line (at -27.94 -7.62 0) (length 2.54) (name "VREF+") (number "21"))
+        (pin input line (at -27.94 -12.7 0) (length 2.54) (name "NRST") (number "14"))
+        (pin input line (at -27.94 -15.24 0) (length 2.54) (name "BOOT0") (number "94"))
+        (pin bidirectional line (at 27.94 27.94 180) (length 2.54) (name "PA0") (number "23"))
+        (pin bidirectional line (at 27.94 25.4 180) (length 2.54) (name "PA1") (number "24"))
+        (pin bidirectional line (at 27.94 22.86 180) (length 2.54) (name "PA2") (number "25"))
+        (pin bidirectional line (at 27.94 20.32 180) (length 2.54) (name "PA3") (number "26"))
+        (pin bidirectional line (at 27.94 17.78 180) (length 2.54) (name "PA4") (number "29"))
+        (pin bidirectional line (at 27.94 15.24 180) (length 2.54) (name "PA5") (number "30"))
+        (pin bidirectional line (at 27.94 12.7 180) (length 2.54) (name "PB6") (number "92"))
+        (pin bidirectional line (at 27.94 10.16 180) (length 2.54) (name "PB7") (number "93"))
+        (pin bidirectional line (at 27.94 7.62 180) (length 2.54) (name "PB8") (number "95"))
+        (pin bidirectional line (at 27.94 5.08 180) (length 2.54) (name "PC8") (number "66"))
+        (pin bidirectional line (at 27.94 2.54 180) (length 2.54) (name "PC9") (number "67"))
+        (pin bidirectional line (at 27.94 0 180) (length 2.54) (name "PC10") (number "68"))
+        (pin bidirectional line (at 27.94 -2.54 180) (length 2.54) (name "PC11") (number "69"))
+        (pin bidirectional line (at 27.94 -5.08 180) (length 2.54) (name "PC12") (number "70"))
+        (pin bidirectional line (at 27.94 -7.62 180) (length 2.54) (name "PD8") (number "85"))
+        (pin bidirectional line (at 27.94 -10.16 180) (length 2.54) (name "PD9") (number "86"))
+        (pin bidirectional line (at 27.94 -12.7 180) (length 2.54) (name "PD13") (number "90"))
+        (pin bidirectional line (at 27.94 -15.24 180) (length 2.54) (name "PD14") (number "91"))
+        (pin bidirectional line (at 27.94 -17.78 180) (length 2.54) (name "PD15") (number "96"))
+        (pin bidirectional line (at 27.94 -20.32 180) (length 2.54) (name "PE4") (number "57"))
+        (pin bidirectional line (at 27.94 -22.86 180) (length 2.54) (name "PE5") (number "58"))
+        (pin bidirectional line (at 27.94 -25.4 180) (length 2.54) (name "PE6") (number "59"))
+        (pin bidirectional line (at 27.94 -27.94 180) (length 2.54) (name "PG0") (number "79"))
+        (pin bidirectional line (at 27.94 -30.48 180) (length 2.54) (name "PG1") (number "80"))
+      )
+    )
+
+    ;; ---- Si4463 RF Transceiver ----
+    (symbol "RF_SiLabs:Si4463"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U2"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Si4463"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm"
+        (at 0 -50 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "https://www.silabs.com/documents/public/data-sheets/Si4463-4464-4466-4468.pdf"
+        (at 0 -53 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "Si4463_0_1"
+        (rectangle (start -15.24 20.32) (end 15.24 -20.32)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -17.78 17.78 0) (length 2.54) (name "VDD") (number "4"))
+        (pin power_in line (at -17.78 15.24 0) (length 2.54) (name "VDD") (number "5"))
+        (pin power_in line (at -17.78 12.7 0) (length 2.54) (name "VDD") (number "15"))
+        (pin power_in line (at -17.78 10.16 0) (length 2.54) (name "GND") (number "2"))
+        (pin power_in line (at -17.78 7.62 0) (length 2.54) (name "GND") (number "16"))
+        (pin input line (at -17.78 2.54 0) (length 2.54) (name "SDN") (number "1"))
+        (pin input line (at -17.78 0 0) (length 2.54) (name "SCLK") (number "12"))
+        (pin input line (at -17.78 -2.54 0) (length 2.54) (name "SDI/MOSI") (number "13"))
+        (pin output line (at -17.78 -5.08 0) (length 2.54) (name "SDO/MISO") (number "14"))
+        (pin input line (at -17.78 -7.62 0) (length 2.54) (name "nSEL/CS") (number "11"))
+        (pin output line (at -17.78 -10.16 0) (length 2.54) (name "nIRQ") (number "17"))
+        (pin bidirectional line (at 17.78 17.78 180) (length 2.54) (name "GPIO0") (number "18"))
+        (pin bidirectional line (at 17.78 15.24 180) (length 2.54) (name "GPIO1") (number "19"))
+        (pin output line (at 17.78 10.16 180) (length 2.54) (name "TX") (number "20"))
+        (pin bidirectional line (at 17.78 7.62 180) (length 2.54) (name "RXn") (number "9"))
+        (pin bidirectional line (at 17.78 5.08 180) (length 2.54) (name "RXp") (number "8"))
+        (pin input line (at -17.78 -15.24 0) (length 2.54) (name "XI") (number "6"))
+        (pin output line (at -17.78 -17.78 0) (length 2.54) (name "XO") (number "7"))
+      )
+    )
+
+    ;; ---- Si4463 #2 (second instance) ----
+    (symbol "RF_SiLabs:Si4463_2"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U3"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Si4463"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm"
+        (at 0 -50 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "Si4463_2_0_1"
+        (rectangle (start -15.24 20.32) (end 15.24 -20.32)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -17.78 17.78 0) (length 2.54) (name "VDD") (number "4"))
+        (pin power_in line (at -17.78 15.24 0) (length 2.54) (name "VDD") (number "5"))
+        (pin power_in line (at -17.78 10.16 0) (length 2.54) (name "GND") (number "2"))
+        (pin input line (at -17.78 2.54 0) (length 2.54) (name "SDN") (number "1"))
+        (pin input line (at -17.78 0 0) (length 2.54) (name "SCLK") (number "12"))
+        (pin input line (at -17.78 -2.54 0) (length 2.54) (name "SDI") (number "13"))
+        (pin output line (at -17.78 -5.08 0) (length 2.54) (name "SDO") (number "14"))
+        (pin input line (at -17.78 -7.62 0) (length 2.54) (name "nSEL") (number "11"))
+        (pin output line (at -17.78 -10.16 0) (length 2.54) (name "nIRQ") (number "17"))
+        (pin output line (at 17.78 10.16 180) (length 2.54) (name "TX") (number "20"))
+        (pin input line (at -17.78 -15.24 0) (length 2.54) (name "XI") (number "6"))
+      )
+    )
+
+    ;; ---- nRF52840 BLE Module ----
+    (symbol "RF_Module:nRF52840-M2"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U4"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "nRF52840-M.2"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "RF_Module:nordic_M2"
+        (at 0 -30 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "nRF52840_0_1"
+        (rectangle (start -12.7 12.7) (end 12.7 -12.7)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -15.24 10.16 0) (length 2.54) (name "VDD") (number "1"))
+        (pin power_in line (at -15.24 7.62 0) (length 2.54) (name "GND") (number "2"))
+        (pin bidirectional line (at -15.24 2.54 0) (length 2.54) (name "UART_TX") (number "3"))
+        (pin bidirectional line (at -15.24 0 0) (length 2.54) (name "UART_RX") (number "4"))
+        (pin bidirectional line (at -15.24 -2.54 0) (length 2.54) (name "UART_CTS") (number "5"))
+        (pin bidirectional line (at -15.24 -5.08 0) (length 2.54) (name "UART_RTS") (number "6"))
+        (pin output line (at 15.24 10.16 180) (length 2.54) (name "ANT1") (number "7"))
+        (pin output line (at 15.24 7.62 180) (length 2.54) (name "ANT2") (number "8"))
+        (pin input line (at -15.24 -7.62 0) (length 2.54) (name "SWDIO") (number "9"))
+        (pin input line (at -15.24 -10.16 0) (length 2.54) (name "SWDCLK") (number "10"))
+      )
+    )
+
+    ;; ---- 26 MHz TCXO ----
+    (symbol "Oscillator:TG5032CE_26MHz"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Y1"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TG5032CE-26N-26.000M"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Oscillator:Oscillator_SMD_TCXO_5032_4Pins"
+        (at 0 -10 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "TG5032CE_0_1"
+        (rectangle (start -7.62 5.08) (end 7.62 -5.08)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -10.16 2.54 0) (length 2.54) (name "VCC") (number "1"))
+        (pin power_in line (at -10.16 -2.54 0) (length 2.54) (name "GND") (number "2"))
+        (pin output line (at 10.16 2.54 180) (length 2.54) (name "OUT") (number "3"))
+        (pin power_in line (at 10.16 -2.54 180) (length 2.54) (name "GND") (number "4"))
+      )
+    )
+
+    ;; ---- MAX17048 Fuel Gauge ----
+    (symbol "Sensor_Voltage:MAX17048"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U5"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "MAX17048G+T10"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8"
+        (at 0 -10 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "MAX17048_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -10.16 5.08 0) (length 2.54) (name "CELLP") (number "1"))
+        (pin power_in line (at -10.16 2.54 0) (length 2.54) (name "CELLN") (number "2"))
+        (pin bidirectional line (at -10.16 -2.54 0) (length 2.54) (name "SDA") (number "5"))
+        (pin bidirectional line (at -10.16 -5.08 0) (length 2.54) (name "SCL") (number "6"))
+        (pin power_in line (at 10.16 5.08 180) (length 2.54) (name "VDD") (number "4"))
+        (pin power_in line (at 10.16 -5.08 180) (length 2.54) (name "GND") (number "3"))
+      )
+    )
+
+    ;; ---- RF Switch: HMC253 ----
+    (symbol "RF_Switch:HMC253"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U6"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "HMC253AGQS24"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "HMC253_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin input line (at -10.16 5.08 0) (length 2.54) (name "RFC") (number "1"))
+        (pin output line (at 10.16 5.08 180) (length 2.54) (name "RF1") (number "2"))
+        (pin output line (at 10.16 2.54 180) (length 2.54) (name "RF2") (number "3"))
+        (pin input line (at -10.16 -2.54 0) (length 2.54) (name "CTRL") (number "4"))
+        (pin power_in line (at -10.16 -5.08 0) (length 2.54) (name "GND") (number "5"))
+      )
+    )
+
+    ;; ---- LNA: SKY65404 ----
+    (symbol "RF_Amplifier:SKY65404"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U7"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "SKY65404-21"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "SKY65404_0_1"
+        (rectangle (start -7.62 7.62) (end 7.62 -7.62)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin input line (at -10.16 5.08 0) (length 2.54) (name "RFIN") (number "1"))
+        (pin output line (at 10.16 5.08 180) (length 2.54) (name "RFOUT") (number "6"))
+        (pin power_in line (at -10.16 -5.08 0) (length 2.54) (name "GND") (number "2"))
+        (pin power_in line (at -10.16 -2.54 0) (length 2.54) (name "VCC") (number "4"))
+      )
+    )
+
+    ;; ---- SMA Connector ----
+    (symbol "Connector:SMA_Connector"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J1"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "SMA_Right_Angle"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Connector_Coaxial:SMA_Amphenol_132289_Edge_Mount"
+        (at 0 -10 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "SMA_0_1"
+        (rectangle (start -5.08 5.08) (end 5.08 -5.08)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin passive line (at -7.62 2.54 0) (length 2.54) (name "SIG") (number "1"))
+        (pin passive line (at -7.62 -2.54 0) (length 2.54) (name "GND") (number "2"))
+      )
+    )
+
+    ;; ---- USB-C Connector ----
+    (symbol "Connector:USB_C_Plug"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J2"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "USB-C_16P"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "USB_C_0_1"
+        (rectangle (start -12.7 15.24) (end 12.7 -15.24)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -15.24 12.7 0) (length 2.54) (name "VBUS") (number "A4"))
+        (pin power_in line (at -15.24 10.16 0) (length 2.54) (name "GND") (number "A1"))
+        (pin bidirectional line (at -15.24 5.08 0) (length 2.54) (name "D+") (number "A6"))
+        (pin bidirectional line (at -15.24 2.54 0) (length 2.54) (name "D-") (number "A7"))
+        (pin bidirectional line (at -15.24 -2.54 0) (length 2.54) (name "CC") (number "A5"))
+      )
+    )
+
+    ;; ---- TP4056 LiPo Charger ----
+    (symbol "Charger:TP4056"
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U8"
+        (at 0 2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TP4056"
+        (at 0 -2 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (symbol "TP4056_0_1"
+        (rectangle (start -10.16 10.16) (end 10.16 -10.16)
+          (stroke (width 0.1524) (type default))
+          (fill (type background))
+        )
+        (pin power_in line (at -12.7 7.62 0) (length 2.54) (name "VCC") (number "4"))
+        (pin power_in line (at -12.7 5.08 0) (length 2.54) (name "GND") (number "3"))
+        (pin power_out line (at 12.7 7.62 180) (length 2.54) (name "BAT+") (number "5"))
+        (pin power_out line (at 12.7 5.08 180) (length 2.54) (name "BAT-") (number "8"))
+        (pin output line (at -12.7 -2.54 0) (length 2.54) (name "CHRG") (number "7"))
+        (pin output line (at -12.7 -5.08 0) (length 2.54) (name "STDBY") (number "6"))
+        (pin input line (at -12.7 -7.62 0) (length 2.54) (name "TEMP") (number "1"))
+        (pin input line (at 12.7 -2.54 180) (length 2.54) (name "PROG") (number "2"))
+      )
+    )
+
+    ;; ---- Resistors & Caps ----
+    (symbol "Device:R"
+      (pin_numbers hide)
+      (pin_names (offset 0))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at -1.778 0 90) (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (number "1")))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (number "2")))
+      )
+    )
+
+    (symbol "Device:C"
+      (pin_numbers hide)
+      (pin_names (offset 0.254))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C" (at 0.635 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "C" (at 0.635 -2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0.254 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -1.016) (xy 2.032 -1.016))
+          (stroke (width 0.508) (type default)) (fill (type none)))
+        (polyline (pts (xy -2.032 1.016) (xy 2.032 1.016))
+          (stroke (width 0.508) (type default)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 2.794) (name "~" (number "1")))
+        (pin passive line (at 0 -3.81 90) (length 2.794) (name "~" (number "2")))
+      )
+    )
+
+    (symbol "Device:L"
+      (pin_numbers hide)
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "L" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "L" (at -2.032 0 90) (effects (font (size 1.27 1.27))))
+      (symbol "L_0_1"
+        (arc (start 0 -2.54) (mid -1.27 -1.27) (end 0 0)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (arc (start 0 0) (mid -1.27 1.27) (end 0 2.54)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (number "1")))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (number "2")))
+      )
+    )
+
+    (symbol "Device:LED"
+      (pin_numbers hide)
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
+      (property "Value" "LED" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
+      (symbol "LED_0_1"
+        (rectangle (start -1.27 1.27) (end 1.27 -1.27)
+          (stroke (width 0.254) (type default)) (fill (type none)))
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "A" (number "1")))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "K" (number "2")))
+      )
+    )
+  )
+
+  ;; ============ COMPONENT INSTANCES ============
+  (symbol_instances
+    ;; Main MCU
+    (path "/mcu"
+      (reference "U1")
+      (unit 1)
+      (value "STM32H743VIT6")
+      (footprint "Package_BGA:TFBGA-100_8x8mm_P0.8mm")
+      (property "Manufacturer" "STMicroelectronics")
+      (property "MPN" "STM32H743VIT6")
+      (property "Author" "jayis1")
+      (at 101.6 76.2 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; Si4463 #1 — GPS/Galileo
+    (path "/rf1"
+      (reference "U2")
+      (unit 1)
+      (value "Si4463")
+      (footprint "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm")
+      (property "Manufacturer" "Silicon Labs")
+      (property "MPN" "Si4463-B1B")
+      (property "Author" "jayis1")
+      (at 152.4 76.2 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; Si4463 #2 — GLONASS/BeiDou
+    (path "/rf2"
+      (reference "U3")
+      (unit 1)
+      (value "Si4463")
+      (footprint "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm")
+      (property "Manufacturer" "Silicon Labs")
+      (property "MPN" "Si4463-B1B")
+      (property "Author" "jayis1")
+      (at 152.4 50.8 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; nRF52840 BLE
+    (path "/ble"
+      (reference "U4")
+      (unit 1)
+      (value "nRF52840-M.2")
+      (footprint "RF_Module:Nordic_M.2")
+      (property "Manufacturer" "Nordic Semiconductor")
+      (property "MPN" "nRF52840-M.2")
+      (property "Author" "jayis1")
+      (at 101.6 127 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; 26 MHz TCXO
+    (path "/tcxo"
+      (reference "Y1")
+      (unit 1)
+      (value "TG5032CE-26N-26.000M")
+      (footprint "Oscillator:Oscillator_SMD_TCXO_5032_4Pins")
+      (property "Manufacturer" "Taitien")
+      (property "MPN" "TG5032CE-26N-26.000M-T")
+      (property "Author" "jayis1")
+      (at 127 127 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; MAX17048 Fuel Gauge
+    (path "/fuelgauge"
+      (reference "U5")
+      (unit 1)
+      (value "MAX17048G+T10")
+      (footprint "Package_TO_SOT_SMD:SOT-23-8")
+      (property "Manufacturer" "Maxim/Analog Devices")
+      (property "Author" "jayis1")
+      (at 101.6 152.4 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; RF Switch
+    (path "/rfswitch"
+      (reference "U6")
+      (unit 1)
+      (value "HMC253AGQS24")
+      (footprint "Package_SO:QSOP-24")
+      (property "Manufacturer" "Analog Devices/Hittite")
+      (property "Author" "jayis1")
+      (at 177.8 76.2 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; LNA
+    (path "/lna"
+      (reference "U7")
+      (unit 1)
+      (value "SKY65404-21")
+      (footprint "RF_Module:DFN-6")
+      (property "Manufacturer" "Skyworks")
+      (property "Author" "jayis1")
+      (at 203.2 76.2 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; SMA TX Connector
+    (path "/sma_tx"
+      (reference "J1")
+      (unit 1)
+      (value "SMA_Right_Angle")
+      (footprint "Connector_Coaxial:SMA_Amphenol_132289_Edge_Mount")
+      (property "Author" "jayis1")
+      (at 228.6 76.2 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; USB-C
+    (path "/usb_c"
+      (reference "J2")
+      (unit 1)
+      (value "USB-C_16P")
+      (footprint "Connector_USB:USB_C_Receptacle_GCT_USB4105")
+      (property "Author" "jayis1")
+      (at 50.8 101.6 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; TP4056 Charger
+    (path "/charger"
+      (reference "U8")
+      (unit 1)
+      (value "TP4056")
+      (footprint "Package_SO:HSOP-8")
+      (property "Manufacturer" "NanJing TopPower")
+      (property "Author" "jayis1")
+      (at 76.2 152.4 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+
+    ;; Decoupling capacitors (representative)
+    (path "/c_vdd1" (reference "C1") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402") (at 101.6 50.8 0))
+    (path "/c_vdd2" (reference "C2") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402") (at 101.6 45.72 0))
+    (path "/c_vdd3" (reference "C3") (unit 1) (value "4.7uF") (footprint "Capacitor_SMD:C_0603") (at 101.6 40.64 0))
+    (path "/c_vdda" (reference "C4") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402") (at 101.6 35.56 0))
+    (path "/c_si4463_1" (reference "C5") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402") (at 152.4 30.48 0))
+    (path "/c_si4463_2" (reference "C6") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0402") (at 152.4 25.4 0))
+    (path "/c_tcxo" (reference "C7") (unit 1) (value "10nF") (footprint "Capacitor_SMD:C_0402") (at 127 111.76 0))
+    (path "/c_rf1" (reference "C8") (unit 1) (value "100pF") (footprint "Capacitor_SMD:C_0402") (at 177.8 30.48 0))
+    (path "/c_rf2" (reference "C9") (unit 1) (value "100pF") (footprint "Capacitor_SMD:C_0402") (at 203.2 30.48 0))
+    (path "/c_bulk" (reference "C10") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0805") (at 101.6 25.4 0))
+
+    ;; LEDs
+    (path "/led_status" (reference "D1") (unit 1) (value "LED_Blue") (footprint "LED_SMD:LED_0603") (at 60 180 0))
+    (path "/led_spoof" (reference "D2") (unit 1) (value "LED_Red") (footprint "LED_SMD:LED_0603") (at 70 180 0))
+    (path "/led_rx" (reference "D3") (unit 1) (value "LED_Green") (footprint "LED_SMD:LED_0603") (at 80 180 0))
+    (path "/led_pwr" (reference "D4") (unit 1) (value "LED_Blue") (footprint "LED_SMD:LED_0603") (at 90 180 0))
+
+    ;; LED current-limit resistors
+    (path "/r_led1" (reference "R1") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0402") (at 60 170 0))
+    (path "/r_led2" (reference "R2") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0402") (at 70 170 0))
+    (path "/r_led3" (reference "R3") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0402") (at 80 170 0))
+    (path "/r_led4" (reference "R4") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0402") (at 90 170 0))
+
+    ;; RF inductors (matching network)
+    (path "/l_match1" (reference "L1") (unit 1) (value "3.9nH") (footprint "Inductor_SMD:L_0402") (at 190.5 76.2 0))
+    (path "/l_match2" (reference "L2") (unit 1) (value "2.2nH") (footprint "Inductor_SMD:L_0402") (at 215.9 76.2 0))
+  )
+
+  ;; ============ NETS / WIRES (simplified netlist representation) ============
+  (nets
+    (net 0 "/GND" (type power))
+    (net 1 "/+3V3" (type power))
+    (net 2 "/VBAT" (type power))
+    (net 3 "/+5V_USB" (type power))
+    (net 4 "/VCC_RF" (type power))
+    (net 10 "/SPI2_SCLK" (type signal))
+    (net 11 "/SPI2_MOSI" (type signal))
+    (net 12 "/SPI2_MISO" (type signal))
+    (net 13 "/SI4463_GPS_SEL" (type signal))
+    (net 14 "/SI4463_GPS_SDN" (type signal))
+    (net 15 "/SI4463_GPS_IRQ" (type signal))
+    (net 16 "/SI4463_GLO_SEL" (type signal))
+    (net 17 "/SI4463_GLO_SDN" (type signal))
+    (net 18 "/SI4463_GLO_IRQ" (type signal))
+    (net 20 "/USART2_TX" (type signal))
+    (net 21 "/USART2_RX" (type signal))
+    (net 22 "/USART3_TX" (type signal))
+    (net 23 "/USART3_RX" (type signal))
+    (net 30 "/LED_STATUS" (type signal))
+    (net 31 "/LED_SPOOF" (type signal))
+    (net 32 "/LED_RX" (type signal))
+    (net 33 "/LED_PWR" (type signal))
+    (net 40 "/TCXO_EN" (type signal))
+    (net 41 "/PA_EN" (type signal))
+    (net 42 "/TX_RX_SW" (type signal))
+    (net 50 "/TCXO_OUT" (type signal))
+    (net 51 "/I2C1_SCL" (type signal))
+    (net 52 "/I2C1_SDA" (type signal))
+    (net 60 "/RF_TX" (type signal))
+    (net 61 "/RF_RX" (type signal))
+    (net 70 "/BTN_MODE" (type signal))
+    (net 71 "/BTN_FIRE" (type signal))
+    (net 72 "/BTN_SAFE" (type signal))
+    (net 80 "/PPS_OUT" (type signal))
+    (net 90 "/BATT_ADC" (type signal))
+  )
+
+  (graphical
+    (text "GNSS-Phantom GPX-1 Schematic"
+      (at 127 12.7 0)
+      (effects (font (size 2.54 2.54) bold))
+    )
+    (text "Author: jayis1 | Version 1.0.0"
+      (at 127 8.89 0)
+      (effects (font (size 1.524 1.524)))
+    )
+    (text "AUTHORIZED SECURITY RESEARCH USE ONLY"
+      (at 127 5.08 0)
+      (effects (font (size 1.524 1.524) bold) (color 255 0 0 1))
+    )
+  )
+)
