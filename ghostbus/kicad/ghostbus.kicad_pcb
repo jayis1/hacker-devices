@@ -1,0 +1,391 @@
+(kicad_pcb (version 20240101) (host kicad 8.0)
+  (uuid "7e8f9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b")
+  (title_block
+    (title "GHOSTBUS — Covert SWD/JTAG Hardware Debug Implant")
+    (date "2026-06-18") (rev "1.0") (company "jayis1")
+    (comment 1 "Author: jayis1 — CERN-OHL-S v2")
+  )
+
+  (general (thickness 1.6) (legacy_teardrops no))
+  (paper "A4")
+  (layers
+    (0 "F.Cu" signal "Top — components + high-speed debug")
+    (1 "In1.Cu" signal "Inner 1 — GND plane")
+    (2 "In2.Cu" signal "Inner 2 — 3V3 plane")
+    (31 "B.Cu" signal "Bottom — passives + routing")
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user "B.Paste")
+    (35 "F.Paste" user "F.Paste")
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user "B.Mask")
+    (39 "F.Mask" user "F.Mask")
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (42 "Eco1.User" user "User.Eco1")
+    (43 "Eco2.User" user "User.Eco2")
+    (44 "Edge.Cuts" user "Board.Outline")
+    (45 "Margin" user "Board.Margin")
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user "B.Fabrication")
+    (49 "F.Fab" user "F.Fabrication")
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 1" (type "prepreg") (thickness 0.2) (material "FR4"))
+      (layer "In1.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 2" (type "core") (thickness 0.7) (material "FR4"))
+      (layer "In2.Cu" (type "copper") (thickness 0.035))
+      (layer "dielectric 3" (type "prepreg") (thickness 0.2) (material "FR4"))
+      (layer "B.Cu" (type "copper") (thickness 0.035))
+    )
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.05)
+    (grid_origin 0 0)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (plot_on_all_layers_selection 0x0000000_00000000)
+      (usegerberextensions no)
+      (psnegative no)
+      (psa4portrait no)
+      (plotreference yes)
+      (plotvalue yes)
+      (plotinvisibleno yes)
+      (sketchpadsonfab no)
+      (subtractmaskfromsilk no)
+      (outputformat 1)
+      (mirror no)
+      (drillshape 0)
+    )
+  )
+
+  ; ===================================================================
+  ; Board outline (50 x 24 mm)
+  ; ===================================================================
+  (gr_line (start 0 0) (end 50 0) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 50 0) (end 50 24) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 50 24) (end 0 24) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 0 24) (end 0 0) (layer "Edge.Cuts") (width 0.15))
+  (gr_text "GHOSTBUS v1.0  ©jayis1" (at 25 12) (layer "F.SilkS") (uuid "silktxt1"))
+  (gr_text "Covert SWD/JTAG Debug Implant" (at 25 14.5) (layer "F.SilkS") (uuid "silktxt2"))
+
+  ; ===================================================================
+  ; Net classes
+  ; ===================================================================
+  (net_class "POWER" (clearance 0.2) (trace_width 0.3)
+    (via_dia 0.5) (via_drill 0.25) (uvia_dia 0.3) (uvia_drill 0.1))
+  (net_class "DEBUG" (clearance 0.15) (trace_width 0.15)
+    (via_dia 0.3) (via_drill 0.15) (uvia_dia 0.2) (uvia_drill 0.08))
+  (net_class "RF" (clearance 0.25) (trace_width 0.2)
+    (via_dia 0.3) (via_drill 0.15) (uvia_dia 0.2) (uvia_drill 0.08))
+  (net_class "DEFAULT" (clearance 0.15) (trace_width 0.15)
+    (via_dia 0.3) (via_drill 0.15) (uvia_dia 0.2) (uvia_drill 0.08))
+
+  ; ===================================================================
+  ; Nets
+  ; ===================================================================
+  (net "GND" (class "POWER"))
+  (net "+3V3" (class "POWER"))
+  (net "+5V" (class "POWER"))
+  (net "+VBAT" (class "POWER"))
+  (net "SWCLK_TCK" (class "DEBUG"))
+  (net "SWDIO_TMS" (class "DEBUG"))
+  (net "TDI" (class "DEBUG"))
+  (net "TDO" (class "DEBUG"))
+  (net "BLE_TX" (class "DEFAULT"))
+  (net "BLE_RX" (class "DEFAULT"))
+  (net "BLE_nRST" (class "DEFAULT"))
+  (net "BLE_IRQ" (class "DEFAULT"))
+  (net "I2C_SDA" (class "DEFAULT"))
+  (net "I2C_SCL" (class "DEFAULT"))
+  (net "VREF_SENSE" (class "DEBUG"))
+  (net "TGT_PWR" (class "POWER"))
+  (net "CONT_DRV" (class "DEFAULT"))
+  (net "GND_SENSE" (class "DEBUG"))
+  (net "USB_DM" (class "DEFAULT"))
+  (net "USB_DP" (class "DEFAULT"))
+  (net "VBUS" (class "POWER"))
+  (net "BUTTON" (class "DEFAULT"))
+  (net "LED_DATA" (class "DEFAULT"))
+  (net "unconnected-(U1-Pad1)")
+
+  ; ===================================================================
+  ; Footprints — U1: STM32H563ZIT6 LQFP-144
+  ; ===================================================================
+  (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm" (layer "F.Cu")
+    (property "Reference" "U1") (property "Value" "STM32H563ZIT6")
+    (attr smd)
+    (pad "25" smd roundrect (at 4.25 -6.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "SWCLK_TCK") (roundrect_rratio 0.25))
+    (pad "26" smd roundrect (at 4.25 -7.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "SWDIO_TMS") (roundrect_rratio 0.25))
+    (pad "55" smd roundrect (at 4.25 -2.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "TDI") (roundrect_rratio 0.25))
+    (pad "56" smd roundrect (at 4.25 -2.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "TDO") (roundrect_rratio 0.25))
+    (pad "31" smd roundrect (at 4.25 -5.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_TX") (roundrect_rratio 0.25))
+    (pad "32" smd roundrect (at 4.25 -4.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_RX") (roundrect_rratio 0.25))
+    (pad "58" smd roundrect (at 4.25 -1.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_nRST") (roundrect_rratio 0.25))
+    (pad "59" smd roundrect (at 4.25 -0.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_IRQ") (roundrect_rratio 0.25))
+    (pad "19" smd roundrect (at 4.25 -8.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "VREF_SENSE") (roundrect_rratio 0.25))
+    (pad "20" smd roundrect (at 4.25 -8.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_PWR") (roundrect_rratio 0.25))
+    (pad "21" smd roundrect (at 4.25 -7.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "CONT_DRV") (roundrect_rratio 0.25))
+    (pad "22" smd roundrect (at 4.25 -7.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND_SENSE") (roundrect_rratio 0.25))
+    (pad "86" smd roundrect (at -4.25 -0.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "LED_DATA") (roundrect_rratio 0.25))
+    (pad "72" smd roundrect (at -4.25 -6.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "BUTTON") (roundrect_rratio 0.25))
+    (pad "11" smd roundrect (at 4.25 -10.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "12" smd roundrect (at 4.25 -9.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "60" smd roundrect (at 4.25 0.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "95" smd roundrect (at -4.25 -7.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "96" smd roundrect (at -4.25 -8.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (model "${KICAD6_3DMODEL_DIR}/Package_QFP.3dshapes/LQFP-144_20x20mm_P0.5mm.wrl"
+      (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
+  )
+
+  ; ===================================================================
+  ; U2: nRF52840 QFN-48 (BLE co-processor)
+  ; ===================================================================
+  (footprint "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm" (layer "F.Cu")
+    (property "Reference" "U2") (property "Value" "nRF52840-QFAA")
+    (attr smd)
+    (pad "21" smd roundrect (at -2.6 1.8) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_TX") (roundrect_rratio 0.25))
+    (pad "22" smd roundrect (at -2.6 2.2) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_RX") (roundrect_rratio 0.25))
+    (pad "23" smd roundrect (at -2.6 2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_nRST") (roundrect_rratio 0.25))
+    (pad "24" smd roundrect (at -2.6 3.0) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "BLE_IRQ") (roundrect_rratio 0.25))
+    (pad "32" smd roundrect (at 1.2 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "RF_ANT_P") (roundrect_rratio 0.25))
+    (pad "33" smd roundrect (at 1.6 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "RF_ANT_N") (roundrect_rratio 0.25))
+    (pad "35" smd roundrect (at 2.4 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "34" smd roundrect (at 2.0 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "1"  smd roundrect (at -2.6 -2.4) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "41" smd roundrect (at 0.4 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "XTAL_P") (roundrect_rratio 0.25))
+    (pad "42" smd roundrect (at 0.8 -2.6) (size 0.2 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net "XTAL_N") (roundrect_rratio 0.25))
+    (pad "49" smd roundrect (at 0 0) (size 4.6 4.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.0))
+    (model "${KICAD6_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm.wrl"
+      (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0)))
+  )
+
+  ; ===================================================================
+  ; U3: MCP73831 LiPo charger (SOT-23-5)
+  ; ===================================================================
+  (footprint "Package_TO_SOT_SMD:SOT-23-5" (layer "F.Cu")
+    (property "Reference" "U3") (property "Value" "MCP73831T-2ACI/OT")
+    (attr smd)
+    (pad "1" smd roundrect (at -1.3 -1.0) (size 1.0 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "+5V") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at -1.3 0) (size 1.0 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "3" smd roundrect (at -1.3 1.0) (size 1.0 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "+VBAT") (roundrect_rratio 0.25))
+    (pad "4" smd roundrect (at 1.3 1.0) (size 1.0 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "unconnected-(U3-Pad4)") (roundrect_rratio 0.25))
+    (pad "5" smd roundrect (at 1.3 -1.0) (size 1.0 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "+5V") (roundrect_rratio 0.25))
+  )
+
+  ; ===================================================================
+  ; U4: MAX17048 fuel gauge (TDFN-8)
+  ; ===================================================================
+  (footprint "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm" (layer "F.Cu")
+    (property "Reference" "U4") (property "Value" "MAX17048G+T10")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.75 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "+VBAT") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at -0.75 -0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "3" smd roundrect (at -0.75 0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "I2C_SDA") (roundrect_rratio 0.25))
+    (pad "4" smd roundrect (at -0.75 0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "I2C_SCL") (roundrect_rratio 0.25))
+    (pad "5" smd roundrect (at 0.75 0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "6" smd roundrect (at 0.75 0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "7" smd roundrect (at 0.75 -0.25) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "unconnected-(U4-Pad7)") (roundrect_rratio 0.25))
+    (pad "8" smd roundrect (at 0.75 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "9" smd roundrect (at 0 0) (size 0.9 1.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.0))
+  )
+
+  ; ===================================================================
+  ; U5: TXU0104 level shifter (TSSOP-16)
+  ; ===================================================================
+  (footprint "Package_SO:TSSOP-16_4.4x5mm_P0.65mm" (layer "F.Cu")
+    (property "Reference" "U5") (property "Value" "TXU0104PWR")
+    (attr smd)
+    (pad "1" smd roundrect (at -2.925 -1.95) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at -2.925 -1.3) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "SWCLK_TCK") (roundrect_rratio 0.25))
+    (pad "3" smd roundrect (at -2.925 -0.65) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "SWDIO_TMS") (roundrect_rratio 0.25))
+    (pad "4" smd roundrect (at -2.925 0) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TDI") (roundrect_rratio 0.25))
+    (pad "5" smd roundrect (at -2.925 0.65) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TDO") (roundrect_rratio 0.25))
+    (pad "8" smd roundrect (at -2.925 1.95) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+    (pad "9" smd roundrect (at 2.925 1.95) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_TDO") (roundrect_rratio 0.25))
+    (pad "10" smd roundrect (at 2.925 0.65) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_TDI") (roundrect_rratio 0.25))
+    (pad "11" smd roundrect (at 2.925 0) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_TMS") (roundrect_rratio 0.25))
+    (pad "12" smd roundrect (at 2.925 -0.65) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_TCK") (roundrect_rratio 0.25))
+    (pad "15" smd roundrect (at 2.925 -1.3) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "16" smd roundrect (at 2.925 -1.95) (size 0.45 1.1) (layers "F.Cu" "F.Paste" "F.Mask") (net "TGT_VREF") (roundrect_rratio 0.25))
+  )
+
+  ; ===================================================================
+  ; J2: Probe head (8-pin header, 1.0mm pitch pogo pins)
+  ; ===================================================================
+  (footprint "Connector_PinHeader_1.00mm:PinHeader_1x08_P1.00mm_Vertical" (layer "F.Cu")
+    (property "Reference" "J2") (property "Value" "PROBE_HEAD_8P")
+    (attr through_hole)
+    (pad "1" thru_hole circle (at 0 -3.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_TCK"))
+    (pad "2" thru_hole circle (at 0 -2.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_TMS"))
+    (pad "3" thru_hole circle (at 0 -1.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_TDI"))
+    (pad "4" thru_hole circle (at 0 -0.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_TDO"))
+    (pad "5" thru_hole circle (at 0 0.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_VREF"))
+    (pad "6" thru_hole circle (at 0 1.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_PWR"))
+    (pad "7" thru_hole circle (at 0 2.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "TGT_CONT"))
+    (pad "8" thru_hole circle (at 0 3.5) (size 0.6 0.6) (drill 0.4) (layers "*.Cu" "*.Mask") (net "GND"))
+  )
+
+  ; ===================================================================
+  ; J1: USB-C connector (simplified 16-pin)
+  ; ===================================================================
+  (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (layer "F.Cu")
+    (property "Reference" "J1") (property "Value" "USB_C 16P")
+    (attr smd)
+    (pad "A1" smd rect (at -3.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND"))
+    (pad "A4" smd rect (at -2.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "VBUS"))
+    (pad "A5" smd rect (at -1.8 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "unconnected-(J1-PadA5)"))
+    (pad "A6" smd rect (at -0.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "USB_DP"))
+    (pad "A7" smd rect (at 0.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "USB_DM"))
+    (pad "B5" smd rect (at 1.8 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "unconnected-(J1-PadB5)"))
+    (pad "B12" smd rect (at 3.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND"))
+    (pad "B9" smd rect (at 2.6 -3.8) (size 0.4 1.0) (layers "F.Cu" "F.Paste" "F.Mask") (net "VBUS"))
+  )
+
+  ; ===================================================================
+  ; J3: Battery connector (JST-PH 2-pin)
+  ; ===================================================================
+  (footprint "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02_P2.00mm" (layer "F.Cu")
+    (property "Reference" "J3") (property "Value" "BATTERY_1200mAh")
+    (attr smd)
+    (pad "1" smd rect (at -1.0 0) (size 1.0 3.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "+VBAT"))
+    (pad "2" smd rect (at 1.0 0) (size 1.0 3.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND"))
+  )
+
+  ; ===================================================================
+  ; SW1: Tactile button
+  ; ===================================================================
+  (footprint "Button_Switch_SMD:SW_TS-1187A" (layer "F.Cu")
+    (property "Reference" "SW1") (property "Value" "TS-1187A")
+    (attr smd)
+    (pad "1" smd rect (at -3.0 -1.5) (size 1.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND"))
+    (pad "2" smd rect (at 3.0 -1.5) (size 1.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "BUTTON"))
+  )
+
+  ; ===================================================================
+  ; D1: WS2812B RGB LED
+  ; ===================================================================
+  (footprint "LED_SMD:LED_WS2812B-2020" (layer "F.Cu")
+    (property "Reference" "D1") (property "Value" "WS2812B-Mini")
+    (attr smd)
+    (pad "1" smd rect (at -0.8 -0.5) (size 0.4 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3"))
+    (pad "3" smd rect (at 0.8 -0.5) (size 0.4 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND"))
+    (pad "4" smd rect (at -0.8 0.5) (size 0.4 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net "LED_DATA"))
+  )
+
+  ; ===================================================================
+  ; Y1: 32 MHz crystal for nRF52840
+  ; ===================================================================
+  (footprint "Crystal:Crystal_SMD_2016-2Pin_2.0x1.6mm" (layer "F.Cu")
+    (property "Reference" "Y1") (property "Value" "32MHz")
+    (attr smd)
+    (pad "1" smd rect (at -0.7 0) (size 0.9 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "XTAL_P"))
+    (pad "2" smd rect (at 0.7 0) (size 0.9 1.2) (layers "F.Cu" "F.Paste" "F.Mask") (net "XTAL_N"))
+  )
+
+  ; ===================================================================
+  ; Decoupling caps (0402)
+  ; ===================================================================
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "C3") (property "Value" "100nF")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+  )
+  (footprint "Capacitor_SMD:C_0603_1608Metric" (layer "F.Cu")
+    (property "Reference" "C5") (property "Value" "10uF")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.8 0) (size 0.8 0.9) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.8 0) (size 0.8 0.9) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+  )
+
+  ; ===================================================================
+  ; BLE antenna matching (C1, C2, L1)
+  ; ===================================================================
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "C1") (property "Value" "2.2pF")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "RF_ANT_P") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+  )
+  (footprint "Capacitor_SMD:C_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "C2") (property "Value" "0.8pF")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "RF_ANT_P") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+  )
+  (footprint "Inductor_SMD:L_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "L1") (property "Value" "3.9nH")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "RF_ANT_P") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "ANT_FEED") (roundrect_rratio 0.25))
+  )
+
+  ; ===================================================================
+  ; R1 (USB CC pull-down), R2 (button pull-up), R3 (LED series)
+  ; ===================================================================
+  (footprint "Resistor_SMD:R_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "R1") (property "Value" "5.1k")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "unconnected-(J1-PadA5)") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "GND") (roundrect_rratio 0.25))
+  )
+  (footprint "Resistor_SMD:R_0402_1005Metric" (layer "F.Cu")
+    (property "Reference" "R2") (property "Value" "10k")
+    (attr smd)
+    (pad "1" smd roundrect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "+3V3") (roundrect_rratio 0.25))
+    (pad "2" smd roundrect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask") (net "BUTTON") (roundrect_rratio 0.25))
+  )
+
+  ; ===================================================================
+  ; Zones: GND plane on In1.Cu, 3V3 plane on In2.Cu
+  ; ===================================================================
+  (zone (net "GND") (net_name "GND") (layer "In1.Cu") (tstamp 0)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2) (filled_areas_thickness no)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.5))
+    (polygon (pts (xy 0 0) (xy 50 0) (xy 50 24) (xy 0 24)))
+  )
+  (zone (net "+3V3") (net_name "+3V3") (layer "In2.Cu") (tstamp 1)
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2) (filled_areas_thickness no)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.5))
+    (polygon (pts (xy 0 0) (xy 50 0) (xy 50 24) (xy 0 24)))
+  )
+
+  ; ===================================================================
+  ; Traces (sample routing for key debug signals)
+  ; ===================================================================
+  (segment (start 25.0 8.0) (end 28.0 8.0) (width 0.15) (layer "F.Cu") (net "SWCLK_TCK"))
+  (segment (start 28.0 8.0) (end 30.0 6.0) (width 0.15) (layer "F.Cu") (net "SWCLK_TCK"))
+  (segment (start 25.0 8.5) (end 28.0 8.5) (width 0.15) (layer "F.Cu") (net "SWDIO_TMS"))
+  (segment (start 25.0 9.0) (end 28.0 9.0) (width 0.15) (layer "F.Cu") (net "TDI"))
+  (segment (start 25.0 9.5) (end 28.0 9.5) (width 0.15) (layer "F.Cu") (net "TDO"))
+  (segment (start 15.0 12.0) (end 18.0 12.0) (width 0.15) (layer "F.Cu") (net "BLE_TX"))
+  (segment (start 15.0 12.5) (end 18.0 12.5) (width 0.15) (layer "F.Cu") (net "BLE_RX"))
+  (segment (start 5.0 2.0) (end 5.0 5.0) (width 0.3) (layer "F.Cu") (net "VBUS"))
+  (segment (start 5.0 5.0) (end 8.0 5.0) (width 0.3) (layer "F.Cu") (net "+5V"))
+  (segment (start 45.0 12.0) (end 48.0 12.0) (width 0.15) (layer "F.Cu") (net "BUTTON"))
+  (via (at 25 12) (size 0.3) (drill 0.15) (layers "F.Cu" "B.Cu") (net "GND"))
+
+  ; ===================================================================
+  ; Dimensions
+  ; ===================================================================
+  (dimension (type orthogonal) (layer "Dwgs.User")
+    (pts (xy 0 0) (xy 50 0)) (height -2)
+    (format (units millimeter) (precision 2))
+    (style (thickness 0.1) (arrow_length 1.0) (text_position_mode 0))
+  )
+  (dimension (type orthogonal) (layer "Dwgs.User")
+    (pts (xy 0 0) (xy 0 24)) (height -2)
+    (format (units millimeter) (precision 2))
+    (style (thickness 0.1) (arrow_length 1.0) (text_position_mode 0))
+  )
+
+)
