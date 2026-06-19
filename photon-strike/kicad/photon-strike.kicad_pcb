@@ -1,0 +1,223 @@
+(kicad_pcb (version 20230121) (generator "jayis1")
+  (uuid "b2f3c4d6-e7f8-9012-bcde-f23456789012")
+
+  (title_block
+    (title "PhotonStrike: Portable Laser Fault Injection Platform")
+    (date "2026-06-19")
+    (rev "1.0")
+    (company "jayis1 Labs")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "PCB — 4-layer, 80x45 mm, FR-4 1.6mm")
+  )
+
+  (general
+    (thickness 1.6)
+    (drawings 12)
+    (tracks 480)
+    (vias 120)
+    (zones 4)
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal "GND")
+    (2 "In2.Cu" signal "PWR")
+    (3 "B.Cu" signal)
+    (31 "B.Adhes" user)
+    (32 "F.Adhes" user)
+    (33 "F.Paste" user)
+    (34 "B.Paste" user)
+    (35 "F.SilkS" user "F.Silkscreen")
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.Mask" user)
+    (38 "B.Mask" user)
+    (39 "Dwgs.User" user)
+    (40 "Cmts.User" user)
+    (41 "Edge.Cuts" user)
+    (44 "Margin" user)
+    (45 "F.CrtYd" user "F.Courtyard")
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.Fab" user)
+    (48 "B.Fab" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.04)
+    (grid_origin 0 0)
+    (plotoutputpath "")
+    (last_trace_width 0.15)
+    (user_trace_width 0.15)
+    (user_trace_width 0.2)
+    (user_trace_width 0.3)
+    (user_via 0.3 0.15)
+    (uvia_size 0.3)
+    (uvia_drill 0.1)
+  )
+
+  (net 0 "")
+  (net 1 "GND")
+  (net 2 "+3V3")
+  (net 3 "+5V")
+  (net 4 "SPI1_SCK")
+  (net 5 "SPI1_MOSI")
+  (net 6 "SPI1_MISO")
+  (net 7 "SPI1_CS_N")
+  (net 8 "FPGA_CDONE")
+  (net 9 "FPGA_CRESET_N")
+  (net 10 "FPGA_IRQ")
+  (net 11 "LASER_GATE")
+  (net 12 "LASER_ENABLE")
+  (net 13 "LASER_FAULT_N")
+  (net 14 "LASER_ISET_DAC")
+  (net 15 "LD_ANODE")
+  (net 16 "LD_CATHODE")
+  (net 17 "I2C1_SCL")
+  (net 18 "I2C1_SDA")
+  (net 19 "USART3_TX")
+  (net 20 "USART3_RX")
+  (net 21 "BLE_RST_N")
+  (net 22 "DAC1_OUT1_PIEZO")
+  (net 23 "TRIG_GPIO1")
+  (net 24 "TRIG_GPIO2")
+  (net 25 "TRIG_PATTERN")
+  (net 26 "TRIG_POWER")
+  (net 27 "TARGET_CLK")
+  (net 28 "USB_DM")
+  (net 29 "USB_DP")
+  (net 30 "LASER_TEMP_ADC")
+  (net 31 "TEC_PWM")
+  (net 32 "KEY_SWITCH")
+  (net 33 "INTERLOCK")
+  (net 34 "ESTOP")
+  (net 35 "Net-D+")
+  (net 36 "Net-D-")
+
+  ; ─── Board outline (80 x 45 mm) ───────────────────────────────────
+  (gr_line (start 0 0) (end 80 0) (layer "Edge.Cuts") (width 0.1))
+  (gr_line (start 80 0) (end 80 45) (layer "Edge.Cuts") (width 0.1))
+  (gr_line (start 80 45) (end 0 45) (layer "Edge.Cuts") (width 0.1))
+  (gr_line (start 0 45) (end 0 0) (layer "Edge.Cuts") (width 0.1))
+
+  (gr_text "PhotonStrike v1.0  jayis1  CERN-OHL-S v2"
+    (start 40 42) (layer "F.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+
+  ; ─── Footprints ───────────────────────────────────────────────────
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+    (layer "F.Cu")
+    (at 30 20)
+    (attr smd)
+    (property "Reference" "U1")
+    (property "Value" "STM32H757VIT6")
+    (pad "1" smd rect (at -6.5 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0))
+    (pad "2" smd rect (at -6 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 0))
+    (pad "19" smd rect (at 0 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 11))  ; PA8 LASER_GATE
+    (pad "20" smd rect (at 0.5 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 31)) ; PA9 TEC
+    (pad "25" smd rect (at 3 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 28))  ; PA11 USB_DM
+    (pad "26" smd rect (at 3.5 -7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 29)) ; PA12 USB_DP
+    (pad "39" smd rect (at -3 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 17))  ; PB8 SCL
+    (pad "40" smd rect (at -2.5 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 18)) ; PB9 SDA
+    (pad "41" smd rect (at -2 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 19))  ; PB10 TX
+    (pad "42" smd rect (at -1.5 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 20)) ; PB11 RX
+    (pad "50" smd rect (at 2.5 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))  ; VDD
+    (pad "75" smd rect (at 5 7) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))    ; VDD
+  )
+
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm"
+    (layer "F.Cu")
+    (at 55 20)
+    (attr smd)
+    (property "Reference" "U2")
+    (property "Value" "iCE40UP5K-SG48")
+    (pad "25" smd rect (at -3.25 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 4))  ; SCK
+    (pad "26" smd rect (at -2.75 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 5))  ; MOSI
+    (pad "27" smd rect (at -2.25 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 6))  ; MISO
+    (pad "28" smd rect (at -1.75 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 7))  ; CS_N
+    (pad "29" smd rect (at -1.25 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 8))  ; CDONE
+    (pad "30" smd rect (at -0.75 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 9))  ; CRESET
+    (pad "31" smd rect (at -0.25 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))  ; VCC
+    (pad "32" smd rect (at 0.25 -3.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))   ; GND
+    (pad "3"  smd rect (at -3.5 -2.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 10)) ; IRQ
+    (pad "4"  smd rect (at -3.5 -1.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 23)) ; TRIG_GPIO1
+    (pad "5"  smd rect (at -3.5 -1.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 24)) ; TRIG_GPIO2
+    (pad "6"  smd rect (at -3.5 -0.75) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 25)) ; TRIG_PATTERN
+    (pad "7"  smd rect (at -3.5 -0.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 26)) ; TRIG_POWER
+    (pad "8"  smd rect (at -3.5 0.25) (size 1.5 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (net 27))  ; TARGET_CLK
+  )
+
+  (footprint "RF_Module:ESP32-C3-MINI-1"
+    (layer "F.Cu")
+    (at 70 35)
+    (attr smd)
+    (property "Reference" "U3")
+    (property "Value" "ESP32-C3-MINI-1")
+    (pad "1" smd rect (at -6 -2) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))  ; GND
+    (pad "2" smd rect (at -6 -1) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))  ; 3V3
+    (pad "4" smd rect (at -6 1) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 19))  ; RXD0
+    (pad "5" smd rect (at -6 2) (size 0.8 0.8) (layers "F.Cu" "F.Paste" "F.Mask") (net 20))  ; TXD0
+  )
+
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (layer "F.Cu")
+    (at 15 35)
+    (attr smd)
+    (property "Reference" "U4")
+    (property "Value" "Laser_Driver_0.5-8A")
+    (pad "1" smd rect (at -2.7 -1.905) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 12)) ; EN
+    (pad "2" smd rect (at -2.7 -0.635) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 11)) ; GATE_IN
+    (pad "3" smd rect (at -2.7 0.635) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 14)) ; ISET
+    (pad "4" smd rect (at -2.7 1.905) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 15)) ; LD_ANODE
+    (pad "5" smd rect (at 2.7 1.905) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 16)) ; LD_CATHODE
+    (pad "6" smd rect (at 2.7 0.635) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 3))  ; VCC +5V
+    (pad "7" smd rect (at 2.7 -0.635) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 1)) ; GND
+    (pad "8" smd rect (at 2.7 -1.905) (size 0.6 1.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 13)) ; FAULT
+  )
+
+  (footprint "Opto:TO-220_LaserDiode"
+    (layer "F.Cu")
+    (at 5 35)
+    (attr through_hole)
+    (property "Reference" "LD1")
+    (property "Value") "1064nm_pulsed_diode")
+    (pad "1" thru_hole circle (at -2.5 0) (size 1.5 1.5) (drill 0.8) (layers "*.Cu" "*.Mask") (net 15))
+    (pad "2" thru_hole circle (at 0 0) (size 1.5 1.5) (drill 0.8) (layers "*.Cu" "*.Mask") (net 16))
+    (pad "3" thru_hole circle (at 2.5 0) (size 1.5 1.5) (drill 0.8) (layers "*.Cu" "*.Mask") (net 31))
+  )
+
+  ; Decoupling caps (representative)
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 25 15) (attr smd)
+    (property "Reference" "C1") (property "Value") "100nF")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 2))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.5) (layers "F.Cu" "F.Paste" "F.Mask") (net 1))
+  )
+
+  ; ─── Copper zones ─────────────────────────────────────────────────
+  (zone (net 1) (net_name "GND") (layer "In1.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 1 1) (xy 79 1) (xy 79 44) (xy 1 44)))
+  )
+  (zone (net 2) (net_name "+3V3") (layer "In2.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.15)
+    (fill yes (thermal_gap 0.3) (thermal_bridge_width 0.3))
+    (polygon (pts (xy 1 1) (xy 79 1) (xy 79 44) (xy 1 44)))
+  )
+
+  ; ─── Representative tracks (SPI bus + laser gate) ─────────────────
+  (segment (start 29.3 13) (end 51.75 16.5) (width 0.15) (layer "F.Cu") (net 4))   ; SCK
+  (segment (start 30 13) (end 52.25 16.5) (width 0.15) (layer "F.Cu") (net 5))     ; MOSI
+  (segment (start 30.5 13) (end 52.75 16.5) (width 0.15) (layer "F.Cu") (net 6))   ; MISO
+  (segment (start 31 13) (end 53.25 16.5) (width 0.15) (layer "F.Cu") (net 7))     ; CS_N
+  (segment (start 30 27) (end 12.3 33.365) (width 0.2) (layer "F.Cu") (net 11))    ; LASER_GATE to U4.2
+  (segment (start 29 27) (end 12.3 34.635) (width 0.2) (layer "F.Cu") (net 12))    ; LASER_ENABLE to U4.1
+  (segment (start 27 27) (end 67 36) (width 0.15) (layer "F.Cu") (net 19))         ; USART3 TX to ESP32 RXD0
+  (segment (start 26.5 27) (end 67 37) (width 0.15) (layer "F.Cu") (net 20))       ; USART3 RX to ESP32 TXD0
+  (segment (start 27 27) (end 74.5 35) (width 0.15) (layer "F.Cu") (net 17))       ; SCL
+  (segment (start 26.5 27) (end 74.5 36) (width 0.15) (layer "F.Cu") (net 18))     ; SDA
+)
