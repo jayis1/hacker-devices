@@ -1,0 +1,58 @@
+{
+  "board": {
+    "design": {
+      "last_author": "jayis1",
+      "settings": {
+        "copper_edge_clearance": 0.15,
+        "rule_severities": {
+          "lib_symbol_issues": "warning",
+          "same_local_global": "error"
+        }
+      },
+      "track_widths": [0.0, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ],
+      "layer_presets": [],
+      "view": {
+        "coords": {"x": 0, "y": 0},
+        "zoom": 1.0
+      }
+    },
+    "ipc2581": {"dist": "", "mfg": "", "mpn": "", "internal_id": ""},
+    "metadata": {
+      "filename": "device.kicad_pcb",
+      "version": 1,
+      "date": "2026-06-22",
+      "author": "jayis1"
+    },
+    "setup": {
+      "stackup": {
+        "layers": [
+          {"name": "F.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "F.Paste", "type": "solder-paste"},
+          {"name": "F.SilkS", "type": "silk-screen"},
+          {"name": "F.Mask", "type": "solder-mask"},
+          {"name": "Dielectric.1", "type": "dielectric", "thickness": 0.2},
+          {"name": "In1.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.2", "type": "dielectric", "thickness": 0.7},
+          {"name": "In2.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.3", "type": "dielectric", "thickness": 0.2},
+          {"name": "B.Mask", "type": "solder-mask"},
+          {"name": "B.SilkS", "type": "silk-screen"},
+          {"name": "B.Cu", "type": "copper", "thickness": 0.035}
+        ]
+      },
+      "pad_to_mask_clearance": 0.05,
+      "solder_mask_min_width": 0.05,
+      "grid_origin": {"x": 0, "y": 0},
+      "defaults": {
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      }
+    }
+  },
+  "libraries": ["~/kicad/libraries"]
+}
