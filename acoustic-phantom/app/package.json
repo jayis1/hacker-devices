@@ -1,0 +1,29 @@
+{
+  "name": "acoustic-phantom-app",
+  "version": "1.0.0",
+  "description": "Companion app for ACOUSTIC-PHANTOM acoustic side-channel analyzer",
+  "author": "jayis1",
+  "license": "MIT",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "react-native-ble-plx": "^3.1.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/bottom-tabs": "^6.5.11",
+    "react-native-screens": "^3.29.0",
+    "react-native-safe-area-context": "^4.8.0",
+    "react-native-vector-icons": "^10.0.3",
+    "aes-js": "^3.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "eslint": "^8.40.0"
+  }
+}

@@ -1,0 +1,605 @@
+(kicad_sch
+  (version 20240101)
+  (host kicad 8.0)
+  (generator "jayis1")
+  (paper "A3")
+
+  (title_block
+    (title "ACOUSTIC-PHANTOM — Acoustic Side-Channel Analyzer")
+    (date "2026-06-23")
+    (rev "1.0.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "CERN-OHL-S v2 / GPL-2.0")
+    (comment 3 "4-layer, 120x22mm pen form factor")
+  )
+
+  (lib_symbols
+    ; ---- STM32H743VI (MCU) ----
+    (symbol "STM32H743VIT6"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "STM32H743VIT6" (at 0 -2 0))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.st.com/resource/en/reference_manual/dm00314099.pdf" (at 0 -6 0))
+      (symbol "STM32H743VIT6_0_1"
+        (rectangle (start -25 -18) (end 25 18)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -28 15 0) (length 3) (name "VDD") (number "11"))
+        (pin power_in line (at -28 11 0) (length 3) (name "VSS") (number "10"))
+        (pin power_in line (at -28 7 0) (length 3) (name "VDDA") (number "22"))
+        (pin bidirectional line (at -28 3 0) (length 3) (name "PA0/BTN_PWR") (number "14"))
+        (pin bidirectional line (at -28 -1 0) (length 3) (name "PA4/I2S3_WS") (number "23"))
+        (pin bidirectional line (at -28 -5 0) (length 3) (name "PA9/USART1_TX") (number "54"))
+        (pin bidirectional line (at -28 -9 0) (length 3) (name "PA10/USART1_RX") (number "55"))
+        (pin bidirectional line (at -28 -13 0) (length 3) (name "PA5/LED_WS") (number "20"))
+        (pin bidirectional line (at -28 -16 0) (length 3) (name "PA11/USB_DM") (number "69"))
+        (pin bidirectional line (at 28 15 180) (length 3) (name "PB3/I2S3_CK") (number "57"))
+        (pin bidirectional line (at 28 11 180) (length 3) (name "PB6/I2C1_SCL") (number "42"))
+        (pin bidirectional line (at 28 7 180) (length 3) (name "PB7/I2C1_SDA") (number "43"))
+        (pin bidirectional line (at 28 3 180) (length 3) (name "PB12/I2S2_CK") (number "51"))
+        (pin bidirectional line (at 28 -1 180) (length 3) (name "PB14/I2S2_SD") (number "53"))
+        (pin bidirectional line (at 28 -5 180) (length 3) (name "PB15/I2S3_SD") (number "54"))
+        (pin bidirectional line (at 28 -9 180) (length 3) (name "PC1/BTN_PROF") (number "8"))
+        (pin bidirectional line (at 28 -13 180) (length 3) (name "PC13/BTN_ARM") (number "7"))
+        (pin bidirectional line (at 28 -16 180) (length 3) (name "PC15/TAMPER") (number "9"))
+      )
+    )
+
+    ; ---- WM8904 audio codec ----
+    (symbol "WM8904CGEFL"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "WM8904CGEFL" (at 0 -2 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.cirrus.com/products/wm8904/" (at 0 -6 0))
+      (symbol "WM8904CGEFL_0_1"
+        (rectangle (start -16 -12) (end 16 12)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -19 9 0) (length 3) (name "AVDD") (number "1"))
+        (pin power_in line (at -19 5 0) (length 3) (name "AGND") (number "2"))
+        (pin input line (at -19 1 0) (length 3) (name "IN1L") (number "4"))
+        (pin input line (at -19 -3 0) (length 3) (name "IN1R") (number "5"))
+        (pin input line (at -19 -7 0) (length 3) (name "IN2L") (number "6"))
+        (pin input line (at -19 -11 0) (length 3) (name "IN2R") (number "7"))
+        (pin bidirectional line (at 19 9 180) (length 3) (name "SCL") (number "26"))
+        (pin bidirectional line (at 19 5 180) (length 3) (name "SDA") (number "27"))
+        (pin output line (at 19 1 180) (length 3) (name "I2S_BCLK") (number "28"))
+        (pin output line (at 19 -3 180) (length 3) (name "I2S_SYNC") (number "29"))
+        (pin output line (at 19 -7 180) (length 3) (name "I2S_DOUT") (number "30"))
+        (pin input line (at 19 -11 180) (length 3) (name "I2S_DIN") (number "31"))
+      )
+    )
+
+    ; ---- MEMS microphone SPH0641LU4H-1 ----
+    (symbol "SPH0641LU4H-1"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "MK" (at 0 0 0))
+      (property "Value" "SPH0641LU4H-1" (at 0 -2 0))
+      (property "Footprint" "jayis1:SPH0641LU4H-1" (at 0 -4 0))
+      (property "Datasheet" "https://www.knowles.com/docs/default-source/default-document-library/sph0641lu4h-1-rev-c.pdf" (at 0 -6 0))
+      (symbol "SPH0641LU4H-1_0_1"
+        (rectangle (start -8 -6) (end 8 6)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -11 3 0) (length 3) (name "VDD") (number "1"))
+        (pin power_in line (at -11 -3 0) (length 3) (name "GND") (number "3"))
+        (pin output line (at 11 3 180) (length 3) (name "DATA") (number "6"))
+        (pin input line (at 11 -3 180) (length 3) (name "CLK") (number "2"))
+        (pin input line (at 11 0 180) (length 3) (name "WS") (number "5"))
+      )
+    )
+
+    ; ---- AD8233 charge amplifier for piezo contact sensor ----
+    (symbol "AD8233ACPZ"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "AD8233ACPZ" (at 0 -2 0))
+      (property "Footprint" "Package_CSP:LFCSP-20-1EP_4x4mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8233.pdf" (at 0 -6 0))
+      (symbol "AD8233ACPZ_0_1"
+        (rectangle (start -12 -8) (end 12 8)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin input line (at -15 4 0) (length 3) (name "+IN") (number "7"))
+        (pin input line (at -15 0 0) (length 3) (name "-IN") (number "8"))
+        (pin output line (at 15 4 180) (length 3) (name "OUT") (number "14"))
+        (pin power_in line (at -15 7 0) (length 3) (name "V+") (number "16"))
+        (pin power_in line (at -15 -5 0) (length 3) (name "V-") (number "17"))
+        (pin power_in line (at 15 -5 180) (length 3) (name "GND") (number "1"))
+      )
+    )
+
+    ; ---- CYW20819 BLE module ----
+    (symbol "CYW20819-XXBZ"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "CYW20819" (at 0 -2 0))
+      (property "Footprint" "jayis1:CYW20819-XXBZ" (at 0 -4 0))
+      (property "Datasheet" "https://www.infineon.com/dgdl/Infineon-CYW20819-DataSheet-v05_00-EN.pdf" (at 0 -6 0))
+      (symbol "CYW20819-XXBZ_0_1"
+        (rectangle (start -15 -10) (end 15 10)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -18 7 0) (length 3) (name "VDDIO") (number "1"))
+        (pin power_in line (at -18 -7 0) (length 3) (name "GND") (number "22"))
+        (pin bidirectional line (at 18 7 180) (length 3) (name "UART_TX") (number "14"))
+        (pin bidirectional line (at 18 3 180) (length 3) (name "UART_RX") (number "15"))
+        (pin input line (at 18 -3 180) (length 3) (name "RST") (number "3"))
+        (pin output line (at 18 -7 180) (length 3) (name "IRQ") (number "7"))
+      )
+    )
+
+    ; ---- W25Q128 QSPI NOR flash ----
+    (symbol "W25Q128JVSIQ"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "W25Q128JVSIQ" (at 0 -2 0))
+      (property "Footprint" "Package_SO:SOIC-8_5.27x5.24mm_P1.27mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revh%2004082019%20plus.pdf" (at 0 -6 0))
+      (symbol "W25Q128JVSIQ_0_1"
+        (rectangle (start -12 -8) (end 12 8)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -15 4 0) (length 3) (name "VCC") (number "8"))
+        (pin power_in line (at -15 -4 0) (length 3) (name "GND") (number "4"))
+        (pin input line (at 15 6 180) (length 3) (name "CS") (number "1"))
+        (pin input line (at 15 3 180) (length 3) (name "CLK") (number "6"))
+        (pin bidirectional line (at 15 0 180) (length 3) (name "IO0") (number "5"))
+        (pin bidirectional line (at 15 -3 180) (length 3) (name "IO1") (number "2"))
+        (pin bidirectional line (at 15 -6 180) (length 3) (name "IO2") (number "3"))
+      )
+    )
+
+    ; ---- BQ25895 charger ----
+    (symbol "BQ25895RTW"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "BQ25895RTW" (at 0 -2 0))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq25895.pdf" (at 0 -6 0))
+      (symbol "BQ25895RTW_0_1"
+        (rectangle (start -14 -10) (end 14 10)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -17 7 0) (length 3) (name "VBUS") (number "2"))
+        (pin power_in line (at -17 3 0) (length 3) (name "BAT") (number "20"))
+        (pin power_out line (at 17 7 180) (length 3) (name "SYS") (number "22"))
+        (pin power_out line (at 17 3 180) (length 3) (name "VDD") (number "3"))
+        (pin power_in line (at -17 -7 0) (length 3) (name "GND") (number "18"))
+        (pin bidirectional line (at 17 -3 180) (length 3) (name "SDA") (number "11"))
+        (pin bidirectional line (at 17 -7 180) (length 3) (name "SCL") (number "12"))
+      )
+    )
+
+    ; ---- TPS63031 buck-boost regulator ----
+    (symbol "TPS63031"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "TPS63031" (at 0 -2 0))
+      (property "Footprint" "Package_SON:VSON-10-1EP_3x3mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63031.pdf" (at 0 -6 0))
+      (symbol "TPS63031_0_1"
+        (rectangle (start -10 -8) (end 10 8)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -13 5 0) (length 3) (name "VIN") (number "3"))
+        (pin power_in line (at -13 1 0) (length 3) (name "VIN") (number "4"))
+        (pin power_in line (at -13 -3 0) (length 3) (name "GND") (number "1"))
+        (pin power_in line (at -13 -7 0) (length 3) (name "GND") (number "2"))
+        (pin power_out line (at 13 5 180) (length 3) (name "VOUT") (number "8"))
+        (pin power_out line (at 13 1 180) (length 3) (name "VOUT") (number "9"))
+        (pin power_in line (at 13 -3 180) (length 3) (name "FB") (number "7"))
+        (pin power_in line (at 13 -7 180) (length 3) (name "EN") (number "6"))
+      )
+    )
+
+    ; ---- BQ27421 fuel gauge ----
+    (symbol "BQ27421-G1A"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "BQ27421-G1A" (at 0 -2 0))
+      (property "Footprint" "Package_SON:Texas_X2SON-4_1x1mm_P0.65mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/bq27421-g1.pdf" (at 0 -6 0))
+      (symbol "BQ27421-G1A_0_1"
+        (rectangle (start -8 -6) (end 8 6)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -11 3 0) (length 3) (name "BAT") (number "A1"))
+        (pin power_in line (at -11 -3 0) (length 3) (name "VSS") (number "A2"))
+        (pin bidirectional line (at 11 3 180) (length 3) (name "SDA") (number "B1"))
+        (pin bidirectional line (at 11 -3 180) (length 3) (name "SCL") (number "B2"))
+      )
+    )
+
+    ; ---- LIS2DH12 accelerometer ----
+    (symbol "LIS2DH12TR"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "LIS2DH12TR" (at 0 -2 0))
+      (property "Footprint" "Package_LGA:LGA-12_2x2mm_P0.5mm" (at 0 -4 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/lis2dh12.pdf" (at 0 -6 0))
+      (symbol "LIS2DH12TR_0_1"
+        (rectangle (start -10 -8) (end 10 8)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -13 5 0) (length 3) (name "VDD") (number "1"))
+        (pin power_in line (at -13 -5 0) (length 3) (name "GND") (number "12"))
+        (pin bidirectional line (at 13 5 180) (length 3) (name "SDA") (number "6"))
+        (pin bidirectional line (at 13 1 180) (length 3) (name "SCL") (number "4"))
+        (pin output line (at 13 -3 180) (length 3) (name "INT1") (number "11"))
+        (pin output line (at 13 -7 180) (length 3) (name "INT2") (number "9"))
+      )
+    )
+
+    ; ---- SSD1306 OLED 1.3" 128x64 ----
+    (symbol "SSD1306-OLED-1.3"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U" (at 0 0 0))
+      (property "Value" "SSD1306-1.3" (at 0 -2 0))
+      (property "Footprint" "jayis1:OLED-128x64-1.3in" (at 0 -4 0))
+      (property "Datasheet" "https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf" (at 0 -6 0))
+      (symbol "SSD1306-OLED-1.3_0_1"
+        (rectangle (start -10 -8) (end 10 8)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -13 5 0) (length 3) (name "VCC") (number "1"))
+        (pin power_in line (at -13 -5 0) (length 3) (name "GND") (number "2"))
+        (pin bidirectional line (at 13 5 180) (length 3) (name "SCL") (number "3"))
+        (pin bidirectional line (at 13 1 180) (length 3) (name "SDA") (number "4"))
+      )
+    )
+
+    ; ---- USB-C connector ----
+    (symbol "USB-C-16P"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 0 0))
+      (property "Value" "USB-C-16P" (at 0 -2 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 0 -4 0))
+      (symbol "USB-C-16P_0_1"
+        (rectangle (start -12 -10) (end 12 10)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -15 7 0) (length 3) (name "VBUS") (number "A4"))
+        (pin power_in line (at -15 3 0) (length 3) (name "GND") (number "A1"))
+        (pin bidirectional line (at 15 7 180) (length 3) (name "D+") (number "A6"))
+        (pin bidirectional line (at 15 3 180) (length 3) (name "D-") (number "A7"))
+        (pin bidirectional line (at 15 -3 180) (length 3) (name "CC1") (number "A5"))
+        (pin bidirectional line (at 15 -7 180) (length 3) (name "CC2") (number "B5"))
+      )
+    )
+
+    ; ---- Piezoelectric transducer contact probe ----
+    (symbol "Piezo-Disc-20mm"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 0 0))
+      (property "Value" "PZT-5H-20mm" (at 0 -2 0))
+      (property "Footprint" "jayis1:Piezo-Disc-20mm" (at 0 -4 0))
+      (symbol "Piezo-Disc-20mm_0_1"
+        (circle (center 0 0) (radius 5) (stroke (width 0.254)))
+        (pin passive line (at -8 0 0) (length 3) (name "SIG") (number "1"))
+        (pin passive line (at 8 0 180) (length 3) (name "GND") (number "2"))
+      )
+    )
+
+    ; ---- microSD socket ----
+    (symbol "MicroSD-Socket"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 0 0))
+      (property "Value" "MicroSD" (at 0 -2 0))
+      (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF" (at 0 -4 0))
+      (symbol "MicroSD-Socket_0_1"
+        (rectangle (start -12 -10) (end 12 10)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -15 7 0) (length 3) (name "VDD") (number "4"))
+        (pin power_in line (at -15 -7 0) (length 3) (name "GND") (number "6"))
+        (pin input line (at 15 7 180) (length 3) (name "CMD") (number "3"))
+        (pin input line (at 15 3 180) (length 3) (name "CLK") (number "5"))
+        (pin bidirectional line (at 15 -3 180) (length 3) (name "DAT0") (number "7"))
+        (pin output line (at 15 -7 180) (length 3) (name "CD") (number "10"))
+      )
+    )
+
+    ; ---- LiPo battery connector ----
+    (symbol "Battery-JST-2P"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J" (at 0 0 0))
+      (property "Value" "JST-PH-2" (at 0 -2 0))
+      (property "Footprint" "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical" (at 0 -4 0))
+      (symbol "Battery-JST-2P_0_1"
+        (rectangle (start -6 -6) (end 6 6)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -9 3 0) (length 3) (name "+") (number "1"))
+        (pin power_in line (at -9 -3 0) (length 3) (name "-") (number "2"))
+      )
+    )
+
+    ; ---- Tactile buttons ----
+    (symbol "SW_Push"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 0 2 0))
+      (property "Value" "SW_Push" (at 0 -2 0))
+      (property "Footprint" "Button_Switch_SMD:SW_SPST_TL3305A" (at 0 -4 0))
+      (symbol "SW_Push_0_1"
+        (circle (center -2 0) (radius 0.5))
+        (circle (center 2 0) (radius 0.5))
+        (pin passive line (at -5 0 0) (length 2) (name "1") (number "1"))
+        (pin passive line (at 5 0 180) (length 2) (name "2") (number "2"))
+      )
+    )
+
+    ; ---- WS2812B LED ----
+    (symbol "WS2812B"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D" (at 0 2 0))
+      (property "Value" "WS2812B" (at 0 -2 0))
+      (property "Footprint" "LED_SMD:LED_WS2812B-PLCC4" (at 0 -4 0))
+      (symbol "WS2812B_0_1"
+        (rectangle (start -6 -6) (end 6 6)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin power_in line (at -9 3 0) (length 3) (name "VDD") (number "1"))
+        (pin power_in line (at -9 -3 0) (length 3) (name "GND") (number "3"))
+        (pin input line (at 9 3 180) (length 3) (name "DIN") (number "4"))
+        (pin output line (at 9 -3 180) (length 3) (name "DOUT") (number "2"))
+      )
+    )
+
+    ; ---- Generic R, C, L ----
+    (symbol "R"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 1.5 0 0))
+      (property "Value" "R" (at 4 0 0))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 -2 0))
+      (symbol "R_0_1"
+        (rectangle (start -1 -1) (end 3 1)
+          (stroke (width 0.254)) (fill (type background)))
+        (pin passive line (at -3 0 0) (length 2) (name "~") (number "1"))
+        (pin passive line (at 5 0 180) (length 2) (name "~") (number "2"))
+      )
+    )
+    (symbol "C"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.5 2 0))
+      (property "Value" "C" (at 4 2 0))
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 -2 0))
+      (symbol "C_0_1"
+        (polyline (pts (xy -1 0.5) (xy 1 0.5)) (stroke (width 0.254)))
+        (polyline (pts (xy -1 -0.5) (xy 1 -0.5)) (stroke (width 0.254)))
+        (pin passive line (at 0 3 270) (length 2.5) (name "~") (number "1"))
+        (pin passive line (at 0 -3 90) (length 2.5) (name "~") (number "2"))
+      )
+    )
+    (symbol "L"
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 1.5 0 0))
+      (property "Value" "L" (at 4 0 0))
+      (property "Footprint" "Inductor_SMD:L_0603_1608Metric" (at 0 -2 0))
+      (symbol "L_0_1"
+        (arc (start -1 0) (mid 0 1) (end 1 0) (stroke (width 0.254)))
+        (arc (start 1 0) (mid 2 1) (end 3 0) (stroke (width 0.254)))
+        (pin passive line (at -3 0 0) (length 2) (name "~") (number "1"))
+        (pin passive line (at 5 0 180) (length 2) (name "~") (number "2"))
+      )
+    )
+  )
+
+  ; =================================================================
+  ; Sheet instances
+  ; =================================================================
+  (symbol_instances
+    (symbol_instances
+      (path "/00000000-0000-0000-0000-000000000001"
+        (reference "U1") (unit 1) (value "STM32H743VIT6") (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-000000000002"
+        (reference "U2") (unit 1) (value "WM8904CGEFL") (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-000000000003"
+        (reference "U3") (unit 1) (value "AD8233ACPZ") (footprint "Package_CSP:LFCSP-20-1EP_4x4mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-000000000004"
+        (reference "U4") (unit 1) (value "CYW20819") (footprint "jayis1:CYW20819-XXBZ"))
+      (path "/00000000-0000-0000-0000-000000000005"
+        (reference "U5") (unit 1) (value "W25Q128JVSIQ") (footprint "Package_SO:SOIC-8_5.27x5.24mm_P1.27mm"))
+      (path "/00000000-0000-0000-0000-000000000006"
+        (reference "U6") (unit 1) (value "BQ25895RTW") (footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-000000000007"
+        (reference "U7") (unit 1) (value "TPS63031") (footprint "Package_SON:VSON-10-1EP_3x3mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-000000000008"
+        (reference "U8") (unit 1) (value "BQ27421-G1A") (footprint "Package_SON:Texas_X2SON-4_1x1mm_P0.65mm"))
+      (path "/00000000-0000-0000-0000-000000000009"
+        (reference "U9") (unit 1) (value "LIS2DH12TR") (footprint "Package_LGA:LGA-12_2x2mm_P0.5mm"))
+      (path "/00000000-0000-0000-0000-00000000000a"
+        (reference "U10") (unit 1) (value "SSD1306-1.3") (footprint "jayis1:OLED-128x64-1.3in"))
+      (path "/00000000-0000-0000-0000-00000000000b"
+        (reference "MK1") (unit 1) (value "SPH0641LU4H-1") (footprint "jayis1:SPH0641LU4H-1"))
+      (path "/00000000-0000-0000-0000-00000000000c"
+        (reference "MK2") (unit 1) (value "SPH0641LU4H-1") (footprint "jayis1:SPH0641LU4H-1"))
+      (path "/00000000-0000-0000-0000-00000000000d"
+        (reference "MK3") (unit 1) (value "SPH0641LU4H-1") (footprint "jayis1:SPH0641LU4H-1"))
+      (path "/00000000-0000-0000-0000-00000000000e"
+        (reference "MK4") (unit 1) (value "SPH0641LU4H-1") (footprint "jayis1:SPH0641LU4H-1"))
+      (path "/00000000-0000-0000-0000-00000000000f"
+        (reference "J1") (unit 1) (value "USB-C-16P") (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"))
+      (path "/00000000-0000-0000-0000-000000000010"
+        (reference "J2") (unit 1) (value "PZT-5H-20mm") (footprint "jayis1:Piezo-Disc-20mm"))
+      (path "/00000000-0000-0000-0000-000000000011"
+        (reference "J3") (unit 1) (value "MicroSD") (footprint "Connector_Card:microSD_HC_Hirose_DM3D-SF"))
+      (path "/00000000-0000-0000-0000-000000000012"
+        (reference "J4") (unit 1) (value "JST-PH-2") (footprint "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical"))
+      (path "/00000000-0000-0000-0000-000000000013"
+        (reference "SW1") (unit 1) (value "POWER") (footprint "Button_Switch_SMD:SW_SPST_TL3305A"))
+      (path "/00000000-0000-0000-0000-000000000014"
+        (reference "SW2") (unit 1) (value "PROFILE") (footprint "Button_Switch_SMD:SW_SPST_TL3305A"))
+      (path "/00000000-0000-0000-0000-000000000015"
+        (reference "SW3") (unit 1) (value "ARM") (footprint "Button_Switch_SMD:SW_SPST_TL3305A"))
+      (path "/00000000-0000-0000-0000-000000000016"
+        (reference "D1") (unit 1) (value "WS2812B") (footprint "LED_SMD:LED_WS2812B-PLCC4"))
+      (path "/00000000-0000-0000-0000-000000000017"
+        (reference "D2") (unit 1) (value "WS2812B") (footprint "LED_SMD:LED_WS2812B-PLCC4"))
+      (path "/00000000-0000-0000-0000-000000000018"
+        (reference "D3") (unit 1) (value "WS2812B") (footprint "LED_SMD:LED_WS2812B-PLCC4"))
+    )
+  )
+
+  ; =================================================================
+  ; Components placed on the sheet
+  ; =================================================================
+  ; --- MCU: U1 STM32H743 ---
+  (symbol (lib_id "STM32H743VIT6") (at 30 45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U1" (at 30 25 0))
+    (property "Value" "STM32H743VIT6" (at 30 27 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 30 29 0)))
+
+  ; --- Audio Codec: U2 WM8904 ---
+  (symbol (lib_id "WM8904CGEFL") (at 95 45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U2" (at 95 30 0))
+    (property "Value" "WM8904CGEFL" (at 95 32 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm" (at 95 34 0)))
+
+  ; --- Charge Amp: U3 AD8233 ---
+  (symbol (lib_id "AD8233ACPZ") (at 95 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U3" (at 95 70 0))
+    (property "Value" "AD8233ACPZ" (at 95 72 0))
+    (property "Footprint" "Package_CSP:LFCSP-20-1EP_4x4mm_P0.5mm" (at 95 74 0)))
+
+  ; --- BLE: U4 CYW20819 ---
+  (symbol (lib_id "CYW20819-XXBZ") (at 160 45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U4" (at 160 30 0))
+    (property "Value" "CYW20819" (at 160 32 0))
+    (property "Footprint" "jayis1:CYW20819-XXBZ" (at 160 34 0)))
+
+  ; --- QSPI NOR: U5 W25Q128 ---
+  (symbol (lib_id "W25Q128JVSIQ") (at 160 75 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U5" (at 160 65 0))
+    (property "Value" "W25Q128JVSIQ" (at 160 67 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.27x5.24mm_P1.27mm" (at 160 69 0)))
+
+  ; --- Charger: U6 BQ25895 ---
+  (symbol (lib_id "BQ25895RTW") (at 160 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U6" (at 160 90 0))
+    (property "Value" "BQ25895RTW" (at 160 92 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm" (at 160 94 0)))
+
+  ; --- Regulator: U7 TPS63031 ---
+  (symbol (lib_id "TPS63031") (at 210 45 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U7" (at 210 35 0))
+    (property "Value" "TPS63031" (at 210 37 0))
+    (property "Footprint" "Package_SON:VSON-10-1EP_3x3mm_P0.5mm" (at 210 39 0)))
+
+  ; --- Fuel Gauge: U8 BQ27421 ---
+  (symbol (lib_id "BQ27421-G1A") (at 210 75 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U8" (at 210 67 0))
+    (property "Value" "BQ27421-G1A" (at 210 69 0))
+    (property "Footprint" "Package_SON:Texas_X2SON-4_1x1mm_P0.65mm" (at 210 71 0)))
+
+  ; --- Accelerometer: U9 LIS2DH12 ---
+  (symbol (lib_id "LIS2DH12TR") (at 60 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U9" (at 60 70 0))
+    (property "Value" "LIS2DH12TR" (at 60 72 0))
+    (property "Footprint" "Package_LGA:LGA-12_2x2mm_P0.5mm" (at 60 74 0)))
+
+  ; --- OLED: U10 SSD1306 1.3" ---
+  (symbol (lib_id "SSD1306-OLED-1.3") (at 30 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "U10" (at 30 95 0))
+    (property "Value" "SSD1306-1.3" (at 30 97 0))
+    (property "Footprint" "jayis1:OLED-128x64-1.3in" (at 30 99 0)))
+
+  ; --- MEMS Mics: MK1-MK4 ---
+  (symbol (lib_id "SPH0641LU4H-1") (at 30 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "MK1" (at 30 122 0))
+    (property "Value" "SPH0641LU4H-1" (at 30 124 0)))
+  (symbol (lib_id "SPH0641LU4H-1") (at 50 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "MK2" (at 50 122 0))
+    (property "Value" "SPH0641LU4H-1" (at 50 124 0)))
+  (symbol (lib_id "SPH0641LU4H-1") (at 70 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "MK3" (at 70 122 0))
+    (property "Value" "SPH0641LU4H-1" (at 70 124 0)))
+  (symbol (lib_id "SPH0641LU4H-1") (at 90 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "MK4" (at 90 122 0))
+    (property "Value" "SPH0641LU4H-1" (at 90 124 0)))
+
+  ; --- USB-C: J1 ---
+  (symbol (lib_id "USB-C-16P") (at 160 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "J1" (at 160 115 0))
+    (property "Value" "USB-C-16P" (at 160 117 0)))
+
+  ; --- Piezo probe: J2 ---
+  (symbol (lib_id "Piezo-Disc-20mm") (at 130 80 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "J2" (at 130 72 0))
+    (property "Value" "PZT-5H-20mm" (at 130 74 0)))
+
+  ; --- microSD: J3 ---
+  (symbol (lib_id "MicroSD-Socket") (at 210 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "J3" (at 210 92 0))
+    (property "Value" "MicroSD" (at 210 94 0)))
+
+  ; --- Battery: J4 ---
+  (symbol (lib_id "Battery-JST-2P") (at 210 130 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "J4" (at 210 122 0))
+    (property "Value" "JST-PH-2" (at 210 124 0)))
+
+  ; --- Buttons: SW1-SW3 ---
+  (symbol (lib_id "SW_Push") (at 120 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "SW1" (at 120 100 0))
+    (property "Value" "POWER" (at 120 108 0)))
+  (symbol (lib_id "SW_Push") (at 135 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "SW2" (at 135 100 0))
+    (property "Value" "PROFILE" (at 135 108 0)))
+  (symbol (lib_id "SW_Push") (at 150 105 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "SW3" (at 150 100 0))
+    (property "Value" "ARM" (at 150 108 0)))
+
+  ; --- LEDs: D1-D3 ---
+  (symbol (lib_id "WS2812B") (at 120 145 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "D1" (at 120 140 0))
+    (property "Value" "WS2812B" (at 120 148 0)))
+  (symbol (lib_id "WS2812B") (at 140 145 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "D2" (at 140 140 0))
+    (property "Value" "WS2812B" (at 140 148 0)))
+  (symbol (lib_id "WS2812B") (at 160 145 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (property "Reference" "D3" (at 160 140 0))
+    (property "Value" "WS2812B" (at 160 148 0)))
+
+  ; =================================================================
+  ; Net labels (key signal nets)
+  ; =================================================================
+  (net_label "I2S2_CK" (at 58 51 0))
+  (net_label "I2S2_SD" (at 58 53 0))
+  (net_label "I2S3_CK" (at 58 42 0))
+  (net_label "I2S3_SD" (at 58 40 0))
+  (net_label "I2S3_WS" (at 58 44 0))
+  (net_label "I2C1_SCL" (at 58 48 0))
+  (net_label "I2C1_SDA" (at 58 50 0))
+  (net_label "BLE_TX" (at 58 35 0))
+  (net_label "BLE_RX" (at 58 37 0))
+  (net_label "QSPI_CS" (at 175 69 0))
+  (net_label "QSPI_CLK" (at 175 72 0))
+  (net_label "QSPI_IO0" (at 175 75 0))
+  (net_label "QSPI_IO1" (at 175 78 0))
+  (net_label "PIEZO_IN" (at 80 76 0))
+  (net_label "MIC_DATA" (at 45 127 0))
+  (net_label "MIC_CLK" (at 45 133 0))
+  (net_label "VBUS" (at 145 137 0))
+  (net_label "VBAT" (at 205 127 0))
+  (net_label "3V3_SYS" (at 225 40 0))
+
+  ; =================================================================
+  ; Power flags
+  ; =================================================================
+  (power_flag "+3V3" (at 230 40 0))
+  (power_flag "GND" (at 230 50 0))
+  (power_flag "VBUS" (at 145 137 0))
+  (power_flag "VBAT" (at 205 127 0))
+)
