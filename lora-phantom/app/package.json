@@ -1,0 +1,33 @@
+{
+  "name": "lora-phantom-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "description": "Companion app for LoRaPhantom — LoRaWAN & LoRa Infiltration Device",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "^49.0.0",
+    "expo-ble-peripheral": "^2.0.0",
+    "expo-secure-store": "^12.0.0",
+    "expo-file-system": "^15.0.0",
+    "expo-sharing": "^11.0.0",
+    "react": "18.2.0",
+    "react-native": "0.72.4",
+    "react-native-ble-plx": "^3.0.0",
+    "@react-navigation/native": "^6.1.0",
+    "@react-navigation/bottom-tabs": "^6.5.0",
+    "react-native-safe-area-context": "^4.7.0",
+    "react-native-screens": "^3.23.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true,
+  "license": "MIT",
+  "copyright": "Copyright (c) 2026 jayis1"
+}
