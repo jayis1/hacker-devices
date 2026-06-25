@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "UWB-PHANTOM",
+    "slug": "uwb-phantom",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "description": "Companion app for UWB-PHANTOM — Ultra-Wideband Ranging & Digital-Key Manipulation Tool",
+    "privacy": "public",
+    "platforms": ["android", "ios"],
+    "android": {
+      "minSdkVersion": 24,
+      "permissions": [
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "Connect to UWB-PHANTOM hardware over BLE for security research.",
+        "NSLocationWhenInUseUsageDescription": "Required for BLE scanning on iOS."
+      }
+    }
+  }
+}
