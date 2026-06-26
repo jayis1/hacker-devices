@@ -1,0 +1,678 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad-schema-tools")
+  (generator_version "7.0")
+  (uuid "b2c3d4e5-f6a7-8901-bcde-fa2345678901")
+  (paper "A3")
+  (title_block
+    (title "SideProbe — Portable Power & EM Side-Channel Cryptanalysis Platform")
+    (date "2026-06-26")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "STM32H743 + iCE40-UP5K + ADS8686S + nRF52840")
+  )
+
+  (sheet_instances (path "/" (page "1")))
+
+  ; ============================================================
+  ; SYMBOL LIBRARIES
+  ; ============================================================
+  (lib_symbols
+
+    ; ---- STM32H743VIT6 (LQFP100) ----
+    (symbol "MCU_ST_STM32H7:STM32H743VITx"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at -25 50 (angle 0)))
+      (property "Value" "STM32H743VITx" (at 5 50 (angle 0)))
+      (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 0 0 (angle 0)))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf" (at 0 0))
+      (property "Description" "STM32H743, ARM Cortex-M7, 480MHz, 2MB Flash, 1MB RAM, LQFP-100" (at 0 0))
+      (property "Manufacturer" "STMicroelectronics" (at 0 0))
+      (property "MPN" "STM32H743VIT6" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      ; Key pins (abbreviated from full 100-pin listing)
+      (pin "VBAT" (type power_in) (at -30 45))
+      (pin "VDD" (type power_in) (at -30 40))
+      (pin "VSS" (type power_in) (at -30 35))
+      (pin "NRST" (type input) (at -30 30))
+      (pin "PA0" (type bidirectional) (at -25 20))
+      (pin "PA1" (type bidirectional) (at -25 18))
+      (pin "PA2" (type bidirectional) (at -25 16))
+      (pin "PA3" (type bidirectional) (at -25 14))
+      (pin "PA4" (type bidirectional) (at -25 12))
+      (pin "PA9" (type bidirectional) (at -25 0))
+      (pin "PA10" (type bidirectional) (at -25 -2))
+      (pin "PA11" (type bidirectional) (at -25 -6))
+      (pin "PA12" (type bidirectional) (at -25 -8))
+      (pin "PB3" (type bidirectional) (at 20 25))
+      (pin "PB4" (type bidirectional) (at 20 22))
+      (pin "PB6" (type bidirectional) (at 20 16))
+      (pin "PB7" (type bidirectional) (at 20 14))
+      (pin "PB8" (type bidirectional) (at 20 12))
+      (pin "PB10" (type bidirectional) (at 20 8))
+      (pin "PB13" (type bidirectional) (at 20 0))
+      (pin "PC13" (type bidirectional) (at 20 -20))
+      (pin "PC14" (type bidirectional) (at 20 -22))
+      (pin "PC15" (type bidirectional) (at 20 -24))
+      (pin "PD0" (type bidirectional) (at 25 -40))
+      (pin "PD8" (type bidirectional) (at 25 -48))
+      (pin "PD9" (type bidirectional) (at 25 -50))
+      (pin "PD11" (type bidirectional) (at 25 -54))
+      (pin "PD12" (type bidirectional) (at 25 -56))
+      (pin "PD13" (type bidirectional) (at 25 -58))
+      (pin "PD15" (type bidirectional) (at 25 -62))
+    )
+
+    ; ---- Lattice iCE40-UP5K (SG48) ----
+    (symbol "FPGA_Lattice:iCE40-UP5K-SG48"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at 0 40 (angle 0)))
+      (property "Value" "iCE40-UP5K-SG48" (at 0 36 (angle 0)))
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.latticesemi.com/-/media/LatticeSemi/Documents/DataSheets/iCE40UltraPlusFamilyDataSheet.pdf" (at 0 0))
+      (property "Description" "Lattice iCE40 UltraPlus 5K, 5280 LUTs, 16x4kB SPRAM, 8 DSP, QFN-48" (at 0 0))
+      (property "Manufacturer" "Lattice" (at 0 0))
+      (property "MPN" "iCE40UP5K-SG48" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at 0 32))
+      (pin "GND" (type power_in) (at 0 -32))
+      (pin "VCCIO_0" (type power_in) (at -10 32))
+      (pin "VCCIO_1" (type power_in) (at 10 32))
+      (pin "VPP_2V5" (type power_in) (at 0 -28))
+      (pin "SPI_SDI" (type input) (at -20 0))
+      (pin "SPI_SCK" (type input) (at -20 -4))
+      (pin "SPI_CSN" (type input) (at -20 -8))
+      (pin "CRESET" (type input) (at -20 -12))
+      (pin "CDONE" (type output) (at 20 -12))
+      (pin "IO_0" (type bidirectional) (at 15 20))
+      (pin "IO_1" (type bidirectional) (at 15 16))
+      (pin "IO_2" (type bidirectional) (at 15 12))
+      (pin "IO_3" (type bidirectional) (at 15 8))
+      (pin "IO_4" (type bidirectional) (at 15 4))
+      (pin "IO_5" (type bidirectional) (at 15 0))
+      (pin "IO_6" (type bidirectional) (at 15 -4))
+      (pin "IO_7" (type bidirectional) (at 15 -8))
+    )
+
+    ; ---- ADS8686S (TQFP-64) 16-bit 1MSPS ADC ----
+    (symbol "Analog_ADC:ADS8686S"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at 0 35 (angle 0)))
+      (property "Value" "ADS8686S" (at 0 31 (angle 0)))
+      (property "Footprint" "Package_QFP:TQFP-64_10x10mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/ads8686s.pdf" (at 0 0))
+      (property "Description" "16-bit 1MSPS bipolar input ADC, ±12.288V, SPI, TQFP-64" (at 0 0))
+      (property "Manufacturer" "TI" (at 0 0))
+      (property "MPN" "ADS8686S" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "AVDD" (type power_in) (at -15 28))
+      (pin "AVSS" (type power_in) (at -15 -28))
+      (pin "DVDD" (type power_in) (at 15 28))
+      (pin "DGND" (type power_in) (at 15 -28))
+      (pin "REFIO" (type input) (at -15 20))
+      (pin "AIN0_P" (type input) (at -20 15))
+      (pin "AIN0_N" (type input) (at -20 12))
+      (pin "AIN1_P" (type input) (at -20 8))
+      (pin "AIN1_N" (type input) (at -20 5))
+      (pin "SCLK" (type input) (at 15 15))
+      (pin "DIN" (type input) (at 15 12))
+      (pin "DOUT" (type output) (at 15 9))
+      (pin "CS" (type input) (at 15 6))
+      (pin "CONVSTA" (type input) (at 15 3))
+      (pin "BUSY" (type output) (at 15 -3))
+      (pin "RST" (type input) (at 15 -6))
+    )
+
+    ; ---- AD8429 instrumentation amplifier (power shunt path) ----
+    (symbol "Amplifier_Instrumentation:AD8429"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U5" (at 0 25 (angle 0)))
+      (property "Value" "AD8429" (at 0 21 (angle 0)))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/AD8429.pdf" (at 0 0))
+      (property "Description" "Low-noise instrumentation amp, gain 1-10000 via Rg, SOIC-8" (at 0 0))
+      (property "Manufacturer" "ADI" (at 0 0))
+      (property "MPN" "AD8429" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "V+" (type power_in) (at -10 15))
+      (pin "V-" (type power_in) (at -10 -15))
+      (pin "+IN" (type input) (at -15 5))
+      (pin "-IN" (type input) (at -15 -5))
+      (pin "RG1" (type passive) (at 15 8))
+      (pin "RG2" (type passive) (at 15 4))
+      (pin "OUT" (type output) (at 15 0))
+      (pin "REF" (type input) (at 15 -4))
+    )
+
+    ; ---- ADL5205 VGA (EM path, 2 cascaded) ----
+    (symbol "Amplifier_Variable:ADL5205"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U6" (at 0 25 (angle 0)))
+      (property "Value" "ADL5205" (at 0 21 (angle 0)))
+      (property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ADL5205.pdf" (at 0 0))
+      (property "Description" "Dual-channel VGA, -10 to +34 dB, 60MHz BW, SPI gain, QFN-24" (at 0 0))
+      (property "Manufacturer" "ADI" (at 0 0))
+      (property "MPN" "ADL5205" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -10 18))
+      (pin "GND" (type power_in) (at -10 -18))
+      (pin "IN_P" (type input) (at -15 10))
+      (pin "IN_N" (type input) (at -15 6))
+      (pin "OUT_P" (type output) (at 15 10))
+      (pin "OUT_N" (type output) (at 15 6))
+      (pin "SCLK" (type input) (at 15 -6))
+      (pin "SDIO" (type bidirectional) (at 15 -9))
+      (pin "CSN" (type input) (at 15 -12))
+    )
+
+    ; ---- nRF52840 BLE module (u-blox NINA-B302) ----
+    (symbol "RF_Module:NINA-B302"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at 0 30 (angle 0)))
+      (property "Value" "NINA-B302" (at 0 26 (angle 0)))
+      (property "Footprint" "RF_Module:NINA-B3" (at 0 0))
+      (property "Datasheet" "https://www.u-blox.com/docs/NINA-B3DataSheet" (at 0 0))
+      (property "Description" "u-blox NINA-B302, BLE 5.0, nRF52840, encrypted link" (at 0 0))
+      (property "Manufacturer" "u-blox" (at 0 0))
+      (property "MPN" "NINA-B302" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -15 22))
+      (pin "GND" (type power_in) (at -15 -22))
+      (pin "UART_TX" (type output) (at 15 18))
+      (pin "UART_RX" (type input) (at 15 15))
+      (pin "SWDIO" (type bidirectional) (at 15 10))
+      (pin "SWCLK" (type input) (at 15 7))
+      (pin "ANT" (type bidirectional) (at -15 0))
+    )
+
+    ; ---- USB3300 ULPI USB HS PHY ----
+    (symbol "Interface_USB:USB3300-ULPI"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U7" (at 0 30 (angle 0)))
+      (property "Value" "USB3300" (at 0 26 (angle 0)))
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.microchip.com/wwwproducts/en/USB3300" (at 0 0))
+      (property "Description" "USB 2.0 Hi-Speed ULPI PHY, QFN-32" (at 0 0))
+      (property "Manufacturer" "Microchip" (at 0 0))
+      (property "MPN" "USB3300-ML" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -10 22))
+      (pin "GND" (type power_in) (at -10 -22))
+      (pin "ULPI_CLK" (type output) (at 15 20))
+      (pin "ULPI_DIR" (type output) (at 15 16))
+      (pin "ULPI_NXT" (type output) (at 15 12))
+      (pin "ULPI_STP" (type input) (at 15 8))
+      (pin "ULPI_D0" (type bidirectional) (at 15 4))
+      (pin "ULPI_D7" (type bidirectional) (at 15 -8))
+      (pin "DM" (type bidirectional) (at -15 10))
+      (pin "DP" (type bidirectional) (at -15 6))
+      (pin "VBUS" (type power_in) (at -15 -10))
+    )
+
+    ; ---- IS42S16160J SDRAM (16Mx16 = 256Mb -> 32MB? use 2 for 256MB) ----
+    (symbol "Memory_RAM:IS42S16160J-6BL"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U8" (at 0 35 (angle 0)))
+      (property "Value" "IS42S16160J-6BL" (at 0 31 (angle 0)))
+      (property "Footprint" "Package_SO:TSOP-II-54_22.0x10.2mm_P0.8mm" (at 0 0))
+      (property "Datasheet" "https://www.issi.com/WW/pdf/42S16160J.pdf" (at 0 0))
+      (property "Description" "SDRAM 16Mx16 6ns, TSOP-II-54" (at 0 0))
+      (property "Manufacturer" "ISSI" (at 0 0))
+      (property "MPN" "IS42S16160J-6BLI" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD" (type power_in) (at -15 28))
+      (pin "VSS" (type power_in) (at -15 -28))
+      (pin "DQ0" (type bidirectional) (at 15 20))
+      (pin "DQ15" (type bidirectional) (at 15 -10))
+      (pin "A0" (type input) (at -20 20))
+      (pin "A12" (type input) (at -20 -8))
+      (pin "WE" (type input) (at 20 20))
+      (pin "CAS" (type input) (at 20 16))
+      (pin "RAS" (type input) (at 20 12))
+      (pin "CLK" (type input) (at 20 8))
+    )
+
+    ; ---- MAX17048 fuel gauge ----
+    (symbol "Sensor_Voltage:MAX17048"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U9" (at 0 20 (angle 0)))
+      (property "Value" "MAX17048" (at 0 16 (angle 0)))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8" (at 0 0))
+      (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf" (at 0 0))
+      (property "Description" "LiPo fuel gauge, I2C, SOT-23-8" (at 0 0))
+      (property "Manufacturer" "ADI" (at 0 0))
+      (property "MPN" "MAX17048G+T10" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD" (type power_in) (at -10 12))
+      (pin "GND" (type power_in) (at -10 -12))
+      (pin "SDA" (type bidirectional) (at 10 8))
+      (pin "SCL" (type input) (at 10 4))
+      (pin "CELL+" (type input) (at -10 6))
+      (pin "CELL-" (type input) (at -10 2))
+    )
+
+    ; ---- MCP73831 LiPo charger ----
+    (symbol "Battery_Management:MCP73831"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U10" (at 0 20 (angle 0)))
+      (property "Value" "MCP73831" (at 0 16 (angle 0)))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 0 0))
+      (property "Datasheet" "https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73831-Family-Data-Sheet-20002084H.pdf" (at 0 0))
+      (property "Description" "Single-cell LiPo charger, 500mA, SOT-23-5" (at 0 0))
+      (property "Manufacturer" "Microchip" (at 0 0))
+      (property "MPN" "MCP73831T-2ACI/OT" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD" (type power_in) (at -10 12))
+      (pin "VSS" (type power_in) (at -10 -12))
+      (pin "PROG" (type passive) (at 10 8))
+      (pin "VBAT" (type power_out) (at 10 4))
+      (pin "STAT" (type output) (at 10 -4))
+    )
+
+    ; ---- TXS0108E level shifter (target I/O) ----
+    (symbol "Interface:TXS0108E"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U11" (at 0 25 (angle 0)))
+      (property "Value" "TXS0108E" (at 0 21 (angle 0)))
+      (property "Footprint" "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm" (at 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/txs0108e.pdf" (at 0 0))
+      (property "Description" "8-bit bi-directional level shifter, SSOP-20" (at 0 0))
+      (property "Manufacturer" "TI" (at 0 0))
+      (property "MPN" "TXS0108ERGYR" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCCA" (type power_in) (at -15 18))
+      (pin "VCCB" (type power_in) (at 15 18))
+      (pin "GND" (type power_in) (at 0 -18))
+      (pin "A1" (type bidirectional) (at -15 12))
+      (pin "A8" (type bidirectional) (at -15 -12))
+      (pin "B1" (type bidirectional) (at 15 12))
+      (pin "B8" (type bidirectional) (at 15 -12))
+      (pin "OE" (type input) (at -15 -15))
+    )
+
+    ; ---- SH1106 OLED display ----
+    (symbol "Display:SH1106_128x64"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D1" (at 0 25 (angle 0)))
+      (property "Value" "SH1106_128x64" (at 0 21 (angle 0)))
+      (property "Footprint" "Display:OLED_128x64_1.3in" (at 0 0))
+      (property "Description" "1.3 inch OLED, 128x64, 4-wire SPI" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -15 15))
+      (pin "GND" (type power_in) (at -15 11))
+      (pin "SCL" (type input) (at 15 15))
+      (pin "SDA" (type input) (at 15 11))
+      (pin "RES" (type input) (at 15 7))
+      (pin "DC" (type input) (at 15 3))
+      (pin "CS" (type input) (at 15 -1))
+    )
+
+    ; ---- Connectors: SMA, USB-C, microSD, LiPo, target header ----
+    (symbol "Connector:SMA_Jack"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J1" (at 0 10 (angle 0)))
+      (property "Value" "SMA_EM" (at 0 6 (angle 0))
+      (property "Footprint" "Connector_Coaxial:SMA_Amphenol_132289_EdgeMount")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "SIG" (type passive) (at -10 0))
+      (pin "GND" (type passive) (at 10 0))
+    )
+
+    (symbol "Connector:USB_C_Receptacle"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J2" (at 0 12 (angle 0)))
+      (property "Value" "USB-C" (at 0 8 (angle 0))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "VBUS" (type power_in) (at -15 5))
+      (pin "GND" (type power_in) (at -15 -5))
+      (pin "DP1" (type bidirectional) (at 15 5))
+      (pin "DM1" (type bidirectional) (at 15 -5))
+    )
+
+    (symbol "Connector:microSD_Socket"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J3" (at 0 15 (angle 0)))
+      (property "Value" "microSD" (at 0 11 (angle 0))
+      (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "VDD" (type power_in) (at -15 8))
+      (pin "GND" (type power_in) (at -15 4))
+      (pin "CMD" (type bidirectional) (at 15 8))
+      (pin "CLK" (type input) (at 15 4))
+      (pin "D0" (type bidirectional) (at 15 0))
+      (pin "D3" (type bidirectional) (at 15 -4))
+    )
+
+    (symbol "Connector:LiPo_Header"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J4" (at 0 8 (angle 0)))
+      (property "Value" "LiPo" (at 0 4 (angle 0))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "+" (type power_in) (at -10 0))
+      (pin "-" (type power_in) (at 10 0))
+    )
+
+    (symbol "Connector:Target_Header_2x5"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J5" (at 0 15 (angle 0)))
+      (property "Value" "Target" (at 0 11 (angle 0))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "1" (type passive) (at -10 8))
+      (pin "10" (type passive) (at 10 -8))
+    )
+
+    ; ---- Decoupling cap generic symbol ----
+    (symbol "Device:C"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 5 5 (angle 0)))
+      (property "Value" "C" (at 5 0 (angle 0)))
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Device:R"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 5 5 (angle 0)))
+      (property "Value" "R" (at 5 0 (angle 0)))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Device:L"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 5 5 (angle 0)))
+      (property "Value" "L" (at 5 0 (angle 0)))
+      (property "Footprint" "Inductor_SMD:L_0402_1005Metric")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Switch:SW_Push"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 5 5 (angle 0)))
+      (property "Value" "SW_Push" (at 5 0 (angle 0)))
+      (property "Footprint" "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm")
+      (property "Author" "jayis1" (at 0 0)))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+  )
+
+  ; ============================================================
+  ; COMPONENT INSTANCES
+  ; ============================================================
+  (symbol_instances
+    ; ---- MCU ----
+    (path "/U1" (reference "U1") (unit 1) (value "STM32H743VIT6")
+      (at 100 100 (angle 0))
+      (property "Sheet" "Main")
+      (property "Author" "jayis1"))
+
+    ; ---- BLE module ----
+    (path "/U2" (reference "U2") (unit 1) (value "NINA-B302")
+      (at 200 60 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- FPGA ----
+    (path "/U3" (reference "U3") (unit 1) (value "iCE40-UP5K-SG48")
+      (at 100 180 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- ADC ----
+    (path "/U4" (reference "U4") (unit 1) (value "ADS8686S")
+      (at 40 180 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- Power PGA ----
+    (path "/U5" (reference "U5") (unit 1) (value "AD8429")
+      (at -40 180 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- EM VGA stage 1 ----
+    (path "/U6" (reference "U6") (unit 1) (value "ADL5205")
+      (at -40 120 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- USB PHY ----
+    (path "/U7" (reference "U7") (unit 1) (value "USB3300")
+      (at 200 120 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- SDRAM ----
+    (path "/U8" (reference "U8") (unit 1) (value "IS42S16160J-6BL")
+      (at 300 180 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- Fuel gauge ----
+    (path "/U9" (reference "U9") (unit 1) (value "MAX17048")
+      (at 300 60 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- LiPo charger ----
+    (path "/U10" (reference "U10") (unit 1) (value "MCP73831")
+      (at 300 30 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- Level shifter ----
+    (path "/U11" (reference "U11") (unit 1) (value "TXS0108E")
+      (at -100 100 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- OLED ----
+    (path "/D1" (reference "D1") (unit 1) (value "SH1106_128x64")
+      (at 200 180 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- Connectors ----
+    (path "/J1" (reference "J1") (unit 1) (value "SMA_EM")
+      (at -80 60 (angle 0))
+      (property "Author" "jayis1"))
+    (path "/J2" (reference "J2") (unit 1) (value "USB-C")
+      (at 240 100 (angle 0))
+      (property "Author" "jayis1"))
+    (path "/J3" (reference "J3") (unit 1) (value "microSD")
+      (at 300 120 (angle 0))
+      (property "Author" "jayis1"))
+    (path "/J4" (reference "J4") (unit 1) (value "LiPo")
+      (at 300 0 (angle 0))
+      (property "Author" "jayis1"))
+    (path "/J5" (reference "J5") (unit 1) (value "Target")
+      (at -120 100 (angle 0))
+      (property "Author" "jayis1"))
+
+    ; ---- Buttons (5) ----
+    (path "/SW1" (reference "SW1") (unit 1) (value "SW_Push")
+      (at 80 40 (angle 0)) (property "Author" "jayis1"))
+    (path "/SW2" (reference "SW2") (unit 1) (value "SW_Push")
+      (at 90 40 (angle 0)) (property "Author" "jayis1"))
+    (path "/SW3" (reference "SW3") (unit 1) (value "SW_Push")
+      (at 100 40 (angle 0)) (property "Author" "jayis1"))
+    (path "/SW4" (reference "SW4") (unit 1) (value "SW_Push")
+      (at 110 40 (angle 0)) (property "Author" "jayis1"))
+    (path "/SW5" (reference "SW5") (unit 1) (value "SW_Push")
+      (at 120 40 (angle 0)) (property "Author" "jayis1"))
+  )
+
+  ; ============================================================
+  ; NETLIST
+  ; ============================================================
+  (nets
+    (net "VCC_3V3"  (connections ("U1.VDD" "U2.VCC" "U3.VCC" "U3.VCCIO_0" "U3.VCCIO_1"
+                                  "U4.DVDD" "U7.VCC" "U8.VDD" "U9.VDD" "U11.VCCA"
+                                  "D1.VCC")))
+    (net "VCC_5V"   (connections ("U4.AVDD" "U11.VCCB")))
+    (net "GND"      (connections ("U1.VSS" "U2.GND" "U3.GND" "U4.AVSS" "U4.DGND"
+                                  "U5.V-" "U6.GND" "U7.GND" "U8.VSS" "U9.GND"
+                                  "U10.VSS" "U11.GND" "D1.GND"
+                                  "J1.GND" "J2.GND" "J3.GND" "J4.-" "SW1.2" "SW2.2"
+                                  "SW3.2" "SW4.2" "SW5.2")))
+    (net "VBAT"     (connections ("J4.+" "U10.VBAT" "U9.CELL+")))
+    (net "VBUS_USB" (connections ("J2.VBUS" "U10.VDD" "U7.VBUS")))
+    (net "VBAT_SENSE" (connections ("U9.CELL-" "R20.1")))
+
+    ; ---- Power shunt path ----
+    (net "SHUNT_P"  (connections ("J5.1" "U5.+IN")))
+    (net "SHUNT_N"  (connections ("J5.2" "U5.-IN")))
+    (net "PGA_OUT"  (connections ("U5.OUT" "U4.AIN0_P")))
+    (net "PGA_REF"  (connections ("U5.REF" "U4.AIN0_N" "R_REF.1")))
+    (net "PGA_GAIN" (connections ("U5.RG1" "R_GAIN.1" "U5.RG2" "R_GAIN.2")))
+
+    ; ---- EM path ----
+    (net "EM_PROBE_IN" (connections ("J1.SIG" "U6.IN_P")))
+    (net "EM_LNA_OUT"  (connections ("U6.OUT_P" "U4.AIN1_P")))
+    (net "EM_LNA_OUT_N" (connections ("U6.OUT_N" "U4.AIN1_N")))
+    (net "VGA_GAIN_SPI_CLK" (connections ("U6.SCLK" "U1.PB13")))
+    (net "VGA_GAIN_SPI_DIO" (connections ("U6.SDIO" "U1.PB3")))
+    (net "VGA_GAIN_SPI_CSN" (connections ("U6.CSN" "U1.PB4")))
+
+    ; ---- ADC SPI to MCU/FPGA ----
+    (net "ADC_SCLK"  (connections ("U4.SCLK" "U1.PB10")))
+    (net "ADC_DOUT"  (connections ("U4.DOUT" "U1.PB13")))
+    (net "ADC_DIN"   (connections ("U4.DIN"  "U1.PB3")))
+    (net "ADC_CS"    (connections ("U4.CS"   "U1.PB8")))
+    (net "ADC_BUSY"  (connections ("U4.BUSY" "U3.IO_0")))
+    (net "ADC_CONV"  (connections ("U4.CONVSTA" "U3.IO_1")))
+
+    ; ---- FPGA config (MCU -> FPGA) ----
+    (net "FPGA_SCK"  (connections ("U1.PB3"  "U3.SPI_SCK")))
+    (net "FPGA_SDI"  (connections ("U1.PB4"  "U3.SPI_SDI")))
+    (net "FPGA_CSN"  (connections ("U1.PB8"  "U3.SPI_CSN")))
+    (net "FPGA_CRST" (connections ("U1.PB6"  "U3.CRESET")))
+    (net "FPGA_CDONE" (connections ("U1.PB7" "U3.CDONE")))
+
+    ; ---- FPGA <-> SDRAM (FMC, abbreviated) ----
+    (net "FMC_D0"  (connections ("U1.PD0"  "U8.DQ0")))
+    (net "FMC_D15" (connections ("U1.PD15" "U8.DQ15")))
+    (net "FMC_A0"  (connections ("U1.PE0"  "U8.A0")))
+    (net "FMC_A12" (connections ("U1.PE12" "U8.A12")))
+    (net "FMC_NWE" (connections ("U1.PD14" "U8.WE")))
+    (net "FMC_CAS" (connections ("U1.PD15" "U8.CAS")))
+    (net "FMC_CLK" (connections ("U1.PD3"  "U8.CLK")))
+
+    ; ---- BLE UART ----
+    (net "BLE_TX" (connections ("U2.UART_TX" "U1.PA3")))
+    (net "BLE_RX" (connections ("U2.UART_RX" "U1.PA2")))
+
+    ; ---- USB ----
+    (net "USB_DP" (connections ("J2.DP1" "U7.DP")))
+    (net "USB_DM" (connections ("J2.DM1" "U7.DM")))
+    (net "ULPI_CLK" (connections ("U7.ULPI_CLK" "U1.PA5")))
+    (net "ULPI_DIR" (connections ("U7.ULPI_DIR" "U1.PA11")))
+    (net "ULPI_NXT" (connections ("U7.ULPI_NXT" "U1.PA12")))
+    (net "ULPI_D0"  (connections ("U7.ULPI_D0"  "U1.PC0")))
+
+    ; ---- I2C fuel gauge ----
+    (net "I2C_SDA" (connections ("U9.SDA" "U1.PD9")))
+    (net "I2C_SCL" (connections ("U9.SCL" "U1.PD8")))
+
+    ; ---- SD card (SDMMC1) ----
+    (net "SD_CMD" (connections ("J3.CMD" "U1.PD2")))
+    (net "SD_CLK" (connections ("J3.CLK" "U1.PC12")))
+    (net "SD_D0"  (connections ("J3.D0"  "U1.PC8")))
+    (net "SD_D3"  (connections ("J3.D3"  "U1.PC11")))
+
+    ; ---- OLED ----
+    (net "OLED_SCL" (connections ("D1.SCL" "U1.PD13")))
+    (net "OLED_SDA" (connections ("D1.SDA" "U1.PD15")))
+    (net "OLED_RES" (connections ("D1.RES" "U1.PD11")))
+    (net "OLED_DC"  (connections ("D1.DC"  "U1.PD12")))
+    (net "OLED_CS"  (connections ("D1.CS"  "U1.PD14")))
+
+    ; ---- Target I/O via level shifter ----
+    (net "TGT_TRIG_IN"  (connections ("J5.3" "U11.B1")))
+    (net "TGT_TRIG_OUT" (connections ("U11.A1" "U1.PC14")))
+    (net "TGT_TX"       (connections ("J5.4" "U11.B2" "U1.PA9")))
+    (net "TGT_RX"       (connections ("J5.5" "U11.B3" "U1.PA10")))
+    (net "TGT_RST"      (connections ("J5.6" "U11.B4" "U1.PC15")))
+    (net "TGT_CLK"      (connections ("J5.7" "U11.B5" "U1.PC13")))
+    (net "TGT_GND"      (connections ("J5.10" "GND")))
+
+    ; ---- Buttons ----
+    (net "BTN_MODALITY" (connections ("SW1.1" "U1.PA0")))
+    (net "BTN_GAINUP"   (connections ("SW2.1" "U1.PA1")))
+    (net "BTN_GAINDOWN" (connections ("SW3.1" "U1.PA2")))
+    (net "BTN_ARM"      (connections ("SW4.1" "U1.PA3")))
+    (net "BTN_ATTACK"   (connections ("SW5.1" "U1.PA4")))
+  )
+
+  ; ============================================================
+  ; POWER RAILS / DECOUPLING (representative)
+  ; ============================================================
+  (power_rails
+    (rail "VCC_3V3" (voltage 3.3) (decoupling
+      ("C1" "100nF" "U1") ("C2" "100nF" "U1") ("C3" "4.7uF" "U1")
+      ("C4" "100nF" "U2") ("C5" "100nF" "U3") ("C6" "100nF" "U3")
+      ("C7" "100nF" "U4") ("C8" "100nF" "U9")))
+    (rail "VCC_5V" (voltage 5.0) (decoupling
+      ("C9" "100nF" "U4") ("C10" "4.7uF" "U4")))
+    (rail "VCC_1V2_FPGA" (voltage 1.2) (decoupling ("C11" "100nF" "U3") ("C12" "4.7uF" "U3")))
+    (rail "VCC_2V5_FPGA" (voltage 2.5) (decoupling ("C13" "100nF" "U3") ("C14" "4.7uF" "U3")))
+  )
+
+  ; Ferrite bead on AVDD to isolate analog from digital
+  (components_passive
+    ("L1" "Ferrite_Bead" "AVDD_isolation" (pins "VCC_5V" "AVDD_FILT"))
+    ("L2" "Ferrite_Bead" "EM_LNA_isolation" (pins "VCC_3V3" "VCC_EM"))
+  )
+
+  ; ============================================================
+  ; SHEET NOTES
+  ; ============================================================
+  (sheetnotes
+    (text "SideProbe — Power & EM side-channel analysis platform")
+    (text "Author: jayis1 — CERN-OHL-S v2 hardware, GPL-2.0 firmware")
+    (text "Power path: shunt -> AD8429 PGA -> ADS8686S ch0")
+    (text "EM path: SMA probe -> BPF -> ADL5205 VGA x2 -> ADS8686S ch1")
+    (text "FPGA iCE40-UP5K: trigger + trace alignment + per-trace sum/sq")
+    (text "STM32H743: CPA correlation engine, BLE/USB backhaul, SD log")
+    (text "LEGAL: authorized security research only. See README.")
+  )
+)

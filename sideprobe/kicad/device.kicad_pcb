@@ -1,0 +1,426 @@
+(kicad_pcb
+  (version 20240108)
+  (generator "kicad-pcb-tools")
+  (generator_version "7.0")
+  (general
+    (thickness 1.6)
+    (legacy_teardrops no)
+  )
+  (paper "A4")
+  (title_block
+    (title "SideProbe — Power & EM Side-Channel Platform")
+    (date "2026-06-26")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "100x62mm, 6-layer, controlled impedance")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal "GND")
+    (2 "In2.Cu" signal "PWR")
+    (3 "In3.Cu" signal "AGND")
+    (4 "In4.Cu" signal "AVCC")
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (42 "Eco1.User" user "User.Eco1")
+    (43 "Eco2.User" user "User.Eco2")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.05)
+    (grid_origin (at 0 0))
+    (stackup
+      (layer "F.Cu" (type copper) (thickness 0.035))
+      (layer "F.Paste" (type solder-paste))
+      (layer "F.SilkS" (type silk-screen))
+      (layer "F.Mask" (type solder-mask))
+      (layer "Dielectric.1" (type dielectric) (thickness 0.1))
+      (layer "In1.Cu" (type copper) (thickness 0.035))
+      (layer "Dielectric.2" (type dielectric) (thickness 0.2))
+      (layer "In2.Cu" (type copper) (thickness 0.035))
+      (layer "Dielectric.3" (type dielectric) (thickness 0.4))
+      (layer "In3.Cu" (type copper) (thickness 0.035))
+      (layer "Dielectric.4" (type dielectric) (thickness 0.1))
+      (layer "In4.Cu" (type copper) (thickness 0.035))
+      (layer "Dielectric.5" (type dielectric) (thickness 0.2))
+      (layer "B.Mask" (type solder-mask))
+      (layer "B.SilkS" (type silk-screen))
+      (layer "B.Cu" (type copper) (thickness 0.035))
+    )
+    (defaults
+      (via (diameter 0.6) (drill 0.3))
+      (track (width 0.2))
+    )
+  )
+
+  ; ============================================================
+  ; BOARD OUTLINE — 100 x 62 mm, origin at (0,0)
+  ; ============================================================
+  (gr_line (start 0 0) (end 100 0) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 100 0) (end 100 62) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 100 62) (end 0 62) (layer "Edge.Cuts") (width 0.15))
+  (gr_line (start 0 62) (end 0 0) (layer "Edge.Cuts") (width 0.15))
+
+  ; Mounting holes (M2) at corners
+  (gr_circle (center 3 3) (end 4 3) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 97 3) (end 98 3) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 3 59) (end 4 59) (layer "Edge.Cuts") (width 0.15))
+  (gr_circle (center 97 59) (end 98 59) (layer "Edge.Cuts") (width 0.15))
+
+  ; ============================================================
+  ; FOOTPRINTS / PLACEMENT
+  ; ============================================================
+
+  ; ---- U1: STM32H743VIT6 (LQFP-100) ----
+  (footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
+    (layer "F.Cu")
+    (at 55 35 0)
+    (attr smd)
+    (property "Reference" "U1" (at -8 -8))
+    (property "Value" "STM32H743VIT6" (at 0 9))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -6.5 -7.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "50" smd rect (at 6.5 7.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "100" smd rect (at -6.5 7.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (model ":${KISYS3DMOD}/Package_QFP.3dshapes/LQFP-100_14x14mm_P0.5mm.wrl")
+  )
+
+  ; ---- U3: iCE40-UP5K (QFN-48) ----
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm"
+    (layer "F.Cu")
+    (at 20 50 0)
+    (attr smd)
+    (property "Reference" "U3" (at -5 -5))
+    (property "Value" "iCE40-UP5K-SG48" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -3.25 -3) (size 0.3 0.9) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "49" smd rect (at 0 0) (size 5.6 5.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U4: ADS8686S (TQFP-64) ----
+  (footprint "Package_QFP:TQFP-64_10x10mm_P0.5mm"
+    (layer "F.Cu")
+    (at 85 50 0)
+    (attr smd)
+    (property "Reference" "U4" (at -6 -6))
+    (property "Value" "ADS8686S" (at 0 6))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -4.5 -5.5) (size 0.3 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U5: AD8429 (SOIC-8) ----
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (layer "F.Cu")
+    (at 8 50 0)
+    (attr smd)
+    (property "Reference" "U5" (at -3 -4))
+    (property "Value" "AD8429" (at 0 4))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.7 -1.905) (size 0.6 1.55) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "8" smd rect (at 2.7 1.905) (size 0.6 1.55) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U6: ADL5205 (QFN-24) ----
+  (footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm"
+    (layer "F.Cu")
+    (at 8 35 0)
+    (attr smd)
+    (property "Reference" "U6" (at -3 -3))
+    (property "Value" "ADL5205" (at 0 3))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.25 -1.5) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "25" smd rect (at 0 0) (size 2.6 2.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U2: NINA-B302 BLE module ----
+  (footprint "RF_Module:NINA-B3"
+    (layer "F.Cu")
+    (at 55 12 0)
+    (attr smd)
+    (property "Reference" "U2" (at -7 -5))
+    (property "Value" "NINA-B302" (at 0 6))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -7 -1) (size 1 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U7: USB3300 (QFN-32) ----
+  (footprint "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm"
+    (layer "F.Cu")
+    (at 88 18 0)
+    (attr smd)
+    (property "Reference" "U7" (at -3 -3))
+    (property "Value" "USB3300" (at 0 3))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.5 -2) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U8: SDRAM (TSOP-II-54) ----
+  (footprint "Package_SO:TSOP-II-54_22.0x10.2mm_P0.8mm"
+    (layer "F.Cu")
+    (at 55 56 0)
+    (attr smd)
+    (property "Reference" "U8" (at -9 -5))
+    (property "Value" "IS42S16160J-6BL" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -10.5 -5) (size 0.45 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U9: MAX17048 (SOT-23-8) ----
+  (footprint "Package_TO_SOT_SMD:SOT-23-8"
+    (layer "F.Cu")
+    (at 92 8 0)
+    (attr smd)
+    (property "Reference" "U9" (at -2 -2))
+    (property "Value" "MAX17048" (at 0 2))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.4 -0.95) (size 0.6 0.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U10: MCP73831 (SOT-23-5) ----
+  (footprint "Package_TO_SOT_SMD:SOT-23-5"
+    (layer "F.Cu")
+    (at 92 4 0)
+    (attr smd)
+    (property "Reference" "U10" (at -2 -2))
+    (property "Value" "MCP73831" (at 0 2))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.3 -0.95) (size 0.6 0.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U11: TXS0108E (SSOP-20) ----
+  (footprint "Package_SO:SSOP-20_4.4x6.5mm_P0.65mm"
+    (layer "F.Cu")
+    (at 8 22 0)
+    (attr smd)
+    (property "Reference" "U11" (at -3 -4))
+    (property "Value" "TXS0108E" (at 0 4))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.6 -2.925) (size 0.45 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- D1: OLED SH1106 ----
+  (footprint "Display:OLED_128x64_1.3in"
+    (layer "F.Cu")
+    (at 35 12 0)
+    (attr smd)
+    (property "Reference" "D1" (at -7 -5))
+    (property "Value" "SH1106_128x64" (at 0 5))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- J1: SMA (EM probe) — edge mount ----
+  (footprint "Connector_Coaxial:SMA_Amphenol_132289_EdgeMount"
+    (layer "F.Cu")
+    (at 2 30 0)
+    (attr smd)
+    (property "Reference" "J1" (at 3 -2))
+    (property "Value" "SMA_EM" (at 0 3))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at 0 0) (size 1.5 3) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J2: USB-C ----
+  (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+    (layer "F.Cu")
+    (at 95 12 0)
+    (attr smd)
+    (property "Reference" "J2" (at -4 -5))
+    (property "Value" "USB-C" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "A1" smd rect (at -3.5 -2) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J3: microSD ----
+  (footprint "Connector_Card:microSD_HC_Hirose_DM3D-SF"
+    (layer "F.Cu")
+    (at 70 12 0)
+    (attr smd)
+    (property "Reference" "J3" (at -7 -5))
+    (property "Value" "microSD" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -5 -2) (size 0.8 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J4: LiPo header ----
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+    (layer "F.Cu")
+    (at 95 4 0)
+    (attr through_hole)
+    (property "Reference" "J4" (at -2 -1))
+    (property "Value" "LiPo" (at 0 2))
+    (property "Author" "jayis1")
+    (pad "1" thru_hole circle (at 0 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+    (pad "2" thru_hole circle (at 0 2.54) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+  )
+
+  ; ---- J5: Target header 2x5 ----
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical"
+    (layer "F.Cu")
+    (at 8 8 0)
+    (attr through_hole)
+    (property "Reference" "J5" (at -3 -3))
+    (property "Value" "Target" (at 0 4))
+    (property "Author" "jayis1")
+    (pad "1" thru_hole circle (at 0 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+    (pad "10" thru_hole circle (at 2.54 10.16) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+  )
+
+  ; ---- Buttons (5x SW_Push) ----
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 75 25 0) (attr smd)
+    (property "Reference" "SW1") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 80 25 0) (attr smd)
+    (property "Reference" "SW2") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 85 25 0) (attr smd)
+    (property "Reference" "SW3") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 75 30 0) (attr smd)
+    (property "Reference" "SW4") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 80 30 0) (attr smd)
+    (property "Reference" "SW5") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask")))
+
+  ; ---- Decoupling caps (representative, on F.Cu) ----
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 50 30 0) (attr smd)
+    (property "Reference" "C1") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 50 32 0) (attr smd)
+    (property "Reference" "C2") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 22 53 0) (attr smd)
+    (property "Reference" "C3") (property "Value" "4.7uF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 85 53 0) (attr smd)
+    (property "Reference" "C4") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+
+  ; ============================================================
+  ; TRACKS (representative routing, abbreviated)
+  ; ============================================================
+  (segment (start 50 35) (end 55 35) (width 0.2) (layer "F.Cu") (net "VCC_3V3"))
+  (segment (start 55 35) (end 60 35) (width 0.2) (layer "F.Cu") (net "VCC_3V3"))
+  (segment (start 8 50) (end 12 50) (width 0.2) (layer "F.Cu") (net "PGA_OUT"))
+  (segment (start 12 50) (end 85 50) (width 0.2) (layer "In2.Cu") (net "PGA_OUT"))
+  (segment (start 85 50) (end 85 53) (width 0.2) (layer "F.Cu") (net "PGA_OUT"))
+  (segment (start 2 30) (end 8 35) (width 0.3) (layer "F.Cu") (net "EM_PROBE_IN"))
+  (segment (start 8 35) (end 85 50) (width 0.3) (layer "In4.Cu") (net "EM_LNA_OUT"))
+  (segment (start 55 35) (end 55 56) (width 0.2) (layer "In1.Cu") (net "GND"))
+  (segment (start 20 50) (end 55 35) (width 0.2) (layer "In1.Cu") (net "GND"))
+  (via (at 50 35) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu"))
+  (via (at 60 35) (size 0.6) (drill 0.3) (layers "F.Cu" "In1.Cu"))
+  (via (at 85 53) (size 0.6) (drill 0.3) (layers "F.Cu" "In2.Cu"))
+  (via (at 8 50) (size 0.6) (drill 0.3) (layers "F.Cu" "In2.Cu"))
+
+  ; ============================================================
+  ; ZONES (copper pours)
+  ; ============================================================
+  (zone (net "GND") (layer "In1.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (pts (0 0) (100 0) (100 62) (0 62)))
+  )
+  (zone (net "VCC_3V3") (layer "In2.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (pts (5 5) (95 5) (95 57) (5 57)))
+  )
+  (zone (net "AGND") (layer "In3.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (pts (0 25) (20 25) (20 62) (0 62)))
+  )
+  (zone (net "AVCC") (layer "In4.Cu")
+    (hatch edge 0.5)
+    (connect_pads (clearance 0.2))
+    (min_thickness 0.2)
+    (fill (mode solid))
+    (polygon (pts (0 25) (20 25) (20 0) (0 0)))
+  )
+
+  ; ============================================================
+  ; SILKSCREEN
+  ; ============================================================
+  (gr_text "SideProbe v1.0" (at 50 58) (layer "F.SilkS") (effects (size 1.5 1.5)))
+  (gr_text "Author: jayis1" (at 50 60) (layer "F.SilkS") (effects (size 1 1)))
+  (gr_text "POWER IN" (at 8 12) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "EM PROBE" (at 4 34) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "USB-C" (at 95 18) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "LiPo" (at 95 2) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "TARGET" (at 8 4) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "microSD" (at 70 8) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "OLED" (at 35 6) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "ATTACK" (at 80 30) (layer "F.SilkS") (effects (size 0.6 0.6)))
+  (gr_text "ARM" (at 75 30) (layer "F.SilkS") (effects (size 0.6 0.6)))
+
+  ; ============================================================
+  ; DESIGN RULES
+  ; ============================================================
+  (design_rules
+    (rule (min_track_width 0.15) (min_via_diameter 0.5) (min_via_drill 0.25))
+    (rule (min_clearance 0.15) (min_copper_clearance 0.15))
+    (rule (impedance_controlled yes) (diff_pair_width 0.18) (diff_pair_gap 0.12))
+    (note "USB ULPI 90-ohm diff pairs, controlled impedance, 6-layer stackup")
+    (note "Author: jayis1")
+  )
+
+  ; ============================================================
+  ; NETCLASS ASSIGNMENTS
+  ; ============================================================
+  (net_classes
+    (net_class "default" (track_width 0.2) (via_diameter 0.6) (via_drill 0.3)
+      (nets "VCC_3V3" "GND" "VBAT" "VBUS_USB" "I2C_SDA" "I2C_SCL"
+            "OLED_SCL" "OLED_SDA" "OLED_RES" "OLED_DC" "OLED_CS"
+            "SD_CMD" "SD_CLK" "SD_D0" "SD_D3" "FPGA_SCK" "FPGA_SDI" "FPGA_CSN"
+            "FPGA_CRST" "FPGA_CDONE" "FMC_D0" "FMC_D15" "FMC_A0" "FMC_A12"
+            "FMC_NWE" "FMC_CAS" "FMC_CLK" "BLE_TX" "BLE_RX"
+            "TGT_TRIG_IN" "TGT_TRIG_OUT" "TGT_TX" "TGT_RX" "TGT_RST" "TGT_CLK"
+            "TGT_GND" "BTN_MODALITY" "BTN_GAINUP" "BTN_GAINDOWN" "BTN_ARM"
+            "BTN_ATTACK" "ADC_SCLK" "ADC_DOUT" "ADC_DIN" "ADC_CS" "ADC_BUSY"
+            "ADC_CONV" "PGA_OUT" "PGA_REF" "PGA_GAIN" "SHUNT_P" "SHUNT_N"
+            "EM_PROBE_IN" "EM_LNA_OUT" "EM_LNA_OUT_N" "VGA_GAIN_SPI_CLK"
+            "VGA_GAIN_SPI_DIO" "VGA_GAIN_SPI_CSN" "VBAT_SENSE"))
+    (net_class "USB_HI" (track_width 0.18) (via_diameter 0.5) (via_drill 0.25)
+      (diff_pair_gap 0.12) (nets "USB_DP" "USB_DM" "ULPI_CLK" "ULPI_DIR"
+            "ULPI_NXT" "ULPI_STP" "ULPI_D0" "ULPI_D7"))
+  )
+)
