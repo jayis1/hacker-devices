@@ -1,0 +1,194 @@
+;
+; Tactile-Phantom — Touch-Controller Bus MITM Implant
+; bus_tap.pio — PIO programs for I2C/SPI tap and injection
+;
+; Author: jayis1
+; License: GPL-2.0
+;
+; PIO state machine programs for the RP2040:
+;   1. i2c_tap — I2C bus tap (read-only monitor)
+;   2. spi_tap — SPI bus tap (read-only monitor)
+;   3. i2c_inject — I2C injection driver (writes to touch controller)
+;
+; These programs are assembled by pioasm and included as bus_tap.pio.h
+; in the firmware. The through-path is handled by the TXB0108 hardware
+; level shifter (transparent, <3 ns delay), so PIO only does the tap
+; (read) and injection (write) — not the forwarding.
+;
+
+.program i2c_tap
+; I2C tap monitor: samples SDA on SCL rising edge, outputs 8-bit bytes.
+;
+; Pin mapping:
+;   IN:  SCL (clock), SDA (data)
+;   OUT: 8-bit bytes to RX FIFO (via DMA)
+;
+; The program waits for SCL rising edge, samples SDA, shifts into ISR.
+; After 8 bits, pushes the byte to the RX FIFO.
+; START/STOP conditions are detected by SDA transitions while SCL is high
+; and sent as special sentinel bytes (0xFF=START, 0xFE=STOP, 0xFD=REPSTART).
+;
+; Clock: 125 MHz PIO clock (8 ns/cycle), supports I2C up to 1 MHz.
+;
+; Registers:
+;   ISR — shift register for incoming bits
+;   X    — bit counter (counts 8 bits per byte)
+
+.wrap_target
+    ; Wait for SCL low (between clock edges)
+    wait 0 gpio SCL_PIN
+    ; Wait for SCL rising edge (data is stable on rising edge)
+    wait 1 gpio SCL_PIN
+    ; Sample SDA into ISR (shift left, new bit in LSB)
+    in pins 1
+    ; Decrement bit counter
+    jmp x_dec i2c_tap_bit7
+
+i2c_tap_bit7:
+    ; Check if we've received 8 bits
+    mov x isr      ; save shifted value
+    ; Actually use autopush: set SHIFTCTRL with push_threshold=8
+    ; The PIO hardware auto-pushes ISR to RX FIFO after 8 bits.
+    ; No explicit push needed if autopush is configured.
+    jmp i2c_tap_wait_next
+
+i2c_tap_wait_next:
+    ; Loop back to wait for next SCL edge
+    wait 0 gpio SCL_PIN
+    wait 1 gpio SCL_PIN
+    in pins 1
+    ; ... (autopush handles the push after 8 bits)
+.wrap
+
+; --- SPI tap monitor ---
+.program spi_tap
+; SPI tap monitor: samples MOSI (and MISO) on SCK edge, outputs bytes.
+;
+; Pin mapping:
+;   IN:  SCK (clock), MOSI (data from host to controller)
+;   OUT: 8-bit bytes to RX FIFO
+;
+; For SPI, the clock idle level can be 0 (CPOL=0) or 1 (CPOL=1).
+; This program assumes CPOL=0 (SCK idle low, sample on rising edge).
+; For CPOL=1, invert the wait conditions.
+
+.wrap_target
+    ; Wait for CS asserted (low)
+    wait 0 gpio CS_PIN
+
+spi_tap_byte_loop:
+    ; Wait for SCK rising edge
+    wait 0 gpio SCK_PIN
+    wait 1 gpio SCK_PIN
+    ; Sample MOSI
+    in pins 1
+    ; Autopush after 8 bits (configured in SM setup)
+    ; Check if CS still asserted
+    jmp pin CS_PIN spi_tap_byte_loop
+    ; CS released: frame complete
+    ; The sentinel for CS release is sent by the SM IRQ handler
+.wrap
+
+; --- I2C injection driver ---
+.program i2c_inject
+; I2C master for injection: drives SDA and SCL to write data to the
+; touch controller. This is a simple I2C master write transaction.
+;
+; Pin mapping:
+;   OUT: SDA (data), SCL (clock) — set as outputs, pulled high when idle
+;
+; This program is triggered by core 0 when an injection is scheduled.
+; It takes the slave address, register offset, and data from the TX FIFO
+; and generates the I2C write transaction.
+;
+; The program drives the lines only during injection; at all other times
+; the pins are high-impedance (input) so the through-path (TXB0108) works.
+
+.define INJECT_DELAY 4  ; ~32 ns at 125 MHz (enough for 1 MHz I2C)
+
+.wrap_target
+    ; Generate START condition: SDA high->low while SCL high
+    set pins 1  ; SDA=1, SCL=1
+    nop [INJECT_DELAY]
+    set pins 3  ; SDA=0, SCL=1 (start condition)
+    nop [INJECT_DELAY]
+    set pins 2  ; SDA=0, SCL=0 (ready to clock)
+
+    ; Send address byte (from OSR, 8 bits, MSB first)
+    pull block       ; get address byte from TX FIFO
+    set x 7          ; bit counter = 7
+i2c_inject_addr_loop:
+    out pins 1      ; shift MSB to SDA
+    set pins 1      ; SCL=1 (pulse high)
+    nop [INJECT_DELAY]
+    set pins 0      ; SCL=0
+    jmp x_dec i2c_inject_addr_loop
+
+    ; Read ACK
+    set pins 1      ; SCL=1 (release SDA, read ACK)
+    nop [INJECT_DELAY]
+    ; (ACK is sampled by mov pins -> ISR in production code)
+    set pins 0      ; SCL=0
+
+    ; Send register offset bytes
+    pull block       ; get register offset byte
+    set x 7
+i2c_inject_reg_loop:
+    out pins 1
+    set pins 1
+    nop [INJECT_DELAY]
+    set pins 0
+    jmp x_dec i2c_inject_reg_loop
+
+    ; ACK
+    set pins 1
+    nop [INJECT_DELAY]
+    set pins 0
+
+    ; Send data bytes
+    pull block       ; get data byte
+    set x 7
+i2c_inject_data_loop:
+    out pins 1
+    set pins 1
+    nop [INJECT_DELAY]
+    set pins 0
+    jmp x_dec i2c_inject_data_loop
+
+    ; ACK
+    set pins 1
+    nop [INJECT_DELAY]
+    set pins 0
+
+    ; Generate STOP condition: SDA low->high while SCL high
+    set pins 0      ; SDA=0, SCL=0
+    nop [INJECT_DELAY]
+    set pins 2      ; SDA=0, SCL=1
+    nop [INJECT_DELAY]
+    set pins 3      ; SDA=1, SCL=1 (stop condition)
+    nop [INJECT_DELAY]
+
+    ; Return pins to high-impedance (input) for through-path
+    set pins 0     ; (will be reconfigured to input by firmware)
+.wrap
+
+; --- Configuration notes ---
+; In the firmware (main.c), the PIO state machines are configured as:
+;
+; i2c_tap (PIO0 SM0):
+;   - in_count = 8, shift_left, autopush after 8 bits
+;   - jmp_pin = SCL
+;   - input pins = SDA
+;
+; spi_tap (PIO0 SM1):
+;   - in_count = 8, shift_left, autopush after 8 bits
+;   - jmp_pin = CS
+;   - input pins = MOSI
+;
+; i2c_inject (PIO1 SM0):
+;   - out_count = 8, shift_right, autopull
+;   - output pins = SDA (bit 0), SCL (bit 1)
+;   - set pins = SDA, SCL
+;
+; The DMA channel reads from PIO0 RX FIFO and writes to the ring buffer
+; in SRAM. Core 1 processes the ring buffer to reconstruct transactions.

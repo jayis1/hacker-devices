@@ -1,0 +1,36 @@
+{
+  "name": "tactile-phantom-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "license": "GPL-2.0",
+  "description": "Companion app for Tactile-Phantom touch-controller bus MITM implant",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build": "expo build"
+  },
+  "dependencies": {
+    "expo": "^50.0.0",
+    "expo-ble-peripheral": "^13.0.0",
+    "expo-bluetooth-serial": "^6.0.0",
+    "react": "18.2.0",
+    "react-native": "0.73.4",
+    "@react-navigation/native": "^6.1.0",
+    "@react-navigation/stack": "^6.3.0",
+    "react-native-ble-plx": "^3.0.0",
+    "zustand": "^4.5.0",
+    "react-native-reanimated": "^3.6.0",
+    "react-native-gesture-handler": "^2.14.0",
+    "react-native-safe-area-context": "^4.8.0",
+    "react-native-screens": "^3.30.0",
+    "@expo/vector-icons": "^14.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.73.0",
+    "typescript": "^5.3.0"
+  }
+}
