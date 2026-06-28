@@ -1,0 +1,24 @@
+{
+  "board": {
+    "design_rules": {
+      "min_track_width": 0.2,
+      "min_via_diameter": 0.4,
+      "min_clearance": 0.2
+    },
+    "layer_count": 4,
+    "copper_layers": ["F.Cu", "In1.Cu", "In2.Cu", "B.Cu"],
+    "thickness": 1.6
+  },
+  "meta": {
+    "filename": "thermal-phantom.kicad_pro",
+    "version": 1,
+    "author": "jayis1",
+    "copyright": "2026 jayis1"
+  },
+  "project": {
+    "name": "thermal-phantom"
+  },
+  "schematic": {
+    "annotate": true
+  }
+}

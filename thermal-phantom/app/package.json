@@ -1,0 +1,29 @@
+{
+  "name": "thermal-phantom-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "description": "Companion app for Thermal Phantom - Precision Thermal Fault Injection Device",
+  "main": "App.tsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.74.5",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/bottom-tabs": "^6.6.1",
+    "react-native-ble-plx": "^3.2.0",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-paper": "^5.12.5",
+    "react-native-safe-area-context": "^4.10.0",
+    "react-native-screens": "^3.31.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.4.0"
+  },
+  "license": "MIT",
+  "copyright": "2026 jayis1"
+}
