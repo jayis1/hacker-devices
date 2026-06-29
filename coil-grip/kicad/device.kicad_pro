@@ -1,0 +1,119 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_thickness": 1.6,
+        "copper_line_width": 0.1,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.5,
+        "min_via_drill": 0.25
+      },
+      "track_widths": [0.15, 0.2, 0.3, 0.5, 0.8, 1.0],
+      "via_dimensions": [
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": ["device.kicad_pcb"],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0 0 0 0)",
+        "schematic_color": "rgba(0 0 0 0)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(255 0 0 0.8)",
+        "schematic_color": "rgba(255 0 0 0.8)",
+        "track_width": 0.8,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 8
+      }
+    ],
+    "meta": {"version": 1}
+  },
+  "pcb": {
+    "last_pns": "",
+    "last_sheet": "/",
+    "version": "1.0.0"
+  },
+  "schematic": {
+    "drawing": {
+      "default_line_thickness": 6,
+      "default_text_size": 50,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size": 30,
+      "label_size": 50,
+      "pin_symbol_size": 25,
+      "pin_symbol_size_l": 25,
+      "text_offset": 50
+    },
+    "page_size": "A3",
+    "sheets": [
+      {
+        "uuid": "00000000-0000-0000-0000-000000000001",
+        "name": "CoilGrip",
+        "filename": "device.kicad_sch"
+      }
+    ]
+  },
+  "sheets": ["device.kicad_sch"],
+  "text_variables": []
+}
