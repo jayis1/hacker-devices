@@ -1,0 +1,41 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_thickness": 1.6,
+        "copper_line_thickness": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_thickness": 0.15,
+        "silk_line_thickness": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "drc_exclusions": [],
+      "meta": { "version": 2 },
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.2,
+        "min_via_diameter": 0.6,
+        "min_via_drill": 0.3
+      },
+      "track_widths": [0.0, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        { "diameter": 0.6, "drill": 0.3 },
+        { "diameter": 0.8, "drill": 0.4 }
+      ]
+    },
+    "ipc2581": { "dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": "", "name": "zigbee-phantom" },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": ["zigbee-phantom"],
+  "copyright": "Copyright (C) 2026 jayis1 — CERN-OHL-S v2",
+  "meta": { "filename": "device.kicad_pro", "version": 1 },
+  "name": "zigbee-phantom",
+  "paths": { "kicad_symbols": "symbols", "kicad_text_fonts": "fonts", "kicad_templates": "templates", "kicad_user_templates": "user_templates" },
+  "version": 1
+}
