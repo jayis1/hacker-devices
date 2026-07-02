@@ -1,0 +1,57 @@
+# aurora.pcf — Physical constraints for iCE40UP5K-SG48
+# Author: jayis1   License: GPL-2.0
+#
+# Pin assignments for the Aurora-Phantom signal core.
+
+set_io clk_40m    35      # Si5351C CLK1 -> iCE40 CLKIN
+set_io rst_n      34      # ESP32 GPIO reset line
+set_io spi_sck    12      # FPGA_SPI_HOST SCK
+set_io spi_mosi   11
+set_io spi_miso   13
+set_io spi_cs_n   10
+set_io spad_hit_a[0]  20
+set_io spad_hit_a[1]  19
+set_io spad_hit_a[2]  18
+set_io spad_hit_a[3]  17
+set_io spad_hit_a[4]  16
+set_io spad_hit_a[5]  15
+set_io spad_hit_a[6]  14
+set_io spad_hit_a[7]  21
+set_io spad_hit_a[8]  22
+set_io spad_hit_a[9]  23
+set_io spad_hit_a[10] 24
+set_io spad_hit_a[11] 25
+set_io spad_hit_a[12] 26
+set_io spad_hit_a[13] 27
+set_io spad_hit_a[14] 28
+set_io spad_hit_a[15] 29
+set_io spad_hit_b[0]  30
+set_io spad_hit_b[1]  31
+set_io spad_hit_b[2]  32
+set_io spad_hit_b[3]  33
+set_io spad_hit_b[4]  36
+set_io spad_hit_b[5]  37
+set_io spad_hit_b[6]  38
+set_io spad_hit_b[7]  39
+set_io spad_hit_b[8]  40
+set_io spad_hit_b[9]  41
+set_io spad_hit_b[10] 42
+set_io spad_hit_b[11] 43
+set_io spad_hit_b[12] 44
+set_io spad_hit_b[13] 45
+set_io spad_hit_b[14] 46
+set_io spad_hit_b[15] 47
+set_io spad_gate   6
+set_io spad_bias[0]  7
+set_io spad_bias[1]  8
+set_io spad_bias[2]  9
+set_io spad_bias[3]  1
+set_io spad_bias[4]  2
+set_io spad_bias[5]  3
+set_io spad_bias[6]  4
+set_io spad_bias[7]  48
+set_io spad_bias[8]  49   # (sg48 has 48 pins; trim high bits)
+set_io spad_bias[9]  48
+set_io spad_bias[10] 48
+set_io spad_bias[11] 48
+set_irq irq        5
