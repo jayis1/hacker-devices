@@ -1,0 +1,193 @@
+{
+  "board": {
+    "design": {
+      "last_author": "jayis1",
+      "settings": {
+        "copper_edge_clearance": 0.15,
+        "rule_severities": {
+          "lib_symbol_issues": "warning",
+          "same_local_global": "error",
+          "track_dangling": "warning",
+          "via_dangling": "warning",
+          "unconnected_items": "error"
+        }
+      },
+      "track_widths": [0.0, 0.1, 0.15, 0.18, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.45, "drill": 0.2},
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ],
+      "diff_pair_dimensions": [
+        {"width": 0.18, "gap": 0.12, "via_gap": 0.2}
+      ],
+      "layer_presets": [],
+      "view": {
+        "coords": {"x": 105, "y": 28},
+        "zoom": 1.5
+      }
+    },
+    "ipc2581": {
+      "dist": "",
+      "mfg": "",
+      "mpn": "",
+      "internal_id": "RadarPhantom-v1.0"
+    },
+    "metadata": {
+      "filename": "device.kicad_pcb",
+      "version": 1,
+      "date": "2026-07-03",
+      "author": "jayis1"
+    },
+    "setup": {
+      "stackup": {
+        "layers": [
+          {"name": "F.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "F.Paste", "type": "solder-paste"},
+          {"name": "F.SilkS", "type": "silk-screen"},
+          {"name": "F.Mask", "type": "solder-mask"},
+          {"name": "Dielectric.1", "type": "dielectric", "thickness": 0.1, "material": "Rogers RO4350B"},
+          {"name": "In1.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.2", "type": "dielectric", "thickness": 0.2},
+          {"name": "In2.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.3", "type": "dielectric", "thickness": 0.4},
+          {"name": "In3.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.4", "type": "dielectric", "thickness": 0.1},
+          {"name": "In4.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.5", "type": "dielectric", "thickness": 0.2},
+          {"name": "In5.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.6", "type": "dielectric", "thickness": 0.1, "material": "Rogers RO4350B"},
+          {"name": "In6.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.7", "type": "dielectric", "thickness": 0.2},
+          {"name": "B.Mask", "type": "solder-mask"},
+          {"name": "B.SilkS", "type": "silk-screen"},
+          {"name": "B.Cu", "type": "copper", "thickness": 0.035}
+        ]
+      },
+      "pad_to_mask_clearance": 0.05,
+      "solder_mask_min_width": 0.05,
+      "grid_origin": {"x": 0, "y": 0},
+      "defaults": {
+        "via": {"diameter": 0.6, "drill": 0.3},
+        "track": {"width": 0.2}
+      }
+    },
+    "design_rules": {
+      "min_track_width": 0.1,
+      "min_via_diameter": 0.45,
+      "min_via_drill": 0.2,
+      "min_clearance": 0.1,
+      "impedance_controlled": true,
+      "diff_pair_width": 0.18,
+      "diff_pair_gap": 0.12,
+      "notes": [
+        "JESD204B 100-ohm diff pairs on In2.Cu",
+        "77 GHz RF on In6.Cu (Rogers RO4350B stripline)",
+        "8-layer stackup for RF + digital isolation",
+        "Author: jayis1"
+      ]
+    },
+    "net_classes": [
+      {
+        "name": "default",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "nets": ["VCC_3V3", "GND", "VBAT_7V4", "VBUS_USB", "BAT_SENSE",
+                 "FPGA_SCK", "FPGA_SDI", "FPGA_CSN", "FPGA_CRST", "FPGA_CDONE",
+                 "SRAM_DQ0", "SRAM_DQ7", "SRAM_A18", "SRAM_CLK", "SRAM_CS",
+                 "PLL_CLK", "PLL_DATA", "PLL_LE", "PLL_MUX", "PLL_RF_EN",
+                 "BLE_TX", "BLE_RX", "USB_DP", "USB_DM", "USB_TX", "USB_RX",
+                 "SD_CMD", "SD_CLK", "SD_D0", "SD_CS",
+                 "OLED_SCL", "OLED_SDA", "OLED_RES", "OLED_DC", "OLED_CS",
+                 "EN_5V", "EN_RF", "JOY_WIPER", "JOY_PRESS",
+                 "LED_STATUS", "LED_ARM", "LED_FAULT",
+                 "ADC_SPI_SCK", "ADC_SPI_CS", "DAC_SPI_SCK", "DAC_SPI_CS"]
+      },
+      {
+        "name": "JESD204B",
+        "track_width": 0.18,
+        "via_diameter": 0.5,
+        "via_drill": 0.25,
+        "diff_pair_gap": 0.12,
+        "nets": ["JTX_P0", "JTX_N0", "JTX_P1", "JTX_N1",
+                 "JRX_P0", "JRX_N0", "JRX_P1", "JRX_N1", "ADC_DEV_CLK"]
+      },
+      {
+        "name": "RF_77G",
+        "track_width": 0.15,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "nets": ["RX_HORN_RF", "RX_LNA_OUT", "TX_PA_IN", "TX_PA_OUT",
+                 "LO_OUT_P", "LO_OUT_N", "LO_REF"]
+      },
+      {
+        "name": "IF",
+        "track_width": 0.18,
+        "via_diameter": 0.5,
+        "via_drill": 0.25,
+        "diff_pair_gap": 0.12,
+        "nets": ["RX_IF", "RX_IF_N", "TX_IF", "TX_IF_N"]
+      }
+    ]
+  },
+  "schematic": {
+    "last_author": "jayis1",
+    "metadata": {
+      "filename": "device.kicad_sch",
+      "date": "2026-07-03",
+      "author": "jayis1"
+    },
+    "erc": {
+      "enabled": true,
+      "severity": {
+        "pin_not_connected": "warning",
+        "power_pin_not_driven": "error",
+        "hierarchical_label_unmatched": "error"
+      }
+    },
+    "annotation": {
+      "method": "X-Y",
+      "start": 1
+    }
+  },
+  "libraries": {
+    "paths": {
+      "system": ["${KISYSMOD}", "${KISYS3DMOD}"],
+      "project": ["symbols/radar-phantom.kicad_sym"]
+    },
+    "footprints": [
+      {"name": "LQFP-100_14x14mm_P0.5mm", "lib": "Package_QFP"},
+      {"name": "QFN-48-1EP_7x7mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "QSOP-24_3.9x8.7mm_P0.635mm", "lib": "Package_SO"},
+      {"name": "QFN-64-1EP_9x9mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "QFN-56-1EP_8x8mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "DFN-8-1EP_2x2mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "DFN-6-1EP_2x2mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "TSOP-II-54_22.0x10.2mm_P0.8mm", "lib": "Package_SO"},
+      {"name": "NINA-B3", "lib": "RF_Module"},
+      {"name": "QFN-28-1EP_5x5mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "OLED_128x96_1.3in", "lib": "Display"},
+      {"name": "WR12_Horn_15dBi", "lib": "Connector_Waveguide"},
+      {"name": "USB_C_Receptacle_HRO_TYPE-C-31-M-12", "lib": "Connector_USB"},
+      {"name": "microSD_HC_Hirose_DM3D-SF", "lib": "Connector_Card"},
+      {"name": "BatteryHolder_Keystone_1042_2x18650", "lib": "Battery"},
+      {"name": "SW_5Way_Tactile_6x6mm", "lib": "Button_Switch_SMD"}
+    ]
+  },
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "PROJECT": "RadarPhantom",
+    "VERSION": "1.0",
+    "DATE": "2026-07-03",
+    "LICENSE": "CERN-OHL-S v2 / GPL-2.0"
+  },
+  "project": {
+    "name": "RadarPhantom",
+    "author": "jayis1",
+    "company": "jayis1",
+    "date": "2026-07-03",
+    "rev": "1.0",
+    "description": "Portable mmWave FMCW Radar Phantom-Target Injector"
+  }
+}
