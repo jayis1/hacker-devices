@@ -1,0 +1,36 @@
+{
+  "board": {
+    "layer_presets": [],
+    "view_state": "layout",
+    "active_layer": 0,
+    "auto_track_width": true,
+    "track_width": 0.2,
+    "via_size": 0.4,
+    "design_settings": {
+      "rules": {
+        "min_track_width": 0.127,
+        "min_via_diameter": 0.5,
+        "min_clearance": 0.127,
+        "diff_pair_gap": 0.1
+      },
+      "board_thickness": 1.6,
+      "copper_layers": 4
+    },
+    "rules": {
+      "min_clearance": 0.15,
+      "min_track_width": 0.15
+    },
+    "page_settings": {
+      "size": "A4",
+      "orientation": "landscape"
+    },
+    "metadata": {
+      "filename": "device.kicad_pcb",
+      "version": 20240101,
+      "author": "jayis1",
+      "company": "jayis1",
+      "license": "GPL-2.0",
+      "comment": "AperturePhantom — MIPI CSI-2 camera interposer. Author: jayis1"
+    }
+  }
+}
