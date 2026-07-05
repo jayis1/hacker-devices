@@ -1,0 +1,591 @@
+(kicad_sch
+  (version 20240108)
+  (generator "kicad-schema-tools")
+  (generator_version "7.0")
+  (uuid "d1e2f3a4-b5c6-7890-abcd-ef1234567890")
+  (paper "A3")
+  (title_block
+    (title "DRAM-Phantom — DDR4 SO-DIMM Interposer for Memory Bus Security Research")
+    (date "2026-07-05")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "Artix-7 XC7A100T + STM32G474 + nRF52840 — DDR4 CA-bus tap/hammer/capture")
+  )
+
+  (sheet_instances (path "/" (page "1")))
+
+  ; ============================================================
+  ; SYMBOL LIBRARIES
+  ; ============================================================
+  (lib_symbols
+
+    ; ---- Xilinx Artix-7 XC7A100T (FGG484) ----
+    (symbol "FPGA_Xilinx:Artix7-XC7A100T-FGG484"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U1" (at -30 60 (angle 0)))
+      (property "Value" "XC7A100T-FGG484" (at 5 60 (angle 0)))
+      (property "Footprint" "Package_BGA:Xilinx_FGG484" (at 0 0))
+      (property "Datasheet" "https://docs.amd.com/r/en-US/ds181-Artix-7-Datasheet" (at 0 0))
+      (property "Description" "Xilinx Artix-7 100K LC FPGA, 16 GTP, FGG484" (at 0 0))
+      (property "Manufacturer" "AMD/Xilinx" (at 0 0))
+      (property "MPN" "XC7A100T-2FGG484I" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCCINT_0" (type power_in) (at -20 50))
+      (pin "VCCINT_1" (type power_in) (at -20 45))
+      (pin "GND_0" (type power_in) (at -20 -50))
+      (pin "GND_1" (type power_in) (at -20 -45))
+      (pin "VCCAUX" (type power_in) (at -25 30))
+      (pin "VCCO_BANK14" (type power_in) (at 20 50))
+      (pin "VCCO_BANK15" (type power_in) (at 25 50))
+      (pin "VCCO_BANK16" (type power_in) (at 30 50))
+      (pin "VCCO_BANK34" (type power_in) (at 30 -30))
+      (pin "TCK" (type input) (at -30 0))
+      (pin "TDI" (type input) (at -30 -4))
+      (pin "TDO" (type output) (at -30 -8))
+      (pin "TMS" (type input) (at -30 -12))
+      (pin "DONE" (type bidirectional) (at 25 30))
+      (pin "PROG_B" (type input) (at 25 25))
+      (pin "INIT_B" (type bidirectional) (at 25 20))
+      (pin "CCLK" (type bidirectional) (at 25 15))
+      (pin "DIN" (type input) (at 25 10))
+      ; DDR4 CA tap pins (Banks 14/15 at 1.2 V VCCO)
+      (pin "IO_CA0" (type bidirectional) (at 30 40))
+      (pin "IO_CA1" (type bidirectional) (at 30 35))
+      (pin "IO_CA2" (type bidirectional) (at 30 30))
+      (pin "IO_CA3" (type bidirectional) (at 30 25))
+      (pin "IO_CK_T" (type bidirectional) (at 30 20))
+      (pin "IO_CK_C" (type bidirectional) (at 30 15))
+      (pin "IO_DQS_T" (type bidirectional) (at 30 10))
+      (pin "IO_DQS_C" (type bidirectional) (at 30 5))
+      (pin "IO_DQ0" (type bidirectional) (at 30 0))
+      (pin "IO_DQ7" (type bidirectional) (at 30 -5))
+      (pin "IO_DQ8" (type bidirectional) (at 30 -10))
+      (pin "IO_DQ15" (type bidirectional) (at 30 -15))
+      ; SPI to MCU
+      (pin "SPI_SCK" (type input) (at -25 15))
+      (pin "SPI_CSN" (type input) (at -25 10))
+      (pin "SPI_MOSI" (type input) (at -25 5))
+      (pin "SPI_MISO" (type output) (at -25 0))
+      (pin "INTR_N" (type output) (at -25 -20))
+    )
+
+    ; ---- ST STM32G474CEU6 (UFQFPN-48) ----
+    (symbol "MCU_ST_STM32G4:STM32G474CEUx"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U2" (at -20 30 (angle 0)))
+      (property "Value" "STM32G474CEUx" (at 5 30 (angle 0)))
+      (property "Footprint" "Package_DFN_QFN:UFQFPN-48_7x7mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g474ce.pdf" (at 0 0))
+      (property "Description" "STM32G474, Cortex-M4F 170MHz, 512KB Flash, 128KB SRAM, UFQFPN-48" (at 0 0))
+      (property "Manufacturer" "STMicroelectronics" (at 0 0))
+      (property "MPN" "STM32G474CEU6" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VBAT" (type power_in) (at -25 25))
+      (pin "VDD" (type power_in) (at -25 20))
+      (pin "VDDA" (type power_in) (at -25 15))
+      (pin "VSS" (type power_in) (at -25 -25))
+      (pin "NRST" (type input) (at -25 10))
+      (pin "PA0" (type bidirectional) (at -20 5))
+      (pin "PA1" (type bidirectional) (at -20 0))
+      (pin "PA2" (type bidirectional) (at -20 -5))
+      (pin "PA3" (type bidirectional) (at -20 -10))
+      (pin "PA4" (type bidirectional) (at -20 -15))
+      (pin "PA5" (type bidirectional) (at -20 -20))
+      (pin "PA6" (type bidirectional) (at 15 25))
+      (pin "PA7" (type bidirectional) (at 15 20))
+      (pin "PA9" (type bidirectional) (at 15 15))
+      (pin "PA10" (type bidirectional) (at 15 10))
+      (pin "PA15" (type bidirectional) (at 15 5))
+      (pin "PB2" (type bidirectional) (at 15 0))
+      (pin "PB4" (type bidirectional) (at 15 -5))
+      (pin "PB6" (type bidirectional) (at 15 -10))
+      (pin "PB7" (type bidirectional) (at 15 -15))
+      (pin "PB8" (type bidirectional) (at 15 -20))
+      (pin "PB9" (type bidirectional) (at 15 -25))
+      (pin "PC4" (type bidirectional) (at 25 20))
+      (pin "PC5" (type bidirectional) (at 25 15))
+    )
+
+    ; ---- Nordic nRF52840 (Fanstel BT840F module) ----
+    (symbol "RF_Module:nRF52840-BT840F"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U3" (at -15 20 (angle 0)))
+      (property "Value" "BT840F" (at 5 20 (angle 0)))
+      (property "Footprint" "RF_Module:Fanstel_BT840F" (at 0 0))
+      (property "Datasheet" "https://www.fanstel.com/bt840f-datasheet" (at 0 0))
+      (property "Description" "Nordic nRF52840 BLE 5.0 module, chip antenna" (at 0 0))
+      (property "Manufacturer" "Fanstel" (at 0 0))
+      (property "MPN" "BT840F" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD" (type power_in) (at -20 15))
+      (pin "GND" (type power_in) (at -20 -15))
+      (pin "DEC1" (type power_in) (at -20 10))
+      (pin "DEC2" (type power_in) (at -20 5))
+      (pin "DEC3" (type power_in) (at -20 0))
+      (pin "DEC4" (type power_in) (at -20 -5))
+      (pin "DEC5" (type power_in) (at -20 -10))
+      (pin "UART_TX" (type bidirectional) (at 20 10))
+      (pin "UART_RX" (type bidirectional) (at 20 5))
+      (pin "SWDIO" (type bidirectional) (at 20 0))
+      (pin "SWCLK" (type input) (at 20 -5))
+      (pin "ANT" (type bidirectional) (at 20 -10))
+    )
+
+    ; ---- TI TPS63020 buck-boost (3.3V always-on rail) ----
+    (symbol "Regulator_Switching:TPS63020"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U4" (at -10 15 (angle 0)))
+      (property "Value" "TPS63020" (at 5 15 (angle 0)))
+      (property "Footprint" "Package_SON:VSON-14-1EP_4x4mm" (at 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63020.pdf" (at 0 0))
+      (property "Description" "Buck-boost 1.8-5.5V to 3.3V, 2A, VSON-14" (at 0 0))
+      (property "Manufacturer" "TI" (at 0 0))
+      (property "MPN" "TPS63020DSJR" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VIN" (type power_in) (at -15 5))
+      (pin "GND" (type power_in) (at -15 -5))
+      (pin "VOUT" (type power_out) (at 15 5))
+      (pin "EN" (type input) (at -15 0))
+      (pin "FB" (type input) (at 15 0))
+      (pin "VAUX" (type power_in) (at -15 -10))
+      (pin "PSYNC" (type input) (at -15 10))
+    )
+
+    ; ---- TI TPS62110 (1.0V FPGA core) ----
+    (symbol "Regulator_Switching:TPS62110"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U5" (at -10 12 (angle 0)))
+      (property "Value" "TPS62110" (at 5 12 (angle 0)))
+      (property "Footprint" "Package_SON:VQFN-16-1EP_3x3mm" (at 0 0))
+      (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps62110.pdf" (at 0 0))
+      (property "Description" "Buck 3-17V to 1.0V, 1.5A, VQFN-16" (at 0 0))
+      (property "Manufacturer" "TI" (at 0 0))
+      (property "MPN" "TPS62110RGTR" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VIN" (type power_in) (at -12 4))
+      (pin "GND" (type power_in) (at -12 -4))
+      (pin "VOUT" (type power_out) (at 12 4))
+      (pin "EN" (type input) (at -12 0))
+      (pin "FB" (type input) (at 12 0))
+      (pin "PG" (type output) (at 12 -4))
+      (pin "SS" (type input) (at -12 -8))
+    )
+
+    ; ---- Maxim MAX17048 fuel gauge ----
+    (symbol "Sensor_Voltage:MAX17048"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U6" (at -10 10 (angle 0)))
+      (property "Value" "MAX17048" (at 5 10 (angle 0)))
+      (property "Footprint" "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm" (at 0 0))
+      (property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/MAX17048-MAX17049.pdf" (at 0 0))
+      (property "Description" "LiPo fuel gauge, I2C, TDFN-8" (at 0 0))
+      (property "Manufacturer" "Maxim" (at 0 0))
+      (property "MPN" "MAX17048G+T10" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "CELL+" (type power_in) (at -12 3))
+      (pin "CELL-" (type power_in) (at -12 -3))
+      (pin "VDD" (type power_in) (at 12 3))
+      (pin "GND" (type power_in) (at 12 -3))
+      (pin "SDA" (type bidirectional) (at 12 0))
+      (pin "SCL" (type input) (at 12 -6))
+      (pin "ALRT" (type output) (at -12 0))
+    )
+
+    ; ---- ISSI IS25LP032D 32Mb QSPI flash (FPGA bitstream store) ----
+    (symbol "Memory_Flash:IS25LP032D"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U7" (at -10 10 (angle 0)))
+      (property "Value" "IS25LP032D" (at 5 10 (angle 0)))
+      (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 0 0))
+      (property "Datasheet" "https://www.issi.com/WW/pdf/25LP-WP032D.pdf" (at 0 0))
+      (property "Description" "32Mb QSPI NOR flash, 3V, SOIC-8" (at 0 0))
+      (property "Manufacturer" "ISSI" (at 0 0))
+      (property "MPN" "IS25LP032D-JBLE" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -12 4))
+      (pin "GND" (type power_in) (at -12 -4))
+      (pin "CS#" (type input) (at 12 4))
+      (pin "SCK" (type input) (at 12 2))
+      (pin "SI" (type input) (at 12 0))
+      (pin "SO" (type output) (at 12 -2))
+      (pin "WP#" (type input) (at 12 -4))
+      (pin "HOLD#" (type input) (at 12 -6))
+    )
+
+    ; ---- DDR4 SO-DIMM 260-pin socket (top — module plugs here) ----
+    (symbol "Connector:DDR4-SODIMM-Socket-260"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "U8" (at -25 40 (angle 0)))
+      (property "Value" "DDR4-SODIMM-260" (at 0 40 (angle 0)))
+      (property "Footprint" "Connector_SODIMM:SO-DIMM-260-DDR4" (at 0 0))
+      (property "Datasheet" "https://www.jedec.org/standards-documents/docs/jesd-82-4-01" (at 0 0))
+      (property "Description" "DDR4 SO-DIMM 260-pin socket for x16 module" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD_0" (type power_in) (at -30 35))
+      (pin "VDDQ_0" (type power_in) (at -30 30))
+      (pin "VPP_0" (type power_in) (at -30 25))
+      (pin "GND_0" (type power_in) (at -30 -35))
+      (pin "A0" (type bidirectional) (at -25 30))
+      (pin "A17" (type bidirectional) (at -25 20))
+      (pin "BA0" (type bidirectional) (at -25 15))
+      (pin "BA1" (type bidirectional) (at -25 10))
+      (pin "BG0" (type bidirectional) (at -25 5))
+      (pin "BG1" (type bidirectional) (at -25 0))
+      (pin "CK_t" (type bidirectional) (at -25 -5))
+      (pin "CK_c" (type bidirectional) (at -25 -10))
+      (pin "CKE" (type bidirectional) (at -25 -15))
+      (pin "CS#" (type bidirectional) (at -25 -20))
+      (pin "ODT" (type bidirectional) (at -25 -25))
+      (pin "RESET#" (type bidirectional) (at -25 -30))
+      (pin "ACT#" (type bidirectional) (at 25 30))
+      (pin "DQ0" (type bidirectional) (at 25 25))
+      (pin "DQ7" (type bidirectional) (at 25 20))
+      (pin "DQ8" (type bidirectional) (at 25 15))
+      (pin "DQ15" (type bidirectional) (at 25 10))
+      (pin "DQS0_t" (type bidirectional) (at 25 5))
+      (pin "DQS0_c" (type bidirectional) (at 25 0))
+      (pin "DQS1_t" (type bidirectional) (at 25 -5))
+      (pin "DQS1_c" (type bidirectional) (at 25 -10))
+      (pin "SA0" (type bidirectional) (at 25 -15))
+      (pin "SCL" (type bidirectional) (at 25 -20))
+      (pin "SDA" (type bidirectional) (at 25 -25))
+    )
+
+    ; ---- DDR4 SO-DIMM edge fingers (bottom — plugs into host slot) ----
+    (symbol "Connector:DDR4-SODIMM-Edge-260"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J1" (at -25 40 (angle 0)))
+      (property "Value" "DDR4-EDGE-260" (at 0 40 (angle 0)))
+      (property "Footprint" "Connector_SODIMM:SO-DIMM-260-DDR4-Edge" (at 0 0))
+      (property "Description" "PCB edge finger for DDR4 SO-DIMM slot" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD_0" (type power_in) (at -30 35))
+      (pin "VDDQ_0" (type power_in) (at -30 30))
+      (pin "VPP_0" (type power_in) (at -30 25))
+      (pin "GND_0" (type power_in) (at -30 -35))
+      (pin "A0" (type bidirectional) (at -25 30))
+      (pin "A17" (type bidirectional) (at -25 20))
+      (pin "BA0" (type bidirectional) (at -25 15))
+      (pin "BG0" (type bidirectional) (at -25 5))
+      (pin "CK_t" (type bidirectional) (at -25 -5))
+      (pin "CK_c" (type bidirectional) (at -25 -10))
+      (pin "CKE" (type bidirectional) (at -25 -15))
+      (pin "CS#" (type bidirectional) (at -25 -20))
+      (pin "ODT" (type bidirectional) (at -25 -25))
+      (pin "RESET#" (type bidirectional) (at -25 -30))
+      (pin "ACT#" (type bidirectional) (at 25 30))
+      (pin "DQ0" (type bidirectional) (at 25 25))
+      (pin "DQ7" (type bidirectional) (at 25 20))
+      (pin "DQ8" (type bidirectional) (at 25 15))
+      (pin "DQ15" (type bidirectional) (at 25 10))
+      (pin "DQS0_t" (type bidirectional) (at 25 5))
+      (pin "DQS0_c" (type bidirectional) (at 25 0))
+      (pin "DQS1_t" (type bidirectional) (at 25 -5))
+      (pin "DQS1_c" (type bidirectional) (at 25 -10))
+    )
+
+    ; ---- USB-C receptacle ----
+    (symbol "Connector:USB-C-Receptacle"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J2" (at 0 12 (angle 0)))
+      (property "Value" "USB-C" (at 0 8 (angle 0)))
+      (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VBUS" (type power_in) (at -15 5))
+      (pin "GND" (type power_in) (at -15 -5))
+      (pin "DP1" (type bidirectional) (at 15 5))
+      (pin "DM1" (type bidirectional) (at 15 -5))
+    )
+
+    ; ---- microSD socket ----
+    (symbol "Connector:microSD_Socket"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J3" (at 0 15 (angle 0)))
+      (property "Value" "microSD" (at 0 11 (angle 0)))
+      (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VDD" (type power_in) (at -15 8))
+      (pin "GND" (type power_in) (at -15 4))
+      (pin "CMD" (type bidirectional) (at 15 8))
+      (pin "CLK" (type input) (at 15 4))
+      (pin "D0" (type bidirectional) (at 15 0))
+      (pin "D1" (type bidirectional) (at 15 -4))
+      (pin "D2" (type bidirectional) (at 15 -8))
+      (pin "D3" (type bidirectional) (at 15 -12))
+    )
+
+    ; ---- LiPo header ----
+    (symbol "Connector:LiPo_Header"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "J4" (at 0 8 (angle 0)))
+      (property "Value" "LiPo" (at 0 4 (angle 0)))
+      (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "+" (type power_in) (at -10 0))
+      (pin "-" (type power_in) (at 10 0))
+    )
+
+    ; ---- 0.96" OLED SSD1306 ----
+    (symbol "Display:SSD1306-128x64"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "D1" (at -10 12 (angle 0)))
+      (property "Value" "SSD1306-128x64" (at 5 12 (angle 0)))
+      (property "Footprint" "Display:OLED_128x64_0.96in_I2C" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "VCC" (type power_in) (at -12 5))
+      (pin "GND" (type power_in) (at -12 -5))
+      (pin "SCL" (type input) (at 12 5))
+      (pin "SDA" (type bidirectional) (at 12 0))
+      (pin "RES" (type input) (at 12 -5))
+    )
+
+    ; ---- Passives ----
+    (symbol "Device:C"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 5 5 (angle 0)))
+      (property "Value" "C" (at 5 0 (angle 0)))
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Device:R"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 5 5 (angle 0)))
+      (property "Value" "R" (at 5 0 (angle 0)))
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Device:L"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "L" (at 5 5 (angle 0)))
+      (property "Value" "L" (at 5 0 (angle 0)))
+      (property "Footprint" "Inductor_SMD:L_0603_1608Metric" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    (symbol "Switch:SW_Push"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "SW" (at 5 5 (angle 0)))
+      (property "Value" "SW_Push" (at 5 0 (angle 0)))
+      (property "Footprint" "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "1" (type passive) (at -5 0))
+      (pin "2" (type passive) (at 5 0))
+    )
+
+    ; ---- NMOS FET for host RESET# gating ----
+    (symbol "Transistor_FET:2N7002K"
+      (pin_numbers (hide yes))
+      (in_bom yes) (on_board yes)
+      (property "Reference" "Q1" (at -5 8 (angle 0)))
+      (property "Value" "2N7002K" (at 5 8 (angle 0)))
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 0 0))
+      (property "Author" "jayis1" (at 0 0))
+      (pin "G" (type input) (at -10 0))
+      (pin "S" (type passive) (at 10 -5))
+      (pin "D" (type passive) (at 10 5))
+    )
+  )
+
+  ; ============================================================
+  ; COMPONENT INSTANCES
+  ; ============================================================
+  (symbol_instances
+    (path "/U1" (reference "U1") (unit 1) (value "XC7A100T-FGG484I")
+      (at 100 180 (angle 0)) (property "Author" "jayis1"))
+    (path "/U2" (reference "U2") (unit 1) (value "STM32G474CEU6")
+      (at 100 100 (angle 0)) (property "Author" "jayis1"))
+    (path "/U3" (reference "U3") (unit 1) (value "BT840F")
+      (at 200 80 (angle 0)) (property "Author" "jayis1"))
+    (path "/U4" (reference "U4") (unit 1) (value "TPS63020")
+      (at -100 60 (angle 0)) (property "Author" "jayis1"))
+    (path "/U5" (reference "U5") (unit 1) (value "TPS62110")
+      (at -100 100 (angle 0)) (property "Author" "jayis1"))
+    (path "/U6" (reference "U6") (unit 1) (value "MAX17048")
+      (at -100 20 (angle 0)) (property "Author" "jayis1"))
+    (path "/U7" (reference "U7") (unit 1) (value "IS25LP032D")
+      (at 180 160 (angle 0)) (property "Author" "jayis1"))
+    (path "/U8" (reference "U8") (unit 1) (value "DDR4-SODIMM-260")
+      (at 280 120 (angle 0)) (property "Author" "jayis1"))
+    (path "/J1" (reference "J1") (unit 1) (value "DDR4-EDGE-260")
+      (at 280 60 (angle 0)) (property "Author" "jayis1"))
+    (path "/J2" (reference "J2") (unit 1) (value "USB-C")
+      (at -40 80 (angle 0)) (property "Author" "jayis1"))
+    (path "/J3" (reference "J3") (unit 1) (value "microSD")
+      (at 220 120 (angle 0)) (property "Author" "jayis1"))
+    (path "/J4" (reference "J4") (unit 1) (value "LiPo")
+      (at -120 20 (angle 0)) (property "Author" "jayis1"))
+    (path "/D1" (reference "D1") (unit 1) (value "SSD1306-128x64")
+      (at 220 80 (angle 0)) (property "Author" "jayis1"))
+    (path "/Q1" (reference "Q1") (unit 1) (value "2N7002K")
+      (at 250 60 (angle 0)) (property "Author" "jayis1"))
+    (path "/SW1" (reference "SW1") (unit 1) (value "SW_Push")
+      (at 40 60 (angle 0)) (property "Author" "jayis1"))
+    ; Decoupling caps (representative)
+    (path "/C1" (reference "C1") (unit 1) (value "100nF") (at 60 40 (angle 0)))
+    (path "/C2" (reference "C2") (unit 1) (value "100nF") (at 70 40 (angle 0)))
+    (path "/C3" (reference "C3") (unit 1) (value "10uF") (at 80 40 (angle 0)))
+    (path "/C4" (reference "C4") (unit 1) (value "4.7uF") (at 90 40 (angle 0)))
+    (path "/C5" (reference "C5") (unit 1) (value "100nF") (at 100 40 (angle 0)))
+    ; Series-R taps on DDR4 CA bus
+    (path "/R1" (reference "R1") (unit 1) (value "22R") (at 320 80 (angle 0)))
+    (path "/R2" (reference "R2") (unit 1) (value "22R") (at 320 85 (angle 0)))
+    (path "/R3" (reference "R3") (unit 1) (value "33R") (at 320 90 (angle 0)))
+    (path "/R4" (reference "R4") (unit 1) (value "33R") (at 320 95 (angle 0)))
+    (path "/R5" (reference "R5") (unit 1) (value "33R") (at 320 100 (angle 0)))
+  )
+
+  ; ============================================================
+  ; NETLIST
+  ; ============================================================
+  (nets
+    ; ---- Power rails ----
+    (net "VDD_1V2" (connections ("J1.VDD_0" "U8.VDD_0" "U8.VDDQ_0"
+                                  "U1.VCCO_BANK14" "U1.VCCO_BANK15" "U1.VCCO_BANK16"
+                                  "C1.1" "C2.1")))
+    (net "VPP_2V5" (connections ("J1.VPP_0" "U8.VPP_0")))
+    (net "VCC_1V0" (connections ("U5.VOUT" "U1.VCCINT_0" "U1.VCCINT_1"
+                                  "U1.VCCAUX" "C3.1")))
+    (net "VCC_3V3" (connections ("U4.VOUT" "U2.VDD" "U2.VBAT" "U2.VDDA"
+                                  "U3.VDD" "U6.VDD" "U7.VCC" "D1.VCC"
+                                  "J3.VDD" "C4.1" "C5.1")))
+    (net "VBAT_RAW" (connections ("J4.+" "U4.VIN" "U5.VIN" "U6.CELL+")))
+    (net "GND" (connections ("J1.GND_0" "U8.GND_0" "U1.GND_0" "U1.GND_1"
+                              "U2.VSS" "U3.GND" "U4.GND" "U5.GND" "U6.GND"
+                              "U6.CELL-" "U7.GND" "D1.GND" "J3.GND" "J2.GND"
+                              "J4.-" "SW1.2" "Q1.S" "C1.2" "C2.2" "C3.2" "C4.2" "C5.2")))
+    (net "VBUS_USB" (connections ("J2.VBUS" "U4.VIN" "R_CHARGE.1")))
+
+    ; ---- DDR4 passthrough (edge J1 <-> socket U8) with taps to FPGA ----
+    ; CA bus passes through, series-R taps feed FPGA inputs.
+    (net "DDR4_A0" (connections ("J1.A0" "R1.1" "U8.A0")))
+    (net "DDR4_A0_TAP" (connections ("R1.2" "U1.IO_CA0")))
+    (net "DDR4_A1" (connections ("J1.A1" "R2.1" "U8.A1")))
+    (net "DDR4_A1_TAP" (connections ("R2.2" "U1.IO_CA1")))
+    (net "DDR4_CK_T" (connections ("J1.CK_t" "R3.1" "U8.CK_t")))
+    (net "DDR4_CK_T_TAP" (connections ("R3.2" "U1.IO_CK_T")))
+    (net "DDR4_CK_C" (connections ("J1.CK_c" "R4.1" "U8.CK_c")))
+    (net "DDR4_CK_C_TAP" (connections ("R4.2" "U1.IO_CK_C")))
+    (net "DDR4_DQS0_T" (connections ("J1.DQS0_t" "R5.1" "U8.DQS0_t")))
+    (net "DDR4_DQS0_T_TAP" (connections ("R5.2" "U1.IO_DQS_T")))
+    (net "DDR4_DQ0" (connections ("J1.DQ0" "U1.IO_DQ0" "U8.DQ0")))
+    (net "DDR4_DQ7" (connections ("J1.DQ7" "U1.IO_DQ7" "U8.DQ7")))
+    (net "DDR4_DQ8" (connections ("J1.DQ8" "U1.IO_DQ8" "U8.DQ8")))
+    (net "DDR4_DQ15" (connections ("J1.DQ15" "U1.IO_DQ15" "U8.DQ15")))
+
+    ; ---- Host RESET# gating (MCU PA15 -> FET gate -> open-drain on RESET# line) ----
+    (net "HOST_RESET_GATE" (connections ("U2.PA15" "Q1.G")))
+    (net "DDR4_RESET" (connections ("J1.RESET#" "Q1.D" "U8.RESET#")))
+
+    ; ---- FPGA <-> MCU SPI ----
+    (net "SPI_SCK" (connections ("U2.PA5" "U1.SPI_SCK")))
+    (net "SPI_MISO" (connections ("U2.PA6" "U1.SPI_MISO")))
+    (net "SPI_MOSI" (connections ("U2.PA7" "U1.SPI_MOSI")))
+    (net "SPI_CSN" (connections ("U2.PA4" "U1.SPI_CSN")))
+    (net "FPGA_INTR_N" (connections ("U2.PB2" "U1.INTR_N")))
+    (net "FPGA_PROG_N" (connections ("U2.PC5" "U1.PROG_B")))
+    (net "FPGA_DONE" (connections ("U2.PC4" "U1.DONE")))
+    (net "FPGA_INIT_N" (connections ("U2.PB6" "U1.INIT_B")))
+    (net "FPGA_CCLK" (connections ("U2.PB7" "U1.CCLK")))
+    (net "FPGA_DIN" (connections ("U2.PB4" "U1.DIN")))
+
+    ; ---- FPGA bitstream flash (QSPI) ----
+    (net "QSPI_CS" (connections ("U1.IO_CA2" "U7.CS#")))
+    (net "QSPI_SCK" (connections ("U1.IO_CA3" "U7.SCK")))
+    (net "QSPI_SI" (connections ("U1.IO_DQS_C" "U7.SI")))
+    (net "QSPI_SO" (connections ("U7.SO" "U1.IO_DQ0")))
+
+    ; ---- BLE UART ----
+    (net "BLE_TX" (connections ("U3.UART_TX" "U2.PB9")))
+    (net "BLE_RX" (connections ("U3.UART_RX" "U2.PB8")))
+
+    ; ---- USB CDC ----
+    (net "USB_DP" (connections ("J2.DP1" "U2.PA10")))
+    (net "USB_DM" (connections ("J2.DM1" "U2.PA9")))
+
+    ; ---- I2C (OLED + fuel gauge) ----
+    (net "I2C_SCL" (connections ("U2.PB6" "U6.SCL" "D1.SCL")))
+    (net "I2C_SDA" (connections ("U2.PB7" "U6.SDA" "D1.SDA")))
+    (net "FUEL_ALRT" (connections ("U6.ALRT" "U2.PA2")))
+
+    ; ---- SDIO ----
+    (net "SD_CMD" (connections ("J3.CMD" "U2.PB4")))
+    (net "SD_CLK" (connections ("J3.CLK" "U2.PB2")))
+    (net "SD_D0" (connections ("J3.D0" "U2.PB14")))
+    (net "SD_D1" (connections ("J3.D1" "U2.PB15")))
+    (net "SD_D2" (connections ("J3.D2" "U2.PB10")))
+    (net "SD_D3" (connections ("J3.D3" "U2.PB11")))
+
+    ; ---- OLED reset ----
+    (net "OLED_RES" (connections ("D1.RES" "U2.PA1")))
+
+    ; ---- Mode button ----
+    (net "BTN_MODE" (connections ("SW1.1" "U2.PA0")))
+
+    ; ---- VDD sense ----
+    (net "HOST_VDD_SENSE" (connections ("U2.PA3" "R_SENSE.1")))
+  )
+
+  ; ============================================================
+  ; POWER RAILS / DECOUPLING (representative)
+  ; ============================================================
+  (power_rails
+    (rail "VDD_1V2"  (voltage 1.2) (source "host DDR4 VDD passthrough"))
+    (rail "VPP_2V5"  (voltage 2.5) (source "host DDR4 VPP passthrough"))
+    (rail "VCC_1V0"  (voltage 1.0) (source "U5 TPS62110 from host VDD or battery"))
+    (rail "VCC_3V3"  (voltage 3.3) (source "U4 TPS63020 from battery or USB"))
+    (rail "VBAT_RAW" (voltage 3.7) (source "LiPo 500mAh"))
+    (rail "VBUS_USB" (voltage 5.0) (source "USB-C"))
+  )
+
+  ; ============================================================
+  ; NOTES
+  ; ============================================================
+  (notes
+    "DRAM-Phantom v1.0 — DDR4 SO-DIMM interposer, 6-layer 0.8mm, 69.6x30mm + tail"
+    "Author: jayis1 — CERN-OHL-S v2 / GPL-2.0"
+    "CA/DQS taps via 22-33R series resistors; DQ taps direct (FPGA high-Z snoop)."
+    "Master-mode CA drive gated by MCU holding host RESET# via Q1 (2N7002K open-drain)."
+    "FPGA VCCO banks 14/15/16 at 1.2 V (DDR4 VDDQ). VCCINT 1.0 V from local buck."
+    "Refresh watchdog (FPGA) re-arms REF command every tREFI autonomously."
+  )
+)

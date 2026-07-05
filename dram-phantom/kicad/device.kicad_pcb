@@ -1,0 +1,424 @@
+(kicad_pcb
+  (version 20240108)
+  (generator "kicad-pcb-tools")
+  (generator_version "7.0")
+  (general
+    (thickness 0.8)
+    (legacy_teardrops no)
+  )
+  (paper "A4")
+  (title_block
+    (title "DRAM-Phantom — DDR4 SO-DIMM Interposer for Memory Bus Security Research")
+    (date "2026-07-05")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "69.6 x 30 mm SO-DIMM envelope + 20mm tail, 6-layer, 0.8mm")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal "GND")
+    (2 "In2.Cu" signal "VDD_1V2")
+    (3 "In3.Cu" signal "VCC_3V3")
+    (4 "In4.Cu" signal "VCC_1V0")
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user "B.Adhesive")
+    (33 "F.Adhes" user "F.Adhesive")
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user "B.Silkscreen")
+    (37 "F.SilkS" user "F.Silkscreen")
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user "User.Drawings")
+    (41 "Cmts.User" user "User.Comments")
+    (42 "Eco1.User" user "User.Eco1")
+    (43 "Eco2.User" user "User.Eco2")
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user "B.Courtyard")
+    (47 "F.CrtYd" user "F.Courtyard")
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (pad_to_mask_clearance 0.05)
+    (solder_mask_min_width 0.05)
+    (grid_origin (at 0 0))
+    (stackup
+      (layer "F.Cu" (type copper) (thickness 0.018))
+      (layer "F.Paste" (type solder-paste))
+      (layer "F.SilkS" (type silk-screen))
+      (layer "F.Mask" (type solder-mask))
+      (layer "Dielectric.1" (type dielectric) (thickness 0.1))
+      (layer "In1.Cu" (type copper) (thickness 0.018))
+      (layer "Dielectric.2" (type dielectric) (thickness 0.1))
+      (layer "In2.Cu" (type copper) (thickness 0.018))
+      (layer "Dielectric.3" (type dielectric) (thickness 0.2))
+      (layer "In3.Cu" (type copper) (thickness 0.018))
+      (layer "Dielectric.4" (type dielectric) (thickness 0.1))
+      (layer "In4.Cu" (type copper) (thickness 0.018))
+      (layer "Dielectric.5" (type dielectric) (thickness 0.08))
+      (layer "B.Mask" (type solder-mask))
+      (layer "B.SilkS" (type silk-screen))
+      (layer "B.Cu" (type copper) (thickness 0.018))
+    )
+    (defaults
+      (via (diameter 0.45) (drill 0.2))
+      (track (width 0.1))
+    )
+  )
+
+  ; ============================================================
+  ; BOARD OUTLINE — DDR4 SO-DIMM envelope 69.6 x 30 mm + 20 mm tail
+  ; The SO-DIMM edge fingers occupy the bottom 50mm of the left edge; the tail
+  ; extends right for the FPGA/MCU cluster and connectors.
+  ; ============================================================
+  (gr_line (start 0 0) (end 89.6 0) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 89.6 0) (end 89.6 30) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 89.6 30) (end 0 30) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 0 30) (end 0 0) (layer "Edge.Cuts") (width 0.12))
+  ; SO-DIMM notch (keying cutout at ~25mm and ~48mm from bottom edge)
+  (gr_line (start 0 25) (end 2 25) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 2 25) (end 2 23) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 2 23) (end 0 23) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 0 48) (end 2 48) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 2 48) (end 2 46) (layer "Edge.Cuts") (width 0.12))
+  (gr_line (start 2 46) (end 0 46) (layer "Edge.Cuts") (width 0.12))
+
+  ; ============================================================
+  ; FOOTPRINTS / PLACEMENT
+  ; ============================================================
+
+  ; ---- U1: Artix-7 XC7A100T (FGG484, 22x22mm, 1.0mm pitch) ----
+  (footprint "Package_BGA:Xilinx_FGG484"
+    (layer "F.Cu")
+    (at 65 15 0)
+    (attr smd)
+    (property "Reference" "U1" (at -12 -12))
+    (property "Value" "XC7A100T-FGG484I" (at 0 13))
+    (property "Author" "jayis1")
+    (pad "A1" smd circle (at -10.5 -10.5) (size 0.45 0.45) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "A2" smd circle (at -9.5 -10.5) (size 0.45 0.45) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "V22" smd circle (at 10.5 10.5) (size 0.45 0.45) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (model ":${KISYS3DMOD}/Package_BGA.3dshapes/Xilinx_FGG484.wrl")
+  )
+
+  ; ---- U2: STM32G474CEU6 (UFQFPN-48, 7x7mm) ----
+  (footprint "Package_DFN_QFN:UFQFPN-48_7x7mm_P0.5mm"
+    (layer "F.Cu")
+    (at 50 15 0)
+    (attr smd)
+    (property "Reference" "U2" (at -5 -5))
+    (property "Value" "STM32G474CEU6" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -3.5 -3.25) (size 0.3 0.9) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "49" smd rect (at 0 0) (size 5.6 5.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U3: BT840F (nRF52840 BLE module, castellated 15x10mm) ----
+  (footprint "RF_Module:Fanstel_BT840F"
+    (layer "F.Cu")
+    (at 80 8 0)
+    (attr smd)
+    (property "Reference" "U3" (at -7 -5))
+    (property "Value" "BT840F" (at 0 6))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -7 -4) (size 1 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U4: TPS63020 (VSON-14, 4x4mm) ----
+  (footprint "Package_SON:VSON-14-1EP_4x4mm_P0.5mm"
+    (layer "F.Cu")
+    (at 78 22 0)
+    (attr smd)
+    (property "Reference" "U4" (at -3 -3))
+    (property "Value" "TPS63020" (at 0 3))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.95 -1.75) (size 0.3 0.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "15" smd rect (at 0 0) (size 2.6 2.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U5: TPS62110 (VQFN-16, 3x3mm) ----
+  (footprint "Package_SON:VQFN-16-1EP_3x3mm_P0.5mm"
+    (layer "F.Cu")
+    (at 70 22 0)
+    (attr smd)
+    (property "Reference" "U5" (at -2.5 -2.5))
+    (property "Value" "TPS62110" (at 0 2.5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1.25 -1.5) (size 0.25 0.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "17" smd rect (at 0 0) (size 1.6 1.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U6: MAX17048 (TDFN-8, 2x2mm) ----
+  (footprint "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm"
+    (layer "F.Cu")
+    (at 85 22 0)
+    (attr smd)
+    (property "Reference" "U6" (at -1.5 -1.5))
+    (property "Value" "MAX17048" (at 0 1.5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.75 -0.75) (size 0.3 0.4) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "9" smd rect (at 0 0) (size 1.2 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U7: IS25LP032D (SOIC-8, 5x6mm) ----
+  (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+    (layer "F.Cu")
+    (at 78 28 0)
+    (attr smd)
+    (property "Reference" "U7" (at -3 -4))
+    (property "Value" "IS25LP032D" (at 0 4))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -2.7 -1.905) (size 0.6 1.55) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "8" smd rect (at 2.7 1.905) (size 0.6 1.55) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- U8: DDR4 SO-DIMM 260-pin socket (top, module plugs here) ----
+  (footprint "Connector_SODIMM:SO-DIMM-260-DDR4-Socket"
+    (layer "F.Cu")
+    (at 35 15 0)
+    (attr smd)
+    (property "Reference" "U8" (at -25 -16))
+    (property "Value" "DDR4-SODIMM-260" (at 0 16))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -25 -8) (size 0.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "260" smd rect (at 25 8) (size 0.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J1: DDR4 SO-DIMM 260-pin edge fingers (bottom, plugs into host) ----
+  ; Fingers are on both faces (F.Cu and B.Cu) per JEDEC.
+  (footprint "Connector_SODIMM:SO-DIMM-260-DDR4-Edge"
+    (layer "F.Cu")
+    (at 5 15 0)
+    (attr smd)
+    (property "Reference" "J1" (at -3 -16))
+    (property "Value" "DDR4-EDGE-260" (at 0 16))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at 0 -8) (size 0.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0 -7.5) (size 0.5 1.2) (layers "B.Cu" "B.Paste" "B.Mask"))
+    (pad "260" smd rect (at 0 8) (size 0.5 1.2) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J2: USB-C ----
+  (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12"
+    (layer "F.Cu")
+    (at 86 26 0)
+    (attr smd)
+    (property "Reference" "J2" (at -4 -5))
+    (property "Value" "USB-C" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "A1" smd rect (at -3.5 -2) (size 0.3 0.8) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J3: microSD ----
+  (footprint "Connector_Card:microSD_HC_Hirose_DM3D-SF"
+    (layer "F.Cu")
+    (at 82 5 0)
+    (attr smd)
+    (property "Reference" "J3" (at -7 -5))
+    (property "Value" "microSD" (at 0 5))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -5 -2) (size 0.8 1.5) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- J4: LiPo header ----
+  (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+    (layer "F.Cu")
+    (at 88 18 0)
+    (attr through_hole)
+    (property "Reference" "J4" (at -2 -1))
+    (property "Value" "LiPo" (at 0 2))
+    (property "Author" "jayis1")
+    (pad "1" thru_hole circle (at 0 0) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+    (pad "2" thru_hole circle (at 0 2.54) (size 1.7 1.7) (drill 1) (layers "*.Cu" "*.Mask"))
+  )
+
+  ; ---- D1: OLED SSD1306 0.96" ----
+  (footprint "Display:OLED_128x64_0.96in_I2C"
+    (layer "F.Cu")
+    (at 45 5 0)
+    (attr smd)
+    (property "Reference" "D1" (at -7 -5))
+    (property "Value" "SSD1306-128x64" (at 0 5))
+    (property "Author" "jayis1")
+  )
+
+  ; ---- Q1: 2N7002K (SOT-23) host RESET# gating FET ----
+  (footprint "Package_TO_SOT_SMD:SOT-23"
+    (layer "F.Cu")
+    (at 30 25 0)
+    (attr smd)
+    (property "Reference" "Q1" (at -2 -2))
+    (property "Value" "2N7002K" (at 0 2))
+    (property "Author" "jayis1")
+    (pad "1" smd rect (at -1 -1) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 1 -1) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "3" smd rect (at 0 1) (size 0.6 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- SW1: Mode button ----
+  (footprint "Button_Switch_SMD:SW_SPST_B3SN-6_6x6mm"
+    (layer "F.Cu") (at 60 5 0) (attr smd)
+    (property "Reference" "SW1") (property "Value" "SW_Push") (property "Author" "jayis1")
+    (pad "1" smd rect (at -3 -2.25) (size 1.5 1) (layers "F.Cu" "F.Paste" "F.Mask"))
+  )
+
+  ; ---- Series-R taps (22R / 33R, 0402) on CA bus ----
+  (footprint "Resistor_SMD:R_0402_1005Metric"
+    (layer "F.Cu") (at 12 6 0) (attr smd)
+    (property "Reference" "R1") (property "Value" "22R") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Resistor_SMD:R_0402_1005Metric"
+    (layer "F.Cu") (at 12 7 0) (attr smd)
+    (property "Reference" "R2") (property "Value" "22R") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Resistor_SMD:R_0402_1005Metric"
+    (layer "F.Cu") (at 12 8 0) (attr smd)
+    (property "Reference" "R3") (property "Value" "33R") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Resistor_SMD:R_0402_1005Metric"
+    (layer "F.Cu") (at 12 9 0) (attr smd)
+    (property "Reference" "R4") (property "Value" "33R") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Resistor_SMD:R_0402_1005Metric"
+    (layer "F.Cu") (at 12 10 0) (attr smd)
+    (property "Reference" "R5") (property "Value" "33R") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+
+  ; ---- Decoupling caps (0402, representative) ----
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 55 22 0) (attr smd)
+    (property "Reference" "C1") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 56 22 0) (attr smd)
+    (property "Reference" "C2") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 68 25 0) (attr smd)
+    (property "Reference" "C3") (property "Value" "10uF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 79 25 0) (attr smd)
+    (property "Reference" "C4") (property "Value" "4.7uF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+  (footprint "Capacitor_SMD:C_0402_1005Metric"
+    (layer "F.Cu") (at 80 25 0) (attr smd)
+    (property "Reference" "C5") (property "Value" "100nF") (property "Author" "jayis1")
+    (pad "1" smd rect (at -0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask"))
+    (pad "2" smd rect (at 0.5 0) (size 0.5 0.6) (layers "F.Cu" "F.Paste" "F.Mask")))
+
+  ; ============================================================
+  ; TRACKS (representative routing, abbreviated)
+  ; ============================================================
+  (segment (start 12 6) (end 50 15) (width 0.1) (layer "F.Cu") (net "DDR4_A0_TAP"))
+  (segment (start 50 15) (end 65 15) (width 0.1) (layer "F.Cu") (net "DDR4_A0_TAP"))
+  (segment (start 50 16) (end 65 16) (width 0.1) (layer "F.Cu") (net "SPI_SCK"))
+  (segment (start 50 17) (end 65 17) (width 0.1) (layer "F.Cu") (net "SPI_MISO"))
+  (segment (start 50 18) (end 65 18) (width 0.1) (layer "F.Cu") (net "SPI_MOSI"))
+  (segment (start 50 19) (end 65 19) (width 0.1) (layer "F.Cu") (net "SPI_CSN"))
+  (segment (start 50 20) (end 65 20) (width 0.1) (layer "F.Cu") (net "FPGA_INTR_N"))
+  (segment (start 80 8) (end 50 12) (width 0.1) (layer "F.Cu") (net "BLE_TX"))
+  (segment (start 80 9) (end 50 11) (width 0.1) (layer "F.Cu") (net "BLE_RX"))
+  (segment (start 86 24) (end 50 10) (width 0.1) (layer "F.Cu") (net "USB_DP"))
+  (segment (start 86 23) (end 50 9) (width 0.1) (layer "F.Cu") (net "USB_DM"))
+  ; Host RESET# gating: MCU PA15 -> Q1 gate -> drain ties to DDR4 RESET# line
+  (segment (start 30 24) (end 50 14) (width 0.1) (layer "F.Cu") (net "HOST_RESET_GATE"))
+  (segment (start 30 25) (end 25 25) (width 0.1) (layer "F.Cu") (net "DDR4_RESET"))
+  ; DDR4 VDD passthrough (1.2V on In2.Cu pour)
+  (via (at 5 28) (size 0.45) (drill 0.2) (layers "F.Cu" "In2.Cu"))
+  (via (at 35 5) (size 0.45) (drill 0.2) (layers "F.Cu" "In2.Cu"))
+  ; GND vias to In1.Cu
+  (via (at 50 25) (size 0.45) (drill 0.2) (layers "F.Cu" "In1.Cu"))
+  (via (at 65 25) (size 0.45) (drill 0.2) (layers "F.Cu" "In1.Cu"))
+
+  ; ============================================================
+  ; ZONES (copper pours)
+  ; ============================================================
+  (zone (net "GND") (layer "In1.Cu")
+    (hatch edge 0.4)
+    (connect_pads (clearance 0.15))
+    (min_thickness 0.1)
+    (fill (mode solid))
+    (polygon (pts (0 0) (89.6 0) (89.6 30) (0 30)))
+  )
+  (zone (net "VDD_1V2") (layer "In2.Cu")
+    (hatch edge 0.4)
+    (connect_pads (clearance 0.15))
+    (min_thickness 0.1)
+    (fill (mode solid))
+    (polygon (pts (0 0) (40 0) (40 30) (0 30)))
+  )
+  (zone (net "VCC_3V3") (layer "In3.Cu")
+    (hatch edge 0.4)
+    (connect_pads (clearance 0.15))
+    (min_thickness 0.1)
+    (fill (mode solid))
+    (polygon (pts (40 0) (89.6 0) (89.6 30) (40 30)))
+  )
+  (zone (net "VCC_1V0") (layer "In4.Cu")
+    (hatch edge 0.4)
+    (connect_pads (clearance 0.15))
+    (min_thickness 0.1)
+    (fill (mode solid))
+    (polygon (pts (55 5) (80 5) (80 28) (55 28)))
+  )
+
+  ; ============================================================
+  ; SILKSCREEN
+  ; ============================================================
+  (gr_text "DRAM-Phantom v1.0" (at 60 28) (layer "F.SilkS") (effects (size 1.0 1.0)))
+  (gr_text "Author: jayis1" (at 60 29) (layer "F.SilkS") (effects (size 0.7 0.7)))
+  (gr_text "DDR4 SO-DIMM INTERPOSER" (at 20 28) (layer "F.SilkS") (effects (size 0.8 0.8)))
+  (gr_text "HOST SLOT ->" (at 2 2) (layer "F.SilkS") (effects (size 0.6 0.6)))
+  (gr_text "MODULE ->" (at 35 2) (layer "F.SilkS") (effects (size 0.6 0.6)))
+  (gr_text "USB-C" (at 86 28) (layer "F.SilkS") (effects (size 0.7 0.7)))
+  (gr_text "LiPo" (at 88 15) (layer "F.SilkS") (effects (size 0.7 0.7)))
+  (gr_text "MODE" (at 60 2) (layer "F.SilkS") (effects (size 0.6 0.6)))
+  (gr_text "OLED" (at 45 2) (layer "F.SilkS") (effects (size 0.6 0.6)))
+  (gr_text "ARTIX-7" (at 65 8) (layer "F.SilkS") (effects (size 0.7 0.7)))
+  (gr_text "STM32G474" (at 50 11) (layer "F.SilkS") (effects (size 0.6 0.6)))
+
+  ; ============================================================
+  ; DESIGN RULES
+  ; ============================================================
+  (design_rules
+    (rule (min_track_width 0.1) (min_via_diameter 0.45) (min_via_drill 0.2))
+    (rule (min_clearance 0.1) (min_copper_clearance 0.1))
+    (rule (impedance_controlled yes) (diff_pair_width 0.1) (diff_pair_gap 0.08))
+    (note "DDR4 CA stubs kept <2mm via 22-33R series; FPGA inputs high-Z in snoop.")
+    (note "0.8mm 6-layer stackup for SO-DIMM envelope fit.")
+    (note "Author: jayis1")
+  )
+
+  ; ============================================================
+  ; NETCLASS ASSIGNMENTS
+  ; ============================================================
+  (net_classes
+    (net_class "default" (track_width 0.1) (via_diameter 0.45) (via_drill 0.2)
+      (nets "VDD_1V2" "VPP_2V5" "VCC_1V0" "VCC_3V3" "VBAT_RAW" "GND" "VBUS_USB"
+            "SPI_SCK" "SPI_MISO" "SPI_MOSI" "SPI_CSN" "FPGA_INTR_N" "FPGA_PROG_N"
+            "FPGA_DONE" "FPGA_INIT_N" "FPGA_CCLK" "FPGA_DIN" "QSPI_CS" "QSPI_SCK"
+            "QSPI_SI" "QSPI_SO" "BLE_TX" "BLE_RX" "USB_DP" "USB_DM" "I2C_SCL"
+            "I2C_SDA" "FUEL_ALRT" "SD_CMD" "SD_CLK" "SD_D0" "SD_D1" "SD_D2" "SD_D3"
+            "OLED_RES" "BTN_MODE" "HOST_VDD_SENSE" "HOST_RESET_GATE" "DDR4_RESET"))
+    (net_class "DDR4_CA" (track_width 0.1) (via_diameter 0.45) (via_drill 0.2)
+      (diff_pair_gap 0.08)
+      (nets "DDR4_A0" "DDR4_A1" "DDR4_CK_T" "DDR4_CK_C" "DDR4_DQS0_T" "DDR4_DQS0_C"
+            "DDR4_DQ0" "DDR4_DQ7" "DDR4_DQ8" "DDR4_DQ15"))
+  )
+)

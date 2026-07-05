@@ -1,0 +1,27 @@
+{
+  "name": "dram-phantom-app",
+  "version": "1.0.0",
+  "description": "Companion app for DRAM-Phantom — DDR4 SO-DIMM interposer for memory bus security research",
+  "author": "jayis1",
+  "license": "GPL-2.0",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.6",
+    "react-native-ble-plx": "^3.1.0",
+    "@react-navigation/native": "^6.1.7",
+    "@react-navigation/bottom-tabs": "^6.5.7",
+    "react-native-fs": "^2.20.0",
+    "react-native-vector-icons": "^10.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "eslint": "^8.40.0"
+  }
+}
