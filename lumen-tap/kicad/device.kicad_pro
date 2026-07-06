@@ -1,0 +1,152 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "meta": {"version": 0},
+      "rule_severities": {
+        "annular_width": "error",
+        "clearance": "error",
+        "copper_edge_clearance": "error",
+        "courtyards_overlap": "warning",
+        "diff_pair_gap_out_of_range": "error",
+        "diff_pair_height_out_of_range": "error",
+        "diff_pair_width_out_of_range": "error",
+        "items_not_allowed": "error",
+        "length_out_of_range": "error",
+        "lib_footprint_issues": "warning",
+        "lib_footprint_mismatch": "warning",
+        "malformed_courtyard": "error",
+        "microvia_drill_out_of_range": "error",
+        "unconnected_items": "error",
+        "via_dangling": "warning"
+      },
+      "rules": {
+        "allow_blind_buried_vias": false,
+        "allow_microvias": false,
+        "min_clearance": 0.15,
+        "min_track_width": 0.12,
+        "min_via_diameter": 0.3,
+        "min_via_drill": 0.15,
+        "min_through_hole_diameter": 0.3
+      },
+      "track_widths": [0.0, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ]
+    },
+    "ipc2581": {"dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": ""},
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {"equivalence_files": []},
+  "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
+  "meta": {"filename": "lumen-tap.kicad_pro", "version": 1},
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 1.0)",
+        "schematic_color": "rgba(0, 0, 0, 1.0)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(255, 0, 0, 1.0)",
+        "schematic_color": "rgba(255, 0, 0, 1.0)",
+        "track_width": 0.5,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 8
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Analog",
+        "pcb_color": "rgba(0, 200, 0, 1.0)",
+        "schematic_color": "rgba(0, 200, 0, 1.0)",
+        "track_width": 0.3,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      }
+    ],
+    "meta": {"version": 1},
+    "net_colors": null
+  },
+  "pcbnew": {
+    "last_paths": {"gencad": "", "idf": "", "netlist": "", "plot": "", "pos_files": "", "specctra_dsn": "", "step": "", "svg": "", "vrml": ""},
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "lumen-tap-bom.csv",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": {"field_delimiter": ",", "keep_line_breaks": false, "keep_tabs": false, "name": "CSV", "ref_delimiter": ",", "ref_range_delimiter": "", "string_delimiter": "\""},
+    "bom_presets": [],
+    "bom_settings": {"exclude_dnp": false, "fields_ordered": [], "filter_string": "", "group_symbols": true, "name": "Grouped By Value", "sort_asc": true, "sort_field": "Reference"},
+    "connection_grid_size": 50.0,
+    "drawing": {"default_bus_thickness": 12.0, "default_junction_size": 40.0, "default_line_thickness": 6.0, "default_text_size": 50.0, "default_wire_thickness": 6.0, "field_names": [], "intersheets_ref_own_page": false, "intersheets_ref_prefix": "", "intersheets_ref_short": false, "intersheets_ref_show": false, "intersheets_ref_suffix": "", "junction_size_choice": 3, "label_size_ratio": 0.375, "operating_point_overlay_i_precision": 3, "operating_point_overlay_v_precision": 3, "pin_symbol_size": 25.0, "text_offset_ratio": 0.15},
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {"version": 0},
+    "net_format_name": "spice",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [
+    ["main", "Main"],
+    ["mcu", "STM32H743 MCU"],
+    ["optics", "Laser + Photodiode Front-end"],
+    ["analog", "TIA + Differential Amp"],
+    ["power", "Power Supplies"],
+    ["usb", "USB-C Interface"],
+    ["sd", "SD Card Logging"],
+    ["safety", "Safety Interlocks"]
+  ],
+  "text_variables": {}
+}
