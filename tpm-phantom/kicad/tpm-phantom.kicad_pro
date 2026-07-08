@@ -1,0 +1,135 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.15,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.5,
+        "min_via_drill": 0.25
+      },
+      "track_widths": [0.15, 0.2, 0.3, 0.5],
+      "via_dimensions": [
+        {"diameter": 0.5, "drill": 0.25},
+        {"diameter": 0.6, "drill": 0.3}
+      ]
+    },
+    "ipc2581": {"dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": ""},
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {"equivalence_files": []},
+  "libraries": {"pinned_footprint_libs": [], "pinned_symbol_libs": []},
+  "meta": {"filename": "tpm-phantom.kicad_pro", "version": 1},
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_spacing": 120,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_spacing": 120,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "POWER",
+        "pcb_color": "rgba(255, 0, 0, 0.000)",
+        "schematic_color": "rgba(255, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "via_diameter": 0.7,
+        "via_drill": 0.35,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_via_gap": 0.2,
+        "diff_pair_width": 0.2,
+        "line_spacing": 120,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "SPI",
+        "pcb_color": "rgba(0, 255, 0, 0.000)",
+        "schematic_color": "rgba(0, 255, 0, 0.000)",
+        "track_width": 0.15,
+        "via_diameter": 0.5,
+        "via_drill": 0.25,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_via_gap": 0.2,
+        "diff_pair_width": 0.2,
+        "line_spacing": 120,
+        "microvia_diameter": 0.2,
+        "microvia_drill": 0.1,
+        "name": "LPC",
+        "pcb_color": "rgba(0, 0, 255, 0.000)",
+        "schematic_color": "rgba(0, 0, 255, 0.000)",
+        "track_width": 0.15,
+        "via_diameter": 0.5,
+        "via_drill": 0.25,
+        "wire_width": 6
+      }
+    ],
+    "meta": {"version": 2},
+    "net_colors": null
+  },
+  "pcb": {
+    "last_persistent": "00000000-0000-0000-0000-000000000000",
+    "version": 2
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "tpm-phantom-bom.csv",
+    "bom_presets": [],
+    "bom_settings": {"exportFields": ["Value", "Footprint", "DNP"], "filter": "", "groupBy": "Reference", "sort": "Reference"},
+    "connection_grid_size": 50.0,
+    "drawing": {"dashed_lines_dash_length_ratio": 12.0, "dashed_lines_gap_length_ratio": 3.0, "default_line_thickness": 6.0, "default_text_size": 50.0, "field_names": [], "intersheets_ref_own_page": "", "intersheets_ref_prefix": "", "intersheets_ref_short": false, "intersheets_ref_show": false, "intersheets_ref_suffix": "", "junction_size_choice": 3, "label_size_ratio": 0.375, "operating_point_overlay_i_precision": 3, "operating_point_overlay_v_precision": 3, "pin_symbol_size": 25.0, "text_offset_ratio": 0.15},
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {"version": 1},
+    "page_type_descr": "A3"
+  },
+  "sheets": [],
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "BOARD": "tpm-phantom",
+    "REV": "1.0"
+  }
+}

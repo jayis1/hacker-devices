@@ -1,0 +1,508 @@
+(kicad_sch (version 20240101) (host kicad 8.0)
+  (uuid "a1b2c3d4-1e2f-3a4b-5c6d-7e8f9a0b1c2d")
+
+  (title_block
+    (title "TPM-PHANTOM — Trusted Platform Module Bus Analyzer")
+    (date "2026-07-08")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "SPDX: CERN-OHL-S v2")
+    (comment 3 "LPC + SPI TPM 2.0 capture / injection device")
+    (comment 4 "BOM Cost: ~$72 @ 1K")
+  )
+
+  ; ===================================================================
+  ; Power symbols
+  ; ===================================================================
+  (symbol "power:+3V3" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR01") (property "Value" "+3V3")
+    (pin "1" (uuid "11111111-1111-1111-1111-111111111001"))
+  )
+  (symbol "power:+5V" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR02") (property "Value" "+5V")
+    (pin "1" (uuid "11111111-1111-1111-1111-111111111002"))
+  )
+  (symbol "power:GND" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR04") (property "Value" "GND")
+    (pin "1" (uuid "22222222-2222-2222-2222-222222222001"))
+  )
+  (symbol "power:VBUS" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR05") (property "Value" "VBUS")
+    (pin "1" (uuid "11111111-1111-1111-1111-111111111005"))
+  )
+
+  ; ===================================================================
+  ; Main MCU — STM32H743VIT6 (Cortex-M7, 100-pin LQFP)
+  ; ===================================================================
+  (symbol "MCU_STM32H7:STM32H743VITx" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1") (property "Value" "STM32H743VIT6")
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+    (property "Datasheet" "https://www.st.com/resource/en/reference_manual/dm00314099.pdf")
+    ; LPC capture pins
+    (pin "23" (uuid "33333333-1111-1111-1111-111111111001")) ; PA8 — LPC_LCLK
+    (pin "24" (uuid "33333333-1111-1111-1111-111111111002")) ; PA9 — LPC_LFRAME#
+    (pin "25" (uuid "33333333-1111-1111-1111-111111111003")) ; PA10 — LPC_LPCPD#
+    (pin "35" (uuid "33333333-1111-1111-1111-111111111004")) ; PB0 — LPC_LAD0
+    (pin "36" (uuid "33333333-1111-1111-1111-111111111005")) ; PB1 — LPC_LAD1
+    (pin "37" (uuid "33333333-1111-1111-1111-111111111006")) ; PB2 — LPC_LAD2
+    (pin "38" (uuid "33333333-1111-1111-1111-111111111007")) ; PB3 — LPC_LAD3
+    (pin "39" (uuid "33333333-1111-1111-1111-111111111008")) ; PB4 — LPC_SERIRQ
+    (pin "47" (uuid "33333333-1111-1111-1111-111111111009")) ; PB12 — SPI_TPM_CS#
+    (pin "43" (uuid "33333333-1111-1111-1111-11111111100a")) ; PB10 — SPI_TPM_SCK
+    (pin "48" (uuid "33333333-1111-1111-1111-11111111100b")) ; PB14 — SPI_TPM_MISO
+    (pin "49" (uuid "33333333-1111-1111-1111-11111111100c")) ; PB15 — SPI_TPM_MOSI
+    (pin "12" (uuid "33333333-1111-1111-1111-11111111100d")) ; PA6 — SPI_TPM_IRQ#
+    ; USB
+    (pin "69" (uuid "33333333-1111-1111-1111-11111111100e")) ; PA11 — USB_DM
+    (pin "70" (uuid "33333333-1111-1111-1111-11111111100f")) ; PA12 — USB_DP
+    ; BLE UART
+    (pin "56" (uuid "33333333-1111-1111-1111-111111111010")) ; PD8 — BLE_UART_TX
+    (pin "57" (uuid "33333333-1111-1111-1111-111111111011")) ; PD9 — BLE_UART_RX
+    (pin "58" (uuid "33333333-1111-1111-1111-111111111012")) ; PD10 — BLE_nRST
+    (pin "59" (uuid "33333333-1111-1111-1111-111111111013")) ; PD11 — BLE_IRQ
+    ; SD card
+    (pin "62" (uuid "33333333-1111-1111-1111-111111111014")) ; PC8 — SD_D0
+    (pin "63" (uuid "33333333-1111-1111-1111-111111111015")) ; PC9 — SD_D1
+    (pin "64" (uuid "33333333-1111-1111-1111-111111111016")) ; PC10 — SD_D2
+    (pin "65" (uuid "33333333-1111-1111-1111-111111111017")) ; PC11 — SD_D3
+    (pin "66" (uuid "33333333-1111-1111-1111-111111111018")) ; PC12 — SD_CLK
+    (pin "82" (uuid "33333333-1111-1111-1111-111111111019")) ; PD2 — SD_CMD
+    ; LEDs and button
+    (pin "26" (uuid "33333333-1111-1111-1111-11111111101a")) ; PE1 — LED_STATUS
+    (pin "27" (uuid "33333333-1111-1111-1111-11111111101b")) ; PE2 — LED_CAPTURE
+    (pin "28" (uuid "33333333-1111-1111-1111-11111111101c")) ; PE3 — LED_ERROR
+    (pin "29" (uuid "33333333-1111-1111-1111-11111111101d")) ; PE4 — LED_LPC
+    (pin "53" (uuid "33333333-1111-1111-1111-11111111101e")) ; PC13 — BUTTON
+    ; Power pins
+    (pin "11" (uuid "33333333-1111-1111-1111-11111111101f")) ; VDD
+    (pin "10" (uuid "33333333-1111-1111-1111-111111111020")) ; VSS
+    (pin "6" (uuid "33333333-1111-1111-1111-111111111021"))  ; VBAT
+    (pin "22" (uuid "33333333-1111-1111-1111-111111111022")) ; VDDA
+    (pin "21" (uuid "33333333-1111-1111-1111-111111111023")) ; VSSA
+    ; Crystal
+    (pin "13" (uuid "33333333-1111-1111-1111-111111111024")) ; OSC_IN (PA0)
+    (pin "14" (uuid "33333333-1111-1111-1111-111111111025")) ; OSC_OUT (PA1)
+  )
+
+  ; ===================================================================
+  ; BLE Co-processor — Nordic nRF52840 QFAA (aQFN48)
+  ; ===================================================================
+  (symbol "MCU_Nordic:nRF52840-QFAA" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2") (property "Value" "nRF52840-QFAA")
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm")
+    (property "Datasheet" "https://www.nordicsemi.com/Products/nRF52840")
+    (pin "21" (uuid "44444444-1111-1111-1111-444444444001")) ; P0.06 — UART_TX (to STM32 RX)
+    (pin "22" (uuid "44444444-1111-1111-1111-444444444002")) ; P0.08 — UART_RX (from STM32 TX)
+    (pin "23" (uuid "44444444-1111-1111-1111-444444444003")) ; P0.12 — nRST (from STM32)
+    (pin "24" (uuid "44444444-1111-1111-1111-444444444004")) ; P0.13 — IRQ (to STM32)
+    (pin "32" (uuid "44444444-1111-1111-1111-444444444005")) ; DCC — SWD debug
+    (pin "33" (uuid "44444444-1111-1111-1111-444444444006")) ; DEC3
+    (pin "45" (uuid "44444444-1111-1111-1111-444444444007")) ; VDD
+    (pin "46" (uuid "44444444-1111-1111-1111-444444444008")) ; GND
+    ; RF antenna pins
+    (pin "30" (uuid "44444444-1111-1111-1111-444444444009")) ; ANT1
+    (pin "31" (uuid "44444444-1111-1111-1111-44444444400a")) ; ANT2
+    ; XC crystal pins
+    (pin "34" (uuid "44444444-1111-1111-1111-44444444400b")) ; XC1
+    (pin "35" (uuid "44444444-1111-1111-1111-44444444400c")) ; XC2
+  )
+
+  ; ===================================================================
+  ; 25 MHz Crystal Oscillator (HSE for STM32)
+  ; ===================================================================
+  (symbol "Device:Crystal_GND24" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1") (property "Value" "25MHz")
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm")
+    (pin "1" (uuid "55555555-1111-1111-1111-555555555001"))
+    (pin "2" (uuid "55555555-1111-1111-1111-555555555002"))
+    (pin "3" (uuid "55555555-1111-1111-1111-555555555003"))
+    (pin "4" (uuid "55555555-1111-1111-1111-555555555004"))
+  )
+
+  ; ===================================================================
+  ; 32.768 kHz Crystal (BLE RTC)
+  ; ===================================================================
+  (symbol "Device:Crystal" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y2") (property "Value" "32.768kHz")
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm")
+    (pin "1" (uuid "55555555-2222-2222-2222-555555555001"))
+    (pin "2" (uuid "55555555-2222-2222-2222-555555555002"))
+  )
+
+  ; ===================================================================
+  ; USB-C Connector (for host connection)
+  ; ===================================================================
+  (symbol "Connector:USB_C_Receptacle_USB2.0" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1") (property "Value" "USB-C 2.0")
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
+    (pin "A1" (uuid "66666666-1111-1111-1111-666666666001")) ; GND
+    (pin "A4" (uuid "66666666-1111-1111-1111-666666666002")) ; VBUS
+    (pin "A5" (uuid "66666666-1111-1111-1111-666666666003")) ; CC1
+    (pin "A6" (uuid "66666666-1111-1111-1111-666666666004")) ; D+
+    (pin "A7" (uuid "66666666-1111-1111-1111-666666666005")) ; D-
+    (pin "B1" (uuid "66666666-1111-1111-1111-666666666006")) ; GND
+    (pin "B4" (uuid "66666666-1111-1111-1111-666666666007")) ; VBUS
+    (pin "B5" (uuid "66666666-1111-1111-1111-666666666008")) ; CC2
+    (pin "B6" (uuid "66666666-1111-1111-1111-666666666009")) ; D+
+    (pin "B7" (uuid "66666666-1111-1111-1111-66666666600a")) ; D-
+  )
+
+  ; ===================================================================
+  ; LPC probe header (2x5 2.54mm pitch)
+  ; ===================================================================
+  (symbol "Connector_Generic:Conn_02x05_Odd_Even" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J2") (property "Value" "LPC Probe")
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical")
+    (pin "1" (uuid "77777777-1111-1111-1111-777777777001")) ; LCLK
+    (pin "2" (uuid "77777777-1111-1111-1111-777777777002")) ; LFRAME#
+    (pin "3" (uuid "77777777-1111-1111-1111-777777777003")) ; LAD0
+    (pin "4" (uuid "77777777-1111-1111-1111-777777777004")) ; LAD1
+    (pin "5" (uuid "77777777-1111-1111-1111-777777777005")) ; LAD2
+    (pin "6" (uuid "77777777-1111-1111-1111-777777777006")) ; LAD3
+    (pin "7" (uuid "77777777-1111-1111-1111-777777777007")) ; LPCPD#
+    (pin "8" (uuid "77777777-1111-1111-1111-777777777008")) ; SERIRQ
+    (pin "9" (uuid "77777777-1111-1111-1111-777777777009")) ; GND
+    (pin "10" (uuid "77777777-1111-1111-1111-77777777700a")) ; 3V3
+  )
+
+  ; ===================================================================
+  ; SPI TPM probe header (2x4 2.54mm pitch)
+  ; ===================================================================
+  (symbol "Connector_Generic:Conn_02x04_Odd_Even" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J3") (property "Value" "SPI TPM Probe")
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical")
+    (pin "1" (uuid "88888888-1111-1111-1111-888888888001")) ; CS#
+    (pin "2" (uuid "88888888-1111-1111-1111-888888888002")) ; SCK
+    (pin "3" (uuid "88888888-1111-1111-1111-888888888003")) ; MOSI
+    (pin "4" (uuid "88888888-1111-1111-1111-888888888004")) ; MISO
+    (pin "5" (uuid "88888888-1111-1111-1111-888888888005")) ; IRQ#
+    (pin "6" (uuid "88888888-1111-1111-1111-888888888006")) ; GND
+    (pin "7" (uuid "88888888-1111-1111-1111-888888888007")) ; 3V3
+    (pin "8" (uuid "88888888-1111-1111-1111-888888888008")) ; CLKRUN#
+  )
+
+  ; ===================================================================
+  ; MicroSD card socket (push-push)
+  ; ===================================================================
+  (symbol "Connector:MicroSD_Card_Det" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J4") (property "Value" "MicroSD")
+    (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF")
+    (pin "1" (uuid "99999999-1111-1111-1111-999999999001")) ; DAT2
+    (pin "2" (uuid "99999999-1111-1111-1111-999999999002")) ; CD/DAT3
+    (pin "3" (uuid "99999999-1111-1111-1111-999999999003")) ; CMD
+    (pin "4" (uuid "99999999-1111-1111-1111-999999999004")) ; VDD
+    (pin "5" (uuid "99999999-1111-1111-1111-999999999005")) ; CLK
+    (pin "6" (uuid "99999999-1111-1111-1111-999999999006")) ; VSS
+    (pin "7" (uuid "99999999-1111-1111-1111-999999999007")) ; DAT0
+    (pin "8" (uuid "99999999-1111-1111-1111-999999999008")) ; DAT1
+    (pin "9" (uuid "99999999-1111-1111-1111-999999999009")) ; DET
+  )
+
+  ; ===================================================================
+  ; Power regulators
+  ; ===================================================================
+  (symbol "Regulator_Linear:AMS1117-3.3" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3") (property "Value" "AMS1117-3.3")
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
+    (pin "1" (uuid "aaaaaaaa-1111-1111-1111-aaaaaaaa0001")) ; GND
+    (pin "2" (uuid "aaaaaaaa-1111-1111-1111-aaaaaaaa0002")) ; VOUT 3.3V
+    (pin "3" (uuid "aaaaaaaa-1111-1111-1111-aaaaaaaa0003")) ; VIN 5V
+  )
+
+  (symbol "Regulator_Linear:TLV75512PDBV" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4") (property "Value" "TLV75512PDBV")
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5")
+    (pin "1" (uuid "aaaaaaaa-2222-2222-2222-aaaaaaaa0001")) ; IN
+    (pin "2" (uuid "aaaaaaaa-2222-2222-2222-aaaaaaaa0002")) ; GND
+    (pin "3" (uuid "aaaaaaaa-2222-2222-2222-aaaaaaaa0003")) ; EN
+    (pin "4" (uuid "aaaaaaaa-2222-2222-2222-aaaaaaaa0004")) ; NC
+    (pin "5" (uuid "aaaaaaaa-2222-2222-2222-aaaaaaaa0005")) ; OUT 1.2V (nRF DCDC)
+  )
+
+  ; ===================================================================
+  ; LEDs
+  ; ===================================================================
+  (symbol "Device:LED" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D2") (property "Value" "LED_GREEN")
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric")
+    (pin "1" (uuid "bbbbbbbb-1111-1111-1111-bbbbbbbb0001")) ; A
+    (pin "2" (uuid "bbbbbbbb-1111-1111-1111-bbbbbbbb0002")) ; K
+  )
+
+  ; ===================================================================
+  ; Decoupling and support passives
+  ; ===================================================================
+  (symbol "Device:C" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1") (property "Value" "100nF")
+    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric")
+    (pin "1" (uuid "cccccccc-1111-1111-1111-cccccccc0001"))
+    (pin "2" (uuid "cccccccc-1111-1111-1111-cccccccc0002"))
+  )
+
+  (symbol "Device:C_Polarized" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C5") (property "Value" "10uF")
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric")
+    (pin "1" (uuid "cccccccc-2222-2222-2222-cccccccc0001"))
+    (pin "2" (uuid "cccccccc-2222-2222-2222-cccccccc0002"))
+  )
+
+  (symbol "Device:R" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1") (property "Value" "10k")
+    (property "Footprint" "Resistor_SMD:R_0402_1005Metric")
+    (pin "1" (uuid "dddddddd-1111-1111-1111-dddddddd0001"))
+    (pin "2" (uuid "dddddddd-1111-1111-1111-dddddddd0002"))
+  )
+
+  (symbol "Device:R_Pack04" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "RN1") (property "Value" "100R x4")
+    (property "Footprint" "Resistor_SMD:R_Array_Convex_0603")
+    (pin "1" (uuid "dddddddd-3333-3333-3333-dddddddd0001"))
+    (pin "2" (uuid "dddddddd-3333-3333-3333-dddddddd0002"))
+    (pin "3" (uuid "dddddddd-3333-3333-3333-dddddddd0003"))
+    (pin "4" (uuid "dddddddd-3333-3333-3333-dddddddd0004"))
+    (pin "5" (uuid "dddddddd-3333-3333-3333-dddddddd0005"))
+    (pin "6" (uuid "dddddddd-3333-3333-3333-dddddddd0006"))
+    (pin "7" (uuid "dddddddd-3333-3333-3333-dddddddd0007"))
+    (pin "8" (uuid "dddddddd-3333-3333-3333-dddddddd0008"))
+  )
+
+  ; ===================================================================
+  ; ESD protection for USB
+  ; ===================================================================
+  (symbol "Power_Protection:USBLC6-2SC6" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U5") (property "Value" "USBLC6-2SC6")
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6")
+    (pin "1" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0001")) ; I/O1
+    (pin "2" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0002")) ; GND
+    (pin "3" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0003")) ; I/O2
+    (pin "4" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0004")) ; I/O2
+    (pin "5" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0005")) ; VBUS
+    (pin "6" (uuid "eeeeeeee-1111-1111-1111-eeeeeeee0006")) ; I/O1
+  )
+
+  ; ===================================================================
+  ; Antenna matching network (BLE)
+  ; ===================================================================
+  (symbol "Device:L" (excluded_from_sim no)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "L1") (property "Value" "3.9nH")
+    (property "Footprint" "Inductor_SMD:L_0402_1005Metric")
+    (pin "1" (uuid "ffffffff-1111-1111-1111-ffffffff0001"))
+    (pin "2" (uuid "ffffffff-1111-1111-1111-ffffffff0002"))
+  )
+
+  ; ===================================================================
+  ; Net labels
+  ; ===================================================================
+  (net "LCLK" (uuid "11111111-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LFRAME" (uuid "22222222-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LAD0" (uuid "33333333-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LAD1" (uuid "44444444-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LAD2" (uuid "55555555-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LAD3" (uuid "66666666-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "LPCPD" (uuid "77777777-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SERIRQ" (uuid "88888888-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SPI_CS" (uuid "99999999-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SPI_SCK" (uuid "aaaaaaaa-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SPI_MOSI" (uuid "bbbbbbbb-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SPI_MISO" (uuid "cccccccc-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "SPI_IRQ" (uuid "dddddddd-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "USB_DM" (uuid "eeeeeeee-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "USB_DP" (uuid "ffffffff-aaaa-bbbb-cccc-dddddddddddd"))
+  (net "BLE_TX" (uuid "11111111-eeee-ffff-aaaa-dddddddddddd"))
+  (net "BLE_RX" (uuid "22222222-eeee-ffff-aaaa-dddddddddddd"))
+  (net "BLE_RST" (uuid "33333333-eeee-ffff-aaaa-dddddddddddd"))
+  (net "BLE_IRQ" (uuid "44444444-eeee-ffff-aaaa-dddddddddddd"))
+  (net "+3V3" (uuid "55555555-eeee-ffff-aaaa-dddddddddddd"))
+  (net "+5V" (uuid "66666666-eeee-ffff-aaaa-dddddddddddd"))
+  (net "GND" (uuid "77777777-eeee-ffff-aaaa-dddddddddddd"))
+  (net "VBUS" (uuid "88888888-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_D0" (uuid "99999999-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_D1" (uuid "aaaaaaaa-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_D2" (uuid "bbbbbbbb-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_D3" (uuid "cccccccc-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_CLK" (uuid "dddddddd-eeee-ffff-aaaa-dddddddddddd"))
+  (net "SD_CMD" (uuid "eeeeeeee-eeee-ffff-aaaa-dddddddddddd"))
+
+  ; ===================================================================
+  ; Connections (wire stubs representing the netlist)
+  ; ===================================================================
+  ; U1 (STM32H743) → J2 (LPC probe)
+  (wire (uuid "w00000001") (pts (xy 100 80) (xy 120 80))  ; PA8/LCLK → J2.1
+    (net "LCLK"))
+  (wire (uuid "w00000002") (pts (xy 100 85) (xy 120 85))  ; PA9/LFRAME → J2.2
+    (net "LFRAME"))
+  (wire (uuid "w00000003") (pts (xy 100 90) (xy 120 90))  ; PB0/LAD0 → J2.3
+    (net "LAD0"))
+  (wire (uuid "w00000004") (pts (xy 100 95) (xy 120 95))  ; PB1/LAD1 → J2.4
+    (net "LAD1"))
+  (wire (uuid "w00000005") (pts (xy 100 100) (xy 120 100)) ; PB2/LAD2 → J2.5
+    (net "LAD2"))
+  (wire (uuid "w00000006") (pts (xy 100 105) (xy 120 105)) ; PB3/LAD3 → J2.6
+    (net "LAD3"))
+  (wire (uuid "w00000007") (pts (xy 100 110) (xy 120 110)) ; PA10/LPCPD → J2.7
+    (net "LPCPD"))
+  (wire (uuid "w00000008") (pts (xy 100 115) (xy 120 115)) ; PB4/SERIRQ → J2.8
+    (net "SERIRQ"))
+
+  ; U1 → J3 (SPI TPM probe)
+  (wire (uuid "w00000009") (pts (xy 100 125) (xy 120 125)) ; PB12/CS → J3.1
+    (net "SPI_CS"))
+  (wire (uuid "w0000000a") (pts (xy 100 130) (xy 120 130)) ; PB10/SCK → J3.2
+    (net "SPI_SCK"))
+  (wire (uuid "w0000000b") (pts (xy 100 135) (xy 120 135)) ; PB15/MOSI → J3.3
+    (net "SPI_MOSI"))
+  (wire (uuid "w0000000c") (pts (xy 100 140) (xy 120 140)) ; PB14/MISO → J3.4
+    (net "SPI_MISO"))
+  (wire (uuid "w0000000d") (pts (xy 100 145) (xy 120 145)) ; PA6/IRQ → J3.5
+    (net "SPI_IRQ"))
+
+  ; U1 → U2 (BLE bridge UART)
+  (wire (uuid "w0000000e") (pts (xy 60 60) (xy 80 60))    ; PD8/TX → U2.22
+    (net "BLE_TX"))
+  (wire (uuid "w0000000f") (pts (xy 60 65) (xy 80 65))    ; PD9/RX → U2.21
+    (net "BLE_RX"))
+  (wire (uuid "w00000010") (pts (xy 60 70) (xy 80 70))    ; PD10/nRST → U2.23
+    (net "BLE_RST"))
+  (wire (uuid "w00000011") (pts (xy 60 75) (xy 80 75))    ; PD11/IRQ → U2.24
+    (net "BLE_IRQ"))
+
+  ; U1 → J4 (MicroSD)
+  (wire (uuid "w00000012") (pts (xy 140 80) (xy 160 80))  ; PC8/D0 → J4.7
+    (net "SD_D0"))
+  (wire (uuid "w00000013") (pts (xy 140 85) (xy 160 85))  ; PC9/D1 → J4.8
+    (net "SD_D1"))
+  (wire (uuid "w00000014") (pts (xy 140 90) (xy 160 90))  ; PC10/D2 → J4.1
+    (net "SD_D2"))
+  (wire (uuid "w00000015") (pts (xy 140 95) (xy 160 95))  ; PC11/D3 → J4.2
+    (net "SD_D3"))
+  (wire (uuid "w00000016") (pts (xy 140 100) (xy 160 100)) ; PC12/CLK → J4.5
+    (net "SD_CLK"))
+  (wire (uuid "w00000017") (pts (xy 140 105) (xy 160 105)) ; PD2/CMD → J4.3
+    (net "SD_CMD"))
+
+  ; U1 → J1 (USB-C via ESD protection U5)
+  (wire (uuid "w00000018") (pts (xy 30 120) (xy 50 120))  ; PA11/DM → U5.1
+    (net "USB_DM"))
+  (wire (uuid "w00000019") (pts (xy 30 125) (xy 50 125))  ; PA12/DP → U5.6
+    (net "USB_DP"))
+  (wire (uuid "w0000001a") (pts (xy 10 110) (xy 30 110))  ; VBUS from J1.A4
+    (net "VBUS"))
+
+  ; U1 → Y1 (25MHz crystal)
+  (wire (uuid "w0000001b") (pts (xy 20 30) (xy 30 30))   ; PA0/OSC_IN → Y1.1
+    )
+  (wire (uuid "w0000001c") (pts (xy 20 35) (xy 30 35))   ; PA1/OSC_OUT → Y1.3
+    )
+
+  ; U2 → Y2 (32.768kHz crystal)
+  (wire (uuid "w0000001d") (pts (xy 80 30) (xy 90 30))   ; XC1 → Y2.1
+    )
+  (wire (uuid "w0000001e") (pts (xy 80 35) (xy 90 35))   ; XC2 → Y2.2
+    )
+
+  ; U2 → L1 (antenna matching)
+  (wire (uuid "w0000001f") (pts (xy 100 25) (xy 110 25))  ; ANT1 → L1.1
+    )
+  (wire (uuid "w00000020") (pts (xy 100 30) (xy 110 30))  ; ANT2 → L1.2
+    )
+
+  ; Power: U3 (AMS1117-3.3) — 5V to 3.3V
+  (wire (uuid "w00000021") (pts (xy 10 150) (xy 25 150))  ; +5V → U3.3
+    (net "+5V"))
+  (wire (uuid "w00000022") (pts (xy 40 150) (xy 55 150))  ; U3.2 → +3V3
+    (net "+3V3"))
+  (wire (uuid "w00000023") (pts (xy 25 160) (xy 25 165))  ; U3.1 → GND
+    (net "GND"))
+
+  ; Power: VBUS from USB → +5V via U3
+  (wire (uuid "w00000024") (pts (xy 10 110) (xy 10 150))  ; VBUS → +5V
+    (net "VBUS"))
+
+  ; Series resistors on LAD lines (RN1 — 100Ω resistor network)
+  (wire (uuid "w00000025") (pts (xy 100 90) (xy 110 90))  ; LAD0 via RN1
+    (net "LAD0"))
+  (wire (uuid "w00000026") (pts (xy 100 95) (xy 110 95))  ; LAD1 via RN1
+    (net "LAD1"))
+  (wire (uuid "w00000027") (pts (xy 100 100) (xy 110 100)) ; LAD2 via RN1
+    (net "LAD2"))
+  (wire (uuid "w00000028") (pts (xy 100 105) (xy 110 105)) ; LAD3 via RN1
+    (net "LAD3"))
+
+  ; Decoupling caps (placed near each power pin)
+  (wire (uuid "w00000029") (pts (xy 15 40) (xy 15 45))   ; C1 on VDD
+    (net "+3V3"))
+  (wire (uuid "w0000002a") (pts (xy 15 45) (xy 15 50))   ; C1 to GND
+    (net "GND"))
+  (wire (uuid "w0000002b") (pts (xy 20 40) (xy 20 45))   ; C2 on VDDA
+    (net "+3V3"))
+  (wire (uuid "w0000002c") (pts (xy 20 45) (xy 20 50))   ; C2 to GND
+    (net "GND"))
+
+  ; LEDs (D2-D5) on PE1-PE4
+  (wire (uuid "w0000002d") (pts (xy 170 60) (xy 180 60))  ; PE1 → D2.A (LED_STATUS)
+    (net "+3V3"))
+  (wire (uuid "w0000002e") (pts (xy 170 65) (xy 180 65))  ; PE2 → D3.A (LED_CAPTURE)
+    (net "+3V3"))
+  (wire (uuid "w0000002f") (pts (xy 170 70) (xy 180 70))  ; PE3 → D4.A (LED_ERROR)
+    (net "+3V3"))
+  (wire (uuid "w00000030") (pts (xy 170 75) (xy 180 75))  ; PE4 → D5.A (LED_LPC)
+    (net "+3V3"))
+
+  ; Button (SW1) on PC13
+  (wire (uuid "w00000031") (pts (xy 170 40) (xy 180 40))  ; PC13 → SW1
+    (net "+3V3"))
+  (wire (uuid "w00000032") (pts (xy 180 40) (xy 190 40))  ; SW1 → GND
+    (net "GND"))
+
+  ; ===================================================================
+  ; Junction labels
+  ; ===================================================================
+  (label "LCLK" (at 110 80) (effects (font (size 1.27 1.27))))
+  (label "LFRAME" (at 110 85) (effects (font (size 1.27 1.27))))
+  (label "LAD0" (at 110 90) (effects (font (size 1.27 1.27))))
+  (label "LAD1" (at 110 95) (effects (font (size 1.27 1.27))))
+  (label "LAD2" (at 110 100) (effects (font (size 1.27 1.27))))
+  (label "LAD3" (at 110 105) (effects (font (size 1.27 1.27))))
+  (label "SPI_CS" (at 110 125) (effects (font (size 1.27 1.27))))
+  (label "SPI_SCK" (at 110 130) (effects (font (size 1.27 1.27))))
+  (label "SPI_MOSI" (at 110 135) (effects (font (size 1.27 1.27))))
+  (label "SPI_MISO" (at 110 140) (effects (font (size 1.27 1.27))))
+  (label "USB_DM" (at 40 120) (effects (font (size 1.27 1.27))))
+  (label "USB_DP" (at 40 125) (effects (font (size 1.27 1.27))))
+  (label "BLE_TX" (at 70 60) (effects (font (size 1.27 1.27))))
+  (label "BLE_RX" (at 70 65) (effects (font (size 1.27 1.27))))
+  (label "+3V3" (at 50 150) (effects (font (size 1.27 1.27))))
+  (label "GND" (at 25 165) (effects (font (size 1.27 1.27))))
+  (label "VBUS" (at 20 110) (effects (font (size 1.27 1.27))))
+
+  (text "TPM-PHANTOM v1.0 — Trusted Platform Module Bus Analyzer"
+    (at 50 5) (effects (font (size 2.5 2.5) bold)))
+  (text "Author: jayis1 — CERN-OHL-S v2 — GPL-2.0"
+    (at 50 10) (effects (font (size 1.5 1.5))))
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)
