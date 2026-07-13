@@ -1,0 +1,564 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eddy-phantom-schematic")
+  (generator_version "7.0")
+  (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+  (paper "A3")
+  (title_block
+    (title "Eddy-Phantom — Electromagnetic Emanation Keyboard Reconnaissance Device")
+    (date "2025-01-15")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: GPL-2.0")
+    (comment 3 "WARN: For authorized security research only")
+  )
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Net labels
+  ; ═══════════════════════════════════════════════════════════════
+  (net 0 "")
+  (net 1 "GND")
+  (net 2 "+3V3")
+  (net 3 "+1V8")
+  (net 4 "+5V")
+  (net 5 "VBAT")
+  (net 6 "VUSB")
+  (net 7 "AGND")
+  (net 8 "AVDD")
+  (net 9 "SPI1_SCK")
+  (net 10 "SPI1_MISO")
+  (net 11 "SPI1_MOSI")
+  (net 12 "ADC_CS_N")
+  (net 13 "ADC_RST_N")
+  (net 14 "ADC_CONVST")
+  (net 15 "ADC_BUSY")
+  (net 16 "ADC_RANGE")
+  (net 17 "USART3_TX")
+  (net 18 "USART3_RX")
+  (net 19 "BLE_CTS")
+  (net 20 "BLE_RTS")
+  (net 21 "BLE_RESET_N")
+  (net 22 "BLE_BOOT")
+  (net 23 "SPI4_SCK")
+  (net 24 "SPI4_MISO")
+  (net 25 "SPI4_MOSI")
+  (net 26 "SD_CS_N")
+  (net 27 "SD_DETECT")
+  (net 28 "SPI2_SCK")
+  (net 29 "SPI2_MOSI")
+  (net 30 "VGA_CS1_N")
+  (net 31 "VGA_CS2_N")
+  (net 32 "VGA_LNA_BYPASS")
+  (net 33 "FILTER_SCK")
+  (net 34 "FILTER_MOSI")
+  (net 35 "FILTER_CS_N")
+  (net 36 "OLED_SCL")
+  (net 37 "OLED_SDA")
+  (net 38 "TRIG_OUT")
+  (net 39 "LED_STATUS")
+  (net 40 "LED_CAPTURE")
+  (net 41 "LED_CHARGE")
+  (net 42 "BTN_ARM")
+  (net 43 "QSPI_CLK")
+  (net 44 "QSPI_NCS")
+  (net 45 "QSPI_IO0")
+  (net 46 "QSPI_IO1")
+  (net 47 "QSPI_IO2")
+  (net 48 "QSPI_IO3")
+  (net 49 "FMC_D0")
+  (net 50 "FMC_D1")
+  (net 51 "FMC_A0")
+  (net 52 "FMC_SDCLK")
+  (net 53 "FMC_SDNRAS")
+  (net 54 "FMC_SDNCAS")
+  (net 55 "FMC_SDNWE")
+  (net 56 "FMC_SDNE0")
+  (net 57 "FMC_SDCKE0")
+  (net 58 "PROBE_1_IN")
+  (net 59 "PROBE_2_IN")
+  (net 60 "PROBE_3_IN")
+  (net 61 "PROBE_4_IN")
+  (net 62 "VGA1_OUT")
+  (net 63 "VGA2_OUT")
+  (net 64 "VGA3_OUT")
+  (net 65 "VGA4_OUT")
+  (net 66 "FILTER_OUT")
+  (net 67 "ADC_CH1")
+  (net 68 "ADC_CH2")
+  (net 69 "ADC_CH3")
+  (net 70 "ADC_CH4")
+  (net 71 "I2C_BATT_SCL")
+  (net 72 "I2C_BATT_SDA")
+  (net 73 "CHARGE_STAT")
+  (net 74 "BATT_FUEL_INT")
+  (net 75 "USB_DM")
+  (net 76 "USB_DP")
+  (net 77 "PROBE_MUX_SEL0")
+  (net 78 "PROBE_MUX_SEL1")
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Component symbols
+  ; ═══════════════════════════════════════════════════════════════
+
+  ; ── U1: STM32H743VIT6 Main MCU (LQFP-100) ──
+  (symbol (lib_id "MCU_ST_STM32H7:STM32H743VIT6")
+    (at 120 80)
+    (unit 1)
+    (instances (project "eddy-phantom"))
+    (property "Reference" "U1" (at 120 50 0))
+    (property "Value" "STM32H743VIT6" (at 120 55 0))
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm" (at 120 60 0))
+    (property "Author" "jayis1")
+    (pin "5"  (net 9)  (type passive))   ; PA5 = SPI1_SCK
+    (pin "6"  (net 10) (type passive))   ; PA6 = SPI1_MISO
+    (pin "7"  (net 11) (type passive))   ; PA7 = SPI1_MOSI
+    (pin "11" (net 75) (type passive))   ; PA11 = USB_DM
+    (pin "12" (net 76) (type passive))   ; PA12 = USB_DP
+    (pin "16" (net 12) (type passive))   ; PB0 = ADC_CS_N
+    (pin "17" (net 13) (type passive))   ; PB1 = ADC_RST_N
+    (pin "18" (net 14) (type passive))   ; PB2 = ADC_CONVST
+    (pin "26" (net 15) (type passive))   ; PB10 = ADC_BUSY
+    (pin "27" (net 16) (type passive))   ; PB11 = ADC_RANGE
+    (pin "28" (net 39) (type passive))   ; PB12 = LED_STATUS
+    (pin "29" (net 40) (type passive))   ; PB13 = LED_CAPTURE
+    (pin "30" (net 42) (type passive))   ; PB14 = BTN_ARM
+    (pin "31" (net 41) (type passive))   ; PB15 = LED_CHARGE
+    (pin "32" (net 36) (type passive))   ; PB8 = OLED_SCL
+    (pin "33" (net 37) (type passive))   ; PB9 = OLED_SDA
+    (pin "38" (net 43) (type passive))   ; PB6 = QSPI_CLK
+    (pin "39" (net 44) (type passive))   ; PB7 = QSPI_NCS
+    (pin "8"  (net 23) (type passive))   ; PE2 = SPI4_SCK
+    (pin "13" (net 24) (type passive))   ; PE5 = SPI4_MISO
+    (pin "14" (net 25) (type passive))   ; PE6 = SPI4_MOSI
+    (pin "7"  (net 26) (type passive))   ; PE4 = SD_CS_N
+    (pin "6"  (net 27) (type passive))   ; PE3 = SD_DETECT
+    (pin "56" (net 17) (type passive))   ; PD8 = USART3_TX
+    (pin "57" (net 18) (type passive))   ; PD9 = USART3_RX
+    (pin "58" (net 19) (type passive))   ; PD10 = BLE_CTS
+    (pin "59" (net 20) (type passive))   ; PD11 = BLE_RTS
+    (pin "60" (net 21) (type passive))   ; PD12 = BLE_RESET_N
+    (pin "61" (net 22) (type passive))   ; PD13 = BLE_BOOT
+    (pin "62" (net 28) (type passive))   ; PF7 = SPI2_SCK
+    (pin "64" (net 29) (type passive))   ; PF9 = SPI2_MOSI
+    (pin "55" (net 30) (type passive))   ; PF6 = VGA_CS1_N
+    (pin "59" (net 31) (type passive))   ; PF10 = VGA_CS2_N
+    (pin "20" (net 38) (type passive))   ; PC4 = TRIG_OUT
+    (pin "14" (net 46) (type passive))   ; PC10 = QSPI_IO1
+    (pin "15" (net 45) (type passive))   ; PC9 = QSPI_IO0
+    (pin "16" (net 47) (type passive))   ; PC11 = QSPI_IO2
+    (pin "17" (net 48) (type passive))   ; PC12 = QSPI_IO3
+    (pin "1"  (net 2)  (type power_in))  ; VDD
+    (pin "2"  (net 1)  (type power_in))  ; VSS
+    (pin "3"  (net 2)  (type power_in))  ; VDD
+    (pin "4"  (net 1)  (type power_in))  ; VSS
+    (pin "19" (net 1)  (type power_in))  ; VSSA
+    (pin "21" (net 8)  (type power_in))  ; VREF+
+  )
+
+  ; ── U2: AD7606C-6 ADC (LQFP-64) ──
+  (symbol (lib_id "Analog_ADC:AD7606C-6")
+    (at 220 80)
+    (unit 1)
+    (property "Reference" "U2" (at 220 50 0))
+    (property "Value" "AD7606C-6" (at 220 55 0))
+    (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm" (at 220 60 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 7)  (type power_in))   ; AGND
+    (pin "2"  (net 8)  (type power_in))   ; AVCC (5V)
+    (pin "5"  (net 67) (type input))      ; V1 (ADC channel 1)
+    (pin "6"  (net 68) (type input))      ; V2
+    (pin "7"  (net 69) (type input))      ; V3
+    (pin "8"  (net 70) (type input))      ; V4
+    (pin "22" (net 9)  (type input))      ; SCLK
+    (pin "23" (net 10) (type output))     ; DOUTA (MISO)
+    (pin "24" (net 11) (type input))      ; DIN (MOSI)
+    (pin "25" (net 12) (type input))      ; CS
+    (pin "26" (net 14) (type input))      ; CONVSTA/CONVSTB
+    (pin "27" (net 15) (type output))     ; BUSY
+    (pin "28" (net 13) (type input))      ; RESET
+    (pin "30" (net 16) (type input))      ; RANGE
+    (pin "40" (net 2)  (type power_in))   ; VDRIVE (3.3V)
+    (pin "41" (net 1)  (type power_in))   ; GND
+  )
+
+  ; ── U3: AD8331 VGA (SOIC-16) — channel 1&2 ──
+  (symbol (lib_id "Amplifier_Operational:AD8331")
+    (at 220 130)
+    (unit 1)
+    (property "Reference" "U3" (at 220 115 0))
+    (property "Value" "AD8331" (at 220 120 0))
+    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 220 125 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 58) (type input))      ; INPR (probe 1+)
+    (pin "2"  (net 7)  (type power_in))   ; AGND
+    (pin "3"  (net 8)  (type power_in))   ; AVCC
+    (pin "4"  (net 62) (type output))     ; OPOS (VGA1_OUT)
+    (pin "8"  (net 8)  (type power_in))   ; VCC
+    (pin "12" (net 66) (type output))     ; LMOP (filter input)
+    (pin "14" (net 59) (type input))      ; INNR (probe 2+)
+    (pin "16" (net 7)  (type power_in))   ; AGND
+  )
+
+  ; ── U4: AD8331 VGA (SOIC-16) — channel 3&4 ──
+  (symbol (lib_id "Amplifier_Operational:AD8331")
+    (at 220 170)
+    (unit 1)
+    (property "Reference" "U4" (at 220 155 0))
+    (property "Value" "AD8331" (at 220 160 0))
+    (property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" (at 220 165 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 60) (type input))
+    (pin "4"  (net 64) (type output))
+    (pin "14" (net 61) (type input))
+    (pin "12" (net 66) (type output))
+  )
+
+  ; ── U5: LTC1564-7 Anti-alias filter (SSOP-16) ──
+  (symbol (lib_id "Filter:LTC1564-7")
+    (at 260 130)
+    (unit 1)
+    (property "Reference" "U5" (at 260 115 0))
+    (property "Value" "LTC1564-7" (at 260 120 0))
+    (property "Footprint" "Package_SO:SSOP-16_5.3x6.2mm_P0.65mm" (at 260 125 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 66) (type input))      ; VIN
+    (pin "2"  (net 8)  (type power_in))   ; V+
+    (pin "3"  (net 7)  (type power_in))   ; V-
+    (pin "8"  (net 67) (type output))     ; VOUT → ADC_CH1
+    (pin "10" (net 35) (type input))      ; CLOCK (from SPI pot)
+  )
+
+  ; ── U6: NINA-B306 BLE module ──
+  (symbol (lib_id "RF_Module:u-blox_NINA-B3")
+    (at 310 80)
+    (unit 1)
+    (property "Reference" "U6" (at 310 60 0))
+    (property "Value" "NINA-B306" (at 310 65 0))
+    (property "Footprint" "RF_Module:ublox_NINA-B3" (at 310 70 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 2)  (type power_in))   ; VCC
+    (pin "2"  (net 1)  (type power_in))   ; GND
+    (pin "9"  (net 17) (type input))      ; UART_TX (to MCU RX)
+    (pin "10" (net 18) (type output))     ; UART_RX (to MCU TX)
+    (pin "11" (net 19) (type input))      ; CTS
+    (pin "12" (net 20) (type output))     ; RTS
+    (pin "23" (net 21) (type input))      ; RESET_N
+    (pin "24" (net 22) (type input))      ; BOOT
+  )
+
+  ; ── U7: IS42S32800G-6BLI SDRAM (TSOP-86) ──
+  (symbol (lib_id "Memory_RAM:IS42S32800G")
+    (at 120 160)
+    (unit 1)
+    (property "Reference" "U7" (at 120 130 0))
+    (property "Value" "IS42S32800G-6BLI" (at 120 135 0))
+    (property "Footprint" "Package_SO:TSOP-II-54_10.16x22.22mm_P0.8mm" (at 120 140 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 2)  (type power_in))   ; VDD
+    (pin "2"  (net 1)  (type power_in))   ; VSS
+    (pin "3"  (net 49) (type bidirectional)) ; D0
+    (pin "4"  (net 50) (type bidirectional)) ; D1
+    (pin "35" (net 51) (type input))      ; A0
+    (pin "38" (net 52) (type input))      ; SDCLK
+    (pin "40" (net 53) (type input))      ; SDNRAS
+    (pin "41" (net 54) (type input))      ; SDNCAS
+    (pin "42" (net 55) (type input))      ; SDNWE
+    (pin "43" (net 56) (type input))      ; SDNE0
+    (pin "44" (net 57) (type input))      ; SDCKE0
+  )
+
+  ; ── U8: W25Q128JVSIQ QSPI Flash (SOIC-8) ──
+  (symbol (lib_id "Memory_Flash:W25Q128JVS")
+    (at 310 160)
+    (unit 1)
+    (property "Reference" "U8" (at 310 148 0))
+    (property "Value" "W25Q128JVSIQ" (at 310 153 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 310 158 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 44) (type input))      ; CS
+    (pin "2" (net 45) (type bidirectional)) ; IO0
+    (pin "3" (net 47) (type bidirectional)) ; IO2
+    (pin "4" (net 1)  (type power_in))    ; GND
+    (pin "5"  (net 46) (type bidirectional)) ; IO1
+    (pin "6"  (net 48) (type bidirectional)) ; IO3
+    (pin "7"  (net 2)  (type power_in))   ; VCC
+    (pin "8"  (net 2)  (type power_in))   ; VCC (W25Q128 has hold on pin7, WP on pin3)
+  )
+
+  ; ── U9: TPS62743 Buck converter (VQFN-8) ──
+  (symbol (lib_id "Regulator_Switching:TPS62743")
+    (at 40 80)
+    (unit 1)
+    (property "Reference" "U9" (at 40 65 0))
+    (property "Value" "TPS62743" (at 40 70 0))
+    (property "Footprint" "Package_DFN_QFN:VQFN-8_1.5x1.5mm_P0.4mm" (at 40 75 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 5)  (type power_in))   ; VIN (VBAT)
+    (pin "2"  (net 1)  (type power_in))   ; GND
+    (pin "3"  (net 2)  (type power_out))  ; VOUT (3.3V)
+    (pin "4"  (net 1)  (type power_in))   ; GND
+    (pin "8"  (net 5)  (type power_in))   ; VIN
+  )
+
+  ; ── U10: TPS7A4700 LDO 1.8V (TSSOP-20) ──
+  (symbol (lib_id "Regulator_Linear:TPS7A4700")
+    (at 40 130)
+    (unit 1)
+    (property "Reference" "U10" (at 40 110 0))
+    (property "Value" "TPS7A4700" (at 40 115 0))
+    (property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" (at 40 120 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 2)  (type power_in))   ; IN (3.3V)
+    (pin "2"  (net 3)  (type power_out))  ; OUT (1.8V)
+    (pin "3"  (net 1)  (type power_in))   ; GND
+  )
+
+  ; ── U11: MCP73831 Li-ion charger (SOT-23-5) ──
+  (symbol (lib_id "Battery_Management:MCP73831")
+    (at 40 40)
+    (unit 1)
+    (property "Reference" "U11" (at 40 25 0))
+    (property "Value" "MCP73831" (at 40 30 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 40 35 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 73) (type output))     ; STAT
+    (pin "2"  (net 1)  (type power_in))   ; GND
+    (pin "3"  (net 5)  (type power_out))  ; VBAT
+    (pin "4"  (net 6)  (type power_in))   ; VUSB
+    (pin "5"  (net 6)  (type power_in))   ; VUSB
+  )
+
+  ; ── U12: MAX17048 Fuel gauge (TDFN-8) ──
+  (symbol (lib_id "Sensor_Voltage:MAX17048")
+    (at 40 180)
+    (unit 1)
+    (property "Reference" "U12" (at 40 165 0))
+    (property "Value" "MAX17048" (at 40 170 0))
+    (property "Footprint" "Package_DFN_QFN:TDFN-8_2x2mm_P0.5mm" (at 40 175 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 71) (type bidirectional)) ; SCL
+    (pin "2"  (net 72) (type bidirectional)) ; SDA
+    (pin "3"  (net 5)  (type power_in))      ; CELL+
+    (pin "4"  (net 1)  (type power_in))      ; GND
+    (pin "5"  (net 74) (type output))        ; ALRT
+    (pin "8"  (net 2)  (type power_in))      ; VDD
+  )
+
+  ; ── U13: MCP4922 Dual DAC (SOIC-14) ──
+  (symbol (lib_id "Analog_DAC:MCP4922")
+    (at 260 80)
+    (unit 1)
+    (property "Reference" "U13" (at 260 65 0))
+    (property "Value" "MCP4922" (at 260 70 0))
+    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 260 75 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 2)  (type power_in))   ; VDD
+    (pin "2"  (net 2)  (type power_in))   ; VREFB
+    (pin "3"  (net 1)  (type power_in))   ; AVSS
+    (pin "4"  (net 28) (type input))      ; SCK
+    (pin "5"  (net 29) (type input))      ; SDI
+    (pin "6"  (net 30) (type input))      ; CS
+    (pin "8"  (net 62) (type output))     ; VOUTA → VGA gain ch1
+    (pin "10" (net 63) (type output))     ; VOUTB → VGA gain ch2
+  )
+
+  ; ── U14: MCP41010 Digital Pot (SOIC-8) ──
+  (symbol (lib_id "Potentiometer_Digital:MCP41010")
+    (at 260 200)
+    (unit 1)
+    (property "Reference" "U14" (at 260 185 0))
+    (property "Value" "MCP41010" (at 260 190 0))
+    (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 260 195 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 35) (type input))      ; CS
+    (pin "2"  (net 33) (type input))      ; SCK
+    (pin "3"  (net 34) (type input))      ; SI
+    (pin "4"  (net 7)  (type power_in))   ; VSS
+    (pin "5"  (net 66) (type passive))    ; PA0 → filter cutoff
+    (pin "6"  (net 8)  (type power_in))   ; VCC
+    (pin "7"  (net 66) (type passive))    ; WPO
+    (pin "8"  (net 7)  (type power_in))   ; PB0
+  )
+
+  ; ── U15: TLV3201 Comparator (SOT-23-6) ──
+  (symbol (lib_id "Comparator:TLV3201")
+    (at 260 240)
+    (unit 1)
+    (property "Reference" "U15" (at 260 225 0))
+    (property "Value" "TLV3201" (at 260 230 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 260 235 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 7)  (type power_in))   ; V-
+    (pin "2"  (net 67) (type input))      ; IN- (filter output)
+    (pin "3"  (net 67) (type input))      ; IN+ (threshold from DAC)
+    (pin "4"  (net 38) (type output))     ; OUT → TRIG_OUT
+    (pin "5"  (net 2)  (type power_in))   ; V+
+    (pin "6"  (net 1)  (type power_in))   ; GND
+  )
+
+  ; ── SD card socket (Hirose DM3AT) ──
+  (symbol (lib_id "Connector:Micro_SD_Card_Det_Hirose_DM3AT")
+    (at 350 80)
+    (unit 1)
+    (property "Reference" "J2" (at 350 60 0))
+    (property "Value" "Micro_SD" (at 350 65 0))
+    (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJ521" (at 350 70 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 25) (type bidirectional)) ; DAT2
+    (pin "2"  (net 25) (type bidirectional)) ; CD/DAT3
+    (pin "3"  (net 25) (type input))         ; CMD (MOSI)
+    (pin "4"  (net 1)  (type power_in))      ; GND
+    (pin "5"  (net 2)  (type power_in))      ; VCC
+    (pin "6"  (net 23) (type input))         ; CLK (SCK)
+    (pin "7"  (net 24) (type output))        ; DAT0 (MISO)
+    (pin "8"  (net 27) (type output))        ; DET
+    (pin "9"  (net 1)  (type power_in))      ; GND
+    (pin "10" (net 1)  (type power_in))      ; GND
+    (pin "11" (net 26) (type input))         ; CS
+  )
+
+  ; ── USB-C connector (power only) ──
+  (symbol (lib_id "Connector:USB_C_Receptacle_PowerOnly")
+    (at 40 220)
+    (unit 1)
+    (property "Reference" "J1" (at 40 200 0))
+    (property "Value" "USB-C" (at 40 205 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (at 40 210 0))
+    (property "Author" "jayis1")
+    (pin "A1" (net 1)  (type power_in))   ; GND
+    (pin "A4" (net 6)  (type power_in))   ; VBUS
+    (pin "B1" (net 1)  (type power_in))   ; GND
+    (pin "B4" (net 6)  (type power_in))   ; VBUS
+    (pin "S1" (net 1)  (type power_in))   ; SHIELD
+  )
+
+  ; ── OLED display connector (8-pin FPC) ──
+  (symbol (lib_id "Connector_Generic:Conn_01x08")
+    (at 350 160)
+    (unit 1)
+    (property "Reference" "J3" (at 350 140 0))
+    (property "Value" "SSD1306_OLED" (at 350 145 0))
+    (property "Footprint" "Connector_FFC-FPC:Molex_502250-0810" (at 350 150 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 1)  (type power_in))   ; GND
+    (pin "2"  (net 2)  (type power_in))   ; VCC
+    (pin "3"  (net 36) (type input))      ; SCL
+    (pin "4"  (net 37) (type bidirectional)) ; SDA
+  )
+
+  ; ── Probe array connector (4-channel) ──
+  (symbol (lib_id "Connector_Generic:Conn_01x10")
+    (at 160 220)
+    (unit 1)
+    (property "Reference" "J4" (at 160 200 0))
+    (property "Value" "PROBE_ARRAY" (at 160 205 0))
+    (property "Footprint" "Connector_FFC-FPC:Hirose_FH12-10S-0.5SH" (at 160 210 0))
+    (property "Author" "jayis1")
+    (pin "1"  (net 58) (type input))     ; Probe 1 signal
+    (pin "2"  (net 7)  (type power_in))  ; AGND
+    (pin "3"  (net 59) (type input))     ; Probe 2 signal
+    (pin "4"  (net 7)  (type power_in))  ; AGND
+    (pin "5"  (net 60) (type input))     ; Probe 3 signal
+    (pin "6"  (net 7)  (type power_in))  ; AGND
+    (pin "7"  (net 61) (type input))     ; Probe 4 signal
+    (pin "8"  (net 7)  (type power_in))  ; AGND
+    (pin "9"  (net 8)  (type power_in))  ; AVDD (for active probe preamp)
+    (pin "10" (net 7)  (type power_in))  ; AGND
+  )
+
+  ; ── LEDs ──
+  (symbol (lib_id "Device:LED")
+    (at 90 220)
+    (unit 1)
+    (property "Reference" "D1" (at 90 210 0))
+    (property "Value" "LED_STATUS" (at 90 215 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 39) (type input))
+    (pin "2" (net 1)  (type power_in))
+  )
+  (symbol (lib_id "Device:LED")
+    (at 100 220)
+    (unit 1)
+    (property "Reference" "D2" (at 100 210 0))
+    (property "Value" "LED_CAPTURE" (at 100 215 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 40) (type input))
+    (pin "2" (net 1)  (type power_in))
+  )
+  (symbol (lib_id "Device:LED")
+    (at 110 220)
+    (unit 1)
+    (property "Reference" "D3" (at 110 210 0))
+    (property "Value" "LED_CHARGE" (at 110 215 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 73) (type input))
+    (pin "2" (net 1)  (type power_in))
+  )
+
+  ; ── Tactile button ──
+  (symbol (lib_id "Switch:SW_Push")
+    (at 130 220)
+    (unit 1)
+    (property "Reference" "SW1" (at 130 210 0))
+    (property "Value" "BTN_ARM" (at 130 215 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 42) (type passive))
+    (pin "2" (net 1)  (type passive))
+  )
+
+  ; ── Crystal 25 MHz ──
+  (symbol (lib_id "Device:Crystal")
+    (at 80 60)
+    (unit 1)
+    (property "Reference" "Y1" (at 80 50 0))
+    (property "Value" "25MHz" (at 80 55 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 80 58 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 9) (type passive))
+    (pin "3" (net 1) (type passive))
+  )
+
+  ; ── Decoupling capacitors ──
+  (symbol (lib_id "Device:C") (at 70 80) (unit 1)
+    (property "Reference" "C1" (at 75 77 0))
+    (property "Value" "100nF" (at 75 82 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 2) (type passive))
+    (pin "2" (net 1) (type passive))
+  )
+  (symbol (lib_id "Device:C") (at 70 90) (unit 1)
+    (property "Reference" "C2" (at 75 87 0))
+    (property "Value" "4.7uF" (at 75 92 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 2) (type passive))
+    (pin "2" (net 1) (type passive))
+  )
+  (symbol (lib_id "Device:C") (at 70 100) (unit 1)
+    (property "Reference" "C3" (at 75 97 0))
+    (property "Value" "10uF" (at 75 102 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 5) (type passive))
+    (pin "2" (net 1) (type passive))
+  )
+
+  ; ── Battery connector ──
+  (symbol (lib_id "Connector_Generic:Conn_01x02")
+    (at 20 40)
+    (unit 1)
+    (property "Reference" "J5" (at 20 30 0))
+    (property "Value" "BATT_16340" (at 20 35 0))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02" (at 20 38 0))
+    (property "Author" "jayis1")
+    (pin "1" (net 5) (type power_in))   ; VBAT+
+    (pin "2" (net 1) (type power_in))   ; GND
+  )
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Power and ground labels
+  ; ═══════════════════════════════════════════════════════════════
+  (global_label "GND" (shape input) (at 0 0) (effects (font (size 1.27 1.27))))
+  (global_label "+3V3" (shape input) (at 0 5) (effects (font (size 1.27 1.27))))
+  (global_label "+5V" (shape input) (at 0 10) (effects (font (size 1.27 1.27))))
+  (global_label "VBAT" (shape input) (at 0 15) (effects (font (size 1.27 1.27))))
+)
