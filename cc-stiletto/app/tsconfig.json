@@ -1,0 +1,15 @@
+{
+  "extends": "expo/tsconfig.base",
+  "//": "CC-Stiletto companion app tsconfig. Author: jayis1. Copyright (c) 2026 jayis1.",
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
+}

@@ -1,0 +1,448 @@
+(kicad_sch
+ (version 20230121)
+ (generator "cc-stiletto schematic generator")
+ (generator_version "7.0")
+ (paper "A3")
+ (title_block
+  (title "CC-Stiletto — USB-C PD Configuration Channel Attack Tool")
+  (date "2026-07-17")
+  (rev "1.0")
+  (company "jayis1")
+  (comment 1 "Author: jayis1")
+  (comment 2 "Copyright (c) 2026 jayis1 — authorized security research only")
+  (comment 3 "USB-C Power Delivery Configuration Channel attack device"))
+
+; ---- Sheet 1: MCU + USB-CDC -----------------------------------------------
+
+(symbol
+  (lib_id "MCU_ST_STM32G4:STM32G474CEU6")
+  (at 110 90 0)
+  (unit 1)
+  (property "Reference" "U1" (at 110 50 0))
+  (property "Value" "STM32G474CEU6" (at 110 60 0))
+  (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm" (at 110 130 0))
+  (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g474ce.pdf" (at 110 90 0))
+  (property "Author" "jayis1")
+  (pin "1" (uuid 00000000-0000-0000-0000-000000000001))
+  (pin "44" (uuid 00000000-0000-0000-0000-000000000044))
+  (pin "45" (uuid 00000000-0000-0000-0000-000000000045))
+  (pin "46" (uuid 00000000-0000-0000-0000-000000000046)))
+
+(symbol
+  (lib_id "Connector:USB_C_Plug")
+  (at 40 100 0)
+  (unit 1)
+  (property "Reference" "J1" (at 40 60 0))
+  (property "Value" "USB-C Plug (to victim/DUT)" (at 40 70 0))
+  (property "Footprint" "Connector_USB:USB_C_Plug_Molex_105444")
+  (property "Author" "jayis1")
+  (pin "A5"  (uuid 01000000-0000-0000-0000-0000000000a5))   ; CC1
+  (pin "B5"  (uuid 01000000-0000-0000-0000-0000000000b5))   ; CC2
+  (pin "A4"  (uuid 01000000-0000-0000-0000-0000000000a4))   ; VBUS
+  (pin "B4"  (uuid 01000000-0000-0000-0000-0000000000b4))   ; VBUS
+  (pin "A1"  (uuid 01000000-0000-0000-0000-0000000000a1))   ; GND
+  (pin "B1"  (uuid 01000000-0000-0000-0000-0000000000b1)))  ; GND
+
+(symbol
+  (lib_id "Connector:USB_C_Receptacle")
+  (at 250 100 180)
+  (unit 1)
+  (property "Reference" "J2" (at 250 60 0))
+  (property "Value" "USB-C Receptacle (to source/host)" (at 250 70 0))
+  (property "Footprint" "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A")
+  (property "Author" "jayis1")
+  (pin "A5"  (uuid 02000000-0000-0000-0000-0000000000a5))
+  (pin "B5"  (uuid 02000000-0000-0000-0000-0000000000b5))
+  (pin "A4"  (uuid 02000000-0000-0000-0000-0000000000a4))
+  (pin "B4"  (uuid 02000000-0000-0000-0000-0000000000b4))
+  (pin "A1"  (uuid 02000000-0000-0000-0000-0000000000a1))
+  (pin "B1"  (uuid 02000000-0000-0000-0000-0000000000b1)))
+
+; ---- Sheet 2: USB-C PD PHY (FUSB302B x2) -----------------------------------
+
+(symbol
+  (lib_id "Interface_USB:FUSB302BMPX")
+  (at 60 170 0)
+  (unit 1)
+  (property "Reference" "U2" (at 60 140 0))
+  (property "Value" "FUSB302BMPX" (at 60 150 0))
+  (property "Footprint" "Package_DFN_QFN:QFN-14-1EP_3x3mm_P0.4mm_EP1.7x1.7mm" (at 60 200 0))
+  (property "Datasheet" "https://www.onsemi.com/pub/Collateral/FUSB302B-D.pdf" (at 60 170 0))
+  (property "Author" "jayis1")
+  (property "Role" "Source-side PD PHY (I2C1)")
+  (pin "1" (uuid 03000000-0000-0000-0000-000000000001))   ; VBUS
+  (pin "2" (uuid 03000000-0000-0000-0000-000000000002))   ; CC1 -> J1 A5
+  (pin "3" (uuid 03000000-0000-0000-0000-000000000003))   ; CC2 -> J1 B5
+  (pin "8" (uuid 03000000-0000-0000-0000-000000000008))   ; SDA -> PB7
+  (pin "9" (uuid 03000000-0000-0000-0000-000000000009))   ; SCL -> PB6
+  (pin "10"(uuid 03000000-0000-0000-0000-00000000000a))   ; INT -> PB4
+  (pin "14"(uuid 03000000-0000-0000-0000-00000000000e)))  ; VCONN
+
+(symbol
+  (lib_id "Interface_USB:FUSB302BMPX")
+  (at 230 170 0)
+  (unit 1)
+  (property "Reference" "U3" (at 230 140 0))
+  (property "Value" "FUSB302BMPX" (at 230 150 0))
+  (property "Footprint" "Package_DFN_QFN:QFN-14-1EP_3x3mm_P0.4mm_EP1.7x1.7mm" (at 230 200 0))
+  (property "Author" "jayis1")
+  (property "Role" "Sink-side PD PHY (I2C2)")
+  (pin "1" (uuid 04000000-0000-0000-0000-000000000001))   ; VBUS
+  (pin "2" (uuid 04000000-0000-0000-0000-000000000002))   ; CC1 -> J2 A5
+  (pin "3" (uuid 04000000-0000-0000-0000-000000000003))   ; CC2 -> J2 B5
+  (pin "8" (uuid 04000000-0000-0000-0000-000000000008))   ; SDA -> PB11
+  (pin "9" (uuid 04000000-0000-0000-0000-000000000009))   ; SCL -> PB10
+  (pin "10"(uuid 04000000-0000-0000-0000-00000000000a))   ; INT -> PA15
+  (pin "14"(uuid 04000000-0000-0000-0000-00000000000e)))  ; VCONN
+
+; ---- Sheet 3: Power path -------------------------------------------------
+
+(symbol
+  (lib_id "Regulator_Switching:LM5180")
+  (at 140 210 0)
+  (unit 1)
+  (property "Reference" "U4" (at 140 180 0))
+  (property "Value" "LM5180-1W" (at 140 190 0))
+  (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 140 240 0))
+  (property "Author" "jayis1")
+  (property "Function" "Isolated flyback VBUS->5V logic rail")
+  (pin "1" (uuid 05000000-0000-0000-0000-000000000001))   ; VIN  (VBUS)
+  (pin "2" (uuid 05000000-0000-0000-0000-000000000002))   ; GND primary
+  (pin "3" (uuid 05000000-0000-0000-0000-000000000003))   ; SW
+  (pin "4" (uuid 05000000-0000-0000-0000-000000000004))   ; VOUT (5V iso)
+  (pin "5" (uuid 05000000-0000-0000-0000-000000000005)))  ; GND secondary (iso)
+
+(symbol
+  (lib_id "Power_Management:TPS25940")
+  (at 180 250 0)
+  (unit 1)
+  (property "Reference" "U5" (at 180 220 0))
+  (property "Value" "TPS25940" (at 180 230 0))
+  (property "Footprint" "Package_DFN_QFN:QFN-16-1EP_3x3mm_P0.5mm" (at 180 280 0))
+  (property "Author" "jayis1")
+  (property "Function" "5A programmable eFuse (Vbus source path)")
+  (pin "1" (uuid 06000000-0000-0000-0000-000000000001))   ; VIN (Vbus in)
+  (pin "2" (uuid 06000000-0000-0000-0000-000000000002))   ; OUT (Vbus out)
+  (pin "3" (uuid 06000000-0000-0000-0000-000000000003))   ; ILIM (DAC chan B)
+  (pin "4" (uuid 06000000-0000-0000-0000-000000000004))   ; EN   (PC13)
+  (pin "5" (uuid 06000000-0000-0000-0000-000000000005))   ; FLT  (PC14)
+  (pin "6" (uuid 06000000-0000-0000-0000-000000000006)))  ; GND
+
+(symbol
+  (lib_id "Analog_DAC:MAX5370")
+  (at 280 250 0)
+  (unit 1)
+  (property "Reference" "U6" (at 280 220 0))
+  (property "Value" "MAX5370" (at 280 230 0))
+  (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 280 280 0))
+  (property "Author" "jayis1")
+  (property "Function" "4-ch 8-bit DAC: Vbus ref / ilimit / misc")
+  (pin "1" (uuid 07000000-0000-0000-0000-000000000001))   ; OUTA -> LM5180 FB / pass gate
+  (pin "2" (uuid 07000000-0000-0000-0000-000000000002))   ; OUTB -> TPS25940 ILIM
+  (pin "3" (uuid 07000000-0000-0000-0000-000000000003))   ; OUTC -> ref
+  (pin "4" (uuid 07000000-0000-0000-0000-000000000004))   ; OUTD -> ref
+  (pin "5" (uuid 07000000-0000-0000-0000-000000000005))   ; SDA -> I2C3 PC9
+  (pin "6" (uuid 07000000-0000-0000-0000-000000000006))   ; SCL -> I2C3 PC8
+  (pin "14"(uuid 07000000-0000-0000-0000-00000000000e)))  ; VDD
+
+(symbol
+  (lib_id "Sensor:INA226")
+  (at 60 280 0)
+  (unit 1)
+  (property "Reference" "U7" (at 60 250 0))
+  (property "Value" "INA226" (at 60 260 0))
+  (property "Footprint" "Package_SO:VSSOP-10_3x3mm_P0.5mm" (at 60 310 0))
+  (property "Author" "jayis1")
+  (property "Function" "Source-leg V/I monitor (I2C3 addr 0x40)")
+  (pin "1" (uuid 08000000-0000-0000-0000-000000000001))   ; VBUS
+  (pin "2" (uuid 08000000-0000-0000-0000-000000000002))   ; VSHUNT+
+  (pin "3" (uuid 08000000-0000-0000-0000-000000000003))   ; VSHUNT-
+  (pin "8" (uuid 08000000-0000-0000-0000-000000000008))   ; SDA
+  (pin "9" (uuid 08000000-0000-0000-0000-000000000009))   ; SCL
+  (pin "10"(uuid 08000000-0000-0000-0000-00000000000a)))  ; VDD
+
+(symbol
+  (lib_id "Sensor:INA226")
+  (at 230 280 0)
+  (unit 1)
+  (property "Reference" "U8" (at 230 250 0))
+  (property "Value" "INA226" (at 230 260 0))
+  (property "Footprint" "Package_SO:VSSOP-10_3x3mm_P0.5mm" (at 230 310 0))
+  (property "Author" "jayis1")
+  (property "Function" "Sink-leg V/I monitor (I2C3 addr 0x41)")
+  (pin "1" (uuid 09000000-0000-0000-0000-000000000001))
+  (pin "2" (uuid 09000000-0000-0000-0000-000000000002))
+  (pin "3" (uuid 09000000-0000-0000-0000-000000000003))
+  (pin "8" (uuid 09000000-0000-0000-0000-000000000008))
+  (pin "9" (uuid 09000000-0000-0000-0000-000000000009))
+  (pin "10"(uuid 09000000-0000-0000-0000-00000000000a)))
+
+(symbol
+  (lib_id "Isolator:ISO1540")
+  (at 160 320 0)
+  (unit 1)
+  (property "Reference" "U9" (at 160 290 0))
+  (property "Value" "ISO1540" (at 160 300 0))
+  (property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" (at 160 350 0))
+  (property "Author" "jayis1")
+  (property "Function" "I2C isolator between logic and VBUS-referenced power")
+  (pin "1" (uuid 0a000000-0000-0000-0000-000000000001))   ; SDA1 (MCU side)
+  (pin "2" (uuid 0a000000-0000-0000-0000-000000000002))   ; SCL1
+  (pin "3" (uuid 0a000000-0000-0000-0000-000000000003))   ; GND1 (logic)
+  (pin "4" (uuid 0a000000-0000-0000-0000-000000000004))   ; VCC1
+  (pin "5" (uuid 0a000000-0000-0000-0000-000000000005))   ; VCC2 (iso 5V)
+  (pin "6" (uuid 0a000000-0000-0000-0000-000000000006))   ; GND2 (iso)
+  (pin "7" (uuid 0a000000-0000-0000-0000-000000000007))   ; SDA2 (power side)
+  (pin "8" (uuid 0a000000-0000-0000-0000-000000000008)))  ; SCL2
+
+(symbol
+  (lib_id "Transistor_FET:IPK95N04L")
+  (at 110 370 0)
+  (unit 1)
+  (property "Reference" "Q1" (at 110 340 0))
+  (property "Value" "IPK95N04L" (at 110 350 0))
+  (property "Footprint" "Package_TO_SOT_SMD:TO-263-3_TabPin2" (at 110 400 0))
+  (property "Author" "jayis1")
+  (property "Function" "VBUS pass MOSFET bank (x4 parallel) Q1-Q4")
+  (pin "1" (uuid 0b000000-0000-0000-0000-000000000001))   ; Gate (HRTIM CHA1 PA8)
+  (pin "2" (uuid 0b000000-0000-0000-0000-000000000002))   ; Drain (VBUS out)
+  (pin "3" (uuid 0b000000-0000-0000-0000-000000000003)))  ; Source (VBUS in)
+
+(symbol
+  (lib_id "Device:R")
+  (at 60 370 0)
+  (unit 1)
+  (property "Reference" "R_SHUNT1" (at 60 350 0))
+  (property "Value" "5mR 1% 3W" (at 60 360 0))
+  (property "Footprint" "Resistor_SMD:R_2512_6332Metric" (at 60 390 0))
+  (property "Author" "jayis1")
+  (property "Function" "Current-sense shunt, source leg")
+  (pin "1" (uuid 0c000000-0000-0000-0000-000000000001))
+  (pin "2" (uuid 0c000000-0000-0000-0000-000000000002)))
+
+(symbol
+  (lib_id "Device:C")
+  (at 200 370 0)
+  (unit 1)
+  (property "Reference" "C_BULK" (at 200 350 0))
+  (property "Value" "100uF 50V" (at 200 360 0))
+  (property "Footprint" "Capacitor_SMD:CP_Elec_6.3x7.7" (at 200 390 0))
+  (property "Author" "jayis1")
+  (property "Function" "VBUS bulk capacitor for transient hold-up")
+  (pin "1" (uuid 0d000000-0000-0000-0000-000000000001))
+  (pin "2" (uuid 0d000000-0000-0000-0000-000000000002)))
+
+(symbol
+  (lib_id "Device:LED_RGB")
+  (at 40 250 0)
+  (unit 1)
+  (property "Reference" "D1" (at 40 220 0))
+  (property "Value" "Status RGB LED" (at 40 230 0))
+  (property "Footprint" "LED_SMD:LED_RGB_1210" (at 40 280 0))
+  (property "Author" "jayis1")
+  (pin "1" (uuid 0e000000-0000-0000-0000-000000000001))   ; R (PA0)
+  (pin "2" (uuid 0e000000-0000-0000-0000-000000000002))   ; G (PA1)
+  (pin "3" (uuid 0e000000-0000-0000-0000-000000000003))   ; B (PA2)
+  (pin "4" (uuid 0e000000-0000-0000-0000-000000000004)))  ; ANODE
+
+(symbol
+  (lib_id "Switch:SW_Push")
+  (at 40 300 0)
+  (unit 1)
+  (property "Reference" "SW1" (at 40 280 0))
+  (property "Value" "Mode/Hard-Reset button" (at 40 290 0))
+  (property "Footprint" "Button_Switch_SMD:SW_SPST_B3SN-6x6" (at 40 320 0))
+  (property "Author" "jayis1")
+  (pin "1" (uuid 0f000000-0000-0000-0000-000000000001))   ; -> PB3
+  (pin "2" (uuid 0f000000-0000-0000-0000-000000000002)))  ; GND
+
+(symbol
+  (lib_id "Connector_Generic:Conn_01x05")
+  (at 320 60 0)
+  (unit 1)
+  (property "Reference" "J3" (at 320 30 0))
+  (property "Value" "Pogo SWD debug" (at 320 40 0))
+  (property "Footprint" "Connector_PinHeader_1.27mm:PinHeader_1x05_P1.27mm_Vertical" (at 320 90 0))
+  (property "Author" "jayis1")
+  (pin "1" (uuid 10000000-0000-0000-0000-000000000001))   ; SWDIO  PA13
+  (pin "2" (uuid 10000000-0000-0000-0000-000000000002))   ; SWCLK  PA14
+  (pin "3" (uuid 10000000-0000-0000-0000-000000000003))   ; GND
+  (pin "4" (uuid 10000000-0000-0000-0000-000000000004))   ; 3V3
+  (pin "5" (uuid 10000000-0000-0000-0000-000000000005)))  ; NRST
+
+; ---- Net connections -----------------------------------------------------
+
+(net (code 1) (name "VBUS_SRC")
+  (node (ref "J1")  (pin "A4")  (pinfunction "VBUS"))
+  (node (ref "J1")  (pin "B4")  (pinfunction "VBUS"))
+  (node (ref "U7")  (pin "1"))
+  (node (ref "U2")  (pin "1"))
+  (node (ref "Q1")  (pin "3"))
+  (node (ref "U4")  (pin "1")))
+
+(net (code 2) (name "VBUS_SNK")
+  (node (ref "J2")  (pin "A4")  (pinfunction "VBUS"))
+  (node (ref "J2")  (pin "B4")  (pinfunction "VBUS"))
+  (node (ref "U8")  (pin "1"))
+  (node (ref "U3")  (pin "1"))
+  (node (ref "Q1")  (pin "2")))
+
+(net (code 3) (name "CC1_SRC")
+  (node (ref "J1")  (pin "A5")  (pinfunction "CC1"))
+  (node (ref "U2")  (pin "2")))
+
+(net (code 4) (name "CC2_SRC")
+  (node (ref "J1")  (pin "B5")  (pinfunction "CC2"))
+  (node (ref "U2")  (pin "3")))
+
+(net (code 5) (name "CC1_SNK")
+  (node (ref "J2")  (pin "A5")  (pinfunction "CC1"))
+  (node (ref "U3")  (pin "2")))
+
+(net (code 6) (name "CC2_SNK")
+  (node (ref "J2")  (pin "B5")  (pinfunction "CC2"))
+  (node (ref "U3")  (pin "3")))
+
+(net (code 7) (name "I2C1_SCL")
+  (node (ref "U1")  (pin "42") (pinfunction "PB6"))
+  (node (ref "U2")  (pin "9")))
+
+(net (code 8) (name "I2C1_SDA")
+  (node (ref "U1")  (pin "43") (pinfunction "PB7"))
+  (node (ref "U2")  (pin "8")))
+
+(net (code 9) (name "I2C2_SCL")
+  (node (ref "U1")  (pin "29") (pinfunction "PB10"))
+  (node (ref "U3")  (pin "9")))
+
+(net (code 10) (name "I2C2_SDA")
+  (node (ref "U1")  (pin "30") (pinfunction "PB11"))
+  (node (ref "U3")  (pin "8")))
+
+(net (code 11) (name "I2C3_SCL")
+  (node (ref "U1")  (pin "9")  (pinfunction "PC8"))
+  (node (ref "U6")  (pin "6"))
+  (node (ref "U7")  (pin "9"))
+  (node (ref "U8")  (pin "9"))
+  (node (ref "U9")  (pin "2")))
+
+(net (code 12) (name "I2C3_SDA")
+  (node (ref "U1")  (pin "10") (pinfunction "PC9"))
+  (node (ref "U6")  (pin "5"))
+  (node (ref "U7")  (pin "8"))
+  (node (ref "U8")  (pin "8"))
+  (node (ref "U9")  (pin "1")))
+
+(net (code 13) (name "HRTIM_CHA1")
+  (node (ref "U1")  (pin "29") (pinfunction "PA8"))
+  (node (ref "Q1")  (pin "1")))
+
+(net (code 14) (name "EFUSE_EN")
+  (node (ref "U1")  (pin "2")  (pinfunction "PC13"))
+  (node (ref "U5")  (pin "4")))
+
+(net (code 15) (name "EFUSE_FLT")
+  (node (ref "U1")  (pin "3")  (pinfunction "PC14"))
+  (node (ref "U5")  (pin "5")))
+
+(net (code 16) (name "DAC_VBUS_REF")
+  (node (ref "U6")  (pin "1"))
+  (node (ref "U4")  (pin "3")))
+
+(net (code 17) (name "DAC_ILIM")
+  (node (ref "U6")  (pin "2"))
+  (node (ref "U5")  (pin "3")))
+
+(net (code 18) (name "INT_SRC")
+  (node (ref "U1")  (pin "20") (pinfunction "PB4"))
+  (node (ref "U2")  (pin "10")))
+
+(net (code 19) (name "INT_SNK")
+  (node (ref "U1")  (pin "38") (pinfunction "PA15"))
+  (node (ref "U3")  (pin "10")))
+
+(net (code 20) (name "LED_R")
+  (node (ref "U1")  (pin "14") (pinfunction "PA0"))
+  (node (ref "D1")  (pin "1")))
+
+(net (code 21) (name "LED_G")
+  (node (ref "U1")  (pin "15") (pinfunction "PA1"))
+  (node (ref "D1")  (pin "2")))
+
+(net (code 22) (name "LED_B")
+  (node (ref "U1")  (pin "16") (pinfunction "PA2"))
+  (node (ref "D1")  (pin "3")))
+
+(net (code 23) (name "BUTTON")
+  (node (ref "U1")  (pin "19") (pinfunction "PB3"))
+  (node (ref "SW1") (pin "1")))
+
+(net (code 24) (name "GND")
+  (node (ref "J1")  (pin "A1"))
+  (node (ref "J1")  (pin "B1"))
+  (node (ref "J2")  (pin "A1"))
+  (node (ref "J2")  (pin "B1"))
+  (node (ref "U1")  (pin "5"))
+  (node (ref "U1")  (pin "33"))
+  (node (ref "U2")  (pin "4"))
+  (node (ref "U3")  (pin "4"))
+  (node (ref "U4")  (pin "2"))
+  (node (ref "U5")  (pin "6"))
+  (node (ref "U6")  (pin "7"))
+  (node (ref "U7")  (pin "4"))
+  (node (ref "U8")  (pin "4"))
+  (node (ref "U9")  (pin "3"))
+  (node (ref "U9")  (pin "6"))
+  (node (ref "D1")   (pin "4"))
+  (node (ref "SW1")  (pin "2"))
+  (node (ref "C_BULK")(pin "2"))
+  (node (ref "J3")   (pin "3")))
+
+(net (code 25) (name "ISO_EN")
+  (node (ref "U1")  (pin "44") (pinfunction "PB15"))
+  (node (ref "U9")  (pin "4"))
+  (node (ref "U9")  (pin "5")))
+
+(net (code 26) (name "VDD_3V3")
+  (node (ref "U1")  (pin "1"))
+  (node (ref "U1")  (pin "13"))
+  (node (ref "U1")  (pin "19"))
+  (node (ref "U6")  (pin "14"))
+  (node (ref "U9")  (pin "4"))
+  (node (ref "J3")  (pin "4")))
+
+(net (code 27) (name "VDD_5V_ISO")
+  (node (ref "U4")  (pin "4"))
+  (node (ref "U9")  (pin "5")))
+
+(net (code 28) (name "SHUNT_SRC")
+  (node (ref "R_SHUNT1") (pin "1"))
+  (node (ref "U7")       (pin "2"))
+  (node (ref "J1")       (pin "A4")))
+
+(net (code 29) (name "SHUNT_SRC_OUT")
+  (node (ref "R_SHUNT1") (pin "2"))
+  (node (ref "U7")       (pin "3"))
+  (node (ref "U5")       (pin "1")))
+
+(net (code 30) (name "SWDIO")
+  (node (ref "U1") (pin "34") (pinfunction "PA13"))
+  (node (ref "J3") (pin "1")))
+
+(net (code 31) (name "SWCLK")
+  (node (ref "U1") (pin "37") (pinfunction "PA14"))
+  (node (ref "J3") (pin "2")))
+
+(net (code 32) (name "NRST")
+  (node (ref "U1") (pin "7")  (pinfunction "NRST"))
+  (node (ref "J3") (pin "5")))
+
+(net (code 33) (name "USB_DM")
+  (node (ref "U1") (pin "44") (pinfunction "PA11"))
+  (node (ref "J1") (pin "A6") (pinfunction "D-"))
+  (node (ref "J2") (pin "A6") (pinfunction "D-")))
+
+(net (code 34) (name "USB_DP")
+  (node (ref "U1") (pin "45") (pinfunction "PA12"))
+  (node (ref "J1") (pin "A7") (pinfunction "D+"))
+  (node (ref "J2") (pin "A7") (pinfunction "D+")))
