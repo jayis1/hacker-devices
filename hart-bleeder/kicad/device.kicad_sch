@@ -1,0 +1,389 @@
+(kicad_sch
+  (version 20231120)
+  (generator "hart-bleeder-schematic")
+  (generator_version "7.0")
+  (uuid "7a3f1b2c-d4e5-6078-9a01-bc3d4e5f6078")
+  (paper "A3")
+  (title_block
+    (title "HART-Bleeder — HART Fieldbus Covert In-Line Attack Implant")
+    (date "2026-07-20")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: GPL-2.0")
+    (comment 3 "WARN: For authorized security research only")
+  )
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Net labels
+  ; ═══════════════════════════════════════════════════════════════
+  (net 0 "")
+  (net 1 "GND")
+  (net 2 "+3V3")
+  (net 3 "VUSB")
+  (net 4 "VBAT")
+  (net 5 "VLOOP")
+  (net 6 "LOOP_IN")
+  (net 7 "LOOP_OUT")
+  (net 8 "AGND")
+  (net 9 "AVDD")
+  (net 10 "USART2_TX")
+  (net 11 "USART2_RX")
+  (net 12 "HART_RTS_N")
+  (net 13 "HART_CD_N")
+  (net 14 "HART_SHDN_N")
+  (net 15 "USART1_TX")
+  (net 16 "USART1_RX")
+  (net 17 "USB_DM")
+  (net 18 "USB_DP")
+  (net 19 "SPI1_SCK")
+  (net 20 "SPI1_MISO")
+  (net 21 "SPI1_MOSI")
+  (net 22 "SD_CS_N")
+  (net 23 "SD_DETECT")
+  (net 24 "OLED_SCL")
+  (net 25 "OLED_SDA")
+  (net 26 "LED_RED")
+  (net 27 "LED_GREEN")
+  (net 28 "LED_BLUE")
+  (net 29 "ISO_BYPASS")
+  (net 30 "BYPASS_RELAY")
+  (net 31 "DAC1_OUT")
+  (net 32 "ADC_LOOP_I")
+  (net 33 "ADC_LOOP_V")
+  (net 34 "ADC_LOOP_I2")
+  (net 35 "ADC_VBAT")
+  (net 36 "USER_BTN")
+  (net 37 "UART4_TX")
+  (net 38 "UART4_RX")
+  (net 39 "BLE_RST_N")
+  (net 40 "BLE_BOOT")
+  (net 41 "HART_FSK_IN")
+  (net 42 "HART_FSK_OUT")
+  (net 43 "SHUNT_HI")
+  (net 44 "SHUNT_LO")
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 1: MCU
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "MCU_ST_STM32G4:STM32G474CEU6")
+    (at 110 90 0)
+    (unit 1)
+    (property "Reference" "U1" (at 110 50 0))
+    (property "Value" "STM32G474CEU6" (at 110 60 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm" (at 110 130 0))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32g474ce.pdf" (at 110 90 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000001))
+    (pin "44" (uuid 00000000-0000-0000-0000-000000000044))
+    (pin "45" (uuid 00000000-0000-0000-0000-000000000045))
+    (pin "46" (uuid 00000000-0000-0000-0000-000000000046)))
+  (label "USART2_TX" (at 95 72 0) (effects (font (size 1.27 1.27))))
+  (label "USART2_RX" (at 95 76 0) (effects (font (size 1.27 1.27))))
+  (label "HART_RTS_N" (at 95 80 0) (effects (font (size 1.27 1.27))))
+  (label "HART_CD_N" (at 95 84 0) (effects (font (size 1.27 1.27))))
+  (label "HART_SHDN_N" (at 95 88 0) (effects (font (size 1.27 1.27))))
+  (label "BYPASS_RELAY" (at 95 92 0) (effects (font (size 1.27 1.27))))
+  (label "USART1_TX" (at 95 96 0) (effects (font (size 1.27 1.27))))
+  (label "USART1_RX" (at 95 100 0) (effects (font (size 1.27 1.27))))
+  (label "USB_DM" (at 95 104 0) (effects (font (size 1.27 1.27))))
+  (label "USB_DP" (at 95 108 0) (effects (font (size 1.27 1.27))))
+  (label "ADC_LOOP_I" (at 125 72 0) (effects (font (size 1.27 1.27))))
+  (label "ADC_LOOP_V" (at 125 76 0) (effects (font (size 1.27 1.27))))
+  (label "DAC1_OUT" (at 125 80 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_SCK" (at 125 84 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MISO" (at 125 88 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MOSI" (at 125 92 0) (effects (font (size 1.27 1.27))))
+  (label "SD_CS_N" (at 125 96 0) (effects (font (size 1.27 1.27))))
+  (label "OLED_SCL" (at 125 100 0) (effects (font (size 1.27 1.27))))
+  (label "OLED_SDA" (at 125 104 0) (effects (font (size 1.27 1.27))))
+  (label "LED_RED" (at 125 108 0) (effects (font (size 1.27 1.27))))
+  (label "LED_GREEN" (at 125 112 0) (effects (font (size 1.27 1.27))))
+  (label "LED_BLUE" (at 125 116 0) (effects (font (size 1.27 1.27))))
+  (label "USER_BTN" (at 125 120 0) (effects (font (size 1.27 1.27))))
+  (label "UART4_TX" (at 125 124 0) (effects (font (size 1.27 1.27))))
+  (label "UART4_RX" (at 125 128 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 2: HART Modem (MAX13440E)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Interface Telephone:MAX13440EETD+")
+    (at 60 160 0)
+    (unit 1)
+    (property "Reference" "U2" (at 60 140 0))
+    (property "Value" "MAX13440EETD+" (at 60 150 0))
+    (property "Footprint" "Package_SO:TSSOP-14_4.4x5mm_P0.65mm" (at 60 180 0))
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX13440E-MAX13442E.pdf" (at 60 160 0))
+    (property "Author" "jayis1")
+    (pin "1" (uuid 00000000-0000-0000-0000-000000000101))
+    (pin "14" (uuid 00000000-0000-0000-0000-000000000114)))
+  (label "USART2_TX" (at 45 152 0) (effects (font (size 1.27 1.27))))
+  (label "USART2_RX" (at 45 156 0) (effects (font (size 1.27 1.27))))
+  (label "HART_RTS_N" (at 45 160 0) (effects (font (size 1.27 1.27))))
+  (label "HART_CD_N" (at 45 164 0) (effects (font (size 1.27 1.27))))
+  (label "HART_SHDN_N" (at 45 168 0) (effects (font (size 1.27 1.27))))
+  (label "HART_FSK_IN" (at 75 152 0) (effects (font (size 1.27 1.27))))
+  (label "HART_FSK_OUT" (at 75 156 0) (effects (font (size 1.27 1.27))))
+
+  ; ── HART modem coupling capacitor (FSK to loop) ──────────────
+  (symbol
+    (lib_id "Device:C_Small")
+    (at 90 175 0)
+    (unit 1)
+    (property "Reference" "C8" (at 90 170 0))
+    (property "Value" "0.22uF_630V" (at 90 185 0))
+    (property "Footprint" "Capacitor_SMD:C_1812_4532Metric" (at 90 175 0))
+    (property "Author" "jayis1"))
+  (label "HART_FSK_OUT" (at 80 175 0) (effects (font (size 1.27 1.27))))
+  (label "SHUNT_HI" (at 100 175 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 3: Current-Loop Interface (Sense resistor + relay + ISO)
+  ; ═══════════════════════════════════════════════════════════════
+  ; ── 250-ohm precision sense resistor ──────────────────────────
+  (symbol
+    (lib_id "Device:R")
+    (at 200 160 90)
+    (unit 1)
+    (property "Reference" "R5" (at 195 160 0))
+    (property "Value" "250_0.1%_0.5W" (at 210 160 0))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 200 160 0))
+    (property "Author" "jayis1"))
+  (label "SHUNT_HI" (at 185 160 0) (effects (font (size 1.27 1.27))))
+  (label "SHUNT_LO" (at 215 160 0) (effects (font (size 1.27 1.27))))
+
+  ; ── Bypass relay (Omron G6K-2F-Y DC3) ─────────────────────────
+  (symbol
+    (lib_id "Relay:G6K-2")
+    (at 240 200 0)
+    (unit 1)
+    (property "Reference" "K1" (at 240 185 0))
+    (property "Value" "G6K-2F-Y-DC3" (at 240 215 0))
+    (property "Footprint" "Relay_THT:Relay_DPDT_Omron_G6K-2F" (at 240 200 0))
+    (property "Author" "jayis1"))
+  (label "BYPASS_RELAY" (at 225 195 0) (effects (font (size 1.27 1.27))))
+  (label "LOOP_IN" (at 260 190 0) (effects (font (size 1.27 1.27))))
+  (label "LOOP_OUT" (at 260 200 0) (effects (font (size 1.27 1.27))))
+
+  ; ── Isolation transformer (Pulse HX1188NL or similar) ─────────
+  (symbol
+    (lib_id "Transformer:H1102NL")
+    (at 300 200 0)
+    (unit 1)
+    (property "Reference" "T1" (at 300 180 0))
+    (property "Value" "HX1188NL" (at 300 220 0))
+    (property "Footprint" "Transformer_SMD:Transformer_Ethernet_Bourns_PT61017PEL" (at 300 200 0))
+    (property "Author" "jayis1"))
+  (label "HART_FSK_IN" (at 285 195 0) (effects (font (size 1.27 1.27))))
+  (label "SHUNT_HI" (at 315 195 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 4: Digital Pot (MCP4131-503E) for resistance modulation
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Potentiometer_Digital:MCP4131-xxx_MS")
+    (at 160 240 0)
+    (unit 1)
+    (property "Reference" "U3" (at 160 220 0))
+    (property "Value" "MCP4131-503E" (at 160 260 0))
+    (property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm" (at 160 240 0))
+    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/22060b.pdf" (at 160 240 0))
+    (property "Author" "jayis1"))
+  (label "DAC1_OUT" (at 145 235 0) (effects (font (size 1.27 1.27))))
+  (label "SHUNT_LO" (at 175 235 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 5: USB-C (power + CDC)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Connector:USB_C_Receptacle_USB2.0")
+    (at 350 90 0)
+    (unit 1)
+    (property "Reference" "J1" (at 350 60 0))
+    (property "Value" "USB-C_2.0" (at 350 120 0))
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_Amphenol_12401610E4-2A" (at 350 90 0))
+    (property "Author" "jayis1"))
+  (label "USB_DP" (at 330 80 0) (effects (font (size 1.27 1.27))))
+  (label "USB_DM" (at 330 84 0) (effects (font (size 1.27 1.27))))
+  (label "VUSB" (at 330 72 0) (effects (font (size 1.27 1.27))))
+
+  ; ── USB ESD protection (USBLC6-2SC6) ─────────────────────────
+  (symbol
+    (lib_id "Power_Protection:USBLC6-2SC6")
+    (at 400 90 0)
+    (unit 1)
+    (property "Reference" "U4" (at 400 75 0))
+    (property "Value" "USBLC6-2SC6" (at 400 105 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-6" (at 400 90 0))
+    (property "Author" "jayis1"))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 6: Power Supply (TPS63020 buck-boost + LiPo charger)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Regulator_Switching:TPS63020DSJR")
+    (at 60 250 0)
+    (unit 1)
+    (property "Reference" "U5" (at 60 230 0))
+    (property "Value" "TPS63020DSJR" (at 60 270 0))
+    (property "Footprint" "Package_SO:TI_DSJ-14" (at 60 250 0))
+    (property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps63020.pdf" (at 60 250 0))
+    (property "Author" "jayis1"))
+  (label "VBAT" (at 45 245 0) (effects (font (size 1.27 1.27))))
+  (label "+3V3" (at 75 245 0) (effects (font (size 1.27 1.27))))
+
+  ; ── LiPo charger (MCP73831) ──────────────────────────────────
+  (symbol
+    (lib_id "Battery_Management:MCP73831-2-OT")
+    (at 60 300 0)
+    (unit 1)
+    (property "Reference" "U6" (at 60 285 0))
+    (property "Value" "MCP73831T-2ACI/OT" (at 60 320 0))
+    (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5" (at 60 300 0))
+    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/20001984g.pdf" (at 60 300 0))
+    (property "Author" "jayis1"))
+  (label "VUSB" (at 45 295 0) (effects (font (size 1.27 1.27))))
+  (label "VBAT" (at 75 295 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 7: microSD socket
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Connector:Micro_SD_Card_Det_Hirose_DM3AT")
+    (at 170 320 0)
+    (unit 1)
+    (property "Reference" "J2" (at 170 295 0))
+    (property "Value" "Micro_SD" (at 170 350 0))
+    (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5" (at 170 320 0))
+    (property "Author" "jayis1"))
+  (label "SPI1_SCK" (at 155 305 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MISO" (at 155 310 0) (effects (font (size 1.27 1.27))))
+  (label "SPI1_MOSI" (at 155 315 0) (effects (font (size 1.27 1.27))))
+  (label "SD_CS_N" (at 155 320 0) (effects (font (size 1.27 1.27))))
+  (label "SD_DETECT" (at 155 325 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 8: QSPI Flash (W25Q128JVSIQ)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Memory_Flash:W25Q128JVSIQ")
+    (at 240 320 0)
+    (unit 1)
+    (property "Reference" "U7" (at 240 300 0))
+    (property "Value" "W25Q128JVSIQ" (at 240 345 0))
+    (property "Footprint" "Package_SO:SOIC-8_5.275x5.275mm_P1.27mm" (at 240 320 0))
+    (property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revh%2003182019%20plus.pdf" (at 240 320 0))
+    (property "Author" "jayis1"))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 9: BLE Module (nRF52832)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "RF_Module:Nordic_nRF52832-QFAA")
+    (at 320 320 0)
+    (unit 1)
+    (property "Reference" "U8" (at 320 290 0))
+    (property "Value" "nRF52832-QFAA" (at 320 355 0))
+    (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.4x4.4mm" (at 320 320 0))
+    (property "Datasheet" "https://www.nordicsemi.com/-/media/Software-and-other-downloads/Product-Briefs/nRF52832-Product-Brief.pdf" (at 320 320 0))
+    (property "Author" "jayis1"))
+  (label "UART4_TX" (at 305 305 0) (effects (font (size 1.27 1.27))))
+  (label "UART4_RX" (at 305 310 0) (effects (font (size 1.27 1.27))))
+  (label "BLE_RST_N" (at 305 315 0) (effects (font (size 1.27 1.27))))
+  (label "BLE_BOOT" (at 305 320 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 10: OLED Display (SSD1306 128x64)
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol
+    (lib_id "Display_Graphic:SSD1306_128x64_I2C")
+    (at 400 240 0)
+    (unit 1)
+    (property "Reference" "U9" (at 400 215 0))
+    (property "Value" "SSD1306_128x64" (at 400 270 0))
+    (property "Footprint" "Display:SSD1306-128x64-1.3in" (at 400 240 0))
+    (property "Author" "jayis1"))
+  (label "OLED_SCL" (at 385 225 0) (effects (font (size 1.27 1.27))))
+  (label "OLED_SDA" (at 385 230 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Sheet 11: LEDs, Crystal, Decoupling
+  ; ═══════════════════════════════════════════════════════════════
+  (symbol (lib_id "Device:LED") (at 430 90 0)
+    (property "Reference" "D1" (at 430 85 0))
+    (property "Value" "RED" (at 430 100 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 430 90 0))
+    (property "Author" "jayis1"))
+  (label "LED_RED" (at 415 90 0) (effects (font (size 1.27 1.27))))
+
+  (symbol (lib_id "Device:LED") (at 430 110 0)
+    (property "Reference" "D2" (at 430 105 0))
+    (property "Value" "GREEN" (at 430 120 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 430 110 0))
+    (property "Author" "jayis1"))
+  (label "LED_GREEN" (at 415 110 0) (effects (font (size 1.27 1.27))))
+
+  (symbol (lib_id "Device:LED") (at 430 130 0)
+    (property "Reference" "D3" (at 430 125 0))
+    (property "Value" "BLUE" (at 430 140 0))
+    (property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 430 130 0))
+    (property "Author" "jayis1"))
+  (label "LED_BLUE" (at 415 130 0) (effects (font (size 1.27 1.27))))
+
+  ; ── 24 MHz HSE crystal ────────────────────────────────────────
+  (symbol (lib_id "Device:Crystal") (at 60 380 0)
+    (property "Reference" "Y1" (at 60 375 0))
+    (property "Value" "24MHz" (at 60 390 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm" (at 60 380 0))
+    (property "Author" "jayis1"))
+
+  ; ── 32.768 kHz LSE crystal ────────────────────────────────────
+  (symbol (lib_id "Device:Crystal") (at 110 380 0)
+    (property "Reference" "Y2" (at 110 375 0))
+    (property "Value" "32.768kHz" (at 110 390 0))
+    (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm" (at 110 380 0))
+    (property "Author" "jayis1"))
+
+  ; ── Decoupling capacitors ─────────────────────────────────────
+  (symbol (lib_id "Device:C") (at 60 420 0)
+    (property "Reference" "C1" (at 60 415 0))
+    (property "Value" "10uF" (at 60 430 0))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 60 420 0))
+    (property "Author" "jayis1"))
+  (symbol (lib_id "Device:C") (at 90 420 0)
+    (property "Reference" "C2" (at 90 415 0))
+    (property "Value" "100nF" (at 90 430 0))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 90 420 0))
+    (property "Author" "jayis1"))
+  (symbol (lib_id "Device:C") (at 120 420 0)
+    (property "Reference" "C3" (at 120 415 0))
+    (property "Value" "100nF" (at 120 430 0))
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 120 420 0))
+    (property "Author" "jayis1"))
+
+  ; ── Loop terminals (screw terminals) ───────────────────────────
+  (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 380 170 0)
+    (property "Reference" "J3" (at 380 165 0))
+    (property "Value" "LOOP_TERM" (at 380 185 0))
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 380 170 0))
+    (property "Author" "jayis1"))
+  (label "LOOP_IN" (at 365 170 0) (effects (font (size 1.27 1.27))))
+  (label "LOOP_OUT" (at 365 175 0) (effects (font (size 1.27 1.27))))
+
+  ; ── User button ────────────────────────────────────────────────
+  (symbol (lib_id "Switch:SW_Push") (at 430 60 0)
+    (property "Reference" "SW1" (at 430 55 0))
+    (property "Value" "USER_BTN" (at 430 70 0))
+    (property "Footprint" "Button_Switch_SMD:SW_SPST_TL3342" (at 430 60 0))
+    (property "Author" "jayis1"))
+  (label "USER_BTN" (at 415 60 0) (effects (font (size 1.27 1.27))))
+
+  ; ═══════════════════════════════════════════════════════════════
+  ; Net ties / connections
+  ; ═══════════════════════════════════════════════════════════════
+  (junction (at 200 160) (diameter 0) (color 0 0 0 0))
+  (junction (at 90 175) (diameter 0) (color 0 0 0 0))
+  (no_connect (at 110 130))
+)

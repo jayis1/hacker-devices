@@ -1,0 +1,37 @@
+{
+  "board": {
+    "design": {
+      "last_author": "jayis1",
+      "rules": {
+        "min_track_width": 0.15,
+        "min_clearance": 0.15,
+        "min_via_drill": 0.25
+      },
+      "layers": [
+        {"id": 0, "name": "F.Cu", "type": "copper"},
+        {"id": 1, "name": "B.Cu", "type": "copper"},
+        {"id": 2, "name": "F.SilkS", "type": "silk"},
+        {"id": 3, "name": "B.SilkS", "type": "silk"},
+        {"id": 4, "name": "F.Mask", "type": "mask"},
+        {"id": 5, "name": "B.Mask", "type": "mask"},
+        {"id": 6, "name": "F.Paste", "type": "paste"},
+        {"id": 7, "name": "B.Paste", "type": "paste"}
+      ],
+      "thickness": 1.6,
+      "copper_thickness": 35
+    },
+    "setup": {
+      "grid_size": 0.5,
+      "units": "mm",
+      "page_size": "A4"
+    },
+    "copyright": "jayis1",
+    "license": "GPL-2.0"
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": "1.0",
+    "author": "jayis1",
+    "description": "HART-Bleeder — HART Fieldbus Covert In-Line Attack Implant"
+  }
+}
