@@ -1,0 +1,983 @@
+(kicad_pcb
+  (version 20211014)
+  (generator "hermes-agent")
+  (general
+    (thickness 1.6)
+    (legacy_teardrops no)
+  )
+
+  (paper "A4")
+
+  (title_block
+    (title "AxleTap — Automotive Ethernet Tap")
+    (date "2026-07-22")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+  )
+
+  (layers
+    (0 "F.Cu" signal)
+    (1 "In1.Cu" signal)
+    (2 "In2.Cu" signal)
+    (31 "B.Cu" signal)
+    (32 "B.Adhes" user)
+    (33 "F.Adhes" user)
+    (34 "B.Paste" user)
+    (35 "F.Paste" user)
+    (36 "B.SilkS" user)
+    (37 "F.SilkS" user)
+    (38 "B.Mask" user)
+    (39 "F.Mask" user)
+    (40 "Dwgs.User" user)
+    (41 "Cmts.User" user)
+    (42 "Eco1.User" user)
+    (43 "Eco2.User" user)
+    (44 "Edge.Cuts" user)
+    (45 "Margin" user)
+    (46 "B.CrtYd" user)
+    (47 "F.CrtYd" user)
+    (48 "B.Fab" user)
+    (49 "F.Fab" user)
+  )
+
+  (setup
+    (stackup
+      (layer "F.Cu"
+        (thickness 0.035)
+      )
+      (layer "dielectric 1"
+        (thickness 0.2)
+        (material "FR4")
+      )
+      (layer "In1.Cu"
+        (thickness 0.035)
+      )
+      (layer "dielectric 2"
+        (thickness 0.7)
+        (material "FR4")
+      )
+      (layer "In2.Cu"
+        (thickness 0.035)
+      )
+      (layer "dielectric 3"
+        (thickness 0.2)
+        (material "FR4")
+      )
+      (layer "B.Cu"
+        (thickness 0.035)
+      )
+      (copper_finish "ENIG")
+      (dielectric_constraints no)
+    )
+    (pad_to_mask_clearance 0.05)
+    (pcbplotparams
+      (layerselection 0x00010fc_ffffffff)
+      (disableapertmacroscale false)
+      (usegerberextensions false)
+      (usegerberattributes true)
+      (usegerberadvancedattributes true)
+      (svgprecision 4)
+      (plotframeref false)
+      (plotinvisiblenames false)
+      (padsonsilk false)
+      (subtractmaskfromsilk false)
+      (outputformat 1)
+      (mirror false)
+      (drillshape 1)
+      (scaleselection 1)
+      (plotreference true)
+      (plotvalue true)
+      (plotinvisibletext false)
+      (padsonsilk false)
+      (subtractmaskfromsilk false)
+    )
+  )
+
+  (net 0 "")
+  (net 1 "+3V3")
+  (net 2 "GND")
+  (net 3 "VBUS")
+  (net 4 "USB_DM")
+  (net 5 "USB_DP")
+  (net 6 "RGMII_TX_CLK_A")
+  (net 7 "RGMII_TX_EN_A")
+  (net 8 "RGMII_TXD0_A")
+  (net 9 "RGMII_TXD1_A")
+  (net 10 "RGMII_TXD2_A")
+  (net 11 "RGMII_TXD3_A")
+  (net 12 "RGMII_RX_CLK_A")
+  (net 13 "RGMII_RX_DV_A")
+  (net 14 "RGMII_RXD0_A")
+  (net 15 "RGMII_RXD1_A")
+  (net 16 "RGMII_RXD2_A")
+  (net 17 "RGMII_RXD3_A")
+  (net 18 "RGMII_TX_CLK_B")
+  (net 19 "RGMII_TX_EN_B")
+  (net 20 "RGMII_TXD0_B")
+  (net 21 "RGMII_TXD3_B")
+  (net 22 "RGMII_RX_CLK_B")
+  (net 23 "RGMII_RX_DV_B")
+  (net 24 "RGMII_RXD0_B")
+  (net 25 "RGMII_RXD3_B")
+  (net 26 "MDIO")
+  (net 27 "MDC")
+  (net 28 "PHYA_RESET")
+  (net 29 "PHYB_RESET")
+  (net 30 "PHYA_LINK")
+  (net 31 "PHYB_LINK")
+  (net 32 "ARM_SWITCH")
+  (net 33 "KILL_KEY")
+  (net 34 "DBG_TX")
+  (net 35 "DBG_RX")
+  (net 36 "SPI6_SCK")
+  (net 37 "SPI6_MOSI")
+  (net 38 "SPI6_MISO")
+  (net 39 "BLE_CS")
+  (net 40 "BLE_IRQ")
+  (net 41 "LED_LINKA")
+  (net 42 "LED_LINKB")
+  (net 43 "LED_ARM")
+  (net 44 "LED_CAP")
+  (net 45 "LED_BLE")
+  (net 46 "LINK_A_T1_P")
+  (net 47 "LINK_A_T1_N")
+  (net 48 "LINK_B_T1_P")
+  (net 49 "LINK_B_T1_N")
+  (net 50 "SD_D0")
+  (net 51 "SD_D1")
+  (net 52 "SD_D2")
+  (net 53 "SD_D3")
+  (net 54 "SD_CK")
+  (net 55 "SD_CMD")
+
+  (footprint "Package_QFP:LQFP-144_20x20mm_P0.5mm"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp stm32-footprint)
+    (at 100 80)
+    (descr "LQFP-144 for STM32H723ZGT6")
+    (attr smd)
+    (fp_text reference "U1"
+      (at 0 -2 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (fp_text value "STM32H723ZGT6"
+      (at 0 2 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -9.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 6 "RGMII_TX_CLK_A")
+    )
+    (pad "2" smd rect
+      (at -9.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 7 "RGMII_TX_EN_A")
+    )
+    (pad "3" smd rect
+      (at -8.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 12 "RGMII_RX_CLK_A")
+    )
+    (pad "4" smd rect
+      (at -8.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 8 "RGMII_TXD0_A")
+    )
+    (pad "5" smd rect
+      (at -7.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 16 "RGMII_RXD2_A")
+    )
+    (pad "6" smd rect
+      (at -7.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 17 "RGMII_RXD3_A")
+    )
+    (pad "7" smd rect
+      (at -6.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 26 "MDIO")
+    )
+    (pad "8" smd rect
+      (at -6.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 28 "PHYA_RESET")
+    )
+    (pad "9" smd rect
+      (at -5.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 29 "PHYB_RESET")
+    )
+    (pad "10" smd rect
+      (at -5.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 13 "RGMII_RX_DV_A")
+    )
+    (pad "11" smd rect
+      (at -4.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 9 "RGMII_TXD1_A")
+    )
+    (pad "12" smd rect
+      (at -4.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 27 "MDC")
+    )
+    (pad "13" smd rect
+      (at -3.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 10 "RGMII_TXD2_A")
+    )
+    (pad "14" smd rect
+      (at -3.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 11 "RGMII_TXD3_A")
+    )
+    (pad "15" smd rect
+      (at -2.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 14 "RGMII_RXD0_A")
+    )
+    (pad "16" smd rect
+      (at -2.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 15 "RGMII_RXD1_A")
+    )
+    (pad "17" smd rect
+      (at -1.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 30 "PHYA_LINK")
+    )
+    (pad "18" smd rect
+      (at -1.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 31 "PHYB_LINK")
+    )
+    (pad "19" smd rect
+      (at -0.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 32 "ARM_SWITCH")
+    )
+    (pad "20" smd rect
+      (at -0.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 33 "KILL_KEY")
+    )
+    (pad "21" smd rect
+      (at 0.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 34 "DBG_TX")
+    )
+    (pad "22" smd rect
+      (at 0.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 35 "DBG_RX")
+    )
+    (pad "23" smd rect
+      (at 1.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 36 "SPI6_SCK")
+    )
+    (pad "24" smd rect
+      (at 1.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 37 "SPI6_MOSI")
+    )
+    (pad "25" smd rect
+      (at 2.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 38 "SPI6_MISO")
+    )
+    (pad "26" smd rect
+      (at 2.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 39 "BLE_CS")
+    )
+    (pad "27" smd rect
+      (at 3.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 40 "BLE_IRQ")
+    )
+    (pad "28" smd rect
+      (at 3.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 41 "LED_LINKA")
+    )
+    (pad "29" smd rect
+      (at 4.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 42 "LED_LINKB")
+    )
+    (pad "30" smd rect
+      (at 4.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 43 "LED_ARM")
+    )
+    (pad "31" smd rect
+      (at 5.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 44 "LED_CAP")
+    )
+    (pad "32" smd rect
+      (at 5.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 45 "LED_BLE")
+    )
+    (pad "33" smd rect
+      (at 6.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 50 "SD_D0")
+    )
+    (pad "34" smd rect
+      (at 6.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 51 "SD_D1")
+    )
+    (pad "35" smd rect
+      (at 7.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 52 "SD_D2")
+    )
+    (pad "36" smd rect
+      (at 7.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 53 "SD_D3")
+    )
+    (pad "37" smd rect
+      (at 8.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 54 "SD_CK")
+    )
+    (pad "38" smd rect
+      (at 8.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 55 "SD_CMD")
+    )
+    (pad "39" smd rect
+      (at 9.25 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 4 "USB_DM")
+    )
+    (pad "40" smd rect
+      (at 9.75 -7 0)
+      (size 0.3 1.5)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 5 "USB_DP")
+    )
+  )
+
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp phya-footprint)
+    (at 140 80)
+    (descr "Marvell 88Q2112 PHY A")
+    (attr smd)
+    (fp_text reference "U2"
+      (at 0 -5 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (fp_text value "88Q2112"
+      (at 0 5 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -3.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 6 "RGMII_TX_CLK_A")
+    )
+    (pad "2" smd rect
+      (at -2.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 7 "RGMII_TX_EN_A")
+    )
+    (pad "3" smd rect
+      (at -2.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 8 "RGMII_TXD0_A")
+    )
+    (pad "4" smd rect
+      (at -1.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 9 "RGMII_TXD1_A")
+    )
+    (pad "5" smd rect
+      (at -1.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 10 "RGMII_TXD2_A")
+    )
+    (pad "6" smd rect
+      (at -0.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 11 "RGMII_TXD3_A")
+    )
+    (pad "7" smd rect
+      (at -0.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 12 "RGMII_RX_CLK_A")
+    )
+    (pad "8" smd rect
+      (at 0.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 13 "RGMII_RX_DV_A")
+    )
+    (pad "9" smd rect
+      (at 0.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 14 "RGMII_RXD0_A")
+    )
+    (pad "10" smd rect
+      (at 1.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 15 "RGMII_RXD1_A")
+    )
+    (pad "11" smd rect
+      (at 1.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 16 "RGMII_RXD2_A")
+    )
+    (pad "12" smd rect
+      (at 2.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 17 "RGMII_RXD3_A")
+    )
+    (pad "13" smd rect
+      (at 2.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 26 "MDIO")
+    )
+    (pad "14" smd rect
+      (at 3.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 27 "MDC")
+    )
+    (pad "15" smd rect
+      (at 3.25 2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 28 "PHYA_RESET")
+    )
+    (pad "16" smd rect
+      (at -3.25 2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 46 "LINK_A_T1_P")
+    )
+    (pad "17" smd rect
+      (at -2.75 2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 47 "LINK_A_T1_N")
+    )
+  )
+
+  (footprint "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp phyb-footprint)
+    (at 140 120)
+    (descr "Marvell 88Q2112 PHY B")
+    (attr smd)
+    (fp_text reference "U3"
+      (at 0 -5 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (fp_text value "88Q2112"
+      (at 0 5 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -3.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 18 "RGMII_TX_CLK_B")
+    )
+    (pad "2" smd rect
+      (at -2.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 19 "RGMII_TX_EN_B")
+    )
+    (pad "3" smd rect
+      (at -2.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 20 "RGMII_TXD0_B")
+    )
+    (pad "4" smd rect
+      (at -1.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 21 "RGMII_TXD3_B")
+    )
+    (pad "5" smd rect
+      (at -1.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 22 "RGMII_RX_CLK_B")
+    )
+    (pad "6" smd rect
+      (at -0.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 23 "RGMII_RX_DV_B")
+    )
+    (pad "7" smd rect
+      (at -0.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 24 "RGMII_RXD0_B")
+    )
+    (pad "8" smd rect
+      (at 0.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 25 "RGMII_RXD3_B")
+    )
+    (pad "9" smd rect
+      (at 0.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 26 "MDIO")
+    )
+    (pad "10" smd rect
+      (at 1.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 27 "MDC")
+    )
+    (pad "11" smd rect
+      (at 1.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 29 "PHYB_RESET")
+    )
+    (pad "12" smd rect
+      (at 2.25 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 48 "LINK_B_T1_P")
+    )
+    (pad "13" smd rect
+      (at 2.75 -2.75 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 49 "LINK_B_T1_N")
+    )
+  )
+
+  (footprint "Package_DFN_QFN:QFN-40-1EP_6x6mm_P0.5mm_EP4.6x4.6mm"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp ble-footprint)
+    (at 140 160)
+    (descr "nRF52820 BLE")
+    (attr smd)
+    (fp_text reference "U4"
+      (at 0 -4 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (fp_text value "nRF52820"
+      (at 0 4 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -2.75 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 36 "SPI6_SCK")
+    )
+    (pad "2" smd rect
+      (at -2.25 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 37 "SPI6_MOSI")
+    )
+    (pad "3" smd rect
+      (at -1.75 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 38 "SPI6_MISO")
+    )
+    (pad "4" smd rect
+      (at -1.25 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 39 "BLE_CS")
+    )
+    (pad "5" smd rect
+      (at -0.75 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 40 "BLE_IRQ")
+    )
+    (pad "6" smd rect
+      (at -0.25 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 1 "+3V3")
+    )
+    (pad "7" smd rect
+      (at 0.25 -2.25 0)
+      (size 0.3 0.6)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 2 "GND")
+    )
+  )
+
+  (footprint "Connector_USB:USB_C_Receptacle_USB2.0"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp usbc-footprint)
+    (at 60 80)
+    (descr "USB-C 2.0 receptacle")
+    (attr smd)
+    (fp_text reference "J1"
+      (at 0 -6 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (fp_text value "USB_C_Receptacle"
+      (at 0 6 0)
+      (effects
+        (font
+          (size 1 1)
+        )
+      )
+    )
+    (pad "A1" smd rect
+      (at -4 -3.5 0)
+      (size 0.3 1.2)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 2 "GND")
+    )
+    (pad "A4" smd rect
+      (at -2.5 -3.5 0)
+      (size 0.3 1.2)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 3 "VBUS")
+    )
+    (pad "B12" smd rect
+      (at -1.75 -3.5 0)
+      (size 0.3 1.2)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 4 "USB_DM")
+    )
+    (pad "B9" smd rect
+      (at -1.0 -3.5 0)
+      (size 0.3 1.2)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 5 "USB_DP")
+    )
+  )
+
+  (footprint "LED_SMD:LED_0603_1608Metric"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp led-linka)
+    (at 175 65)
+    (descr "Link A LED")
+    (attr smd)
+    (fp_text reference "D1"
+      (at 0 -1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (fp_text value "LED_LINKA"
+      (at 0 1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 41 "LED_LINKA")
+    )
+    (pad "2" smd rect
+      (at 0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 2 "GND")
+    )
+  )
+
+  (footprint "LED_SMD:LED_0603_1608Metric"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp led-linkb)
+    (at 180 65)
+    (attr smd)
+    (fp_text reference "D2"
+      (at 0 -1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (fp_text value "LED_LINKB"
+      (at 0 1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 42 "LED_LINKB")
+    )
+    (pad "2" smd rect
+      (at 0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 2 "GND")
+    )
+  )
+
+  (footprint "LED_SMD:LED_0603_1608Metric"
+    (layer "F.Cu")
+    (tedit 0)
+    (tstamp led-arm)
+    (at 185 65)
+    (attr smd)
+    (fp_text reference "D3"
+      (at 0 -1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (fp_text value "LED_ARM"
+      (at 0 1.5 0)
+      (effects
+        (font
+          (size 0.8 0.8)
+        )
+      )
+    )
+    (pad "1" smd rect
+      (at -0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 43 "LED_ARM")
+    )
+    (pad "2" smd rect
+      (at 0.8 0 0)
+      (size 0.8 0.8)
+      (layers "F.Cu" "F.Paste" "F.Mask")
+      (net 2 "GND")
+    )
+  )
+
+  (gr_text "AxleTap — Automotive Ethernet Tap\nAuthor: jayis1\nLicense: CERN-OHL-S v2"
+    (at 100 50 0)
+    (layer "F.SilkS")
+    (effects
+      (font
+        (size 1.5 1.5)
+      )
+    )
+  )
+
+  (gr_line
+    (start 50 50)
+    (end 170 50)
+    (angle 90)
+    (layer "Edge.Cuts")
+    (width 0.1)
+  )
+  (gr_line
+    (start 170 50)
+    (end 170 175)
+    (angle 90)
+    (layer "Edge.Cuts")
+    (width 0.1)
+  )
+  (gr_line
+    (start 170 175)
+    (end 50 175)
+    (angle 90)
+    (layer "Edge.Cuts")
+    (width 0.1)
+  )
+  (gr_line
+    (start 50 175)
+    (end 50 50)
+    (angle 90)
+    (layer "Edge.Cuts")
+    (width 0.1)
+  )
+
+  (via
+    (at 60 70)
+    (size 0.6)
+    (drill 0.3)
+    (layers "F.Cu" "B.Cu")
+    (net 2 "GND")
+  )
+
+  (via
+    (at 100 70)
+    (size 0.6)
+    (drill 0.3)
+    (layers "F.Cu" "B.Cu")
+    (net 1 "+3V3")
+  )
+
+  (segment
+    (start 60 77)
+    (end 90 77)
+    (width 0.2)
+    (layer "F.Cu")
+    (net 4 "USB_DM")
+  )
+  (segment
+    (start 60 77.5)
+    (end 90 77.5)
+    (width 0.2)
+    (layer "F.Cu")
+    (net 5 "USB_DP")
+  )
+  (segment
+    (start 109.75 73)
+    (end 136.75 77.25)
+    (width 0.15)
+    (layer "F.Cu")
+    (net 6 "RGMII_TX_CLK_A")
+  )
+  (segment
+    (start 109.25 73)
+    (end 137.25 77.25)
+    (width 0.15)
+    (layer "F.Cu")
+    (net 7 "RGMII_TX_EN_A")
+  )
+
+  (zone
+    (net 2 "GND")
+    (net_name "GND")
+    (layer "B.Cu")
+    (tstamp gnd-pour)
+    (hatch edge 0.5)
+    (connect_pads
+      (clearance 0.2)
+    )
+    (min_thickness 0.15)
+    (fill yes
+      (thermal_gap 0.5)
+      (thermal_bridge_width 0.5)
+    )
+    (polygon
+      (pts
+        (xy 50 50)
+        (xy 170 50)
+        (xy 170 175)
+        (xy 50 175)
+      )
+    )
+  )
+
+)

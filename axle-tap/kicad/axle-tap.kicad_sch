@@ -1,0 +1,982 @@
+(kicad_sch
+  (version 20211123)
+  (generator "hermes-agent")
+  (generation 1)
+  (uuid "axle-tap-sch-001")
+
+  (paper "A2")
+
+  (title_block
+    (title "AxleTap — Automotive Ethernet Tap, MITM & gPTP Spoofing Platform")
+    (date "2026-07-22")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "STM32H723ZGT6 + 2x Marvell 88Q2112 + nRF52820")
+  )
+
+  (lib_symbols
+    (symbol "MCU_ST_STM32H7:STM32H723ZGT6"
+      (pin_numbers
+        (hide yes)
+      )
+      (pin_names
+        (offset 0.254)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U1"
+        (at -25 50 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "STM32H723ZGT6"
+        (at 5 50 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" "Package_QFP:LQFP-144_20x20mm_P0.5mm"
+        (at 0 -50 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32h723.pdf"
+        (at 0 -55 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+    )
+    (symbol "Interface_Ethernet:Marvell_88Q2112"
+      (pin_numbers
+        (hide yes)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at -15 25 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "88Q2112"
+        (at 5 25 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm"
+        (at 0 -25 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+    )
+    (symbol "RF_Bluetooth:Nordic_nRF52820"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at -10 20 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "nRF52820"
+        (at 5 20 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Footprint" "Package_DFN_QFN:QFN-40-1EP_6x6mm_P0.5mm_EP4.6x4.6mm"
+        (at 0 -20 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+    )
+    (symbol "Connector:USB_C_Receptacle"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at -10 15 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property "Value" "USB_C"
+        (at 5 15 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+    )
+    (symbol "Device:C"
+      (pin_numbers
+        (hide yes)
+      )
+      (pin_names
+        (offset 0.254)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 0.254 1.524 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "C"
+        (at 0.254 -1.524 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+    )
+    (symbol "Device:R"
+      (pin_numbers
+        (hide yes)
+      )
+      (pin_names
+        (offset 0.254)
+      )
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R"
+        (at 0.254 1.524 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property "Value" "R"
+        (at 0.254 -1.524 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+    )
+    (symbol "power:+3V3"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "#PWR"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (property "Value" "+3V3"
+        (at 0 3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+    )
+    (symbol "power:GND"
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "#PWR"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (property "Value" "GND"
+        (at 0 -3.81 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+    )
+  )
+
+  (symbol
+    (lib_id "MCU_ST_STM32H7:STM32H723ZGT6")
+    (at 120 80 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "u1-stm32")
+    (property "Reference" "U1"
+      (at 120 30 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "STM32H723ZGT6"
+      (at 120 33 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (pin "PA1"
+      (uuid "eth1-tx-clk")
+    )
+    (pin "PA2"
+      (uuid "eth1-tx-en")
+    )
+    (pin "PA3"
+      (uuid "eth1-rx-clk")
+    )
+    (pin "PA7"
+      (uuid "eth1-txd0")
+    )
+    (pin "PA8"
+      (uuid "eth1-rxd2")
+    )
+    (pin "PA9"
+      (uuid "eth1-rxd3")
+    )
+    (pin "PA10"
+      (uuid "eth-mdio")
+    )
+    (pin "PA11"
+      (uuid "phy-a-reset")
+    )
+    (pin "PA12"
+      (uuid "phy-b-reset")
+    )
+    (pin "PC0"
+      (uuid "eth1-rx-dv")
+    )
+    (pin "PC1"
+      (uuid "eth1-txd1")
+    )
+    (pin "PC2"
+      (uuid "eth-mdc")
+    )
+    (pin "PC4"
+      (uuid "eth1-txd2")
+    )
+    (pin "PC5"
+      (uuid "eth1-txd3")
+    )
+    (pin "PC8"
+      (uuid "eth1-rxd0")
+    )
+    (pin "PC9"
+      (uuid "eth1-rxd1")
+    )
+    (pin "PC13"
+      (uuid "phy-a-link")
+    )
+    (pin "PC14"
+      (uuid "phy-b-link")
+    )
+    (pin "PC15"
+      (uuid "arm-switch")
+    )
+    (pin "PB0"
+      (uuid "kill-key")
+    )
+    (pin "PD8"
+      (uuid "dbg-tx")
+    )
+    (pin "PD9"
+      (uuid "dbg-rx")
+    )
+    (pin "PG13"
+      (uuid "ble-sck")
+    )
+    (pin "PG14"
+      (uuid "ble-mosi")
+    )
+    (pin "PG12"
+      (uuid "ble-miso")
+    )
+    (pin "PG15"
+      (uuid "ble-cs")
+    )
+    (pin "PG9"
+      (uuid "ble-irq")
+    )
+  )
+
+  (symbol
+    (lib_id "Interface_Ethernet:Marvell_88Q2112")
+    (at 220 80 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "u2-phyA")
+    (property "Reference" "U2"
+      (at 220 45 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "88Q2112"
+      (at 220 48 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (pin "RGMII_TX_CLK"
+      (uuid "u2-tx-clk")
+    )
+    (pin "RGMII_TX_EN"
+      (uuid "u2-tx-en")
+    )
+    (pin "RGMII_TXD0"
+      (uuid "u2-txd0")
+    )
+    (pin "RGMII_TXD1"
+      (uuid "u2-txd1")
+    )
+    (pin "RGMII_TXD2"
+      (uuid "u2-txd2")
+    )
+    (pin "RGMII_TXD3"
+      (uuid "u2-txd3")
+    )
+    (pin "RGMII_RX_CLK"
+      (uuid "u2-rx-clk")
+    )
+    (pin "RGMII_RX_DV"
+      (uuid "u2-rx-dv")
+    )
+    (pin "RGMII_RXD0"
+      (uuid "u2-rxd0")
+    )
+    (pin "RGMII_RXD1"
+      (uuid "u2-rxd1")
+    )
+    (pin "RGMII_RXD2"
+      (uuid "u2-rxd2")
+    )
+    (pin "RGMII_RXD3"
+      (uuid "u2-rxd3")
+    )
+    (pin "MDIO"
+      (uuid "u2-mdio")
+    )
+    (pin "MDC"
+      (uuid "u2-mdc")
+    )
+    (pin "RESETn"
+      (uuid "u2-reset")
+    )
+    (pin "LN_P"
+      (uuid "u2-ln-p")
+    )
+    (pin "LN_N"
+      (uuid "u2-ln-n")
+    )
+  )
+
+  (symbol
+    (lib_id "Interface_Ethernet:Marvell_88Q2112")
+    (at 220 160 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "u3-phyB")
+    (property "Reference" "U3"
+      (at 220 125 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "88Q2112"
+      (at 220 128 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (pin "RGMII_TX_CLK"
+      (uuid "u3-tx-clk")
+    )
+    (pin "RGMII_TX_EN"
+      (uuid "u3-tx-en")
+    )
+    (pin "RGMII_TXD0"
+      (uuid "u3-txd0")
+    )
+    (pin "RGMII_TXD3"
+      (uuid "u3-txd3")
+    )
+    (pin "LN_P"
+      (uuid "u3-ln-p")
+    )
+    (pin "LN_N"
+      (uuid "u3-ln-n")
+    )
+  )
+
+  (symbol
+    (lib_id "RF_Bluetooth:Nordic_nRF52820")
+    (at 220 230 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "u4-ble")
+    (property "Reference" "U4"
+      (at 220 200 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "nRF52820"
+      (at 220 203 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (pin "SCK"
+      (uuid "u4-sck")
+    )
+    (pin "MOSI"
+      (uuid "u4-mosi")
+    )
+    (pin "MISO"
+      (uuid "u4-miso")
+    )
+    (pin "CS"
+      (uuid "u4-cs")
+    )
+    (pin "IRQ"
+      (uuid "u4-irq")
+    )
+    (pin "ANT"
+      (uuid "u4-ant")
+    )
+  )
+
+  (symbol
+    (lib_id "Connector:USB_C_Receptacle")
+    (at 50 80 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "j1-usbc")
+    (property "Reference" "J1"
+      (at 50 60 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "USB_C_Receptacle"
+      (at 50 63 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (pin "VBUS"
+      (uuid "j1-vbus")
+    )
+    (pin "D+"
+      (uuid "j1-dp")
+    )
+    (pin "D-"
+      (uuid "j1-dm")
+    )
+    (pin "GND"
+      (uuid "j1-gnd")
+    )
+  )
+
+  (symbol
+    (lib_id "Device:C")
+    (at 60 110 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "c1-dec")
+    (property "Reference" "C1"
+      (at 60 108 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "100nF"
+      (at 60 113 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+  )
+
+  (symbol
+    (lib_id "Device:C")
+    (at 70 110 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "c2-dec")
+    (property "Reference" "C2"
+      (at 70 108 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "4.7uF"
+      (at 70 113 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+  )
+
+  (symbol
+    (lib_id "Device:R")
+    (at 240 130 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "r1-mdio")
+    (property "Reference" "R1"
+      (at 240 128 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+    (property "Value" "1k"
+      (at 240 133 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+      )
+    )
+  )
+
+  (symbol
+    (lib_id "power:+3V3")
+    (at 30 60 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "pwr-3v3")
+  )
+
+  (symbol
+    (lib_id "power:GND")
+    (at 30 110 0)
+    (unit 1)
+    (in_bom yes)
+    (on_board yes)
+    (uuid "pwr-gnd")
+  )
+
+  (junction
+    (at 30 70)
+    (diameter 0)
+    (color 0 0 0 0)
+    (uuid "j-3v3")
+  )
+
+  (wire
+    (pts
+      (xy 50 70) (xy 30 70)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-vbus")
+  )
+
+  (wire
+    (pts
+      (xy 30 70) (xy 30 60)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-3v3-rail")
+  )
+
+  (wire
+    (pts
+      (xy 50 100) (xy 30 100)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-gnd")
+  )
+
+  (wire
+    (pts
+      (xy 30 100) (xy 30 110)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-gnd-rail")
+  )
+
+  (wire
+    (pts
+      (xy 80 85) (xy 120 85)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-dm")
+  )
+
+  (wire
+    (pts
+      (xy 80 90) (xy 120 90)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-dp")
+  )
+
+  (label "USB_DM"
+    (at 100 85 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-dm")
+  )
+
+  (label "USB_DP"
+    (at 100 90 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-dp")
+  )
+
+  (wire
+    (pts
+      (xy 160 80) (xy 220 80)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-tx-clk")
+  )
+
+  (label "RGMII_TX_CLK_A"
+    (at 180 80 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-tx-clk")
+  )
+
+  (wire
+    (pts
+      (xy 160 90) (xy 220 90)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-tx-en")
+  )
+
+  (label "RGMII_TX_EN_A"
+    (at 180 90 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-tx-en")
+  )
+
+  (wire
+    (pts
+      (xy 160 100) (xy 220 100)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-txd0")
+  )
+
+  (label "RGMII_TXD0_A"
+    (at 180 100 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-txd0")
+  )
+
+  (wire
+    (pts
+      (xy 160 160) (xy 220 160)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-rx-clk")
+  )
+
+  (label "RGMII_RX_CLK_A"
+    (at 180 160 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-rx-clk")
+  )
+
+  (wire
+    (pts
+      (xy 240 60) (xy 260 60)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-link-a")
+  )
+
+  (label "LINK_A_T1"
+    (at 250 60 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-link-a")
+  )
+
+  (wire
+    (pts
+      (xy 240 140) (xy 260 140)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-link-b")
+  )
+
+  (label "LINK_B_T1"
+    (at 250 140 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-link-b")
+  )
+
+  (wire
+    (pts
+      (xy 140 220) (xy 220 220)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-ble-sck")
+  )
+
+  (label "SPI6_SCK"
+    (at 180 220 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-ble-sck")
+  )
+
+  (wire
+    (pts
+      (xy 140 230) (xy 220 230)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-ble-mosi")
+  )
+
+  (label "SPI6_MOSI"
+    (at 180 230 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-ble-mosi")
+  )
+
+  (wire
+    (pts
+      (xy 140 240) (xy 220 240)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-ble-miso")
+  )
+
+  (label "SPI6_MISO"
+    (at 180 240 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-ble-miso")
+  )
+
+  (wire
+    (pts
+      (xy 240 250) (xy 260 250)
+    )
+    (stroke
+      (width 0.15)
+      (type solid)
+    )
+    (uuid "w-ble-irq")
+  )
+
+  (label "BLE_IRQ"
+    (at 250 250 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left)
+    )
+    (uuid "lbl-ble-irq")
+  )
+
+  (text "AxleTap — Automotive Ethernet Tap\nAuthor: jayis1\nLicense: CERN-OHL-S v2"
+    (at 30 30 0)
+    (effects
+      (font
+        (size 2 2)
+      )
+    )
+    (uuid "title-text")
+  )
+
+  (sheet_instances
+    (path "/"
+      (page "1")
+    )
+  )
+)
