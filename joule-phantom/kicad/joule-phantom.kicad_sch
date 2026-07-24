@@ -1,0 +1,706 @@
+(kicad_sch
+  (version 20211123)
+  (generator "hermes-agent")
+  (generation 1)
+  (uuid "joule-phantom-sch-001")
+
+  (paper "A3")
+
+  (title_block
+    (title "Joule-Phantom — Smart-Battery SMBus/PMBus MITM Implant")
+    (date "2026-07-24")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "STM32L432KCU6 + ESP32-C3 + dual SMBus I2C bridges")
+    (comment 4 "Interposer flex for laptop/drone smart-battery MITM")
+  )
+
+  (lib_symbols
+
+    ;; ---------- STM32L432KCU6 main MCU ----------
+    (symbol "MCU_ST_STM32L4:STM32L432KCU6"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at -12 20 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "STM32L432KCU6"
+        (at 5 20 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.65x3.65mm"
+        (at 0 -22 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32l432.pdf"
+        (at 0 -25 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "STM32L432KCU6_0_1"
+        (rectangle (start -15 18) (end 15 -20)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type background))
+        )
+      )
+      (symbol "STM32L432KCU6_1_1"
+        ;; Left side pins
+        (pin power_in line (at -17 15 0) (length 2)
+          (name "VDD") (number "1") )
+        (pin bidirectional line (at -17 12 0) (length 2)
+          (name "PA0") (number "2") )
+        (pin bidirectional line (at -17 9 0) (length 2)
+          (name "PA1") (number "3") )
+        (pin bidirectional line (at -17 6 0) (length 2)
+          (name "PA2_USART2_TX") (number "4") )
+        (pin bidirectional line (at -17 3 0) (length 2)
+          (name "PA3_USART2_RX") (number "5") )
+        (pin bidirectional line (at -17 0 0) (length 2)
+          (name "PA4") (number "6") )
+        (pin bidirectional line (at -17 -3 0) (length 2)
+          (name "PA5") (number "7") )
+        (pin bidirectional line (at -17 -6 0) (length 2)
+          (name "PA6_I2C1_SCL") (number "8") )
+        (pin bidirectional line (at -17 -9 0) (length 2)
+          (name "PA7_I2C1_SDA") (number "9") )
+        (pin power_in line (at -17 -12 0) (length 2)
+          (name "VSS") (number "10") )
+        ;; Right side pins
+        (pin bidirectional line (at 17 15 180) (length 2)
+          (name "PB13_I2C2_SCL") (number "21") )
+        (pin bidirectional line (at 17 12 180) (length 2)
+          (name "PB14_I2C2_SDA") (number "22") )
+        (pin bidirectional line (at 17 9 180) (length 2)
+          (name "PB15_LED") (number "23") )
+        (pin bidirectional line (at 17 6 180) (length 2)
+          (name "PA8") (number "24") )
+        (pin bidirectional line (at 17 3 180) (length 2)
+          (name "PA9") (number "25") )
+        (pin bidirectional line (at 17 0 180) (length 2)
+          (name "PA10") (number "26") )
+        (pin bidirectional line (at 17 -3 180) (length 2)
+          (name "PA11") (number "27") )
+        (pin bidirectional line (at 17 -6 180) (length 2)
+          (name "PA12") (number "28") )
+        (pin power_in line (at 17 -12 180) (length 2)
+          (name "VDD") (number "29") )
+        (pin power_in line (at 17 -15 180) (length 2)
+          (name "VSS") (number "30") )
+      )
+    )
+
+    ;; ---------- ESP32-C3 BLE co-processor ----------
+    (symbol "RF_Module:ESP32-C3"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0.254))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at -10 15 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "ESP32-C3-MINI-1"
+        (at 5 15 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "RF_Module:ESP32-C3-MINI-1"
+        (at 0 -18 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf"
+        (at 0 -20 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "ESP32-C3_0_1"
+        (rectangle (start -12 13) (end 12 -16)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type background))
+        )
+      )
+      (symbol "ESP32-C3_1_1"
+        (pin power_in line (at -14 10 0) (length 2)
+          (name "3V3") (number "1") )
+        (pin power_in line (at -14 6 0) (length 2)
+          (name "EN") (number "2") )
+        (pin input line (at -14 2 0) (length 2)
+          (name "RXD0") (number "3") )
+        (pin output line (at -14 -2 0) (length 2)
+          (name "TXD0") (number "4") )
+        (pin bidirectional line (at 14 10 180) (length 2)
+          (name "GPIO5") (number "10") )
+        (pin bidirectional line (at 14 6 180) (length 2)
+          (name "GPIO6") (number "11") )
+        (pin power_in line (at 14 -10 180) (length 2)
+          (name "GND") (number "15") )
+      )
+    )
+
+    ;; ---------- I2C buffer / level shifter (TXS0102) ----------
+    (symbol "Logic_LevelTranslator:TXS0102DCT"
+      (pin_names (offset 0.254))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U"
+        (at -8 10 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "TXS0102DCT"
+        (at 3 10 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Package_TO_SOT_SMD:SOT-23-8"
+        (at 0 -12 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "TXS0102DCT_0_1"
+        (rectangle (start -10 8) (end 10 -10)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type background))
+        )
+      )
+      (symbol "TXS0102DCT_1_1"
+        (pin power_in line (at -12 5 0) (length 2)
+          (name "VCCA") (number "1") )
+        (pin bidirectional line (at -12 1 0) (length 2)
+          (name "A1") (number "2") )
+        (pin bidirectional line (at -12 -3 0) (length 2)
+          (name "A2") (number "3") )
+        (pin power_in line (at -12 -7 0) (length 2)
+          (name "GND") (number "4") )
+        (pin bidirectional line (at 12 -3 180) (length 2)
+          (name "B2") (number "5") )
+        (pin bidirectional line (at 12 1 180) (length 2)
+          (name "B1") (number "6") )
+        (pin input line (at 12 5 180) (length 2)
+          (name "OE") (number "7") )
+        (pin power_in line (at 12 -7 180) (length 2)
+          (name "VCCB") (number "8") )
+      )
+    )
+
+    ;; ---------- SMBus connector to HOST (laptop side) ----------
+    (symbol "Connector:Conn_HOST_SMBus"
+      (pin_names (offset 1.016))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 12 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Host_SMBus_6pin"
+        (at 0 -12 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Connector_FFC-FPC:TE_84953-6"
+        (at 0 -15 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "Conn_HOST_SMBus_0_1"
+        (rectangle (start -5 10) (end 5 -10)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type background))
+        )
+      )
+      (symbol "Conn_HOST_SMBus_1_1"
+        (pin power_in line (at -8 7 0) (length 3)
+          (name "VBAT+") (number "1") )
+        (pin bidirectional line (at -8 3 0) (length 3)
+          (name "SMB_CLK") (number "2") )
+        (pin bidirectional line (at -8 -1 0) (length 3)
+          (name "SMB_DAT") (number "3") )
+        (pin power_in line (at -8 -5 0) (length 3)
+          (name "GND") (number "4") )
+        (pin input line (at 8 7 180) (length 3)
+          (name "SMBALERT#") (number "5") )
+        (pin input line (at 8 3 180) (length 3)
+          (name "BATT_PRSNT#") (number "6") )
+      )
+    )
+
+    ;; ---------- SMBus connector to BATTERY (pack side) ----------
+    (symbol "Connector:Conn_BATT_SMBus"
+      (pin_names (offset 1.016))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "J"
+        (at 0 12 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Batt_SMBus_6pin"
+        (at 0 -12 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Connector_FFC-FPC:TE_84953-6"
+        (at 0 -15 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "Conn_BATT_SMBus_0_1"
+        (rectangle (start -5 10) (end 5 -10)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type background))
+        )
+      )
+      (symbol "Conn_BATT_SMBus_1_1"
+        (pin power_in line (at -8 7 0) (length 3)
+          (name "VBAT+") (number "1") )
+        (pin bidirectional line (at -8 3 0) (length 3)
+          (name "SMB_CLK") (number "2") )
+        (pin bidirectional line (at -8 -1 0) (length 3)
+          (name "SMB_DAT") (number "3") )
+        (pin power_in line (at -8 -5 0) (length 3)
+          (name "GND") (number "4") )
+        (pin input line (at 8 7 180) (length 3)
+          (name "SMBALERT#") (number "5") )
+        (pin input line (at 8 3 180) (length 3)
+          (name "BATT_PRSNT#") (number "6") )
+      )
+    )
+
+    ;; ---------- 10 kOhm pull-up resistor ----------
+    (symbol "Device:R"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "R"
+        (at 2 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "R"
+        (at 2 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+        (at 0 -3 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 5 270) (length 2.54)
+          (name "~") (number "1") )
+        (pin passive line (at 0 -5 90) (length 2.54)
+          (name "~") (number "2") )
+      )
+    )
+
+    ;; ---------- 0.1 uF decoupling capacitor ----------
+    (symbol "Device:C"
+      (pin_numbers (hide yes))
+      (pin_names (offset 0))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "C"
+        (at 2 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "C"
+        (at 2 0 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+        (at 0 -3 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -1.016) (xy 2.032 -1.016))
+          (stroke (width 0.508) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+        (polyline (pts (xy -2.032 1.016) (xy 2.032 1.016))
+          (stroke (width 0.508) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 4 270) (length 2.54)
+          (name "~") (number "1") )
+        (pin passive line (at 0 -4 90) (length 2.54)
+          (name "~") (number "2") )
+      )
+    )
+
+    ;; ---------- Status LED ----------
+    (symbol "Device:LED"
+      (pin_numbers (hide yes))
+      (pin_names (offset 1.016))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "D"
+        (at 0 5 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "LED"
+        (at 0 -5 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "LED_SMD:LED_0603_1608Metric"
+        (at 0 -7 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "LED_0_1"
+        (polyline (pts (xy -1.27 1.27) (xy -1.27 -1.27))
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+        (polyline (pts (xy -1.27 0) (xy 1.27 0))
+          (stroke (width 0) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+        (polyline (pts (xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27))
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+      )
+      (symbol "LED_1_1"
+        (pin input line (at -3.81 0 0) (length 2.54)
+          (name "K") (number "1") )
+        (pin output line (at 3.81 0 180) (length 2.54)
+          (name "A") (number "2") )
+      )
+    )
+
+    ;; ---------- 32.768 kHz crystal ----------
+    (symbol "Device:Crystal"
+      (pin_names (offset 1.016))
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "Y"
+        (at 0 4 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Value" "Crystal"
+        (at 0 -4 0)
+        (effects (font (size 1.27 1.27)))
+      )
+      (property "Footprint" "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm"
+        (at 0 -6 0)
+        (effects (font (size 1.27 1.27)) (hide yes))
+      )
+      (symbol "Crystal_0_1"
+        (rectangle (start -1.27 2) (end 1.27 -2)
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+        (polyline (pts (xy -2.54 1.27) (xy -2.54 -1.27))
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+        (polyline (pts (xy 2.54 1.27) (xy 2.54 -1.27))
+          (stroke (width 0.254) (type default) (color 0 0 0 0))
+          (fill (type none))
+        )
+      )
+      (symbol "Crystal_1_1"
+        (pin passive line (at -5.08 0 0) (length 2.54)
+          (name "~") (number "1") )
+        (pin passive line (at 5.08 0 180) (length 2.54)
+          (name "~") (number "2") )
+      )
+    )
+
+  ) ;; end lib_symbols
+
+  ;; ==================== COMPONENT INSTANCES ====================
+
+  ;; --- Main MCU: U1 ---
+  (symbol (lib_id "MCU_ST_STM32L4:STM32L432KCU6") (at 80 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U1" (at 80 38 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "STM32L432KCU6" (at 80 35 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "Package_DFN_QFN:QFN-32-1EP_5x5mm_P0.5mm_EP3.65x3.65mm"
+      (at 80 82 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32l432.pdf"
+      (at 80 84 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "Author" "jayis1" (at 80 86 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- BLE co-processor: U2 ---
+  (symbol (lib_id "RF_Module:ESP32-C3") (at 130 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U2" (at 130 42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "ESP32-C3-MINI-1" (at 130 39 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "RF_Module:ESP32-C3-MINI-1"
+      (at 130 78 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "Datasheet" "https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf"
+      (at 130 80 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+    (property "Author" "jayis1" (at 130 82 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- Level shifter host side: U3 ---
+  (symbol (lib_id "Logic_LevelTranslator:TXS0102DCT") (at 40 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U3" (at 40 78 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TXS0102DCT" (at 40 75 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Author" "jayis1" (at 40 73 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- Level shifter battery side: U4 ---
+  (symbol (lib_id "Logic_LevelTranslator:TXS0102DCT") (at 120 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "U4" (at 120 78 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "TXS0102DCT" (at 120 75 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+    (property "Author" "jayis1" (at 120 73 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- Host connector: J1 ---
+  (symbol (lib_id "Connector:Conn_HOST_SMBus") (at 15 90 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J1" (at 15 78 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Host_SMBus_6pin" (at 15 75 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Author" "jayis1" (at 15 73 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- Battery connector: J2 ---
+  (symbol (lib_id "Connector:Conn_BATT_SMBus") (at 160 90 180) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "J2" (at 160 102 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "Batt_SMBus_6pin" (at 160 105 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Author" "jayis1" (at 160 107 0)
+      (effects (font (size 0.8 0.8)) (hide yes))
+    )
+  )
+
+  ;; --- Pull-up resistors ---
+  (symbol (lib_id "Device:R") (at 55 45 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R1" (at 57 45 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10k" (at 57 42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:R") (at 60 45 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R2" (at 62 45 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10k" (at 62 42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:R") (at 100 45 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R3" (at 102 45 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10k" (at 102 42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:R") (at 105 45 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R4" (at 107 45 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10k" (at 107 42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:R") (at 100 115 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "R5" (at 102 115 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "470" (at 102 112 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+
+  ;; --- Decoupling capacitors ---
+  (symbol (lib_id "Device:C") (at 70 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C1" (at 72 100 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF" (at 72 97 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:C") (at 75 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C2" (at 77 100 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF" (at 77 97 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:C") (at 115 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C3" (at 117 100 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "10uF" (at 117 97 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+  (symbol (lib_id "Device:C") (at 145 100 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "C4" (at 147 100 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "100nF" (at 147 97 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+
+  ;; --- Status LED ---
+  (symbol (lib_id "Device:LED") (at 100 125 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "D1" (at 100 130 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "LED_Blue" (at 100 132 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+
+  ;; --- 32.768 kHz crystal ---
+  (symbol (lib_id "Device:Crystal") (at 95 60 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (property "Reference" "Y1" (at 95 55 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "32.768kHz" (at 95 53 0)
+      (effects (font (size 1.27 1.27)))
+    )
+  )
+
+  ;; ==================== WIRES / NETS ====================
+
+  ;; Host SMBus clock/data from J1 to U3 (level shifter A side)
+  (wire (pts (xy 18 93) (xy 28 91)))
+  (wire (pts (xy 18 89) (xy 28 87)))
+  ;; U3 B side to MCU I2C1 (host)
+  (wire (pts (xy 52 87) (xy 63 54)))    ;; SMB_CLK_HOST -> PA6
+  (wire (pts (xy 52 91) (xy 63 51)))   ;; SMB_DAT_HOST -> PA7
+
+  ;; Battery SMBus from J2 to U4 (level shifter B side)
+  (wire (pts (xy 152 87) (xy 142 91)))
+  (wire (pts (xy 152 91) (xy 142 87)))
+  ;; U4 A side to MCU I2C2 (battery)
+  (wire (pts (xy 108 91) (xy 97 75)))   ;; SMB_CLK_BATT -> PB13
+  (wire (pts (xy 108 87) (xy 97 72)))   ;; SMB_DAT_BATT -> PB14
+
+  ;; MCU UART to ESP32-C3
+  (wire (pts (xy 63 66) (xy 116 62)))   ;; PA2 TX -> ESP RXD0
+  (wire (pts (xy 63 63) (xy 116 58)))   ;; PA3 RX <- ESP TXD0
+
+  ;; Pull-ups to 3V3
+  (wire (pts (xy 55 50) (xy 55 40)))    ;; R1 to 3V3
+  (wire (pts (xy 60 50) (xy 60 40)))
+  (wire (pts (xy 100 50) (xy 100 40)))
+  (wire (pts (xy 105 50) (xy 105 40)))
+
+  ;; LED + R5
+  (wire (pts (xy 100 110) (xy 100 120)))
+  (wire (pts (xy 100 130) (xy 100 135)))  ;; LED to GND
+
+  ;; Crystal to MCU
+  (wire (pts (xy 90 60) (xy 80 60)))
+  (wire (pts (xy 100 60) (xy 97 60)))
+
+  ;; Power rails
+  (wire (pts (xy 10 97) (xy 10 110)))   ;; J1 GND
+  (wire (pts (xy 165 97) (xy 165 110))) ;; J2 GND
+
+  ;; ==================== LABELS / NETS ====================
+  (global_label "SMB_CLK_HOST" (shape input) (at 55 45 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "SMB_DAT_HOST" (shape input) (at 60 45 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "SMB_CLK_BATT" (shape input) (at 100 45 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "SMB_DAT_BATT" (shape input) (at 105 45 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "VBAT+" (shape input) (at 10 97 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "3V3" (shape input) (at 115 50 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "GND" (shape input) (at 10 112 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "SMBALERT#" (shape input) (at 20 97 0)
+    (effects (font (size 1.27 1.27)))
+  )
+  (global_label "BATT_PRSNT#" (shape input) (at 20 93 0)
+    (effects (font (size 1.27 1.27)))
+  )
+
+  ;; ==================== NET CLASS ASSIGNMENTS ====================
+  (net_class "Default" "Default net class"
+    (wire_width 0.2)
+    (via_dia 0.6) (via_drill 0.3)
+  )
+  (net_class "SMBus" "SMBus / PMBus I2C signals"
+    (wire_width 0.25)
+    (via_dia 0.5) (via_drill 0.25)
+  )
+  (net_class "Power" "Power rails VBAT+ / 3V3 / GND"
+    (wire_width 0.5)
+    (via_dia 0.8) (via_drill 0.4)
+  )
+
+  ;; ==================== SHEET METADATA ====================
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

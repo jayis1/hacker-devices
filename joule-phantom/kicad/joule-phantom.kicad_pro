@@ -1,0 +1,128 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.2,
+        "min_track_width": 0.2,
+        "min_via_diameter": 0.4,
+        "min_via_drill": 0.2
+      },
+      "track_widths": [0.0, 0.2, 0.25, 0.3, 0.5],
+      "via_dimensions": [
+        { "diameter": 0.0, "drill": 0.0 },
+        { "diameter": 0.6, "drill": 0.3 }
+      ]
+    },
+    "ipc2581": { "dist": "", "distpn": "", "internal_id": "", "mfg": "", "mpn": "" },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": { "equivalence_files": [] },
+  "libraries": { "pinned_footprints_libs": [] },
+  "meta": { "filename": "joule-phantom.kicad_pro", "version": 1 },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0,0,0,0.000)",
+        "schematic_color": "rgba(0,0,0,0.000)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "SMBus",
+        "pcb_color": "rgba(0,0,255,1.000)",
+        "schematic_color": "rgba(0,0,255,1.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.5,
+        "via_drill": 0.25,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "diff_pair_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(255,0,0,1.000)",
+        "schematic_color": "rgba(255,0,0,1.000)",
+        "track_width": 0.5,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      }
+    ],
+    "meta": { "version": 1 },
+    "net_colors": null,
+    "netclass_assignments": null,
+    "netclass_patterns": [
+      { "netclass": "SMBus", "pattern": "/SMB_*" },
+      { "netclass": "SMBus", "pattern": "/PMB_*" },
+      { "netclass": "Power", "pattern": "/VBAT*" },
+      { "netclass": "Power", "pattern": "/VCC*" },
+      { "netclass": "Power", "pattern": "/GND" }
+    ]
+  },
+  "pcbnew": {
+    "last_paths": { "gencad": "", "idf": "", "netlist": "", "plot": "", "pos_files": "", "specctra_dsn": "", "step": "", "vrml": "" },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "joule-phantom-bom.csv",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": { "field_delimiter": ",", "keep_line_breaks": false, "keep_tabs": false, "name": "CSV", "ref_delimiter": ",", "ref_range_delimiter": "", "string_delimiter": "\"" },
+    "bom_presets": [],
+    "bom_settings": { "exclude_dnp": false, "fields_ordered": false, "filter_string": "", "group_symbols": true, "name": "Grouped By Value", "sort_asc": true, "sort_field": "Reference" },
+    "connection_grid_size": 50.0,
+    "drawing": { "dashed_lines_dash_length_ratio": 12.0, "dashed_lines_gap_length_ratio": 3.0, "default_line_thickness": 6.0, "default_text_size": 50.0, "field_names": [], "intersheets_ref_own_page": false, "intersheets_ref_prefix": "", "intersheets_ref_short": false, "intersheets_ref_show": false, "intersheets_ref_suffix": ": ", "junction_size_choice": 3, "label_size_ratio": 0.375, "pin_symbol_size": 25.0, "text_offset_ratio": 0.15 },
+    "legacy_thermal_holes": false,
+    "meta": { "version": 1 },
+    "page_format_descr": { "orientation": 0, "paper": "A3" },
+    "plot_directory": "plot/",
+    "spice_current_sheet_as_root": false,
+    "spice_external_command": "spice \"%I\"",
+    "spice_model_current_sheet_as_root": true,
+    "spice_save_all_currents": false,
+    "spice_save_all_voltages": false,
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [ [ "joule-phantom-sch-001", "joule-phantom" ] ],
+  "text_variables": { "AUTHOR": "jayis1", "LICENSE": "CERN-OHL-S v2" }
+}
