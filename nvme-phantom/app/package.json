@@ -1,0 +1,27 @@
+{
+  "name": "nvme-phantom-app",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "MIT",
+  "description": "Companion app for NVMe-Phantom M.2 NVMe storage interposer",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "clean": "rm -rf node_modules && npm install"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-native": "0.75.1",
+    "react-native-ble-plx": "^3.2.0",
+    "react-native-fs": "^2.20.0",
+    "react-native-navigation": "^7.40.0",
+    "@react-native-async-storage/async-storage": "^1.24.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.5.0"
+  }
+}
