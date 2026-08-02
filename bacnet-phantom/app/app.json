@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "BACnet Phantom",
+    "slug": "bacnet-phantom-app",
+    "author": "jayis1",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0f1115",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "BACnet Phantom uses BLE to control the hardware implant for authorized security research.",
+        "NSBluetoothPeripheralUsageDescription": "BACnet Phantom uses BLE to control the hardware implant."
+      },
+      "bundleIdentifier": "com.jayis1.bacnetphantom"
+    },
+    "android": {
+      "package": "com.jayis1.bacnetphantom",
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.BLUETOOTH_SCAN",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    },
+    "extra": {
+      "author": "jayis1",
+      "license": "GPLv3",
+      "disclaimer": "Authorized security research only. See README for ethical/legal disclaimer."
+    }
+  }
+}
