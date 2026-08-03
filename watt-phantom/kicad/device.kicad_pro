@@ -1,0 +1,176 @@
+{
+  "board": {
+    "design": {
+      "last_author": "jayis1",
+      "settings": {
+        "copper_edge_clearance": 0.15,
+        "rule_severities": {
+          "lib_symbol_issues": "warning",
+          "same_local_global": "error",
+          "track_dangling": "warning",
+          "via_dangling": "warning",
+          "unconnected_items": "error"
+        }
+      },
+      "track_widths": [0.0, 0.15, 0.18, 0.2, 0.25, 0.3, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.5, "drill": 0.25},
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ],
+      "diff_pair_dimensions": [
+        {"width": 0.18, "gap": 0.12, "via_gap": 0.2}
+      ],
+      "layer_presets": [],
+      "view": {
+        "coords": {"x": 27, "y": 11},
+        "zoom": 2.0
+      }
+    },
+    "ipc2581": {
+      "dist": "",
+      "mfg": "",
+      "mpn": "",
+      "internal_id": "WattPhantom-v1.0"
+    },
+    "metadata": {
+      "filename": "device.kicad_pcb",
+      "version": 1,
+      "date": "2026-08-03",
+      "author": "jayis1"
+    },
+    "setup": {
+      "stackup": {
+        "layers": [
+          {"name": "F.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "F.Paste", "type": "solder-paste"},
+          {"name": "F.SilkS", "type": "silk-screen"},
+          {"name": "F.Mask", "type": "solder-mask"},
+          {"name": "Dielectric.1", "type": "dielectric", "thickness": 0.08},
+          {"name": "In1.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.2", "type": "dielectric", "thickness": 0.1},
+          {"name": "In2.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.3", "type": "dielectric", "thickness": 0.1},
+          {"name": "In3.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.4", "type": "dielectric", "thickness": 0.1},
+          {"name": "In4.Cu", "type": "copper", "thickness": 0.035},
+          {"name": "Dielectric.5", "type": "dielectric", "thickness": 0.08},
+          {"name": "B.Mask", "type": "solder-mask"},
+          {"name": "B.SilkS", "type": "silk-screen"},
+          {"name": "B.Cu", "type": "copper", "thickness": 0.035}
+        ]
+      },
+      "pad_to_mask_clearance": 0.05,
+      "solder_mask_min_width": 0.05,
+      "grid_origin": {"x": 0, "y": 0},
+      "defaults": {
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "copper_line_width": 0.1
+      },
+      "erc": {
+        "enabled": true,
+        "severity": {
+          "unconnected_pin": "warning",
+          "power_pin_not_driven": "error",
+          "different_net_in_same_pin": "error"
+        }
+      },
+      "drc": {
+        "enabled": true,
+        "rules": {
+          "min_track_width": 0.15,
+          "min_via_diameter": 0.5,
+          "min_via_drill": 0.25,
+          "min_clearance": 0.15,
+          "min_copper_clearance": 0.15,
+          "copper_edge_clearance": 0.2,
+          "hole_to_hole_clearance": 0.25
+        }
+      }
+    },
+    "teardrops": {
+      "enabled": true,
+      "max_width": 0.5,
+      "max_length": 0.5
+    },
+    "rules": {
+      "impedance_controlled": true,
+      "usb_90ohm_diff": {
+        "width": 0.18,
+        "gap": 0.12,
+        "layer": "F.Cu",
+        "target_impedance": 90
+      }
+    },
+    "notes": [
+      "WattPhantom v1.0 — 6-layer board, 55x22mm",
+      "Author: jayis1 — CERN-OHL-S v2",
+      "VBUS routing on In4.Cu (inner power layer), 0.5mm width for high current",
+      "USB 2.0 D+/D- 90-ohm controlled impedance on F.Cu",
+      "CC lines routed with 0.15mm width, short as possible",
+      "I²C buses on F.Cu, 0.15mm width, 1MHz max",
+      "Ground pour on In1.Cu (solid ground plane)",
+      "VBUS_SRC and VBUS_SNK as split planes on In4.Cu"
+    ]
+  },
+  "schematic": {
+    "last_author": "jayis1",
+    "metadata": {
+      "filename": "device.kicad_sch",
+      "date": "2026-08-03",
+      "author": "jayis1"
+    },
+    "erc": {
+      "enabled": true,
+      "severity": {
+        "pin_not_connected": "warning",
+        "power_pin_not_driven": "error",
+        "hierarchical_label_unmatched": "error"
+      }
+    },
+    "annotation": {
+      "method": "X-Y",
+      "start": 1
+    }
+  },
+  "libraries": {
+    "paths": {
+      "system": ["${KISYSMOD}", "${KISYS3DMOD}"],
+      "project": ["symbols/wattphantom.kicad_sym"]
+    },
+    "footprints": [
+      {"name": "LQFP-48_7x7mm_P0.5mm", "lib": "Package_QFP"},
+      {"name": "WQFN-14-1EP_2.8x2.8mm_P0.4mm", "lib": "Package_DFN_QFN"},
+      {"name": "QFN-24-1EP_4x4mm_P0.5mm", "lib": "Package_DFN_QFN"},
+      {"name": "VSSOP-10_3x3mm_P0.5mm", "lib": "Package_SO"},
+      {"name": "NINA-B3", "lib": "RF_Module"},
+      {"name": "QFN-16-1EP_3x3mm_P0.4mm", "lib": "Package_DFN_QFN"},
+      {"name": "MSOP-10_3x3mm_P0.5mm", "lib": "Package_SO"},
+      {"name": "TSSOP-8_3x3mm_P0.65mm", "lib": "Package_TO_SOT_SMD"},
+      {"name": "SOT-23-5", "lib": "Package_TO_SOT_SMD"},
+      {"name": "PowerPAK_SO-8_Single", "lib": "Package_SO"},
+      {"name": "USB_C_Receptacle_HRO_TYPE-C-31-M-12", "lib": "Connector_USB"},
+      {"name": "OLED_128x64_0.96in", "lib": "Display"},
+      {"name": "C_0402_1005Metric", "lib": "Capacitor_SMD"},
+      {"name": "C_0805_2012Metric", "lib": "Capacitor_SMD"},
+      {"name": "LED_0603_1608Metric", "lib": "LED_SMD"}
+    ]
+  },
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "PROJECT": "WattPhantom",
+    "VERSION": "1.0",
+    "DATE": "2026-08-03",
+    "LICENSE": "CERN-OHL-S v2 / GPL-2.0"
+  },
+  "project": {
+    "name": "WattPhantom",
+    "author": "jayis1",
+    "company": "jayis1",
+    "date": "2026-08-03",
+    "rev": "1.0",
+    "description": "USB-C Power Delivery Manipulation & Covert Channel Platform"
+  }
+}
