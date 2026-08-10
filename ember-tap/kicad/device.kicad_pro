@@ -1,0 +1,204 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.09999999999999999,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "silk_text_size_h": 1.0,
+        "silk_text_size_v": 1.0,
+        "silk_text_thickness": 0.15
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "meta": {
+        "filename": "board.json",
+        "version": 1
+      },
+      "rules": {
+        "clearance_gap": 0.2,
+        "min_clearance": 0.2,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.45,
+        "min_via_drill": 0.25,
+        "min_through_hole_diameter": 0.3
+      },
+      "track_widths": [0.0, 0.15, 0.2, 0.3, 0.5, 0.8, 1.0, 2.0],
+      "via_dimensions": [
+        { "diameter": 0.0, "drill": 0.0 },
+        { "diameter": 0.6, "drill": 0.3 },
+        { "diameter": 0.8, "drill": 0.4 }
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "libraries": {
+      "pinned_footprints_dir": "footprints",
+      "pinned_symbols_dir": "symbols"
+    },
+    "meta": {
+      "filename": "device.kicad_pro",
+      "version": 1
+    },
+    "net_settings": {
+      "classes": [
+        {
+          "bus_width": 12.0,
+          "clearance": 0.2,
+          "diff_pair_gap": 0.25,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.2,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.1,
+          "name": "Default",
+          "pcb_color": "rgba(0, 0, 0, 0.000)",
+          "schematic_color": "rgba(0, 0, 0, 0.000)",
+          "track_width": 0.2,
+          "via_diameter": 0.6,
+          "via_drill": 0.3,
+          "wire_width": 6.152
+        },
+        {
+          "bus_width": 12.0,
+          "clearance": 0.4,
+          "diff_pair_gap": 0.25,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.2,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.1,
+          "name": "Power",
+          "pcb_color": "rgba(255, 0, 0, 1.000)",
+          "schematic_color": "rgba(255, 0, 0, 1.000)",
+          "track_width": 1.0,
+          "via_diameter": 0.8,
+          "via_drill": 0.4,
+          "wire_width": 6.152
+        },
+        {
+          "bus_width": 12.0,
+          "clearance": 0.15,
+          "diff_pair_gap": 0.2,
+          "diff_pair_via_gap": 0.25,
+          "diff_pair_width": 0.2,
+          "line_style": 0,
+          "microvia_diameter": 0.3,
+          "microvia_drill": 0.1,
+          "name": "USB2",
+          "pcb_color": "rgba(0, 0, 255, 1.000)",
+          "schematic_color": "rgba(0, 0, 255, 1.000)",
+          "track_width": 0.45,
+          "via_diameter": 0.6,
+          "via_drill": 0.3,
+          "wire_width": 6.152
+        }
+      ],
+      "meta": { "version": 1 },
+      "net_colors": null,
+      "netclass_assignments": {
+        "/VBUS": "Power",
+        "/GND": "Power",
+        "/D+": "USB2",
+        "/D-": "USB2"
+      }
+    },
+    "page_layout_descr_file": "",
+    "plot": {
+      "dvpoutput": false,
+      "gerbplotext": true,
+      "hpglplotter": false,
+      "psplotter": false,
+      "usegerberextensions": true,
+      "usegerberattributes": true,
+      "usegerberadvancedattributes": false,
+      "usegerberviewattributes": false
+    },
+    "schematic": {
+      "annotate_start_num": 0,
+      "drawing": {
+        "dashed_lines_dash_length_ratio": 12.0,
+        "dashed_lines_gap_length_ratio": 3.0,
+        "default_line_thickness": 6.0,
+        "default_text_size": 50.0,
+        "field_names": [],
+        "intersheets_ref_own_page": false,
+        "intersheets_ref_prefix": "",
+        "intersheets_ref_short": false,
+        "intersheets_ref_show": false,
+        "intersheets_ref_suffix": "",
+        "junction_size_choice": 3,
+        "label_size_ratio": 0.375,
+        "pin_symbol_size": 25.0,
+        "text_offset_ratio": 0.15
+      },
+      "legacy_lib_dir": "",
+      "legacy_lib_list": [],
+      "meta": { "version": 0 },
+      "net_format_name": "",
+      "ngspice": {
+        "fix_include_paths": true,
+        "meta": { "version": 0 },
+        "model_mode": 0,
+        "workbook_filename": ""
+      },
+      "page_layout_descr_file": "",
+      "plot_directory": "",
+      "spice_adjust_passive_values": false,
+      "spice_external_command": "spice \"%I\"",
+      "subpart_first_id": 65,
+      "subpart_id_separator": 0,
+      "symbol": {
+        "default": {
+          "ibis_model": "",
+          "model": "",
+          "pin_map": { "T1": "R1", "T2": "R2" },
+          "value": "",
+          "verify_pin_numbers": false
+        }
+      }
+    },
+    "sheets": [
+      ["ember-tap.sch", "Ember-Tap Main"]
+    ],
+    "title_block": {
+      "company": "jayis1",
+      "comment": "USB-C PD Fuzzer & Midspan Implant",
+      "date": "2026-08-10",
+      "rev": "1.0",
+      "title": "Ember-Tap",
+      "size": "A3"
+    }
+  },
+  "boards": [],
+  "cvpcb": { "equivalence_files": [] },
+  "libraries": { "pinned_footprints_dir": "footprints" },
+  "meta": { "filename": "device.kicad_pro", "version": 1 },
+  "net_settings": { "classes": [], "meta": { "version": 1 } },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "ember-tap.net",
+      "specctra_dsn": "",
+      "step": "",
+      "vrml": ""
+    },
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "drawing": {
+      "default_text_size": 50
+    }
+  }
+}
