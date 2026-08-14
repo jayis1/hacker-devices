@@ -1,0 +1,422 @@
+(kicad_sch
+  (version 20230121)
+  (generator "hermes-agent-jayis1")
+  (generator_version "1.0")
+  (uuid "1553-phantom-sch-0001")
+  (paper "A3")
+  (title_block
+    (title "1553-Phantom — MIL-STD-1553B Avionics Bus Implant")
+    (date "2026-08-14")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "License: CERN-OHL-S v2")
+    (comment 3 "STM32G474 + iCE40-UP5K + HI-1573")
+  )
+
+  ; ---- Symbol library references ----
+  (lib_symbols
+    (symbol "MCU_ST_STM32G4:STM32G474CBT6"
+      (pin_numbers)
+      (pin_names (offset 1.016))
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property "Reference" "U1" (at -10 15 0))
+      (property "Value" "STM32G474CBT6" (at 5 15 0))
+      (symbol "STM32G474CBT6_0_1"
+        (rectangle (start -15 15) (end 15 -15) (stroke (width 0.254)))
+      )
+    )
+    (symbol "FPGA_Lattice:iCE40-UP5K-SG48"
+      (pin_numbers)
+      (pin_names (offset 1.016))
+      (property "Reference" "U2")
+      (property "Value" "iCE40-UP5K-SG48")
+      (symbol "iCE40-UP5K-SG48_0_1"
+        (rectangle (start -10 12) (end 10 -12) (stroke (width 0.254)))
+      )
+    )
+    (symbol "Driver_Linear:HI-1573PSF"
+      (pin_numbers)
+      (pin_names (offset 1.016))
+      (property "Reference" "U3")
+      (property "Value" "HI-1573PSF")
+      (symbol "HI-1573PSF_0_1"
+        (rectangle (start -10 12) (end 10 -12) (stroke (width 0.254)))
+      )
+    )
+    (symbol "Driver_Linear:HI-1573PSF"
+      (property "Reference" "U4")
+      (property "Value" "HI-1573PSF")
+    )
+    (symbol "Display:SSD1306_128x64_OLED"
+      (property "Reference" "U5")
+      (property "Value" "SSD1306")
+      (symbol "SSD1306_0_1"
+        (rectangle (start -8 8) (end 8 -8) (stroke (width 0.254)))
+      )
+    )
+    (symbol "Battery_Management:TP4056"
+      (property "Reference" "U6")
+      (property "Value" "TP4056")
+      (symbol "TP4056_0_1"
+        (rectangle (start -6 6) (end 6 -6) (stroke (width 0.254)))
+      )
+    )
+    (symbol "Sensor_Voltage:MAX17048"
+      (property "Reference" "U7")
+      (property "Value" "MAX17048G+T10")
+    )
+    (symbol "Regulator_Linear:AP2112-3.3"
+      (property "Reference" "U8")
+      (property "Value" "AP2112-3.3")
+    )
+    (symbol "Regulator_Linear:MIC5365-1.2"
+      (property "Reference" "U9")
+      (property "Value" "MIC5365-1.2")
+    )
+    (symbol "Connector:USB_C_16pin"
+      (property "Reference" "J3")
+      (property "Value" "USB-C")
+    )
+    (symbol "Connector_Generic:Conn_01x02"
+      (property "Reference" "J4")
+      (property "Value" "28VDC")
+    )
+    (symbol "Connector_Generic:Conn_01x03"
+      (property "Reference" "J1")
+      (property "Value" "MIL-DTL-38999-A")
+    )
+    (symbol "Connector_Generic:Conn_01x03"
+      (property "Reference" "J2")
+      (property "Value" "MIL-DTL-38999-B")
+    )
+    (symbol "Device:Crystal"
+      (property "Reference" "Y1")
+      (property "Value" "16MHz")
+    )
+    (symbol "Device:Crystal"
+      (property "Reference" "Y2")
+      (property "Value" "24MHz")
+    )
+    (symbol "Device:R")
+      (symbol "R_0_1"
+        (polyline (pts (xy -2 -2) (xy -2 2)))
+      )
+    (symbol "Device:C")
+      (symbol "C_0_1"
+        (polyline (pts (xy -2 -1) (xy 2 -1)))
+        (polyline (pts (xy -2 1) (xy 2 1)))
+      )
+    (symbol "Device:LED")
+      (symbol "LED_0_1"
+        (polyline (pts (xy -1 1) (xy 1 0) (xy -1 -1)))
+      )
+    (symbol "Switch:SW_Push")
+      (property "Reference" "SW1")
+      (property "Value" "BTN")
+    )
+    (symbol "power:GND")
+      (symbol "GND_0_1"
+        (polyline (pts (xy -1 0) (xy 1 0)))
+      )
+    (symbol "power:+3V3")
+      (symbol "+3V3_0_1"
+        (polyline (pts (xy 0 0) (xy 0 2)))
+      )
+    (symbol "power:+1V2")
+      (symbol "+1V2_0_1"
+        (polyline (pts (xy 0 0) (xy 0 2)))
+      )
+    (symbol "power:VBUS")
+      (symbol "VBUS_0_1"
+        (polyline (pts (xy 0 0) (xy 0 2)))
+      )
+  )
+
+  ; ---- Sheet instances ----
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+
+  ; ---- Component instances ----
+  ; Each symbol_instance references a placed component with a label.
+  ; Component placement (XY) omitted for brevity; netlist is authoritative.
+
+  (symbol_instances
+    (path "/U1"
+      (reference "U1") (unit 1) (value "STM32G474CBT6") (footprint "Package_QFP:LQFP-48")
+    )
+    (path "/U2"
+      (reference "U2") (unit 1) (value "iCE40-UP5K-SG48") (footprint "Package_DFN_QFN:QFN-48")
+    )
+    (path "/U3"
+      (reference "U3") (unit 1) (value "HI-1573PSF") (footprint "Package_LCC:PLCC-44")
+    )
+    (path "/U4"
+      (reference "U4") (unit 1) (value "HI-1573PSF") (footprint "Package_LCC:PLCC-44")
+    )
+    (path "/U5"
+      (reference "U5") (unit 1) (value "SSD1306") (footprint "Connector:Connector_1x07")
+    )
+    (path "/U6"
+      (reference "U6") (unit 1) (value "TP4056") (footprint "Package_SO:SOIC-8")
+    )
+    (path "/U7"
+      (reference "U7") (unit 1) (value "MAX17048G+T10") (footprint "Package_DFN:TDFN-8")
+    )
+    (path "/U8"
+      (reference "U8") (unit 1) (value "AP2112-3.3") (footprint "Package_TO_SOT_SMD:SOT-23-5")
+    )
+    (path "/U9"
+      (reference "U9") (unit 1) (value "MIC5365-1.2") (footprint "Package_TO_SOT_SMD:SC-70-5")
+    )
+    (path "/J1"
+      (reference "J1") (unit 1) (value "MIL-DTL-38999-A") (footprint "Connector:Circular_MIL-DTL-38999")
+    )
+    (path "/J2"
+      (reference "J2") (unit 1) (value "MIL-DTL-38999-B") (footprint "Connector:Circular_MIL-DTL-38999")
+    )
+    (path "/J3"
+      (reference "J3") (unit 1) (value "USB-C") (footprint "Connector:USB_C_16pin")
+    )
+    (path "/J4"
+      (reference "J4") (unit 1) (value "28VDC") (footprint "Connector:Barrel_Jack")
+    )
+    (path "/Y1"
+      (reference "Y1") (unit 1) (value "16MHz") (footprint "Crystal:HC-49")
+    )
+    (path "/Y2"
+      (reference "Y2") (unit 1) (value "24MHz") (footprint "Crystal:SMD-3225")
+    )
+    (path "/SW1"
+      (reference "SW1") (unit 1) (value "BTN") (footprint "Button_SMD:SW_6x6")
+    )
+    (path "/LED1"
+      (reference "LED1") (unit 1) (value "PWR") (footprint "LED_SMD:LED_0805")
+    )
+    (path "/LED2"
+      (reference "LED2") (unit 1) (value "ACT-A") (footprint "LED_SMD:LED_0805")
+    )
+    (path "/LED3"
+      (reference "LED3") (unit 1) (value "ACT-B") (footprint "LED_SMD:LED_0805")
+    )
+    (path "/LED4"
+      (reference "LED4") (unit 1) (value "ARM-R/G") (footprint "LED_SMD:LED_0805_Dual")
+    )
+    (path "/BT1"
+      (reference "BT1") (unit 1) (value "14500") (footprint "Battery:BatteryHolder_14500")
+    )
+  )
+
+  ; ---- Net connections (the netlist) ----
+  ; Format: (net (code N) (name "...") (node ref pin)...)
+  (nets
+
+    (net (code 1) (name "GND")
+      (node "U1" "VSS") (node "U2" "GND") (node "U3" "GND") (node "U4" "GND")
+      (node "U5" "GND") (node "U6" "GND") (node "U7" "GND") (node "U8" "GND")
+      (node "U9" "GND") (node "J3" "GND") (node "J4" "2") (node "J1" "SHIELD")
+      (node "J2" "SHIELD") (node "BT1" "-")
+    )
+
+    (net (code 2) (name "VBUS")
+      (node "J3" "VBUS") (node "U6" "VCC") (node "U8" "IN") (node "J4" "1")
+      (node "LED1" "A") (node "U6" "PROG")
+    )
+
+    (net (code 3) (name "+3V3")
+      (node "U1" "VDD") (node "U2" "VCCIO") (node "U3" "VCC") (node "U4" "VCC")
+      (node "U5" "VCC") (node "U7" "VCC") (node "U8" "OUT")
+      (node "LED2" "A") (node "LED3" "A") (node "LED4" "A")
+    )
+
+    (net (code 4) (name "+1V2")
+      (node "U2" "VCC") (node "U9" "OUT")
+    )
+
+    (net (code 5) (name "+BATT")
+      (node "BT1" "+") (node "U6" "BAT") (node "U7" "CELL")
+    )
+
+    ; ---- 1553 channel A (primary) ----
+    (net (code 10) (name "1553A_HI")
+      (node "J1" "1") (node "U3" "TX_A_HI") (node "U3" "RX_A_HI")
+    )
+    (net (code 11) (name "1553A_LO")
+      (node "J1" "2") (node "U3" "TX_A_LO") (node "U3" "RX_A_LO")
+    )
+    (net (code 12) (name "1553A_SHLD")
+      (node "J1" "3") (node "J1" "SHIELD")
+    )
+
+    ; ---- 1553 channel B (redundant) ----
+    (net (code 20) (name "1553B_HI")
+      (node "J2" "1") (node "U4" "TX_A_HI") (node "U4" "RX_A_HI")
+    )
+    (net (code 21) (name "1553B_LO")
+      (node "J2" "2") (node "U4" "TX_A_LO") (node "U4" "RX_A_LO")
+    )
+    (net (code 22) (name "1553B_SHLD")
+      (node "J2" "3") (node "J2" "SHIELD")
+    )
+
+    ; ---- SPI MCU <-> FPGA ----
+    (net (code 30) (name "SPI_SCK")
+      (node "U1" "PA5") (node "U2" "SCK")
+    )
+    (net (code 31) (name "SPI_MISO")
+      (node "U1" "PA6") (node "U2" "SDO")
+    )
+    (net (code 32) (name "SPI_MOSI")
+      (node "U1" "PA7") (node "U2" "SDI")
+    )
+    (net (code 33) (name "FPGA_CS")
+      (node "U1" "PA4") (node "U2" "CSN")
+    )
+    (net (code 34) (name "FPGA_IRQ")
+      (node "U1" "PA11") (node "U2" "IRQ_N")
+    )
+    (net (code 35) (name "FPGA_RST")
+      (node "U1" "PA12") (node "U2" "CRESET_N")
+    )
+    (net (code 36) (name "FPGA_CDONE")
+      (node "U1" "PB5") (node "U2" "CDONE")
+    )
+
+    ; ---- FPGA <-> HI-1573 transceivers ----
+    (net (code 40) (name "FPGA_TX0_P")
+      (node "U2" "IO_0") (node "U3" "TX_IN_A")
+    )
+    (net (code 41) (name "FPGA_TX0_N")
+      (node "U2" "IO_1") (node "U3" "TX_IN_B")
+    )
+    (net (code 42) (name "FPGA_RX0_P")
+      (node "U2" "IO_2") (node "U3" "RX_OUT_A")
+    )
+    (net (code 43) (name "FPGA_RX0_N")
+      (node "U2" "IO_3") (node "U3" "RX_OUT_B")
+    )
+    (net (code 44) (name "FPGA_TX1_P")
+      (node "U2" "IO_4") (node "U4" "TX_IN_A")
+    )
+    (net (code 45) (name "FPGA_TX1_N")
+      (node "U2" "IO_5") (node "U4" "TX_IN_B")
+    )
+    (net (code 46) (name "FPGA_RX1_P")
+      (node "U2" "IO_6") (node "U4" "RX_OUT_A")
+    )
+    (net (code 47) (name "FPGA_RX1_N")
+      (node "U2" "IO_7") (node "U4" "RX_OUT_B")
+    )
+    (net (code 48) (name "TX_GATE")
+      (node "U1" "PB11") (node "U3" "TX_EN") (node "U4" "TX_EN")
+    )
+
+    ; ---- USB ----
+    (net (code 50) (name "USB_DM")
+      (node "U1" "PA8") (node "J3" "D-")
+    )
+    (net (code 51) (name "USB_DP")
+      (node "U1" "PA9") (node "J3" "D+")
+    )
+
+    ; ---- OLED ----
+    (net (code 60) (name "OLED_DC")
+      (node "U1" "PA0") (node "U5" "DC")
+    )
+    (net (code 61) (name "OLED_RST")
+      (node "U1" "PA1") (node "U5" "RES")
+    )
+    (net (code 62) (name "OLED_CS")
+      (node "U1" "PC13") (node "U5" "CS")
+    )
+    ; OLED SCK/MOSI share SPI1 with FPGA (different CS)
+    (net (code 63) (name "OLED_SCK")
+      (node "U1" "PA5") (node "U5" "SCK")
+    )
+    (net (code 64) (name "OLED_MOSI")
+      (node "U1" "PA7") (node "U5" "SDA")
+    )
+
+    ; ---- I2C fuel gauge ----
+    (net (code 70) (name "I2C_SCL")
+      (node "U1" "PB8") (node "U7" "SCL")
+    )
+    (net (code 71) (name "I2C_SDA")
+      (node "U1" "PB9") (node "U7" "SDA")
+    )
+
+    ; ---- User button + panic ----
+    (net (code 80) (name "USER_BTN")
+      (node "U1" "PA10") (node "SW1" "1")
+    )
+    (net (code 81) (name "PANIC")
+      (node "U1" "PB10") (node "SW1" "2")
+    )
+
+    ; ---- LEDs ----
+    (net (code 90) (name "LED_PWR")
+      (node "U1" "PA15") (node "LED1" "K")
+    )
+    (net (code 91) (name "LED_ACTA")
+      (node "U1" "PB0") (node "LED2" "K")
+    )
+    (net (code 92) (name "LED_ACTB")
+      (node "U1" "PB1") (node "LED3" "K")
+    )
+    (net (code 93) (name "LED_ARM")
+      (node "U1" "PB3") (node "LED4" "K1")
+    )
+    (net (code 94) (name "LED_INJ")
+      (node "U1" "PB4") (node "LED4" "K2")
+    )
+
+    ; ---- Crystals ----
+    (net (code 100) (name "OSC_IN")
+      (node "U1" "PD0") (node "Y1" "1")
+    )
+    (net (code 101) (name "OSC_OUT")
+      (node "U1" "PD1") (node "Y1" "2")
+    )
+    (net (code 102) (name "FPGA_CLK")
+      (node "U2" "CLK") (node "Y2" "1")
+    )
+  )
+
+  ; ---- Buses / graphical notes ----
+  (bus_entry (bus "1553A") (members "1553A_HI" "1553A_LO" "1553A_SHLD"))
+  (bus_entry (bus "1553B") (members "1553B_HI" "1553B_LO" "1553B_SHLD"))
+  (bus_entry (bus "SPI") (members "SPI_SCK" "SPI_MISO" "SPI_MOSI" "FPGA_CS"))
+
+  ; ---- Power flags ----
+  (power "GND" (net 1))
+  (power "+3V3" (net 3))
+  (power "+1V2" (net 4))
+  (power "VBUS" (net 2))
+
+  ; ---- Sheet text ----
+  (text (at 20 20) "1553-Phantom top-level schematic\nAuthor: jayis1\nLicense: CERN-OHL-S v2"
+    (effects (font (size 2 2))))
+
+  ; ---- Hierarchical labels (single sheet, no sub-sheets) ----
+  (label "1553A_HI" (at 0 0))
+  (label "1553A_LO" (at 0 0))
+  (label "1553B_HI" (at 0 0))
+  (label "1553B_LO" (at 0 0))
+  (label "SPI_SCK" (at 0 0))
+  (label "SPI_MISO" (at 0 0))
+  (label "SPI_MOSI" (at 0 0))
+
+  ; ---- Connection wires (subset; full routing in PCB) ----
+  (wire (pts (xy 0 0) (xy 1 1)) (net "GND"))
+  (wire (pts (xy 0 0) (xy 1 1)) (net "VBUS"))
+  (wire (pts (xy 0 0) (xy 1 1)) (net "+3V3"))
+  (wire (pts (xy 0 0) (xy 1 1)) (net "1553A_HI"))
+  (wire (pts (xy 0 0) (xy 1 1)) (net "1553B_HI"))
+
+  ; ---- No-ERC markers on unused MCU pins ----
+  (no_connect (at 0 0) (uuid "nc-0001"))
+
+)

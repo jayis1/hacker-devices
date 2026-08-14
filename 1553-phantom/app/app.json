@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "1553-Phantom",
+    "slug": "1553-phantom",
+    "version": "1.0.0",
+    "author": "jayis1",
+    "license": "MIT",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0d1117"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jayis1.phantom1553"
+    },
+    "android": {
+      "package": "com.jayis1.phantom1553",
+      "permissions": ["android.permission.USB_PERMISSION"]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1553-phantom"
+      }
+    }
+  }
+}
