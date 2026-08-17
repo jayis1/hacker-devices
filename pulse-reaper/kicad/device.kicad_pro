@@ -1,0 +1,95 @@
+{
+  "board": {
+    "design": {
+      "last_author": "jayis1",
+      "settings": {
+        "copper_edge_clearance": 0.2,
+        "rule_severities": {
+          "lib_symbol_issues": "warning",
+          "same_local_global": "error",
+          "track_dangling": "warning",
+          "via_dangling": "warning",
+          "unconnected_items": "error",
+          "schematic_parity": "error"
+        }
+      },
+      "track_widths": [0.0, 0.15, 0.18, 0.2, 0.25, 0.3, 0.4, 0.5, 0.8],
+      "via_dimensions": [
+        {"diameter": 0.5, "drill": 0.25},
+        {"diameter": 0.6, "drill": 0.3},
+        {"diameter": 0.8, "drill": 0.4}
+      ],
+      "diff_pair_dimensions": [
+        {"width": 0.25, "gap": 0.15, "via_gap": 0.25}
+      ],
+      "layer_presets": [],
+      "view": {
+        "coords": {"x": 47, "y": 26},
+        "zoom": 2.0
+      }
+    },
+    "ipc2581": {
+      "dist": "",
+      "mfg": "",
+      "mpn": "",
+      "internal_id": "PulseReaper-v1.0"
+    },
+    "metadata": {
+      "filename": "device.kicad_pcb",
+      "version": 1,
+      "date": "2026-08-17",
+      "author": "jayis1",
+      "company": "jayis1",
+      "revision": "1.0",
+      "title": "Pulse-Reaper — TDR-Guided Non-Invasive Covert Tap for Twisted-Pair Copper Cables",
+      "comments": [
+        "Author: jayis1",
+        "License: CERN-OHL-S v2",
+        "95x52mm, 8-layer, isolated clamp AFE + digital domain"
+      ]
+    },
+    "schematic": {
+      "filename": "device.kicad_sch",
+      "version": 1,
+      "date": "2026-08-17",
+      "author": "jayis1",
+      "title": "Pulse-Reaper — TDR-Guided Non-Invasive Covert Tap for Twisted-Pair Copper Cables"
+    }
+  },
+  "cvpcb": {
+    "netlist_file": "device.net",
+    "equivalence_file": ""
+  },
+  "erc": {
+    "rule_severities": {
+      "power_pin_not_driven": "warning",
+      "unconnected_items": "warning",
+      "pin_to_pin": "error"
+    }
+  },
+  "drc": {
+    "rule_severities": {
+      "unconnected_items": "error",
+      "copper_edge_clearance": "error",
+      "solder_mask_bridge": "error",
+      "lib_footprint_issues": "warning"
+    },
+    "rules": {
+      "min_track_width": 0.15,
+      "min_via_diameter": 0.5,
+      "min_clearance": 0.15,
+      "min_drill": 0.2,
+      "copper_edge_clearance": 0.2
+    }
+  },
+  "libraries": {
+    "footprints": [],
+    "symbols": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1,
+    "author": "jayis1",
+    "date": "2026-08-17"
+  }
+}
