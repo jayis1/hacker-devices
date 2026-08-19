@@ -1,0 +1,160 @@
+{
+  "board": {
+    "3dviewports": [],
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3,
+        "other_line_width": 0.15,
+        "silk_line_width": 0.15,
+        "dimension_precision": 4,
+        "arrow_length": 1270000,
+        "extension_offset": 500000
+      },
+      "diff_pair_dimensions": [],
+      "drc_exclusions": [],
+      "rules": {
+        "min_clearance": 0.15,
+        "min_track_width": 0.15,
+        "min_via_diameter": 0.3,
+        "min_via_drill": 0.2,
+        "min_hole_clearance": 0.2,
+        "min_annular_ring": 0.15,
+        "min_edge_clearance": 0.3
+      },
+      "track_widths": [0.15, 0.2, 0.25, 0.3, 0.5],
+      "via_dimensions": [
+        {"diameter": 0.3, "drill": 0.2},
+        {"diameter": 0.4, "drill": 0.25},
+        {"diameter": 0.6, "drill": 0.3}
+      ]
+    },
+    "ipc2581": {
+      "dist": "",
+      "distpn": "",
+      "internal_id": "",
+      "mfg": "",
+      "mpn": ""
+    },
+    "layers": [
+      {"id": 0, "name": "F.Cu", "type": "copper"},
+      {"id": 1, "name": "In1.Cu", "type": "copper"},
+      {"id": 2, "name": "In2.Cu", "type": "copper"},
+      {"id": 3, "name": "B.Cu", "type": "copper"},
+      {"id": 4, "name": "F.Paste", "type": "solder_paste"},
+      {"id": 5, "name": "B.Paste", "type": "solder_paste"},
+      {"id": 6, "name": "F.SilkS", "type": "silk_screen"},
+      {"id": 7, "name": "B.SilkS", "type": "silk_screen"},
+      {"id": 8, "name": "F.Mask", "type": "solder_mask"},
+      {"id": 9, "name": "B.Mask", "type": "solder_mask"},
+      {"id": 10, "name": "Edge.Cuts", "type": "outline"},
+      {"id": 11, "name": "F.Fab", "type": "fabrication"},
+      {"id": 12, "name": "B.Fab", "type": "fabrication"}
+    ],
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": ["device.kicad_pcb"],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": [],
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.15,
+        "diff_pair_gap": 0.2,
+        "diff_pair_via_gap": 0.2,
+        "diff_pair_width": 0.15,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0)",
+        "schematic_color": "rgba(0, 0, 0, 0)",
+        "track_width": 0.2,
+        "via_diameter": 0.4,
+        "via_drill": 0.25,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.3,
+        "name": "RF",
+        "pcb_color": "rgba(255, 0, 0, 0.5)",
+        "schematic_color": "rgba(255, 0, 0, 0.5)",
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 10
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "name": "Power",
+        "pcb_color": "rgba(255, 165, 0, 0.5)",
+        "schematic_color": "rgba(255, 165, 0, 0.5)",
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 10
+      }
+    ],
+    "meta": {"version": 2},
+    "net_colors": []
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "specctra": "",
+      "vrml": ""
+    },
+    "page_type": "User A4 landscape"
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "bom_export_filename": "harmonic-reaper-bom.csv",
+    "bom_fmt_presets": [],
+    "bom_fmt_settings": {
+      "field_name": "Designation",
+      "field_order": ["Designation", "Footprint", "Quantity"],
+      "filter_string": "",
+      "group_symbols": true,
+      "sort_asc": true
+    },
+    "drawing": {
+      "dashed_lines_dma": true,
+      "default_line_thickness": 6,
+      "default_text_size": 50,
+      "field_names": [],
+      "intersheets_ref_own_page": false,
+      "intersheets_ref_prefix": "",
+      "intersheets_ref_short": false,
+      "intersheets_ref_show": false,
+      "intersheets_ref_suffix": "",
+      "junction_size_choice": 3,
+      "label_size_ratio": 0.375,
+      "pin_symbol_size": 25,
+      "text_offset_ratio": 0.15
+    },
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {"version": 1},
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_adjust_passive_vals": false,
+    "spice_external_command": "",
+    "subpart_first_id": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": ["device.kicad_sch"],
+  "text_variables": []
+}
+/* EOF — device.kicad_pro — jayis1 */
