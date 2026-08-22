@@ -1,0 +1,157 @@
+(kicad_sch (version 20240101) (host kicad 8.0)
+  (uuid "0a1b2c3d-4e5f-6071-8293-a4b5c6d7e8f9")
+  (title_block
+    (title "EtherCAT Phantom — Inline EtherCAT Frame Surgeon")
+    (date "2026-08-22")
+    (rev "1.0")
+    (company "jayis1")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Authorized security research use only")
+    (comment 3 "Dual-port 100BASE-TX EtherCAT manipulation platform")
+  )
+  (symbol "power:+5V" (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR01") (property "Value" "+5V")
+    (pin "1" (uuid "10000000-0000-0000-0000-000000000001"))
+  )
+  (symbol "power:+3V3" (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR02") (property "Value" "+3V3")
+    (pin "1" (uuid "10000000-0000-0000-0000-000000000002"))
+  )
+  (symbol "power:+1V2" (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR03") (property "Value" "+1V2")
+    (pin "1" (uuid "10000000-0000-0000-0000-000000000003"))
+  )
+  (symbol "power:GND" (in_bom yes) (on_board yes)
+    (property "Reference" "#PWR04") (property "Value" "GND")
+    (pin "1" (uuid "10000000-0000-0000-0000-000000000004"))
+  )
+  (symbol "MCU_ST_STM32H7:STM32H753VITx" (in_bom yes) (on_board yes)
+    (property "Reference" "U1")
+    (property "Value" "STM32H753VIT6")
+    (property "Footprint" "Package_QFP:LQFP-100_14x14mm_P0.5mm")
+    (pin "57" (uuid "20000000-0000-0000-0000-000000000001")) ; USART1_TX
+    (pin "58" (uuid "20000000-0000-0000-0000-000000000002")) ; USART1_RX
+    (pin "61" (uuid "20000000-0000-0000-0000-000000000003")) ; SPI1_SCK
+    (pin "62" (uuid "20000000-0000-0000-0000-000000000004")) ; SPI1_MISO
+    (pin "63" (uuid "20000000-0000-0000-0000-000000000005")) ; SPI1_MOSI
+    (pin "64" (uuid "20000000-0000-0000-0000-000000000006")) ; FPGA_CS
+    (pin "70" (uuid "20000000-0000-0000-0000-000000000007")) ; I2C1_SCL
+    (pin "71" (uuid "20000000-0000-0000-0000-000000000008")) ; I2C1_SDA
+    (pin "72" (uuid "20000000-0000-0000-0000-000000000009")) ; USB_DM
+    (pin "73" (uuid "20000000-0000-0000-0000-00000000000A")) ; USB_DP
+    (pin "19" (uuid "20000000-0000-0000-0000-00000000000B")) ; SWDIO
+    (pin "20" (uuid "20000000-0000-0000-0000-00000000000C")) ; SWCLK
+  )
+  (symbol "FPGA_Lattice:ECP5-25F-256" (in_bom yes) (on_board yes)
+    (property "Reference" "U2")
+    (property "Value" "LFE5U-25F-6BG256C")
+    (property "Footprint" "Package_BGA:BGA-256_14.0x14.0mm_Layout16x16_P0.8mm")
+    (pin "A1" (uuid "30000000-0000-0000-0000-000000000001")) ; VCCIO0
+    (pin "B2" (uuid "30000000-0000-0000-0000-000000000002")) ; RGMII_RXC_A
+    (pin "B3" (uuid "30000000-0000-0000-0000-000000000003")) ; RGMII_RXD0_A
+    (pin "B4" (uuid "30000000-0000-0000-0000-000000000004")) ; RGMII_TXC_A
+    (pin "B5" (uuid "30000000-0000-0000-0000-000000000005")) ; RGMII_TXD0_A
+    (pin "C2" (uuid "30000000-0000-0000-0000-000000000006")) ; RGMII_RXC_B
+    (pin "C3" (uuid "30000000-0000-0000-0000-000000000007")) ; RGMII_RXD0_B
+    (pin "C4" (uuid "30000000-0000-0000-0000-000000000008")) ; RGMII_TXC_B
+    (pin "C5" (uuid "30000000-0000-0000-0000-000000000009")) ; RGMII_TXD0_B
+    (pin "D7" (uuid "30000000-0000-0000-0000-00000000000A")) ; SPI_CFG_SCK
+    (pin "D8" (uuid "30000000-0000-0000-0000-00000000000B")) ; SPI_CFG_MOSI
+    (pin "D9" (uuid "30000000-0000-0000-0000-00000000000C")) ; SPI_CFG_MISO
+    (pin "D10" (uuid "30000000-0000-0000-0000-00000000000D")) ; SPI_CFG_CS
+  )
+  (symbol "Interface_Ethernet:KSZ8081RNBCA" (in_bom yes) (on_board yes)
+    (property "Reference" "U3")
+    (property "Value" "KSZ8081RNBCA")
+    (property "Footprint" "Package_SO:SSOP-32_5.3x10.2mm_P0.65mm")
+    (pin "1" (uuid "40000000-0000-0000-0000-000000000001")) ; TXP
+    (pin "2" (uuid "40000000-0000-0000-0000-000000000002")) ; TXN
+    (pin "3" (uuid "40000000-0000-0000-0000-000000000003")) ; RXP
+    (pin "4" (uuid "40000000-0000-0000-0000-000000000004")) ; RXN
+    (pin "5" (uuid "40000000-0000-0000-0000-000000000005")) ; MDC
+    (pin "6" (uuid "40000000-0000-0000-0000-000000000006")) ; MDIO
+  )
+  (symbol "Interface_Ethernet:KSZ8081RNBCA" (in_bom yes) (on_board yes)
+    (property "Reference" "U4")
+    (property "Value" "KSZ8081RNBCA")
+    (property "Footprint" "Package_SO:SSOP-32_5.3x10.2mm_P0.65mm")
+    (pin "1" (uuid "40000000-0000-0000-0000-000000000011")) ; TXP
+    (pin "2" (uuid "40000000-0000-0000-0000-000000000012")) ; TXN
+    (pin "3" (uuid "40000000-0000-0000-0000-000000000013")) ; RXP
+    (pin "4" (uuid "40000000-0000-0000-0000-000000000014")) ; RXN
+    (pin "5" (uuid "40000000-0000-0000-0000-000000000015")) ; MDC
+    (pin "6" (uuid "40000000-0000-0000-0000-000000000016")) ; MDIO
+  )
+  (symbol "Connector:RJ45_Shielded" (in_bom yes) (on_board yes)
+    (property "Reference" "J1")
+    (property "Value" "Port A")
+    (property "Footprint" "Connector_RJ:RJ45_Amphenol_RJMG1BD3B8K1ANR")
+    (pin "1" (uuid "50000000-0000-0000-0000-000000000001"))
+    (pin "2" (uuid "50000000-0000-0000-0000-000000000002"))
+    (pin "3" (uuid "50000000-0000-0000-0000-000000000003"))
+    (pin "6" (uuid "50000000-0000-0000-0000-000000000004"))
+  )
+  (symbol "Connector:RJ45_Shielded" (in_bom yes) (on_board yes)
+    (property "Reference" "J2")
+    (property "Value" "Port B")
+    (property "Footprint" "Connector_RJ:RJ45_Amphenol_RJMG1BD3B8K1ANR")
+    (pin "1" (uuid "50000000-0000-0000-0000-000000000011"))
+    (pin "2" (uuid "50000000-0000-0000-0000-000000000012"))
+    (pin "3" (uuid "50000000-0000-0000-0000-000000000013"))
+    (pin "6" (uuid "50000000-0000-0000-0000-000000000014"))
+  )
+  (symbol "RF_Module:ESP32-C6-WROOM-1" (in_bom yes) (on_board yes)
+    (property "Reference" "U5")
+    (property "Value" "ESP32-C6-WROOM-1-N8")
+    (property "Footprint" "RF_Module:ESP32-C6-WROOM-1")
+    (pin "1" (uuid "60000000-0000-0000-0000-000000000001")) ; 3V3
+    (pin "2" (uuid "60000000-0000-0000-0000-000000000002")) ; EN
+    (pin "16" (uuid "60000000-0000-0000-0000-000000000003")) ; TXD0
+    (pin "17" (uuid "60000000-0000-0000-0000-000000000004")) ; RXD0
+    (pin "23" (uuid "60000000-0000-0000-0000-000000000005")) ; USB_D-
+    (pin "24" (uuid "60000000-0000-0000-0000-000000000006")) ; USB_D+
+  )
+  (symbol "Memory_Flash:W25Q128JVSIQ" (in_bom yes) (on_board yes)
+    (property "Reference" "U6")
+    (property "Value" "W25Q128JVSIQ")
+    (property "Footprint" "Package_SO:SOIC-8_5.23x5.23mm_P1.27mm")
+    (pin "1" (uuid "70000000-0000-0000-0000-000000000001")) ; /CS
+    (pin "2" (uuid "70000000-0000-0000-0000-000000000002")) ; DO
+    (pin "5" (uuid "70000000-0000-0000-0000-000000000003")) ; DI
+    (pin "6" (uuid "70000000-0000-0000-0000-000000000004")) ; CLK
+  )
+  (symbol "Regulator_Switching:TPS62172DSG" (in_bom yes) (on_board yes)
+    (property "Reference" "U7")
+    (property "Value" "TPS62172DSG")
+    (property "Footprint" "Package_TO_SOT_SMD:WSON-8-1EP_2x2mm_P0.5mm")
+    (pin "1" (uuid "80000000-0000-0000-0000-000000000001")) ; VIN
+    (pin "5" (uuid "80000000-0000-0000-0000-000000000002")) ; VOUT
+  )
+  (symbol "Battery_Management:BQ24074RGTR" (in_bom yes) (on_board yes)
+    (property "Reference" "U8")
+    (property "Value" "BQ24074RGTR")
+    (property "Footprint" "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.7x1.7mm")
+    (pin "1" (uuid "90000000-0000-0000-0000-000000000001")) ; OUT
+    (pin "2" (uuid "90000000-0000-0000-0000-000000000002")) ; BAT
+    (pin "15" (uuid "90000000-0000-0000-0000-000000000003")) ; IN
+  )
+  (symbol "Connector:USB_C_Receptacle_USB2.0" (in_bom yes) (on_board yes)
+    (property "Reference" "J3")
+    (property "Value" "USB-C Debug/Power")
+    (property "Footprint" "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
+    (pin "A4" (uuid "A0000000-0000-0000-0000-000000000001")) ; VBUS
+    (pin "A6" (uuid "A0000000-0000-0000-0000-000000000002")) ; D+
+    (pin "A7" (uuid "A0000000-0000-0000-0000-000000000003")) ; D-
+    (pin "A1" (uuid "A0000000-0000-0000-0000-000000000004")) ; GND
+  )
+  (sheet_instances (path "/") (page "1"))
+  (junction (at 40 40) (diameter 0) (color 0 0 0 0))
+  (wire (pts (xy 40 40) (xy 65 40)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 70 60) (xy 90 60)) (stroke (width 0.15) (type default)))
+  (wire (pts (xy 110 80) (xy 130 80)) (stroke (width 0.15) (type default)))
+  (label "NET_RGMII_A_TX" (at 92 60 0))
+  (label "NET_RGMII_B_TX" (at 132 80 0))
+  (label "NET_SPI_FPGA" (at 68 40 0))
+  (label "NET_USB_C_DP" (at 146 100 0))
+  (label "NET_USB_C_DM" (at 146 105 0))
+)
