@@ -1,0 +1,5 @@
+# EtherCAT Phantom firmware build artifacts
+# Author: jayis1
+build/
+/tmp/
+*.log
