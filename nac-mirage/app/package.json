@@ -1,0 +1,19 @@
+{
+  "name": "nac-mirage-app",
+  "version": "1.0.0",
+  "author": "jayis1",
+  "license": "MIT",
+  "description": "NAC Mirage companion app for authorized inline PoE, LLDP, and NAC security research. Author: jayis1.",
+  "main": "App.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~51.0.28",
+    "react": "18.2.0",
+    "react-native": "0.74.5"
+  }
+}
