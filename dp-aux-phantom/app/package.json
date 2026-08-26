@@ -1,0 +1,18 @@
+{
+  "name": "dp-aux-phantom-app",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "GPL-2.0-only",
+  "description": "React Native companion app for DP AUX Phantom by jayis1",
+  "main": "App.js",
+  "scripts": {
+    "start": "expo start",
+    "lint": "node --check App.js && node --check screens/DashboardScreen.js && node --check screens/ProfilesScreen.js && node --check screens/CaptureScreen.js && node --check screens/SafetyScreen.js && node --check components/StatCard.js && node --check components/EventList.js && node --check utils/protocol.js"
+  },
+  "dependencies": {
+    "expo": "~51.0.28",
+    "react": "18.2.0",
+    "react-native": "0.74.5"
+  }
+}

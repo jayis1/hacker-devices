@@ -1,0 +1,54 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "copper_text_size_h": 1.0,
+        "copper_text_size_v": 1.0,
+        "copper_text_thickness": 0.15,
+        "other_text_size_h": 1.0,
+        "other_text_size_v": 1.0,
+        "other_text_thickness": 0.15,
+        "silk_line_width": 0.12
+      }
+    }
+  },
+  "meta": {
+    "author": "jayis1",
+    "device": "DP AUX Phantom",
+    "description": "KiCad project for inline USB-C / DisplayPort AUX instrumentation device by jayis1"
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.18,
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
+      },
+      {
+        "name": "USB-C-CC-AUX",
+        "clearance": 0.15,
+        "track_width": 0.16,
+        "via_diameter": 0.5,
+        "via_drill": 0.25
+      },
+      {
+        "name": "POWER-3V3",
+        "clearance": 0.2,
+        "track_width": 0.5,
+        "via_diameter": 0.7,
+        "via_drill": 0.35
+      }
+    ]
+  },
+  "paper": "A3",
+  "schematic": {
+    "legacy_lib_dir": "",
+    "meta": {
+      "author": "jayis1"
+    }
+  }
+}
