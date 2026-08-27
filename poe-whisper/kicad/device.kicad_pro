@@ -1,0 +1,19 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.2,
+        "silk_line_width": 0.12
+      }
+    }
+  },
+  "meta": {
+    "author": "jayis1",
+    "project_name": "PoE Whisper",
+    "description": "Inline 802.3af/at/bt power negotiation manipulator for authorized security research"
+  },
+  "schematic": {
+    "page_layout_descr_file": ""
+  }
+}

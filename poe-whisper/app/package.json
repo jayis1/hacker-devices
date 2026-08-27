@@ -1,0 +1,19 @@
+{
+  "name": "poe-whisper-app",
+  "version": "1.0.0",
+  "description": "Companion application for PoE Whisper by jayis1",
+  "author": "jayis1",
+  "license": "GPL-2.0-only",
+  "main": "App.js",
+  "scripts": {
+    "start": "react-native start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.72.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
