@@ -1,0 +1,177 @@
+/* styles.css - eSPI Revenant app styles
+ * Author: jayis1
+ */
+:root {
+  color-scheme: dark;
+  --bg: #020617;
+  --panel: #0f172a;
+  --panel-2: #111827;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #22d3ee;
+  --warn: #fb7185;
+  --ok: #34d399;
+  --line: #1e293b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #020617, #081126 35%, #0b1320 100%);
+  color: var(--text);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+h1, h2 {
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.hero-card {
+  display: grid;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.badge {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.badge.accent {
+  border-color: var(--accent);
+  color: #cffafe;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 24px 32px 32px;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.panel.wide {
+  grid-column: span 2;
+}
+
+.stats, #profiles {
+  display: grid;
+  gap: 12px;
+}
+
+.stat-card, .profile-card, .trace-item {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(17, 24, 39, 0.95);
+}
+
+.stat-label, .profile-meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+button {
+  background: #082f49;
+  color: #ecfeff;
+  border: 1px solid #155e75;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+.trace-feed {
+  display: grid;
+  gap: 10px;
+  max-height: 420px;
+  overflow: auto;
+}
+
+.trace-item small, footer {
+  color: var(--muted);
+}
+
+.checklist {
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #020617;
+  color: var(--text);
+  padding: 12px;
+}
+
+footer {
+  padding: 0 32px 32px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel.wide {
+    grid-column: span 1;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+}

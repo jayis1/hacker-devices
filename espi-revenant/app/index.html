@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Author: jayis1 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="jayis1" />
+  <title>eSPI Revenant Control Panel by jayis1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Authorized hardware security research only</p>
+      <h1>eSPI Revenant</h1>
+      <p class="subtitle">Inline eSPI host / EC interposer dashboard by jayis1</p>
+    </div>
+    <div class="hero-card">
+      <div class="badge">Author: jayis1</div>
+      <div id="statusBadge" class="badge accent">Passive Mirror</div>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="panel" id="overviewPanel">
+      <h2>Overview</h2>
+      <div class="stats" id="overviewStats"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Profiles</h2>
+      <div id="profiles"></div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Trace Feed</h2>
+      <div class="toolbar">
+        <button id="armButton">Arm Active Mode</button>
+        <button id="injectButton">Inject Test Pulse</button>
+        <button id="rollbackButton">Rollback to Bypass</button>
+      </div>
+      <div id="traceFeed" class="trace-feed"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Safety Checklist</h2>
+      <ul id="safetyList" class="checklist"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Field Notes</h2>
+      <textarea id="fieldNotes" rows="10">Operator: jayis1 design review\nUse only with written authorization.\nConfirm spare motherboard and rollback plan before active mode.</textarea>
+    </section>
+  </main>
+
+  <footer>
+    <p>eSPI Revenant design package and companion application created by jayis1. Authorized use only.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
