@@ -1,0 +1,40 @@
+/* Type-C Specter companion styles
+ * Author: jayis1
+ * Copyright (c) 2026 jayis1
+ */
+:root {
+  --bg: #08111f;
+  --panel: #101b2f;
+  --panel2: #13233d;
+  --text: #e5eefb;
+  --muted: #9fb2d3;
+  --accent: #5fe0c5;
+  --warn: #ffd166;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(180deg, #050b14, #091425 30%, #08111f);
+  color: var(--text);
+}
+.app-shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+.sidebar { background: rgba(16, 27, 47, 0.95); padding: 24px; border-right: 1px solid rgba(255,255,255,0.08); }
+.sidebar h1 { margin-top: 0; }
+.author { color: var(--muted); }
+.nav-btn { width: 100%; margin: 8px 0; padding: 12px; border: 1px solid rgba(255,255,255,0.08); background: var(--panel2); color: var(--text); border-radius: 10px; cursor: pointer; }
+.nav-btn.active { border-color: var(--accent); color: var(--accent); }
+.content { padding: 28px; }
+.screen { display: none; }
+.screen.active { display: block; }
+.grid { display: grid; gap: 16px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card { background: rgba(16, 27, 47, 0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 18px; }
+ul { padding-left: 20px; }
+table { width: 100%; border-collapse: collapse; background: rgba(16, 27, 47, 0.95); }
+th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; }
+.toolbar { display: flex; gap: 12px; margin-bottom: 12px; }
+button { border-radius: 10px; border: none; padding: 10px 14px; }
+#log-output { min-height: 320px; background: #030814; color: #a4ffd7; padding: 16px; border-radius: 16px; white-space: pre-wrap; }
+.badge { display: inline-block; padding: 4px 8px; border-radius: 999px; background: rgba(95,224,197,0.15); color: var(--accent); }
+.warn { color: var(--warn); }

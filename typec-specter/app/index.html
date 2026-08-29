@@ -1,0 +1,59 @@
+<!--
+  Type-C Specter companion application
+  Author: jayis1
+  Copyright (c) 2026 jayis1
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Type-C Specter Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <h1>Type-C Specter</h1>
+      <p class="author">Operator console by jayis1</p>
+      <nav>
+        <button data-screen="dashboard" class="nav-btn active">Dashboard</button>
+        <button data-screen="scenarios" class="nav-btn">Scenarios</button>
+        <button data-screen="profiles" class="nav-btn">Cable Profiles</button>
+        <button data-screen="logs" class="nav-btn">Logs</button>
+        <button data-screen="ethics" class="nav-btn">Ethics</button>
+      </nav>
+    </aside>
+    <main class="content">
+      <section id="dashboard" class="screen active">
+        <h2>Live Status</h2>
+        <div class="grid two">
+          <div class="card"><h3>Attachment</h3><ul id="attachment-list"></ul></div>
+          <div class="card"><h3>Telemetry</h3><ul id="telemetry-list"></ul></div>
+        </div>
+        <div class="card"><h3>Safety State</h3><p id="safety-state"></p></div>
+      </section>
+      <section id="scenarios" class="screen"><h2>Scenario Packs</h2><div id="scenario-cards" class="grid three"></div></section>
+      <section id="profiles" class="screen">
+        <h2>Cable / Dock Profiles</h2>
+        <table>
+          <thead><tr><th>Name</th><th>Type</th><th>Behavior</th><th>Risk Note</th></tr></thead>
+          <tbody id="profiles-body"></tbody>
+        </table>
+      </section>
+      <section id="logs" class="screen">
+        <h2>Event Timeline</h2>
+        <div class="toolbar"><button id="export-json">Export JSON</button><button id="replay-log">Replay Demo</button></div>
+        <pre id="log-output"></pre>
+      </section>
+      <section id="ethics" class="screen">
+        <h2>Authorized Use Gate</h2>
+        <p>This console and device are for authorized security testing only. Unauthorized use is prohibited.</p>
+        <label><input type="checkbox" id="ethics-check" /> I have written authorization for this assessment.</label>
+        <p id="ethics-status">Mutation controls locked until acknowledged.</p>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
