@@ -1,0 +1,100 @@
+/* MDIO Wraith companion app styles
+ * Author: jayis1
+ */
+:root {
+  color-scheme: dark;
+  --bg: #07111e;
+  --panel: #0f1b2d;
+  --panel-2: #13233a;
+  --line: #24425d;
+  --text: #ecf4ff;
+  --muted: #9fb7d1;
+  --accent: #43c5ff;
+  --warn: #ffb020;
+  --danger: #ff5d73;
+  --ok: #4fd696;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #07111e 0%, #0a1830 100%);
+  color: var(--text);
+}
+.hero, .card, .status-card, .tab, button, input {
+  box-sizing: border-box;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(15, 27, 45, 0.85);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+}
+.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 0.4rem; }
+.subtitle { color: var(--muted); max-width: 45rem; }
+.hero-actions, .toolbar { display: flex; gap: 0.75rem; align-items: center; }
+main { padding: 1.5rem 2rem 3rem; }
+.status-grid, .profile-grid, .two-column {
+  display: grid;
+  gap: 1rem;
+}
+.status-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 1.25rem; }
+.two-column { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.status-card, .card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+}
+.status-card .label { color: var(--muted); font-size: 0.84rem; }
+.status-card .value { font-size: 1.4rem; margin-top: 0.35rem; }
+.tabs { display: flex; gap: 0.75rem; margin: 1rem 0; flex-wrap: wrap; }
+.tab, button {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+.tab.active, button:hover { border-color: var(--accent); }
+button.danger { border-color: rgba(255,93,115,0.5); }
+.panel { display: none; }
+.panel.active { display: block; }
+.plain-list, #ethicsList { padding-left: 1.1rem; color: var(--muted); }
+.phy-row, .capture-item, .profile-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.85rem;
+  background: rgba(255,255,255,0.02);
+  margin-bottom: 0.75rem;
+}
+.capture-feed { max-height: 28rem; overflow: auto; }
+.capture-item small, .profile-card small { color: var(--muted); }
+form { display: grid; gap: 0.85rem; }
+label { display: grid; gap: 0.35rem; color: var(--muted); }
+input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #081422;
+  color: var(--text);
+  padding: 0.75rem;
+}
+pre {
+  white-space: pre-wrap;
+  background: #081422;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  min-height: 6rem;
+}
+.tag-ok { color: var(--ok); }
+.tag-warn { color: var(--warn); }
+.tag-danger { color: var(--danger); }

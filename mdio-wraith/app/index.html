@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- MDIO Wraith companion app by jayis1 -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MDIO Wraith Console — jayis1</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Author: jayis1</p>
+        <h1>MDIO Wraith Console</h1>
+        <p class="subtitle">Authorized Ethernet PHY management-plane research only.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="armButton">Arm Guarded Mode</button>
+        <button id="rollbackButton" class="danger">Fail-Safe Bypass</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="status-grid" id="statusGrid"></section>
+
+      <nav class="tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="profiles">Profiles</button>
+        <button class="tab" data-tab="capture">Capture</button>
+        <button class="tab" data-tab="ethics">Ethics</button>
+      </nav>
+
+      <section class="panel active" id="overview">
+        <div class="two-column">
+          <article class="card">
+            <h2>Discovered PHY Inventory</h2>
+            <div id="phyTable"></div>
+          </article>
+          <article class="card">
+            <h2>Live Telemetry</h2>
+            <ul id="telemetryList" class="plain-list"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="profiles">
+        <article class="card">
+          <h2>Research Profiles</h2>
+          <div id="profilesRoot" class="profile-grid"></div>
+        </article>
+      </section>
+
+      <section class="panel" id="capture">
+        <div class="two-column">
+          <article class="card">
+            <div class="toolbar">
+              <h2>Capture Feed</h2>
+              <button id="injectButton">Queue Triggered Write</button>
+            </div>
+            <div id="captureFeed" class="capture-feed"></div>
+          </article>
+          <article class="card">
+            <h2>Register Inspector</h2>
+            <form id="registerForm">
+              <label>PHY Address <input id="phyInput" type="number" min="0" max="31" value="1" /></label>
+              <label>Register <input id="regInput" type="text" value="0x00" /></label>
+              <label>Value <input id="valueInput" type="text" value="0x5200" /></label>
+              <button type="submit">Stage Simulation</button>
+            </form>
+            <pre id="registerResult"></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel" id="ethics">
+        <article class="card">
+          <h2>Authorized Use Notice</h2>
+          <p>MDIO Wraith is for authorized testing, defensive validation, and lab research only. Do not place inline with switches, routers, industrial controllers, cameras, PoE infrastructure, or field devices without explicit written permission.</p>
+          <ul id="ethicsList"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
