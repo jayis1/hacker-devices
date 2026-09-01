@@ -1,0 +1,113 @@
+<!-- BootROM Banshee companion app -->
+<!-- Author: jayis1 -->
+<!-- Copyright (c) 2026 jayis1 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BootROM Banshee Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Boot-storage trust boundary research</p>
+      <h1>BootROM Banshee</h1>
+      <p class="subtitle">Authorized-use control console for inline SPI/QSPI boot interception and evidence capture.</p>
+    </div>
+    <div class="hero-actions">
+      <button id="export-json">Export Session JSON</button>
+      <button id="replay-demo">Replay Demo Session</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-screen="overview">Overview</button>
+    <button class="tab" data-screen="scenarios">Scenario Studio</button>
+    <button class="tab" data-screen="overlays">Overlay Library</button>
+    <button class="tab" data-screen="captures">Capture Review</button>
+    <button class="tab" data-screen="safety">Safety & Ethics</button>
+  </nav>
+
+  <main>
+    <section class="screen active" id="overview">
+      <div class="grid two">
+        <article class="panel">
+          <h2>Live Status</h2>
+          <ul id="status-list"></ul>
+        </article>
+        <article class="panel">
+          <h2>Rail Telemetry</h2>
+          <ul id="telemetry-list"></ul>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Session Banner</h2>
+        <p id="banner-text"></p>
+      </article>
+    </section>
+
+    <section class="screen" id="scenarios">
+      <article class="panel">
+        <h2>Scenario Studio</h2>
+        <p>Arm a bounded scenario, review timing assumptions, and trigger it during a controlled reset only after authorization acknowledgement.</p>
+        <div id="scenario-cards" class="card-grid"></div>
+      </article>
+    </section>
+
+    <section class="screen" id="overlays">
+      <div class="grid two">
+        <article class="panel">
+          <h2>Overlay Library</h2>
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Base Address</th><th>Purpose</th><th>Apply</th></tr>
+            </thead>
+            <tbody id="overlay-body"></tbody>
+          </table>
+        </article>
+        <article class="panel">
+          <h2>Overlay Detail</h2>
+          <pre id="overlay-detail"></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen" id="captures">
+      <div class="grid two">
+        <article class="panel">
+          <h2>Decoded Transactions</h2>
+          <pre id="capture-log"></pre>
+        </article>
+        <article class="panel">
+          <h2>Address Heat Map</h2>
+          <div id="heatmap"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="screen" id="safety">
+      <div class="grid two">
+        <article class="panel">
+          <h2>Authorization Gate</h2>
+          <label class="checkbox"><input type="checkbox" id="ethics-check" /> I confirm this device will be used only for authorized research and defensive validation.</label>
+          <p id="ethics-status">Active manipulation is locked until acknowledged.</p>
+        </article>
+        <article class="panel">
+          <h2>Guardrails</h2>
+          <label>Current limit <input id="current-limit" type="range" min="300" max="750" value="700" /></label>
+          <p id="current-limit-label">700 mA</p>
+          <button id="abort-btn" class="danger">Abort Scenario</button>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Audit Trail</h2>
+        <pre id="audit-log"></pre>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+(kicad_pro
+  (version 1)
+  (generator "BootROM Banshee by jayis1")
+  (project "bootrom-banshee")
+  (title_block
+    (title "BootROM Banshee")
+    (company "jayis1")
+    (rev "A")
+    (date "2026-09-01")
+    (comment 1 "Author: jayis1")
+    (comment 2 "Inline SPI/QSPI boot interception platform")
+  )
+)

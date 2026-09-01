@@ -1,0 +1,102 @@
+/* BootROM Banshee companion app styles */
+/* Author: jayis1 */
+/* Copyright (c) 2026 jayis1 */
+:root {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --panel: #111b2e;
+  --line: #29405d;
+  --text: #e7eef7;
+  --muted: #98abc3;
+  --accent: #6ee7ff;
+  --danger: #ff7a7a;
+  --success: #8bf0b3;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #09111d, #0e1a2c 28%, #0b1220 100%);
+  color: var(--text);
+}
+.hero, .tabs, main { max-width: 1200px; margin: 0 auto; }
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: end;
+  padding: 2rem 1rem 1rem;
+}
+.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; }
+.subtitle { color: var(--muted); max-width: 48rem; }
+.hero-actions, .tabs { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+button {
+  border: 1px solid var(--line);
+  background: #10233f;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button.active, .tab.active { background: #183458; border-color: var(--accent); }
+button.danger { background: #35191d; border-color: #8e3e4a; }
+.tabs { padding: 0 1rem 1rem; }
+main { padding: 0 1rem 2rem; }
+.grid.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.panel {
+  background: rgba(17, 27, 46, 0.95);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+  background: #0d1727;
+}
+.badge {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+ul { padding-left: 1rem; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border-bottom: 1px solid var(--line); padding: 0.7rem 0.4rem; text-align: left; vertical-align: top; }
+pre {
+  white-space: pre-wrap;
+  background: #09111d;
+  border: 1px solid #223652;
+  border-radius: 12px;
+  padding: 0.9rem;
+  min-height: 220px;
+}
+.screen { display: none; }
+.screen.active { display: block; }
+.checkbox { display: block; margin-bottom: 1rem; }
+#heatmap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.heat {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem;
+  background: #0d1727;
+}
+.heat strong { display: block; color: var(--accent); }
+.ok { color: var(--success); }
+.warn { color: #ffd68a; }
+.danger-text { color: var(--danger); }
+@media (max-width: 860px) {
+  .hero { align-items: start; flex-direction: column; }
+  .grid.two { grid-template-columns: 1fr; }
+}
