@@ -1,0 +1,8 @@
+(kicad_pro
+  (version 1)
+  (generator "Hermes Agent for jayis1")
+  (project "i3c-poltergeist")
+  (title "I3C Poltergeist")
+  (company "jayis1")
+  (comment "Authorized mixed-mode I3C/I2C security research only")
+)

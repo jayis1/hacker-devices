@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- I3C Poltergeist companion app by jayis1 -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I3C Poltergeist Console — jayis1</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Author: jayis1</p>
+        <h1>I3C Poltergeist Console</h1>
+        <p class="subtitle">Authorized mixed-mode I3C/I²C security research only.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="armBtn">Arm Profile</button>
+        <button id="bypassBtn" class="danger">Force Bypass</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="statusGrid" class="status-grid"></section>
+
+      <nav class="tabs">
+        <button class="tab active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="profiles">Profiles</button>
+        <button class="tab" data-tab="timeline">Timeline</button>
+        <button class="tab" data-tab="commands">Commands</button>
+        <button class="tab" data-tab="ethics">Ethics</button>
+      </nav>
+
+      <section id="overview" class="panel active">
+        <div class="two-column">
+          <article class="card">
+            <h2>Discovered Targets</h2>
+            <div id="targetsRoot"></div>
+          </article>
+          <article class="card">
+            <h2>Telemetry</h2>
+            <ul id="telemetryRoot" class="plain-list"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="profiles" class="panel">
+        <article class="card">
+          <h2>Mission Profiles</h2>
+          <div id="profilesRoot" class="profile-grid"></div>
+        </article>
+      </section>
+
+      <section id="timeline" class="panel">
+        <article class="card">
+          <div class="toolbar">
+            <h2>Capture Timeline</h2>
+            <button id="simulateBtn">Simulate Capture Burst</button>
+          </div>
+          <div id="timelineRoot" class="timeline"></div>
+        </article>
+      </section>
+
+      <section id="commands" class="panel">
+        <div class="two-column">
+          <article class="card">
+            <h2>One-Shot Injection</h2>
+            <form id="commandForm">
+              <label>
+                Command
+                <select id="commandSelect">
+                  <option value="downgrade">Downgrade Probe</option>
+                  <option value="hotjoin">Hot-Join Ghost</option>
+                  <option value="ibi">IBI Shadow</option>
+                  <option value="ccc">CCC Eclipse</option>
+                </select>
+              </label>
+              <label>
+                Target Index
+                <input id="targetInput" type="number" min="0" max="4" value="1" />
+              </label>
+              <label>
+                Register / CCC
+                <input id="payloadInput" type="text" value="0x008D" />
+              </label>
+              <button type="submit">Stage Command</button>
+            </form>
+            <pre id="commandOutput"></pre>
+          </article>
+          <article class="card">
+            <h2>Session Notes</h2>
+            <textarea id="notesBox" rows="12">jayis1 operator note: validate downgrade windows before active profile use.</textarea>
+          </article>
+        </div>
+      </section>
+
+      <section id="ethics" class="panel">
+        <article class="card">
+          <h2>Authorized Use Notice</h2>
+          <p>I3C Poltergeist is for authorized red-team operations, defensive validation, and hardware security research only. Do not use it on systems without explicit written permission and a rollback plan.</p>
+          <ul id="ethicsRoot" class="plain-list"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+/* I3C Poltergeist companion styles by jayis1 */
+:root {
+  color-scheme: dark;
+  --bg: #08101a;
+  --panel: #101b29;
+  --panel-2: #142334;
+  --line: #2f4560;
+  --text: #e6f0ff;
+  --muted: #93abc7;
+  --accent: #56d4ff;
+  --danger: #ff6b6b;
+  --warn: #ffc857;
+  --ok: #63f29a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #050b12, var(--bg));
+  color: var(--text);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(8, 16, 26, 0.95);
+  position: sticky;
+  top: 0;
+}
+
+.eyebrow,
+.subtitle,
+label,
+small {
+  color: var(--muted);
+}
+
+.hero h1 {
+  margin: 0.2rem 0;
+}
+
+.hero-actions,
+.tabs,
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+main {
+  padding: 1.5rem 2rem 2rem;
+}
+
+button,
+select,
+input,
+textarea {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 0.75rem 0.9rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover,
+.tab.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(86, 212, 255, 0.2);
+}
+
+button.danger {
+  border-color: var(--danger);
+  color: #ffd3d3;
+}
+
+.status-grid,
+.two-column,
+.profile-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.status-grid {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-bottom: 1rem;
+}
+
+.two-column {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.profile-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card,
+.metric,
+.timeline-entry,
+.target-card,
+.profile-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.card {
+  padding: 1rem 1.1rem;
+}
+
+.metric {
+  padding: 1rem;
+}
+
+.metric h3,
+.card h2,
+.profile-card h3,
+.target-card h3 {
+  margin-top: 0;
+}
+
+.panel {
+  display: none;
+  margin-top: 1rem;
+}
+
+.panel.active {
+  display: block;
+}
+
+.target-card,
+.profile-card,
+.timeline-entry {
+  padding: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.plain-list {
+  padding-left: 1rem;
+}
+
+.timeline-entry .stamp,
+.badge {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.badge.high {
+  color: var(--danger);
+}
+
+.badge.medium {
+  color: var(--warn);
+}
+
+.badge.low {
+  color: var(--ok);
+}
+
+form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+pre,
+textarea {
+  width: 100%;
+  min-height: 180px;
+}
+
+pre {
+  white-space: pre-wrap;
+  background: #091321;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 760px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}
