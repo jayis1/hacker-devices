@@ -1,0 +1,93 @@
+<!-- SmartPack Phantom companion app -->
+<!-- Author: jayis1 -->
+<!-- Copyright (c) 2026 jayis1 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartPack Phantom Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>SmartPack Phantom</h1>
+    <p>Author: jayis1</p>
+  </header>
+
+  <main class="grid">
+    <section class="card" id="dashboard-card">
+      <h2>Dashboard</h2>
+      <div class="stats" id="stats"></div>
+      <button id="refresh-status">Refresh Status</button>
+    </section>
+
+    <section class="card">
+      <h2>Scenario Control</h2>
+      <label for="scenario">Scenario</label>
+      <select id="scenario">
+        <option value="maintenance-mask">maintenance-mask</option>
+        <option value="low-soc-bait">low-soc-bait</option>
+        <option value="stale-auth-replay">stale-auth-replay</option>
+        <option value="shipping-confusion">shipping-confusion</option>
+        <option value="thermal-trip-spoof">thermal-trip-spoof</option>
+        <option value="charger-limit-swing">charger-limit-swing</option>
+      </select>
+      <button id="arm-scenario">Arm</button>
+      <button id="trigger-scenario">Trigger</button>
+      <pre id="scenario-log"></pre>
+    </section>
+
+    <section class="card">
+      <h2>Profile Editor</h2>
+      <label>Profile</label>
+      <select id="profile-kind">
+        <option value="enterprise-laptop">enterprise-laptop</option>
+        <option value="rugged-tablet">rugged-tablet</option>
+        <option value="drone-pack">drone-pack</option>
+        <option value="service-pack">service-pack</option>
+        <option value="counterfeit-clone">counterfeit-clone</option>
+      </select>
+      <label>State of Charge (%)</label>
+      <input id="soc" type="range" min="0" max="100" value="79" />
+      <label>Temperature (°C)</label>
+      <input id="temp" type="number" value="31" />
+      <label>Charge Limit (mA)</label>
+      <input id="charge-limit" type="number" value="3200" />
+      <button id="apply-profile">Apply Profile Overlay</button>
+    </section>
+
+    <section class="card">
+      <h2>Auth Harness</h2>
+      <label>Mode</label>
+      <select id="auth-mode">
+        <option value="passthrough">passthrough</option>
+        <option value="synthetic">synthetic</option>
+        <option value="replay-last">replay-last</option>
+        <option value="stale-nonce">stale-nonce</option>
+        <option value="force-fail">force-fail</option>
+      </select>
+      <button id="queue-auth">Queue Auth Policy</button>
+      <ul id="auth-events"></ul>
+    </section>
+
+    <section class="card wide">
+      <h2>Timeline</h2>
+      <table>
+        <thead>
+          <tr><th>Time</th><th>Type</th><th>Detail</th></tr>
+        </thead>
+        <tbody id="timeline"></tbody>
+      </table>
+    </section>
+
+    <section class="card wide">
+      <h2>Evidence Export</h2>
+      <button id="export-json">Export JSON</button>
+      <textarea id="export-output" rows="12"></textarea>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

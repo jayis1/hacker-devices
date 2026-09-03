@@ -1,0 +1,92 @@
+/* SmartPack Phantom app styles */
+/* Author: jayis1 */
+/* Copyright (c) 2026 jayis1 */
+:root {
+  color-scheme: dark;
+  --bg: #091019;
+  --panel: #122030;
+  --ink: #e8f0ff;
+  --accent: #67d4ff;
+  --muted: #8aa3bd;
+  --good: #4fd18b;
+  --warn: #ffcc4d;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #081018, #0f1c2c);
+  color: var(--ink);
+}
+header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #203247;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid #26415a;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+.card.wide {
+  grid-column: 1 / -1;
+}
+label, button, input, select, textarea {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+button {
+  background: var(--accent);
+  color: #05111d;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 10px;
+  cursor: pointer;
+}
+input, select, textarea {
+  background: #0a1622;
+  color: var(--ink);
+  border: 1px solid #35506c;
+  border-radius: 10px;
+  padding: 10px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.stat {
+  background: #0a1622;
+  border-radius: 12px;
+  padding: 10px;
+}
+.stat .label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.stat .value {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border-bottom: 1px solid #22364b;
+  text-align: left;
+  padding: 10px;
+}
+pre, textarea {
+  white-space: pre-wrap;
+}
+.badge-good { color: var(--good); }
+.badge-warn { color: var(--warn); }
