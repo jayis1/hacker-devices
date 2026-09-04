@@ -1,0 +1,76 @@
+<!--
+  MCTP Wraith companion app
+  Author: jayis1
+  Copyright (c) 2026 jayis1
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCTP Wraith Console</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>MCTP Wraith Console</h1>
+    <p>Authorized research use only · Author: jayis1</p>
+  </header>
+
+  <main class="grid">
+    <section class="panel">
+      <h2>Scenario Control</h2>
+      <label for="scenario">Scenario</label>
+      <select id="scenario">
+        <option value="route-poison">route-poison</option>
+        <option value="spdm-downgrade-probe" selected>spdm-downgrade-probe</option>
+        <option value="pldm-stage-fuzz">pldm-stage-fuzz</option>
+        <option value="sensor-ghost">sensor-ghost</option>
+        <option value="endpoint-clone">endpoint-clone</option>
+      </select>
+      <div class="button-row">
+        <button id="armBtn">Arm</button>
+        <button id="triggerBtn">Trigger</button>
+        <button id="safeBtn">Safe Mode</button>
+      </div>
+      <pre id="statusBox"></pre>
+    </section>
+
+    <section class="panel">
+      <h2>Telemetry</h2>
+      <div id="telemetryCards" class="cards"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Endpoints</h2>
+      <table>
+        <thead><tr><th>EID</th><th>Name</th><th>Medium</th><th>Trust</th></tr></thead>
+        <tbody id="endpointTable"></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Routes</h2>
+      <table>
+        <thead><tr><th>Src</th><th>Dst</th><th>Hop</th><th>TTL</th></tr></thead>
+        <tbody id="routeTable"></tbody>
+      </table>
+      <div class="button-row">
+        <button id="poisonRouteBtn">Poison Route</button>
+        <button id="restoreRouteBtn">Restore Route</button>
+      </div>
+    </section>
+
+    <section class="panel wide">
+      <h2>Evidence Bundle Preview</h2>
+      <textarea id="bundleBox" rows="16"></textarea>
+      <div class="button-row">
+        <button id="bundleBtn">Generate Bundle</button>
+        <button id="copyBtn">Copy JSON</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

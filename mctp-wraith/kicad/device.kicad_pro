@@ -1,0 +1,52 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "board_outline_line_width": 0.1,
+        "copper_line_width": 0.25,
+        "courtyard_line_width": 0.05,
+        "edge_connector": false,
+        "silk_line_width": 0.12,
+        "text_size_h": 1.0,
+        "text_size_v": 1.0,
+        "text_thickness": 0.15,
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      }
+    },
+    "layer_presets": [],
+    "viewports": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1,
+    "author": "jayis1",
+    "project_name": "MCTP Wraith"
+  },
+  "pcbnew": {
+    "last_paths": {
+      "gencad": "",
+      "idf": "",
+      "netlist": "",
+      "specctra_dsn": "",
+      "step": "",
+      "vrml": ""
+    }
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {
+      "label_size_ratio": 0.375,
+      "pin_symbol_size": 25,
+      "text_offset_ratio": 0.08
+    }
+  }
+}

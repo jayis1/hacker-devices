@@ -1,0 +1,80 @@
+/* MCTP Wraith companion app styles
+ * Author: jayis1
+ * Copyright (c) 2026 jayis1
+ */
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --panel: #161b22;
+  --line: #30363d;
+  --text: #e6edf3;
+  --muted: #9da7b3;
+  --accent: #58a6ff;
+  --warn: #ffb86b;
+  --ok: #3fb950;
+}
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+header p { color: var(--muted); margin: 0.3rem 0 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.panel.wide { grid-column: 1 / -1; }
+label, h2 { display: block; margin-bottom: 0.6rem; }
+select, button, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #0f141b;
+  color: var(--text);
+  padding: 0.75rem;
+}
+textarea { resize: vertical; min-height: 220px; font-family: ui-monospace, monospace; }
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+.card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: #10161d;
+}
+.card strong { display: block; font-size: 1.5rem; margin-top: 0.2rem; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.55rem; border-bottom: 1px solid var(--line); text-align: left; }
+#statusBox {
+  background: #0f141b;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.75rem;
+  min-height: 110px;
+  white-space: pre-wrap;
+}
+button:hover { border-color: var(--accent); cursor: pointer; }
