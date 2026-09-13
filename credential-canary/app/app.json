@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Credential Canary",
+    "slug": "credential-canary",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "android": {"package": "com.jayis1.credentialcanary", "permissions": ["BLUETOOTH_SCAN", "BLUETOOTH_CONNECT"]},
+    "ios": {"bundleIdentifier": "com.jayis1.credentialcanary", "infoPlist": {"NSBluetoothAlwaysUsageDescription": "Connect to a Credential Canary security research instrument."}},
+    "extra": {"author": "jayis1", "authorizedUseOnly": true}
+  }
+}

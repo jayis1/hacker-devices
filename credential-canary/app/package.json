@@ -1,0 +1,12 @@
+{
+  "name": "credential-canary-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Credential Canary companion application for authorized access-control security assessment",
+  "author": "jayis1",
+  "license": "GPL-2.0-only",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {"start":"expo start --dev-client","android":"expo run:android","ios":"expo run:ios","test":"node --experimental-default-type=module --test test/protocol.test.mjs"},
+  "dependencies": {"base-64":"^1.0.0","expo":"~51.0.28","react":"18.2.0","react-native":"0.74.5","react-native-ble-plx":"^3.2.1"},
+  "devDependencies": {"@babel/core":"^7.24.0"}
+}
