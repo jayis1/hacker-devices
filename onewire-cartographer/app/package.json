@@ -1,0 +1,11 @@
+{
+  "name": "onewire-cartographer-console",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {"test": "node --test", "start": "vite", "build": "vite build"},
+  "dependencies": {"@vitejs/plugin-react": "latest", "vite": "latest", "react": "latest", "react-dom": "latest"},
+  "devDependencies": {}
+}

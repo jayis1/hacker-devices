@@ -1,0 +1,10 @@
+# OneWire Cartographer generated files
+# Author: jayis1
+node_modules/
+dist/
+firmware/*.o
+firmware/drivers/*.o
+firmware/onewire-cartographer
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak
