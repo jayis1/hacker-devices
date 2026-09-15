@@ -1,0 +1,19 @@
+{
+  "name": "sdio-sentinel-console",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "5.0.2",
+    "vite": "7.1.5",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

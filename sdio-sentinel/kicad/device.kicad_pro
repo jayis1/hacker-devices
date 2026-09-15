@@ -1,0 +1,59 @@
+{
+  "board": {},
+  "boards": [],
+  "cvpcb": {},
+  "erc": {},
+  "libraries": {},
+  "meta": {
+    "filename": "device.kicad_pro",
+    "version": 1,
+    "author": "jayis1",
+    "purpose": "SDIO Sentinel authorized security research hardware"
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.2,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Default",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.18,
+        "diff_pair_gap": 0.15,
+        "diff_pair_width": 0.15,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "SDIO_50MHZ",
+        "pcb_color": "rgba(49, 193, 122, 1.000)",
+        "schematic_color": "rgba(49, 193, 122, 1.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.45,
+        "via_drill": 0.2,
+        "wire_width": 6
+      }
+    ],
+    "meta": {"version": 3},
+    "net_colors": null,
+    "netclass_assignments": {"/HOST_*": "SDIO_50MHZ", "/CARD_*": "SDIO_50MHZ"}
+  },
+  "pcbnew": {},
+  "schematic": {},
+  "text_variables": {
+    "AUTHOR": "jayis1",
+    "BOARD": "SDIO Sentinel",
+    "NOTICE": "Authorized use only"
+  }
+}

@@ -1,0 +1,9 @@
+# SDIO Sentinel local artifacts — Author: jayis1
+firmware/*.o
+firmware/drivers/*.o
+firmware/sdio-sentinel
+app/node_modules/
+app/dist/
+*.bak
+*-backups/
+*.lck
