@@ -1,0 +1,8 @@
+# PDM Trust Probe generated artifacts
+# Author: jayis1
+firmware/*.o
+firmware/**/*.o
+firmware/pdm-trust-probe
+app/node_modules/
+app/dist/
+*.log

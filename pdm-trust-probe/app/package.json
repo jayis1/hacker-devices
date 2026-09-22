@@ -1,0 +1,19 @@
+{
+  "name": "pdm-trust-probe-console",
+  "version": "1.0.0",
+  "private": true,
+  "author": "jayis1",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "vite": "6.4.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  }
+}
