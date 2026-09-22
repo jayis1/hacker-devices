@@ -1,0 +1,26 @@
+<!-- RFFE Sentinel companion application; Author: jayis1; SPDX-License-Identifier: MIT -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="jayis1">
+  <title>RFFE Sentinel Console</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div><strong>RFFE Sentinel</strong><span class="muted"> RSCP/1 console</span></div>
+    <div id="connection" class="pill">Demo transport</div>
+  </header>
+  <aside>
+    <button data-screen="dashboard" class="active">Dashboard</button>
+    <button data-screen="timeline">Evidence timeline</button>
+    <button data-screen="policy">Policy editor</button>
+    <button data-screen="safety">Safety &amp; authorization</button>
+  </aside>
+  <main id="app" aria-live="polite"></main>
+  <footer>Author: jayis1 · Local data only · Authorized testing only</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

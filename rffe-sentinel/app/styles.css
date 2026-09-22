@@ -1,0 +1,36 @@
+/* RFFE Sentinel UI styles
+ * Author: jayis1
+ * SPDX-License-Identifier: MIT
+ */
+:root { color-scheme: dark; font-family: Inter, system-ui, sans-serif; background:#07101b; color:#e8f1f8; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; display:grid; grid-template:64px 1fr 34px / 220px 1fr; }
+header { grid-column:1/3; display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:#0d1c2b; border-bottom:1px solid #274259; }
+header strong { font-size:1.2rem; letter-spacing:.04em; }
+aside { padding:20px 12px; background:#0a1622; border-right:1px solid #22394d; }
+aside button { width:100%; margin:0 0 9px; padding:12px; text-align:left; border:1px solid transparent; border-radius:8px; background:transparent; color:#adc3d5; cursor:pointer; }
+aside button:hover, aside button.active { color:white; background:#142a3d; border-color:#2d5975; }
+main { padding:24px; overflow:auto; }
+footer { grid-column:1/3; padding:8px 18px; color:#89a2b7; background:#0a1622; font-size:.78rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
+.card { background:#0f2232; border:1px solid #29475d; border-radius:10px; padding:16px; }
+.card h3 { margin:0 0 10px; color:#9dcbe8; font-size:.85rem; text-transform:uppercase; }
+.value { font-size:1.8rem; font-weight:700; }
+.pill { border:1px solid #397095; border-radius:999px; padding:6px 12px; color:#9ed9ff; }
+.muted { color:#7f9bae; }
+.warning { border-color:#a46c21; background:#30230f; color:#ffd798; }
+.danger { border-color:#aa3843; background:#301218; color:#ffb1b8; }
+.good { color:#7de3b0; }
+table { width:100%; border-collapse:collapse; background:#0f2232; }
+th, td { padding:10px; border-bottom:1px solid #29475d; text-align:left; font-family:ui-monospace,monospace; font-size:.84rem; }
+th { color:#9dcbe8; }
+input, select { width:100%; padding:9px; color:white; background:#08131f; border:1px solid #36586e; border-radius:6px; }
+label { display:block; margin-bottom:12px; color:#abc0cf; }
+button.primary, button.amber, button.dangerButton { padding:10px 16px; border:0; border-radius:7px; cursor:pointer; font-weight:700; }
+button.primary { background:#2381b8; color:white; }
+button.amber { background:#bd7b1f; color:#101010; }
+button.dangerButton { background:#a8323c; color:white; }
+.actions { display:flex; gap:10px; margin:14px 0; flex-wrap:wrap; }
+.rule { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:10px; }
+.banner { padding:14px; margin-bottom:16px; border-radius:8px; }
+@media (max-width:700px) { body { grid-template:56px auto 1fr 34px / 1fr; } header,footer { grid-column:1; } aside { display:flex; overflow:auto; border-right:0; } aside button { min-width:160px; } main { padding:15px; } .rule { grid-template-columns:1fr; } }
