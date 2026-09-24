@@ -1,0 +1,16 @@
+{
+  "name": "flexray-sentinel-app",
+  "version": "0.1.0",
+  "private": true,
+  "author": "jayis1",
+  "description": "Local-first FlexRay schedule and anomaly companion application",
+  "main": "App.js",
+  "scripts": {
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-native": "0.76.3"
+  },
+  "license": "MIT"
+}

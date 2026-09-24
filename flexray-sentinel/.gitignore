@@ -1,0 +1,8 @@
+# Author: jayis1
+firmware/*.o
+firmware/drivers/*.o
+firmware/flexray-sentinel
+app/node_modules/
+app/.expo/
+app/android/build/
+app/ios/build/
