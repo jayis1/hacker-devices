@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "as_of_utc": "2026-10-09T15:27:57.752202+00:00",
+  "classification": "documentation-only review candidate; current GitHub source location and selected build definitions inspected, no product execution",
+  "project_id": "84afa30e-6e19-4421-868f-e1281231d13d",
+  "destination": {
+    "repo_url": "https://github.com/jayis1/hacker-devices",
+    "repo_ref": "main",
+    "observed_base_commit": "e44d6f7a2065915ea04565f05d162f55c0515c65",
+    "proposed_subdirectory": "docs/hardware-ghostwisp/",
+    "placement_status": "Selected by Donald O: docs/hardware-ghostwisp/ on the recorded main base; any changed artifact or base requires Neutral exact-artifact review before push. GhostWisp source remains in ghostblade.",
+    "evidence": "User correction 9ea1843b-cc15-494d-affa-31a95caf046f; installed GitHub connection list_branches and commit-pinned root/README inspection on 2026-10-09",
+    "root_readme_blob_sha": "c088599074beb0cac55db01a1bccf7757048ed37",
+    "inspection_limits": "Root listing and root README only; no recursive source or product validation; no GhostWisp directory in root."
+  },
+  "sources": [
+    {
+      "kind": "historical_design_document",
+      "reference": "/IST/issues/IST-33#document-hardware-interface-evidence-brief",
+      "revision": "614362c0-3b13-479f-9162-983a9cc09efb",
+      "sha256_utf8_body": "548ca3e65ddc4aa5e9b51009d8494107514ca3465c7875bc460318e4c7e05645",
+      "bundled": false
+    },
+    {
+      "kind": "historical_design_document",
+      "reference": "/IST/issues/IST-127#document-design-corrections",
+      "revision": "d5a45234-fb80-45a1-ba9a-e3811bc49987",
+      "sha256_utf8_body": "7a0b4ff46588a23ec6871064999c8d0606e399802413ec0de8afd71fad662493",
+      "bundled": false
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "cf8fc78ceb840012f5a164b364e3f95f3322a2381d6da88c54a9bd18052e01f6",
+      "bytes": 41260,
+      "bundled": false,
+      "source_identifier": "jayis1/Devices/README.md",
+      "repo_url": "https://github.com/jayis1/Devices",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "3c7ca9b1c2aed97f822aadeb9d961189711720f9",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "12432fe92fb916d700bef3dc09099f20a89268203c11b0eacdb24a52941af1c8",
+      "bytes": 43378,
+      "bundled": false,
+      "source_identifier": "jayis1/SoC-Device-Inventions/README.md",
+      "repo_url": "https://github.com/jayis1/SoC-Device-Inventions",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "de2ada529eaf7221a9e48d3f677ffcb3354e85c8",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "e2cb8d81038e69cab330352755f6e917ba71d9bcdcc51182d0e6ba8a3b8e9d17",
+      "bytes": 38652,
+      "bundled": false,
+      "source_identifier": "jayis1/ghostblade/README.md",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "55eac62fdeff0d4005c80a71e856cfb980e5bbed22f4c0ff80e84cc84cfa6138",
+      "bytes": 4068,
+      "bundled": false,
+      "source_identifier": "jayis1/hacker-devices/README.md",
+      "repo_url": "https://github.com/jayis1/hacker-devices",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "e44d6f7a2065915ea04565f05d162f55c0515c65",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "62e4da672c429a405b61c47197248aa8a47ad3b2588b5c0c25f5e364084ea7d3",
+      "bytes": 5990,
+      "bundled": false,
+      "source_identifier": "jayis1/hardware-design-lab/README.md",
+      "repo_url": "https://github.com/jayis1/hardware-design-lab",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "2c1c09c33a74b38b0340e3cd5261ec7711136707",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "historical_import_reference_only",
+      "sha256": "4bbbb24816969d232e8b6b3e93d083d4d4040645f76346ab8543dfb5cc5d8fe1",
+      "bytes": 13909,
+      "bundled": false,
+      "source_identifier": "jayis1/unified-TREE/README.md",
+      "repo_url": "https://github.com/jayis1/unified-TREE",
+      "upstream_path": "README.md",
+      "reported_upstream_commit": "f59add8a2a335faa16b09b913ad2c3da87c2ee16",
+      "provenance_limits": "Repository, file and commit reported by historical export metadata; upstream byte equivalence and availability not verified by this correction. sha256 and bytes identify the historical exported document including its wrapper, not the upstream README."
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "README.md",
+      "git_blob_sha": "e7b041b6e25b3fd9dc304d0323134e43f03648ee",
+      "sha256_utf8_body": "71bf40f1da8d440b26a15c48e893d9369368ff875bc4344cffa226a1ca52a4dd",
+      "bytes": 38199,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "Makefile",
+      "git_blob_sha": "c182ccd6192f9386035f5c11812b03c9d5a986f3",
+      "sha256_utf8_body": "89f1dcbc8582c41c6091c13b03fb5f1483edeaf3c00347d48efa40df8511b0b8",
+      "bytes": 4047,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "CONTRIBUTING.md",
+      "git_blob_sha": "6644adf681c23f2f1f248888763033216b27f81b",
+      "sha256_utf8_body": "b47f0bb3766ecd4e260956ec09c3b8afb8a4ca7d4bdc12dcf31afdd875b49324",
+      "bytes": 4774,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "GhostBlade.mf",
+      "git_blob_sha": "fa97b3ee17c2ea49c7cd2fa16d50162ed7687a97",
+      "sha256_utf8_body": "7f7f33f2f00b1505a20b4766a8923f00af233fe58763476dc0d5a8cb048aa688",
+      "bytes": 6363,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "devices/ghostwisp/README.md",
+      "git_blob_sha": "e339e4d9b0ebc0545f97a7d454fb82cd91b8c9b0",
+      "sha256_utf8_body": "ac4fb66c0d586cd33916d8d081b232b8a5075bb690fe2cfe72fe40f70d92cbfe",
+      "bytes": 9120,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "devices/ghostwisp/firmware/rp2350b/CMakeLists.txt",
+      "git_blob_sha": "11e201d7f2a31e4d3440cafb7e10d942f0012eee",
+      "sha256_utf8_body": "e6a809a29a98833af4366a779af5848a9b34a5e5f818e6f96aab3b9651795d2a",
+      "bytes": 5548,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "devices/ghostwisp/Makefile",
+      "git_blob_sha": "1bc75bf169c515b0b76e55b0099f8b4a1c4631d4",
+      "sha256_utf8_body": "30f05bada1f68159f10bcf099930fd0f663e2c33b1d250c2227e2d05f0f09ccd",
+      "bytes": 4668,
+      "bundled": false
+    },
+    {
+      "kind": "current_git_file_inspected",
+      "repo_url": "https://github.com/jayis1/ghostblade",
+      "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+      "path": "devices/ghostwisp/check.sh",
+      "git_blob_sha": "6d25ade2e00b6a918dd964442ad132f859ded600",
+      "sha256_utf8_body": "78e59ec43dd380ed6d7b7e6da6fc804f79b6e7fa3790ed460eed3ca0e9f43125",
+      "bytes": 6289,
+      "bundled": false
+    }
+  ],
+  "recovery_blockers": [
+    "IST-130",
+    "IST-164"
+  ],
+  "excluded": [
+    "internal run logs",
+    "credentials",
+    "source-host configuration",
+    "unrecovered ghostblade diff",
+    "full historical operational documents"
+  ],
+  "ghostwisp_source": {
+    "repo_url": "https://github.com/jayis1/ghostblade",
+    "ref": "main",
+    "commit": "8924ecbc2ba0d8dc07bffe933fa1c932c94e4f30",
+    "path": "devices/ghostwisp/",
+    "user_comment_id": "fc5b8ff0-e68d-4e08-91d6-9b8cf47608f9",
+    "bundled": false,
+    "inspection_limits": "Selected documentation and build definitions only; firmware implementation, complete tree, builds, unit tests and physical board not verified. GitHub source is not recovery of five historical unstaged modifications."
+  },
+  "package_version": "v4"
+}
