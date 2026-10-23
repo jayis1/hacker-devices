@@ -1,0 +1,1 @@
+{"name":"lin-mimic-console","version":"1.0.0","private":true,"type":"module","author":"jayis1","scripts":{"dev":"vite","build":"vite build","test":"node --test"},"dependencies":{"@vitejs/plugin-react":"latest","vite":"latest","react":"latest","react-dom":"latest"},"devDependencies":{}}

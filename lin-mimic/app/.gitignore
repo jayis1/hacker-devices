@@ -1,0 +1,4 @@
+# LIN Mimic app ignores. Author: jayis1.
+node_modules/
+dist/
+*.log

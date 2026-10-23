@@ -1,0 +1,29 @@
+// LIN Mimic operator console. Author: jayis1.
+import React,{useMemo,useRef,useState}from'react';import{createRoot}from'react-dom/client';
+import{CMD,Parser,packet,decodeFrame,allowMask,txPayload}from'./protocol.js';import'./style.css';
+const modes=['Observe','Inline','Emulate','Fuzz'];
+function hex(v,n=2){return Number(v).toString(16).toUpperCase().padStart(n,'0')}
+function App(){
+ const [port,setPort]=useState(null),[connected,setConnected]=useState(false),[frames,setFrames]=useState([]);
+ const [status,setStatus]=useState({mode:0,armed:false,unlocked:false,mv:0,ma:0,seen:0,forwarded:0,injected:0,denied:0});
+ const [ids,setIds]=useState('12'),[txId,setTxId]=useState('12'),[txData,setTxData]=useState('00 00'),[notice,setNotice]=useState('Observe-only until hardware ARM and unlock.');
+ const writer=useRef(null);const parser=useMemo(()=>new Parser((type,payload)=>receive(type,payload)),[]);
+ function u32(p,o){return(p[o]|p[o+1]<<8|p[o+2]<<16|p[o+3]<<24)>>>0}
+ function receive(type,p){if(type===0x81){const f=decodeFrame(p);if(f)setFrames(old=>[f,...old].slice(0,250));}if(type===0x82&&p.length>=23)setStatus({mode:p[0],armed:!!p[1],unlocked:!!p[2],mv:p[3]|p[4]<<8,ma:(p[5]|p[6]<<8)<<16>>16,seen:u32(p,7),forwarded:u32(p,11),injected:u32(p,15),denied:u32(p,19)});if(type===0x80)setNotice(p[1]?'Device denied command':'Command accepted');}
+ async function send(cmd,p=[]){if(!writer.current){setNotice('Connect a Web Serial device first.');return;}await writer.current.write(packet(cmd,p));}
+ async function connect(){try{const selected=await navigator.serial.requestPort();await selected.open({baudRate:115200});writer.current=selected.writable.getWriter();setPort(selected);setConnected(true);setNotice('Connected; capture remains passive.');const reader=selected.readable.getReader();(async()=>{try{for(;;){const{value,done}=await reader.read();if(done)break;if(value)parser.feed(value);}}finally{reader.releaseLock();}})();await send(CMD.STATUS);}catch(e){setNotice(e.message);}}
+ async function disconnect(){if(writer.current){writer.current.releaseLock();writer.current=null;}if(port)await port.close();setConnected(false);setPort(null);}
+ function parsedIds(){return ids.split(/[ ,]+/).filter(Boolean).map(x=>parseInt(x,16)).filter(x=>x>=0&&x<64)}
+ async function applyIds(){await send(CMD.ALLOW_IDS,allowMask(parsedIds()));}
+ async function transmit(){const id=parseInt(txId,16),data=txData.trim().split(/\s+/).filter(Boolean).map(x=>parseInt(x,16));if(!(id>=0&&id<64)||data.some(x=>!(x>=0&&x<256))||data.length<1||data.length>8){setNotice('ID must be 00–3F and payload 1–8 hex bytes.');return;}await send(CMD.TRANSMIT,txPayload(id,data));}
+ async function exportLog(){const blob=new Blob([JSON.stringify({author:'jayis1',device:'LIN Mimic',exported:new Date().toISOString(),status,frames},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lin-mimic-capture.json';a.click();URL.revokeObjectURL(a.href);}
+ return <main><header><div><p className="eyebrow">JAYIS1 SECURITY INSTRUMENTS</p><h1>LIN Mimic</h1><p>Direction-aware LIN identity and resilience console</p></div><button onClick={connected?disconnect:connect}>{connected?'Disconnect':'Connect USB'}</button></header>
+ <div className={'notice '+(status.unlocked?'hot':'')}>{notice}</div>
+ <section className="cards"><Card label="Mode" value={modes[status.mode]||'Unknown'}/><Card label="Physical arm" value={status.armed?'ARMED':'Safe'}/><Card label="Session" value={status.unlocked?'Unlocked':'Locked'}/><Card label="Target" value={`${(status.mv/1000).toFixed(2)} V / ${status.ma} mA`}/></section>
+ <section className="panel safety"><h2>Safety gate</h2><p>Active commands require the guarded button. Unlock expires in firmware after 30 seconds.</p><div className="row"><button onClick={()=>send(CMD.UNLOCK,[0x31,0x4e,0x49,0x4c])} disabled={!status.armed}>Unlock armed device</button>{modes.map((m,i)=><button key={m} className={status.mode===i?'selected':''} onClick={()=>send(CMD.MODE,[i])}>{m}</button>)}<button className="stop" onClick={()=>send(CMD.LOCK)}>LOCK / STOP</button></div></section>
+ <div className="columns"><section className="panel"><h2>Identifier policy</h2><label>Allowed IDs (hex, 00–3F)<input value={ids} onChange={e=>setIds(e.target.value)}/></label><button onClick={applyIds}>Apply allowlist</button><p className="muted">Diagnostic IDs 3C and 3D are excluded unless entered explicitly.</p><h2>Controlled transmit</h2><label>ID<input value={txId} onChange={e=>setTxId(e.target.value)}/></label><label>Payload<input value={txData} onChange={e=>setTxData(e.target.value)}/></label><button disabled={!status.unlocked} onClick={transmit}>Transmit once</button></section>
+ <section className="panel"><h2>Session counters</h2><dl><dt>Observed</dt><dd>{status.seen}</dd><dt>Forwarded</dt><dd>{status.forwarded}</dd><dt>Injected</dt><dd>{status.injected}</dd><dt>Denied</dt><dd>{status.denied}</dd></dl><button onClick={exportLog}>Export signed-context JSON</button></section></div>
+ <section className="panel"><div className="tableTitle"><h2>Live frames</h2><span>{frames.length} buffered</span></div><div className="table"><div className="tr head"><span>Time µs</span><span>Side</span><span>ID</span><span>Data</span><span>Integrity</span></div>{frames.map((f,i)=><div className="tr" key={`${f.timestamp}-${i}`}><span>{f.timestamp}</span><span>{f.side}</span><span>{hex(f.id)}</span><code>{f.data.map(x=>hex(x)).join(' ')}</code><span className={f.parityOk&&f.checksumOk?'ok':'bad'}>{f.parityOk&&f.checksumOk?'valid':'error'}</span></div>)}</div></section><footer>Designed and authored by jayis1 · Authorized laboratory use only</footer></main>
+}
+function Card({label,value}){return <article className="card"><span>{label}</span><strong>{value}</strong></article>}
+createRoot(document.getElementById('root')).render(<App/>);
