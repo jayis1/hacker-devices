@@ -1,0 +1,5 @@
+# Author: jayis1
+firmware/build/
+__pycache__/
+*.kicad_prl
+*-backups/
