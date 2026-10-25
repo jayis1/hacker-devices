@@ -1,0 +1,10 @@
+# Author: jayis1
+firmware/build/
+__pycache__/
+*.pyc
+*.kicad_prl
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups/
+*-evidence.json
+core
