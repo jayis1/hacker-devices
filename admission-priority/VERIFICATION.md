@@ -1,0 +1,28 @@
+# Admission Priority verification
+
+Author: jayis1.
+
+## Executed release gates
+
+This is standalone-owner implementation and verification, not full collective or independent hardware review. Advisory reports informed scope and gates; all results below came from execution in this checkout.
+
+- Repository identity: origin is https://github.com/jayis1/hacker-devices.git; remote HEAD identifies main. Starting worktree was clean, and `git pull --ff-only origin main` reported already up to date. No task branch was created. The daily-ideas repository was not touched.
+- Repository inventory: directory names and README purposes inspected; full Starvation Window and Baton Order contracts compared. Admission-time fixed priority with nonpreemption differs from their fairness and strict-cycle policies.
+- `make -C admission-priority/firmware clean all test`: PASS. Arm GNU GCC 14.2.1, host GCC 14.2.0, C11, warnings treated as errors. Target output: 3,272 bytes text, zero initialized data, 1,664 bytes BSS. ELF is ARM EABI5 soft-float; reset entry 0x08000175, vector section 0x08000000, BSS 0x20000000. Binary and map generated and ignored by Git.
+- Production engine and encoder tests: PASS under AddressSanitizer and UndefinedBehaviorSanitizer. Tests cover stable request/grant truth tables, nonpreemption, simultaneous request/grant behavior, both high-request boundary directions, class precedence, direct handover, held grants, exact qualification, initial overlap before request qualification, unrelated request chatter, gap reacquisition, duplicate ticks, timer wrap, transactional exhaustion, checked serialization, CRC known-answer and bounds. A 10,000-cycle independent classification oracle and a 100,000-sample deterministic raw-input/gap run passed.
+- UART register-model tests: PASS under UndefinedBehaviorSanitizer; empty/null/oversized/busy submission rejection, one-byte service, deadline, wrap, and recovery exercised. Main-loop model: periodic policy, one-shot boot, normal idle baseline, and watchdog-failure halt before status passed.
+- `xvfb-run -a /usr/bin/python3 -m unittest discover -s admission-priority/tests -p 'test_*.py' -v`: all 16 tests PASS. Includes actual Tk event loops and Linux pseudo-terminals, all three screens, paced real-C-encoder synthetic fixture reception, hangup, retained provenance, replay, failed reconnect preservation, private export and overwrite refusal, FIFO/oversize rejection, unsupported policy, contradictory duplicates, halted immutability, impossible CRC-valid snapshots, sparse transition validation, startup/rollback handling, reception pause and gradually growing backlog. Serial attributes were verified restored after an injected setup failure.
+- `/usr/bin/python3 admission-priority/tools/generate_hardware.py`: generated native KiCad 9 sources, library symbols, exact connectivity manifest and XML netlist. Generator uses installed standard footprints and explicit library identities.
+- `/usr/bin/python3 admission-priority/tools/check_hardware.py`: PASS with KiCad 9.0.2. ERC zero violations; DRC zero violations and zero unconnected items. Fresh schematic netlist, saved netlist, manifest and PCB match on 14 components, 30 electrical pads, 9 nets, references, values, and footprint identities.
+- Schematic exported with `kicad-cli sch export svg`, rasterized with rsvg-convert, and visually inspected. All four input paths, ground-only header, MCU harness, readable labels and jayis1 title-block attribution are present. This is a visual design check, not independent electrical review.
+- `python3 admission-priority/tools/check_release.py`: README 3,407 whitespace-delimited words; 536 nonblank production C lines after removing comments, excluding headers and tests. Every deliverable has format-compatible jayis1 attribution. Diff whitespace and basic private-key/incorrect-author scans pass.
+
+## Limitations and honest evidence boundaries
+
+No physical board, Nucleo, target, oscilloscope, or USB hardware was exercised. Host UART registers are modelled, and C-generated traffic is explicitly synthetic. The application is an interpreted standard-library Linux/Tk program, not an unbuilt mobile scaffold. Its runtime tests establish software behavior, not physical serial compatibility.
+
+Hardware is a checked passive carrier for an external NUCLEO-F401RE, not a custom bare-MCU PCB. Passive-symbol ERC cannot verify the external regulator, power arrangement, solder bridges, target voltage, loading, or common-ground safety. Authoritative document names and manufacturer entry points are provided in README; a fresh ST UM1724 PDF retrieval was attempted but failed with HTTP/2 transport failure and an HTTP/1.1 timeout. No successful current-document download is claimed. Pin mapping and register support reuse the existing repository's reviewed F401RE platform. The actual purchased board revision must still be checked against manufacturer documents before bring-up.
+
+Fabrication, programming, target diagnostic binding, electrical qualification, timing calibration, brownout/watchdog recovery on silicon, USB interoperability, ESD/EMC, thermal behavior, mechanical support, and regulatory suitability remain outstanding. The design is not labelled production-ready or fabrication-qualified. CRC and plausibility bounds are not authentication, and a clean result does not establish fairness, liveness, useful service, or security beyond the declared observation contract.
+
+The static language server cannot resolve the tests' explicit runtime app-directory import path without editor configuration; actual Python imports and all executable tests passed. No test or runtime exception was suppressed to obtain those results.
