@@ -1,0 +1,189 @@
+{
+  "author": "jayis1",
+  "components": [
+    {
+      "ref": "J1",
+      "value": "GROUND_ONLY",
+      "symbol": "Conn_2",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "x": 20,
+      "y": 20,
+      "nets": [
+        "GND",
+        "GND"
+      ],
+      "uuid": "c43fa183-ee71-5902-b44e-f4eb204f7f98"
+    },
+    {
+      "ref": "J2",
+      "value": "A0_A1_A2_A3",
+      "symbol": "Conn_4",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "x": 20,
+      "y": 35,
+      "nets": [
+        "TAG0",
+        "TAG1",
+        "READY",
+        "RETIRE"
+      ],
+      "uuid": "68cb5c89-21fa-531b-86d3-1cf037829779"
+    },
+    {
+      "ref": "R1",
+      "value": "100k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 30,
+      "y": 35,
+      "nets": [
+        "GND",
+        "TAG0"
+      ],
+      "uuid": "ef231727-f1d1-503f-9bd7-9fb6f4c7776f"
+    },
+    {
+      "ref": "R2",
+      "value": "1k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 45,
+      "y": 35,
+      "nets": [
+        "TAG0",
+        "TAG0_IN"
+      ],
+      "uuid": "6dbc87f5-1d4b-57e9-b0c5-2543c00dee55"
+    },
+    {
+      "ref": "J3",
+      "value": "TAG0_IN",
+      "symbol": "Conn_2",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "x": 65,
+      "y": 35,
+      "nets": [
+        "TAG0_IN",
+        "GND"
+      ],
+      "uuid": "9983307d-6f77-5552-82f0-ddf827969fea"
+    },
+    {
+      "ref": "R3",
+      "value": "100k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 30,
+      "y": 47,
+      "nets": [
+        "GND",
+        "TAG1"
+      ],
+      "uuid": "fa78388f-4bd7-5a06-83c9-fe244c84399c"
+    },
+    {
+      "ref": "R4",
+      "value": "1k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 45,
+      "y": 47,
+      "nets": [
+        "TAG1",
+        "TAG1_IN"
+      ],
+      "uuid": "d864bf2f-4ed0-54bc-8273-b048c59b9460"
+    },
+    {
+      "ref": "J4",
+      "value": "TAG1_IN",
+      "symbol": "Conn_2",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "x": 65,
+      "y": 47,
+      "nets": [
+        "TAG1_IN",
+        "GND"
+      ],
+      "uuid": "8352a2e1-e9f7-5d5f-9b99-c6094ca05b75"
+    },
+    {
+      "ref": "R5",
+      "value": "100k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 30,
+      "y": 59,
+      "nets": [
+        "GND",
+        "READY"
+      ],
+      "uuid": "fe2d0cd9-1638-5d26-8c17-bf735bdfe861"
+    },
+    {
+      "ref": "R6",
+      "value": "1k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 45,
+      "y": 59,
+      "nets": [
+        "READY",
+        "READY_IN"
+      ],
+      "uuid": "da1f237f-4b83-5b6d-8052-4d7590d611e5"
+    },
+    {
+      "ref": "J5",
+      "value": "READY_IN",
+      "symbol": "Conn_2",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "x": 65,
+      "y": 59,
+      "nets": [
+        "READY_IN",
+        "GND"
+      ],
+      "uuid": "88550aba-f6d1-5ea1-8fa9-5a861c080870"
+    },
+    {
+      "ref": "R7",
+      "value": "100k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 30,
+      "y": 71,
+      "nets": [
+        "GND",
+        "RETIRE"
+      ],
+      "uuid": "c2f2b282-4d69-5248-8393-ee375aa9d643"
+    },
+    {
+      "ref": "R8",
+      "value": "1k",
+      "symbol": "R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "x": 45,
+      "y": 71,
+      "nets": [
+        "RETIRE",
+        "RETIRE_IN"
+      ],
+      "uuid": "c97385b3-af0a-51a9-b5e4-dcb50a26cfda"
+    },
+    {
+      "ref": "J6",
+      "value": "RETIRE_IN",
+      "symbol": "Conn_2",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "x": 65,
+      "y": 71,
+      "nets": [
+        "RETIRE_IN",
+        "GND"
+      ],
+      "uuid": "23ecbd1d-bb66-59bd-89ac-b4a43cfb2f97"
+    }
+  ]
+}
