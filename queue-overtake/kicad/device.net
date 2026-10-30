@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/root/hacker-devices/queue-overtake/kicad/device.kicad_sch</source>
+    <date>2026-10-30T22:28:47+0000</date>
+    <tool>Eeschema 9.0.2+dfsg-1</tool>
+    <textvar name="AUTHOR">jayis1</textvar>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Queue Overtake receive-only carrier</title>
+        <company/>
+        <rev>A</rev>
+        <date/>
+        <source>device.kicad_sch</source>
+        <comment number="1" value="Author: jayis1"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="J1">
+      <value>GROUND_ONLY</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_2" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3034082a-b68a-52f9-8a76-cadd0c59a840</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>A0_A1_A2_A3</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_4" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dd66865c-ff62-5aee-9972-74662ea75a9f</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>TAG0_IN</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_2" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d88d41f3-ed81-56a5-931c-fad886240f6c</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>TAG1_IN</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_2" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f9a5519f-ced1-5bca-93ad-1d3d9ea110fd</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>ENQUEUE_IN</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_2" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0bd885e8-25b3-5c22-a285-a26911f98604</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>DEQUEUE_IN</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="Conn_2" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7b860544-50df-5c82-addd-fb3978f7978f</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>100k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0571f7ff-dba8-5768-8481-93347202e322</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7c48330b-da1c-580e-8399-7be0a3d2165c</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>100k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>64f42902-6e49-531b-9a14-5fdbabbd78b0</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b758d9c9-5d18-53c3-b952-60c3ffdf1e2e</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>100k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7643ed5e-99c5-5597-9bd2-2b8a2c285a3b</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>92c6b78c-5070-58aa-a281-6c7cb426fa4b</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>100k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d6e91568-7924-57d1-968e-51fb96f11d3f</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>1k</value>
+      <footprint>Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</footprint>
+      <fields>
+        <field name="Author">jayis1</field>
+        <field name="Footprint">Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Witness" part="R" description=""/>
+      <property name="Author" value="jayis1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="device.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3821319a-3a6a-5d02-a24d-df9a006aeb15</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Witness" part="Conn_2">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_2</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+        <field name="Author">jayis1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Witness" part="Conn_4">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_4</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+        <field name="Author">jayis1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Witness" part="R">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+        <field name="Author">jayis1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Witness">
+      <uri>/root/hacker-devices/queue-overtake/kicad/Witness.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/DEQUEUE" class="Default">
+      <node ref="J2" pin="4" pinfunction="4" pintype="passive"/>
+      <node ref="R7" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R8" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="2" name="/DEQUEUE_IN" class="Default">
+      <node ref="J6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R8" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="3" name="/ENQUEUE" class="Default">
+      <node ref="J2" pin="3" pinfunction="3" pintype="passive"/>
+      <node ref="R5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R6" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="4" name="/ENQUEUE_IN" class="Default">
+      <node ref="J5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R6" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="5" name="/GND" class="Default">
+      <node ref="J1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="J6" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R7" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="6" name="/TAG0" class="Default">
+      <node ref="J2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="7" name="/TAG0_IN" class="Default">
+      <node ref="J3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R2" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+    <net code="8" name="/TAG1" class="Default">
+      <node ref="J2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R4" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="9" name="/TAG1_IN" class="Default">
+      <node ref="J4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="R4" pin="2" pinfunction="2" pintype="passive"/>
+    </net>
+  </nets>
+</export>
